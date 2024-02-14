@@ -1,57 +1,68 @@
-# 🚀 Getting started with Strapi
+# Kaizen Strapi CMS
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+This project is built using Strapi, a leading open-source headless CMS, and is configured to use PostgreSQL as the database. Follow these steps to set up and run the project locally.
 
-### `develop`
+## Prerequisites
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
+Before you begin, ensure you have the following installed on your system:
+- Node.js (version as per project's requirement, e.g., 14.x or higher)
+- npm (usually comes with Node.js)
+- PostgreSQL (version 12 or higher recommended)
 
-```
-npm run develop
-# or
-yarn develop
-```
+## Setting Up PostgreSQL
 
-### `start`
+1. **Install PostgreSQL**: If not already installed, download and install PostgreSQL from [the official site](https://www.postgresql.org/download/).
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
+2. **Create the Database and User**:
+   - Access the PostgreSQL terminal by typing `psql` in your command line.
+   - Create a new database: `CREATE DATABASE kaizen;`
+   - Create a new user: `CREATE USER kaizen WITH ENCRYPTED PASSWORD 'kaizen';` 
+   - Grant all privileges on the database to your new user: `GRANT ALL PRIVILEGES ON DATABASE kaizen TO kaizen;`
 
-```
-npm run start
-# or
-yarn start
-```
+## Project Setup
 
-### `build`
+1. **Clone the Repository**:
+   ```bash
+   git clone <repository-url>
+   cd <repository-name>
+   ```
 
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
+2. **Install Dependencies**:
+   Navigate to the project directory and install the required npm packages:
+   ```bash
+   npm install
+   ```
 
-```
-npm run build
-# or
-yarn build
-```
+3. **Configure Environment Variables**:
+   Create a `.env` file in the root directory of the project and add the following lines, replacing values as appropriate:
+   ```plaintext
+   DATABASE_CLIENT=postgres
+   DATABASE_HOST=localhost
+   DATABASE_PORT=5432
+   DATABASE_NAME=kaizen
+   DATABASE_USERNAME=kaizen
+   DATABASE_PASSWORD=kaizen
+   ```
 
-## ⚙️ Deployment
+4. **Run the Project**:
+   Start the Strapi development server:
+   ```bash
+   npm run develop
+   ```
+   This command starts the Strapi server and opens the Strapi admin panel in your browser.
 
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
+## Accessing the Admin Panel
 
-## 📚 Learn more
+- Once the server is running, access the Strapi admin panel by navigating to `http://localhost:1337/admin` in your browser.
+- Complete the admin user registration process to access the Strapi dashboard.
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
+## Additional Commands
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
-
-## ✨ Community
-
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
-
----
-
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+- **Build Admin UI**: To build the Strapi admin UI, run:
+  ```bash
+  npm run build
+  ```
+- **Start Strapi in Production**: To start the server in production mode, run:
+  ```bash
+  npm start
+  ```
