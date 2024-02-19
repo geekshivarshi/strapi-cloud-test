@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_elements_qas",
+  "info": {
+    "displayName": "QA",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "question": {
+      "type": "string",
+      "required": true
+    },
+    "answer": {
+      "type": "text",
+      "required": true
+    }
+  }
+}
