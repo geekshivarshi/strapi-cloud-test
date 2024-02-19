@@ -29,4 +29,24 @@ module.exports = ({ env }) => ({
       },
     },
   },
+  graphql: {
+    enabled: true,
+    config: {
+      playgroundAlways: false,
+      defaultLimit: 20,
+      showCrud: true,
+      maxLimit: 200,
+      generateArtifacts: true,
+      artifacts: {
+        schema: true,
+        typegen: true,
+      },
+      apolloServer: {
+        tracing: true,
+      },
+    },
+  },
+  //   seo: {
+  //     enabled: true,
+  //   },
 });
