@@ -781,6 +781,46 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiBusinessCardBusinessCard extends Schema.CollectionType {
+  collectionName: 'business_cards';
+  info: {
+    singularName: 'business-card';
+    pluralName: 'business-cards';
+    displayName: 'Business card';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageCover: Attribute.Component<'block.page-cover'>;
+    pageHeading: Attribute.Component<'block.page-heading'>;
+    ExploreOurRange: Attribute.Component<'block.explore-range-cards', true>;
+    Printsipration: Attribute.Component<'elements.image', true>;
+    ProductSpecifications: Attribute.Component<
+      'block.product-specification',
+      true
+    >;
+    PrintPanic: Attribute.Component<'block.faq'>;
+    PrintSos: Attribute.Component<'block.print-sos'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::business-card.business-card',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::business-card.business-card',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiFooterFooter extends Schema.SingleType {
   collectionName: 'footers';
   info: {
@@ -810,6 +850,37 @@ export interface ApiFooterFooter extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGoogleReviewGoogleReview extends Schema.SingleType {
+  collectionName: 'google_reviews';
+  info: {
+    singularName: 'google-review';
+    pluralName: 'google-reviews';
+    displayName: 'Google review';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    googleRating: Attribute.Decimal;
+    googleReview: Attribute.BigInteger;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::google-review.google-review',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::google-review.google-review',
       'oneToOne',
       'admin::user'
     > &
@@ -890,7 +961,9 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::business-card.business-card': ApiBusinessCardBusinessCard;
       'api::footer.footer': ApiFooterFooter;
+      'api::google-review.google-review': ApiGoogleReviewGoogleReview;
       'api::home.home': ApiHomeHome;
       'api::landing.landing': ApiLandingLanding;
     }

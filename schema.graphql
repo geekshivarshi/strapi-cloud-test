@@ -27,6 +27,65 @@ input BooleanFilterInput {
   startsWith: Boolean
 }
 
+type BusinessCard {
+  ExploreOurRange(filters: ComponentBlockExploreRangeCardsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockExploreRangeCards]
+  PrintPanic: ComponentBlockFaq
+  PrintSos: ComponentBlockPrintSos
+  Printsipration(filters: ComponentElementsImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsImage]
+  ProductSpecifications(filters: ComponentBlockProductSpecificationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockProductSpecification]
+  createdAt: DateTime
+  pageCover: ComponentBlockPageCover
+  pageHeading: ComponentBlockPageHeading
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type BusinessCardEntity {
+  attributes: BusinessCard
+  id: ID
+}
+
+type BusinessCardEntityResponse {
+  data: BusinessCardEntity
+}
+
+type BusinessCardEntityResponseCollection {
+  data: [BusinessCardEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input BusinessCardFiltersInput {
+  ExploreOurRange: ComponentBlockExploreRangeCardsFiltersInput
+  PrintPanic: ComponentBlockFaqFiltersInput
+  PrintSos: ComponentBlockPrintSosFiltersInput
+  Printsipration: ComponentElementsImageFiltersInput
+  ProductSpecifications: ComponentBlockProductSpecificationFiltersInput
+  and: [BusinessCardFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  not: BusinessCardFiltersInput
+  or: [BusinessCardFiltersInput]
+  pageCover: ComponentBlockPageCoverFiltersInput
+  pageHeading: ComponentBlockPageHeadingFiltersInput
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input BusinessCardInput {
+  ExploreOurRange: [ComponentBlockExploreRangeCardsInput]
+  PrintPanic: ComponentBlockFaqInput
+  PrintSos: ComponentBlockPrintSosInput
+  Printsipration: [ComponentElementsImageInput]
+  ProductSpecifications: [ComponentBlockProductSpecificationInput]
+  pageCover: ComponentBlockPageCoverInput
+  pageHeading: ComponentBlockPageHeadingInput
+  publishedAt: DateTime
+}
+
+type BusinessCardRelationResponseCollection {
+  data: [BusinessCardEntity!]!
+}
+
 type ComponentBlockCatergory {
   heading: String
   id: ID!
@@ -67,6 +126,35 @@ input ComponentBlockCtaInput {
   img: ComponentElementsImageInput
 }
 
+type ComponentBlockExploreRangeCards {
+  badge: ComponentElementsBadge!
+  buttonLink: ComponentElementsLink!
+  cardImg: ComponentElementsImage!
+  description: String!
+  id: ID!
+  title: String!
+}
+
+input ComponentBlockExploreRangeCardsFiltersInput {
+  and: [ComponentBlockExploreRangeCardsFiltersInput]
+  badge: ComponentElementsBadgeFiltersInput
+  buttonLink: ComponentElementsLinkFiltersInput
+  cardImg: ComponentElementsImageFiltersInput
+  description: StringFilterInput
+  not: ComponentBlockExploreRangeCardsFiltersInput
+  or: [ComponentBlockExploreRangeCardsFiltersInput]
+  title: StringFilterInput
+}
+
+input ComponentBlockExploreRangeCardsInput {
+  badge: ComponentElementsBadgeInput
+  buttonLink: ComponentElementsLinkInput
+  cardImg: ComponentElementsImageInput
+  description: String
+  id: ID
+  title: String
+}
+
 type ComponentBlockFaq {
   QA(filters: ComponentElementsQaFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsQa]
   heading: String!
@@ -88,6 +176,115 @@ input ComponentBlockFaqInput {
   heading: String
   id: ID
   subHeading: String
+}
+
+type ComponentBlockPageCover {
+  heading: String!
+  id: ID!
+  image: ComponentElementsImage!
+}
+
+input ComponentBlockPageCoverFiltersInput {
+  and: [ComponentBlockPageCoverFiltersInput]
+  heading: StringFilterInput
+  image: ComponentElementsImageFiltersInput
+  not: ComponentBlockPageCoverFiltersInput
+  or: [ComponentBlockPageCoverFiltersInput]
+}
+
+input ComponentBlockPageCoverInput {
+  heading: String
+  id: ID
+  image: ComponentElementsImageInput
+}
+
+type ComponentBlockPageHeading {
+  heading: String!
+  id: ID!
+  image: UploadFileEntityResponse
+  subHeading: String!
+}
+
+input ComponentBlockPageHeadingFiltersInput {
+  and: [ComponentBlockPageHeadingFiltersInput]
+  heading: StringFilterInput
+  not: ComponentBlockPageHeadingFiltersInput
+  or: [ComponentBlockPageHeadingFiltersInput]
+  subHeading: StringFilterInput
+}
+
+input ComponentBlockPageHeadingInput {
+  heading: String
+  id: ID
+  image: ID
+  subHeading: String
+}
+
+type ComponentBlockPrintSos {
+  ContactLink(filters: ComponentElementsLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsLink]!
+  description: String!
+  id: ID!
+}
+
+input ComponentBlockPrintSosFiltersInput {
+  ContactLink: ComponentElementsLinkFiltersInput
+  and: [ComponentBlockPrintSosFiltersInput]
+  description: StringFilterInput
+  not: ComponentBlockPrintSosFiltersInput
+  or: [ComponentBlockPrintSosFiltersInput]
+}
+
+input ComponentBlockPrintSosInput {
+  ContactLink: [ComponentElementsLinkInput]
+  description: String
+  id: ID
+}
+
+type ComponentBlockProductSpecification {
+  CoverImg: UploadFileEntityResponse!
+  description(filters: ComponentElementsListItemWithImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsListItemWithImage]
+  heading: String!
+  id: ID!
+  subHeading: String!
+}
+
+input ComponentBlockProductSpecificationFiltersInput {
+  and: [ComponentBlockProductSpecificationFiltersInput]
+  description: ComponentElementsListItemWithImageFiltersInput
+  heading: StringFilterInput
+  not: ComponentBlockProductSpecificationFiltersInput
+  or: [ComponentBlockProductSpecificationFiltersInput]
+  subHeading: StringFilterInput
+}
+
+input ComponentBlockProductSpecificationInput {
+  CoverImg: ID
+  description: [ComponentElementsListItemWithImageInput]
+  heading: String
+  id: ID
+  subHeading: String
+}
+
+type ComponentElementsBadge {
+  id: ID!
+  image: UploadFileEntityResponse
+  text: String
+  type: String!
+}
+
+input ComponentElementsBadgeFiltersInput {
+  and: [ComponentElementsBadgeFiltersInput]
+  not: ComponentElementsBadgeFiltersInput
+  or: [ComponentElementsBadgeFiltersInput]
+  text: StringFilterInput
+  type: StringFilterInput
+}
+
+input ComponentElementsBadgeInput {
+  id: ID
+  image: ID
+  text: String
+  type: String
 }
 
 type ComponentElementsImage {
@@ -143,6 +340,28 @@ input ComponentElementsLinkInput {
   isUrl: Boolean
   name: String
   url: String
+}
+
+type ComponentElementsListItemWithImage {
+  heading: String
+  id: ID!
+  image: UploadFileEntityResponse!
+  subHeading: String
+}
+
+input ComponentElementsListItemWithImageFiltersInput {
+  and: [ComponentElementsListItemWithImageFiltersInput]
+  heading: StringFilterInput
+  not: ComponentElementsListItemWithImageFiltersInput
+  or: [ComponentElementsListItemWithImageFiltersInput]
+  subHeading: StringFilterInput
+}
+
+input ComponentElementsListItemWithImageInput {
+  heading: String
+  id: ID
+  image: ID
+  subHeading: String
 }
 
 type ComponentElementsQa {
@@ -413,7 +632,50 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = ComponentBlockCatergory | ComponentBlockCta | ComponentBlockFaq | ComponentElementsImage | ComponentElementsLink | ComponentElementsQa | ContentReleasesRelease | ContentReleasesReleaseAction | Footer | Home | I18NLocale | Landing | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = BusinessCard | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPrintSos | ComponentBlockProductSpecification | ComponentElementsBadge | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsQa | ContentReleasesRelease | ContentReleasesReleaseAction | Footer | GoogleReview | Home | I18NLocale | Landing | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+
+type GoogleReview {
+  createdAt: DateTime
+  googleRating: Float
+  googleReview: Long
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type GoogleReviewEntity {
+  attributes: GoogleReview
+  id: ID
+}
+
+type GoogleReviewEntityResponse {
+  data: GoogleReviewEntity
+}
+
+type GoogleReviewEntityResponseCollection {
+  data: [GoogleReviewEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input GoogleReviewFiltersInput {
+  and: [GoogleReviewFiltersInput]
+  createdAt: DateTimeFilterInput
+  googleRating: FloatFilterInput
+  googleReview: LongFilterInput
+  not: GoogleReviewFiltersInput
+  or: [GoogleReviewFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input GoogleReviewInput {
+  googleRating: Float
+  googleReview: Long
+  publishedAt: DateTime
+}
+
+type GoogleReviewRelationResponseCollection {
+  data: [GoogleReviewEntity!]!
+}
 
 type Home {
   createdAt: DateTime
@@ -657,6 +919,7 @@ input LongFilterInput {
 type Mutation {
   """Change user password. Confirm with the current password."""
   changePassword(currentPassword: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
+  createBusinessCard(data: BusinessCardInput!): BusinessCardEntityResponse
   createContentReleasesRelease(data: ContentReleasesReleaseInput!): ContentReleasesReleaseEntityResponse
   createContentReleasesReleaseAction(data: ContentReleasesReleaseActionInput!): ContentReleasesReleaseActionEntityResponse
   createHome(data: HomeInput!): HomeEntityResponse
@@ -669,9 +932,11 @@ type Mutation {
 
   """Create a new user"""
   createUsersPermissionsUser(data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
+  deleteBusinessCard(id: ID!): BusinessCardEntityResponse
   deleteContentReleasesRelease(id: ID!): ContentReleasesReleaseEntityResponse
   deleteContentReleasesReleaseAction(id: ID!): ContentReleasesReleaseActionEntityResponse
   deleteFooter: FooterEntityResponse
+  deleteGoogleReview: GoogleReviewEntityResponse
   deleteHome(id: ID!): HomeEntityResponse
   deleteLanding(id: ID!): LandingEntityResponse
   deleteUploadFile(id: ID!): UploadFileEntityResponse
@@ -699,10 +964,12 @@ type Mutation {
   Reset user password. Confirm with a code (resetToken from forgotPassword)
   """
   resetPassword(code: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
+  updateBusinessCard(data: BusinessCardInput!, id: ID!): BusinessCardEntityResponse
   updateContentReleasesRelease(data: ContentReleasesReleaseInput!, id: ID!): ContentReleasesReleaseEntityResponse
   updateContentReleasesReleaseAction(data: ContentReleasesReleaseActionInput!, id: ID!): ContentReleasesReleaseActionEntityResponse
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
   updateFooter(data: FooterInput!): FooterEntityResponse
+  updateGoogleReview(data: GoogleReviewInput!): GoogleReviewEntityResponse
   updateHome(data: HomeInput!, id: ID!): HomeEntityResponse
   updateLanding(data: LandingInput!, id: ID!): LandingEntityResponse
   updateUploadFile(data: UploadFileInput!, id: ID!): UploadFileEntityResponse
@@ -736,11 +1003,14 @@ enum PublicationState {
 }
 
 type Query {
+  businessCard(id: ID): BusinessCardEntityResponse
+  businessCards(filters: BusinessCardFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BusinessCardEntityResponseCollection
   contentReleasesRelease(id: ID): ContentReleasesReleaseEntityResponse
   contentReleasesReleaseAction(id: ID): ContentReleasesReleaseActionEntityResponse
   contentReleasesReleaseActions(filters: ContentReleasesReleaseActionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ContentReleasesReleaseActionEntityResponseCollection
   contentReleasesReleases(filters: ContentReleasesReleaseFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ContentReleasesReleaseEntityResponseCollection
   footer(publicationState: PublicationState = LIVE): FooterEntityResponse
+  googleReview(publicationState: PublicationState = LIVE): GoogleReviewEntityResponse
   home(id: ID): HomeEntityResponse
   homes(filters: HomeFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): HomeEntityResponseCollection
   i18NLocale(id: ID): I18NLocaleEntityResponse

@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_block_product_specifications",
+  "info": {
+    "displayName": "ProductSpecification",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "subHeading": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.list-item-with-image",
+      "required": false
+    },
+    "CoverImg": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

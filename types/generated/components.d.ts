@@ -3,7 +3,7 @@ import type { Schema, Attribute } from '@strapi/strapi';
 export interface BlockCatergory extends Schema.Component {
   collectionName: 'components_block_catergories';
   info: {
-    displayName: 'catergory';
+    displayName: 'category';
     description: '';
   };
   attributes: {
@@ -24,6 +24,21 @@ export interface BlockCta extends Schema.Component {
   };
 }
 
+export interface BlockExploreRangeCards extends Schema.Component {
+  collectionName: 'components_block_explore_range_cards';
+  info: {
+    displayName: 'ExploreRangeCard';
+    description: '';
+  };
+  attributes: {
+    cardImg: Attribute.Component<'elements.image'> & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.Text & Attribute.Required;
+    buttonLink: Attribute.Component<'elements.link'> & Attribute.Required;
+    badge: Attribute.Component<'elements.badge'> & Attribute.Required;
+  };
+}
+
 export interface BlockFaq extends Schema.Component {
   collectionName: 'components_block_faqs';
   info: {
@@ -34,6 +49,71 @@ export interface BlockFaq extends Schema.Component {
     heading: Attribute.String & Attribute.Required;
     subHeading: Attribute.String;
     QA: Attribute.Component<'elements.qa', true>;
+  };
+}
+
+export interface BlockPageCover extends Schema.Component {
+  collectionName: 'components_block_page_covers';
+  info: {
+    displayName: 'PageCover';
+    description: '';
+  };
+  attributes: {
+    image: Attribute.Component<'elements.image'> & Attribute.Required;
+    heading: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface BlockPageHeading extends Schema.Component {
+  collectionName: 'components_block_page_headings';
+  info: {
+    displayName: 'PageHeading';
+    description: '';
+  };
+  attributes: {
+    heading: Attribute.String & Attribute.Required;
+    subHeading: Attribute.String & Attribute.Required;
+    image: Attribute.Media;
+  };
+}
+
+export interface BlockPrintSos extends Schema.Component {
+  collectionName: 'components_block_print_sos';
+  info: {
+    displayName: 'PrintSos';
+    description: '';
+  };
+  attributes: {
+    description: Attribute.Text & Attribute.Required;
+    ContactLink: Attribute.Component<'elements.link', true> &
+      Attribute.Required;
+  };
+}
+
+export interface BlockProductSpecification extends Schema.Component {
+  collectionName: 'components_block_product_specifications';
+  info: {
+    displayName: 'ProductSpecification';
+    description: '';
+  };
+  attributes: {
+    heading: Attribute.String & Attribute.Required;
+    subHeading: Attribute.String & Attribute.Required;
+    description: Attribute.Component<'elements.list-item-with-image', true>;
+    CoverImg: Attribute.Media & Attribute.Required;
+  };
+}
+
+export interface ElementsBadge extends Schema.Component {
+  collectionName: 'components_elements_badges';
+  info: {
+    displayName: 'Badge';
+    description: '';
+  };
+  attributes: {
+    type: Attribute.String & Attribute.Required;
+    text: Attribute.String;
+    image: Attribute.Media;
   };
 }
 
@@ -64,6 +144,19 @@ export interface ElementsLink extends Schema.Component {
   };
 }
 
+export interface ElementsListItemWithImage extends Schema.Component {
+  collectionName: 'components_elements_list_item_with_images';
+  info: {
+    displayName: 'listItemWithImage';
+    description: '';
+  };
+  attributes: {
+    heading: Attribute.String;
+    subHeading: Attribute.String;
+    image: Attribute.Media & Attribute.Required;
+  };
+}
+
 export interface ElementsQa extends Schema.Component {
   collectionName: 'components_elements_qas';
   info: {
@@ -81,9 +174,16 @@ declare module '@strapi/types' {
     export interface Components {
       'block.catergory': BlockCatergory;
       'block.cta': BlockCta;
+      'block.explore-range-cards': BlockExploreRangeCards;
       'block.faq': BlockFaq;
+      'block.page-cover': BlockPageCover;
+      'block.page-heading': BlockPageHeading;
+      'block.print-sos': BlockPrintSos;
+      'block.product-specification': BlockProductSpecification;
+      'elements.badge': ElementsBadge;
       'elements.image': ElementsImage;
       'elements.link': ElementsLink;
+      'elements.list-item-with-image': ElementsListItemWithImage;
       'elements.qa': ElementsQa;
     }
   }

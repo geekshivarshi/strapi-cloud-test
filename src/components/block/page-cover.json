@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_block_page_covers",
+  "info": {
+    "displayName": "PageCover",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.image",
+      "required": true
+    },
+    "heading": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
