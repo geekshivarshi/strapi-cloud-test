@@ -59,8 +59,8 @@ export interface BlockPageCover extends Schema.Component {
     description: '';
   };
   attributes: {
-    image: Attribute.Component<'elements.image'> & Attribute.Required;
     heading: Attribute.String & Attribute.Required;
+    image: Attribute.Media & Attribute.Required;
   };
 }
 

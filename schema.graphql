@@ -181,13 +181,12 @@ input ComponentBlockFaqInput {
 type ComponentBlockPageCover {
   heading: String!
   id: ID!
-  image: ComponentElementsImage!
+  image: UploadFileEntityResponse!
 }
 
 input ComponentBlockPageCoverFiltersInput {
   and: [ComponentBlockPageCoverFiltersInput]
   heading: StringFilterInput
-  image: ComponentElementsImageFiltersInput
   not: ComponentBlockPageCoverFiltersInput
   or: [ComponentBlockPageCoverFiltersInput]
 }
@@ -195,7 +194,7 @@ input ComponentBlockPageCoverFiltersInput {
 input ComponentBlockPageCoverInput {
   heading: String
   id: ID
-  image: ComponentElementsImageInput
+  image: ID
 }
 
 type ComponentBlockPageHeading {
