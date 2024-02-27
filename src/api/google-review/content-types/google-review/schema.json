@@ -4,17 +4,18 @@
   "info": {
     "singularName": "google-review",
     "pluralName": "google-reviews",
-    "displayName": "Google review"
+    "displayName": "Google review",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "googleRating": {
+    "averageRating": {
       "type": "decimal"
     },
-    "googleReview": {
+    "totalReviews": {
       "type": "biginteger"
     }
   }

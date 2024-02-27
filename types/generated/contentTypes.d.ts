@@ -863,13 +863,14 @@ export interface ApiGoogleReviewGoogleReview extends Schema.SingleType {
     singularName: 'google-review';
     pluralName: 'google-reviews';
     displayName: 'Google review';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    googleRating: Attribute.Decimal;
-    googleReview: Attribute.BigInteger;
+    averageRating: Attribute.Decimal;
+    totalReviews: Attribute.BigInteger;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

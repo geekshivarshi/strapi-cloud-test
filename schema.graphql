@@ -635,10 +635,10 @@ type FooterRelationResponseCollection {
 union GenericMorph = BusinessCard | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPrintSos | ComponentBlockProductSpecification | ComponentElementsBadge | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsQa | ContentReleasesRelease | ContentReleasesReleaseAction | Footer | GoogleReview | Home | I18NLocale | Landing | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GoogleReview {
+  averageRating: Float
   createdAt: DateTime
-  googleRating: Float
-  googleReview: Long
   publishedAt: DateTime
+  totalReviews: Long
   updatedAt: DateTime
 }
 
@@ -658,19 +658,19 @@ type GoogleReviewEntityResponseCollection {
 
 input GoogleReviewFiltersInput {
   and: [GoogleReviewFiltersInput]
+  averageRating: FloatFilterInput
   createdAt: DateTimeFilterInput
-  googleRating: FloatFilterInput
-  googleReview: LongFilterInput
   not: GoogleReviewFiltersInput
   or: [GoogleReviewFiltersInput]
   publishedAt: DateTimeFilterInput
+  totalReviews: LongFilterInput
   updatedAt: DateTimeFilterInput
 }
 
 input GoogleReviewInput {
-  googleRating: Float
-  googleReview: Long
+  averageRating: Float
   publishedAt: DateTime
+  totalReviews: Long
 }
 
 type GoogleReviewRelationResponseCollection {

@@ -112,3 +112,7 @@ exports
 dist
 build
 .strapi-updater.json
+
+# Dependency lock files
+yarn.lock
+package-lock.json
