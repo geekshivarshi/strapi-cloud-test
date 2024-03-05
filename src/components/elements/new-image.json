@@ -1,18 +1,11 @@
 {
-  "collectionName": "components_elements_list_item_with_images",
+  "collectionName": "components_elements_new_images",
   "info": {
-    "displayName": "listItemWithImage",
+    "displayName": "NewImage",
     "description": ""
   },
   "options": {},
   "attributes": {
-    "heading": {
-      "type": "string"
-    },
-    "subHeading": {
-      "type": "string",
-      "required": true
-    },
     "image": {
       "type": "media",
       "multiple": false,
@@ -23,6 +16,16 @@
         "videos",
         "audios"
       ]
+    },
+    "url": {
+      "type": "string"
+    },
+    "isUrlExternal": {
+      "type": "boolean"
+    },
+    "alt": {
+      "type": "string",
+      "required": true
     }
   }
 }

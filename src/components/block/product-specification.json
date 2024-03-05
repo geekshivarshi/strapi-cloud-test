@@ -20,7 +20,7 @@
       "component": "elements.list-item-with-image",
       "required": false
     },
-    "CoverImg": {
+    "coverImg": {
       "type": "media",
       "multiple": false,
       "required": true,

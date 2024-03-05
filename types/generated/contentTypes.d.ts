@@ -795,14 +795,14 @@ export interface ApiBusinessCardBusinessCard extends Schema.CollectionType {
   attributes: {
     pageCover: Attribute.Component<'block.page-cover'>;
     pageHeading: Attribute.Component<'block.page-heading'>;
-    ExploreOurRange: Attribute.Component<'block.explore-range-cards', true>;
-    Printsipration: Attribute.Component<'elements.image', true>;
-    ProductSpecifications: Attribute.Component<
+    exploreOurRange: Attribute.Component<'block.explore-range-cards', true>;
+    productSpecifications: Attribute.Component<
       'block.product-specification',
       true
     >;
-    PrintPanic: Attribute.Component<'block.faq'>;
-    PrintSos: Attribute.Component<'block.print-sos'>;
+    printPanic: Attribute.Component<'block.faq'>;
+    printSos: Attribute.Component<'block.print-sos'>;
+    printspiration: Attribute.Component<'elements.new-image', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

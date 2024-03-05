@@ -28,14 +28,14 @@ input BooleanFilterInput {
 }
 
 type BusinessCard {
-  ExploreOurRange(filters: ComponentBlockExploreRangeCardsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockExploreRangeCards]
-  PrintPanic: ComponentBlockFaq
-  PrintSos: ComponentBlockPrintSos
-  Printsipration(filters: ComponentElementsImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsImage]
-  ProductSpecifications(filters: ComponentBlockProductSpecificationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockProductSpecification]
   createdAt: DateTime
+  exploreOurRange(filters: ComponentBlockExploreRangeCardsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockExploreRangeCards]
   pageCover: ComponentBlockPageCover
   pageHeading: ComponentBlockPageHeading
+  printPanic: ComponentBlockFaq
+  printSos: ComponentBlockPrintSos
+  printspiration(filters: ComponentElementsNewImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsNewImage]
+  productSpecifications(filters: ComponentBlockProductSpecificationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockProductSpecification]
   publishedAt: DateTime
   updatedAt: DateTime
 }
@@ -55,30 +55,30 @@ type BusinessCardEntityResponseCollection {
 }
 
 input BusinessCardFiltersInput {
-  ExploreOurRange: ComponentBlockExploreRangeCardsFiltersInput
-  PrintPanic: ComponentBlockFaqFiltersInput
-  PrintSos: ComponentBlockPrintSosFiltersInput
-  Printsipration: ComponentElementsImageFiltersInput
-  ProductSpecifications: ComponentBlockProductSpecificationFiltersInput
   and: [BusinessCardFiltersInput]
   createdAt: DateTimeFilterInput
+  exploreOurRange: ComponentBlockExploreRangeCardsFiltersInput
   id: IDFilterInput
   not: BusinessCardFiltersInput
   or: [BusinessCardFiltersInput]
   pageCover: ComponentBlockPageCoverFiltersInput
   pageHeading: ComponentBlockPageHeadingFiltersInput
+  printPanic: ComponentBlockFaqFiltersInput
+  printSos: ComponentBlockPrintSosFiltersInput
+  printspiration: ComponentElementsNewImageFiltersInput
+  productSpecifications: ComponentBlockProductSpecificationFiltersInput
   publishedAt: DateTimeFilterInput
   updatedAt: DateTimeFilterInput
 }
 
 input BusinessCardInput {
-  ExploreOurRange: [ComponentBlockExploreRangeCardsInput]
-  PrintPanic: ComponentBlockFaqInput
-  PrintSos: ComponentBlockPrintSosInput
-  Printsipration: [ComponentElementsImageInput]
-  ProductSpecifications: [ComponentBlockProductSpecificationInput]
+  exploreOurRange: [ComponentBlockExploreRangeCardsInput]
   pageCover: ComponentBlockPageCoverInput
   pageHeading: ComponentBlockPageHeadingInput
+  printPanic: ComponentBlockFaqInput
+  printSos: ComponentBlockPrintSosInput
+  printspiration: [ComponentElementsNewImageInput]
+  productSpecifications: [ComponentBlockProductSpecificationInput]
   publishedAt: DateTime
 }
 
@@ -129,8 +129,9 @@ input ComponentBlockCtaInput {
 type ComponentBlockExploreRangeCards {
   badge: ComponentElementsBadge!
   buttonLink: ComponentElementsLink!
-  cardImg: ComponentElementsImage!
-  description: String!
+  cardImg: UploadFileEntityResponse
+  cardUrl: ComponentElementsLink
+  features(filters: ComponentElementsListItemWithImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsListItemWithImage]
   id: ID!
   title: String!
 }
@@ -139,8 +140,8 @@ input ComponentBlockExploreRangeCardsFiltersInput {
   and: [ComponentBlockExploreRangeCardsFiltersInput]
   badge: ComponentElementsBadgeFiltersInput
   buttonLink: ComponentElementsLinkFiltersInput
-  cardImg: ComponentElementsImageFiltersInput
-  description: StringFilterInput
+  cardUrl: ComponentElementsLinkFiltersInput
+  features: ComponentElementsListItemWithImageFiltersInput
   not: ComponentBlockExploreRangeCardsFiltersInput
   or: [ComponentBlockExploreRangeCardsFiltersInput]
   title: StringFilterInput
@@ -149,8 +150,9 @@ input ComponentBlockExploreRangeCardsFiltersInput {
 input ComponentBlockExploreRangeCardsInput {
   badge: ComponentElementsBadgeInput
   buttonLink: ComponentElementsLinkInput
-  cardImg: ComponentElementsImageInput
-  description: String
+  cardImg: ID
+  cardUrl: ComponentElementsLinkInput
+  features: [ComponentElementsListItemWithImageInput]
   id: ID
   title: String
 }
@@ -240,7 +242,7 @@ input ComponentBlockPrintSosInput {
 }
 
 type ComponentBlockProductSpecification {
-  CoverImg: UploadFileEntityResponse!
+  coverImg: UploadFileEntityResponse!
   description(filters: ComponentElementsListItemWithImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsListItemWithImage]
   heading: String!
   id: ID!
@@ -257,7 +259,7 @@ input ComponentBlockProductSpecificationFiltersInput {
 }
 
 input ComponentBlockProductSpecificationInput {
-  CoverImg: ID
+  coverImg: ID
   description: [ComponentElementsListItemWithImageInput]
   heading: String
   id: ID
@@ -345,7 +347,7 @@ type ComponentElementsListItemWithImage {
   heading: String
   id: ID!
   image: UploadFileEntityResponse!
-  subHeading: String
+  subHeading: String!
 }
 
 input ComponentElementsListItemWithImageFiltersInput {
@@ -361,6 +363,31 @@ input ComponentElementsListItemWithImageInput {
   id: ID
   image: ID
   subHeading: String
+}
+
+type ComponentElementsNewImage {
+  alt: String!
+  id: ID!
+  image: UploadFileEntityResponse!
+  isUrlExternal: Boolean
+  url: String
+}
+
+input ComponentElementsNewImageFiltersInput {
+  alt: StringFilterInput
+  and: [ComponentElementsNewImageFiltersInput]
+  isUrlExternal: BooleanFilterInput
+  not: ComponentElementsNewImageFiltersInput
+  or: [ComponentElementsNewImageFiltersInput]
+  url: StringFilterInput
+}
+
+input ComponentElementsNewImageInput {
+  alt: String
+  id: ID
+  image: ID
+  isUrlExternal: Boolean
+  url: String
 }
 
 type ComponentElementsQa {
@@ -631,7 +658,7 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = BusinessCard | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPrintSos | ComponentBlockProductSpecification | ComponentElementsBadge | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsQa | ContentReleasesRelease | ContentReleasesReleaseAction | Footer | GoogleReview | Home | I18NLocale | Landing | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = BusinessCard | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPrintSos | ComponentBlockProductSpecification | ComponentElementsBadge | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ContentReleasesRelease | ContentReleasesReleaseAction | Footer | GoogleReview | Home | I18NLocale | Landing | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GoogleReview {
   averageRating: Float

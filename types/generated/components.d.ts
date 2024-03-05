@@ -31,11 +31,12 @@ export interface BlockExploreRangeCards extends Schema.Component {
     description: '';
   };
   attributes: {
-    cardImg: Attribute.Component<'elements.image'> & Attribute.Required;
     title: Attribute.String & Attribute.Required;
-    description: Attribute.Text & Attribute.Required;
     buttonLink: Attribute.Component<'elements.link'> & Attribute.Required;
     badge: Attribute.Component<'elements.badge'> & Attribute.Required;
+    cardImg: Attribute.Media;
+    features: Attribute.Component<'elements.list-item-with-image', true>;
+    cardUrl: Attribute.Component<'elements.link'>;
   };
 }
 
@@ -100,7 +101,7 @@ export interface BlockProductSpecification extends Schema.Component {
     heading: Attribute.String & Attribute.Required;
     subHeading: Attribute.String & Attribute.Required;
     description: Attribute.Component<'elements.list-item-with-image', true>;
-    CoverImg: Attribute.Media & Attribute.Required;
+    coverImg: Attribute.Media & Attribute.Required;
   };
 }
 
@@ -135,6 +136,7 @@ export interface ElementsLink extends Schema.Component {
   collectionName: 'components_elements_links';
   info: {
     displayName: 'link';
+    description: '';
   };
   attributes: {
     name: Attribute.String;
@@ -152,8 +154,22 @@ export interface ElementsListItemWithImage extends Schema.Component {
   };
   attributes: {
     heading: Attribute.String;
-    subHeading: Attribute.String;
+    subHeading: Attribute.String & Attribute.Required;
     image: Attribute.Media & Attribute.Required;
+  };
+}
+
+export interface ElementsNewImage extends Schema.Component {
+  collectionName: 'components_elements_new_images';
+  info: {
+    displayName: 'NewImage';
+    description: '';
+  };
+  attributes: {
+    image: Attribute.Media & Attribute.Required;
+    url: Attribute.String;
+    isUrlExternal: Attribute.Boolean;
+    alt: Attribute.String & Attribute.Required;
   };
 }
 
@@ -184,6 +200,7 @@ declare module '@strapi/types' {
       'elements.image': ElementsImage;
       'elements.link': ElementsLink;
       'elements.list-item-with-image': ElementsListItemWithImage;
+      'elements.new-image': ElementsNewImage;
       'elements.qa': ElementsQa;
     }
   }

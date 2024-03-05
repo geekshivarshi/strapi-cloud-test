@@ -46,7 +46,7 @@ module.exports = ({ env }) => ({
       },
     },
   },
-  //   seo: {
-  //     enabled: true,
-  //   },
+  seo: {
+    enabled: true,
+  },
 });
