@@ -102,6 +102,7 @@ export interface BlockProductSpecification extends Schema.Component {
     subHeading: Attribute.String & Attribute.Required;
     description: Attribute.Component<'elements.list-item-with-image', true>;
     coverImg: Attribute.Media & Attribute.Required;
+    coverImgAlignment: Attribute.String;
   };
 }
 

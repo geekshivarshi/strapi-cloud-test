@@ -243,6 +243,7 @@ input ComponentBlockPrintSosInput {
 
 type ComponentBlockProductSpecification {
   coverImg: UploadFileEntityResponse!
+  coverImgAlignment: String
   description(filters: ComponentElementsListItemWithImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsListItemWithImage]
   heading: String!
   id: ID!
@@ -251,6 +252,7 @@ type ComponentBlockProductSpecification {
 
 input ComponentBlockProductSpecificationFiltersInput {
   and: [ComponentBlockProductSpecificationFiltersInput]
+  coverImgAlignment: StringFilterInput
   description: ComponentElementsListItemWithImageFiltersInput
   heading: StringFilterInput
   not: ComponentBlockProductSpecificationFiltersInput
@@ -260,6 +262,7 @@ input ComponentBlockProductSpecificationFiltersInput {
 
 input ComponentBlockProductSpecificationInput {
   coverImg: ID
+  coverImgAlignment: String
   description: [ComponentElementsListItemWithImageInput]
   heading: String
   id: ID
