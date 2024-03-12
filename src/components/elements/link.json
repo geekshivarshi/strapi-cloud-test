@@ -1,7 +1,8 @@
 {
   "collectionName": "components_elements_links",
   "info": {
-    "displayName": "link"
+    "displayName": "link",
+    "description": ""
   },
   "options": {},
   "attributes": {

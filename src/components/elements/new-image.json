@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_elements_new_images",
+  "info": {
+    "displayName": "NewImage",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "url": {
+      "type": "string"
+    },
+    "isUrlExternal": {
+      "type": "boolean"
+    },
+    "alt": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

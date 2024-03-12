@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "headers",
+  "info": {
+    "singularName": "header",
+    "pluralName": "headers",
+    "displayName": "Header",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "appBarCategory": {
+      "type": "json"
+    },
+    "bestSellers": {
+      "type": "json"
+    },
+    "specialOffers": {
+      "type": "json"
+    },
+    "quickBuys": {
+      "type": "json"
+    }
+  }
+}

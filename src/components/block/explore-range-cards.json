@@ -1,0 +1,47 @@
+{
+  "collectionName": "components_block_explore_range_cards",
+  "info": {
+    "displayName": "ExploreRangeCard",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "buttonLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.link",
+      "required": true
+    },
+    "badge": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.badge",
+      "required": true
+    },
+    "cardImg": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "features": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.list-item-with-image"
+    },
+    "cardUrl": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.link"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_block_print_sos",
+  "info": {
+    "displayName": "PrintSos",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "ContactLink": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.link",
+      "required": true
+    }
+  }
+}

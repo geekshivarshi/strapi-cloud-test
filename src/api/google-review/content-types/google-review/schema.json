@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "google_reviews",
+  "info": {
+    "singularName": "google-review",
+    "pluralName": "google-reviews",
+    "displayName": "Google review",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "averageRating": {
+      "type": "decimal"
+    },
+    "totalReviews": {
+      "type": "biginteger"
+    }
+  }
+}

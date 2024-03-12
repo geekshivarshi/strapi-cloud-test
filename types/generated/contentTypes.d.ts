@@ -781,6 +781,47 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiBusinessCardBusinessCard extends Schema.CollectionType {
+  collectionName: 'business_cards';
+  info: {
+    singularName: 'business-card';
+    pluralName: 'business-cards';
+    displayName: 'Business card';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageCover: Attribute.Component<'block.page-cover'> & Attribute.Required;
+    pageHeading: Attribute.Component<'block.page-heading'>;
+    exploreOurRange: Attribute.Component<'block.explore-range-cards', true>;
+    productSpecifications: Attribute.Component<
+      'block.product-specification',
+      true
+    >;
+    printPanic: Attribute.Component<'block.faq'>;
+    printSos: Attribute.Component<'block.print-sos'>;
+    printspiration: Attribute.Component<'elements.new-image', true>;
+    ecoCard: Attribute.Component<'block.eco-card'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::business-card.business-card',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::business-card.business-card',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiFooterFooter extends Schema.SingleType {
   collectionName: 'footers';
   info: {
@@ -810,6 +851,72 @@ export interface ApiFooterFooter extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGoogleReviewGoogleReview extends Schema.SingleType {
+  collectionName: 'google_reviews';
+  info: {
+    singularName: 'google-review';
+    pluralName: 'google-reviews';
+    displayName: 'Google review';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    averageRating: Attribute.Decimal;
+    totalReviews: Attribute.BigInteger;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::google-review.google-review',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::google-review.google-review',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHeaderHeader extends Schema.SingleType {
+  collectionName: 'headers';
+  info: {
+    singularName: 'header';
+    pluralName: 'headers';
+    displayName: 'Header';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    appBarCategory: Attribute.JSON;
+    bestSellers: Attribute.JSON;
+    specialOffers: Attribute.JSON;
+    quickBuys: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::header.header',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::header.header',
       'oneToOne',
       'admin::user'
     > &
@@ -890,7 +997,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::business-card.business-card': ApiBusinessCardBusinessCard;
       'api::footer.footer': ApiFooterFooter;
+      'api::google-review.google-review': ApiGoogleReviewGoogleReview;
+      'api::header.header': ApiHeaderHeader;
       'api::home.home': ApiHomeHome;
       'api::landing.landing': ApiLandingLanding;
     }
