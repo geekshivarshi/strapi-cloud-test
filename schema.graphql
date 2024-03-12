@@ -29,8 +29,9 @@ input BooleanFilterInput {
 
 type BusinessCard {
   createdAt: DateTime
+  ecoCard: ComponentBlockEcoCard
   exploreOurRange(filters: ComponentBlockExploreRangeCardsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockExploreRangeCards]
-  pageCover: ComponentBlockPageCover
+  pageCover: ComponentBlockPageCover!
   pageHeading: ComponentBlockPageHeading
   printPanic: ComponentBlockFaq
   printSos: ComponentBlockPrintSos
@@ -57,6 +58,7 @@ type BusinessCardEntityResponseCollection {
 input BusinessCardFiltersInput {
   and: [BusinessCardFiltersInput]
   createdAt: DateTimeFilterInput
+  ecoCard: ComponentBlockEcoCardFiltersInput
   exploreOurRange: ComponentBlockExploreRangeCardsFiltersInput
   id: IDFilterInput
   not: BusinessCardFiltersInput
@@ -72,6 +74,7 @@ input BusinessCardFiltersInput {
 }
 
 input BusinessCardInput {
+  ecoCard: ComponentBlockEcoCardInput
   exploreOurRange: [ComponentBlockExploreRangeCardsInput]
   pageCover: ComponentBlockPageCoverInput
   pageHeading: ComponentBlockPageHeadingInput
@@ -124,6 +127,29 @@ input ComponentBlockCtaInput {
   heading: String
   id: ID
   img: ComponentElementsImageInput
+}
+
+type ComponentBlockEcoCard {
+  content(filters: ComponentElementsListItemWithImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsListItemWithImage]
+  heading: String
+  id: ID!
+  title: String
+}
+
+input ComponentBlockEcoCardFiltersInput {
+  and: [ComponentBlockEcoCardFiltersInput]
+  content: ComponentElementsListItemWithImageFiltersInput
+  heading: StringFilterInput
+  not: ComponentBlockEcoCardFiltersInput
+  or: [ComponentBlockEcoCardFiltersInput]
+  title: StringFilterInput
+}
+
+input ComponentBlockEcoCardInput {
+  content: [ComponentElementsListItemWithImageInput]
+  heading: String
+  id: ID
+  title: String
 }
 
 type ComponentBlockExploreRangeCards {
@@ -349,7 +375,7 @@ input ComponentElementsLinkInput {
 type ComponentElementsListItemWithImage {
   heading: String
   id: ID!
-  image: UploadFileEntityResponse!
+  image: UploadFileEntityResponse
   subHeading: String!
 }
 
@@ -411,6 +437,71 @@ input ComponentElementsQaInput {
   answer: String
   id: ID
   question: String
+}
+
+type ComponentSharedMetaSocial {
+  description: String!
+  id: ID!
+  image: UploadFileEntityResponse
+  socialNetwork: ENUM_COMPONENTSHAREDMETASOCIAL_SOCIALNETWORK!
+  title: String!
+}
+
+input ComponentSharedMetaSocialFiltersInput {
+  and: [ComponentSharedMetaSocialFiltersInput]
+  description: StringFilterInput
+  not: ComponentSharedMetaSocialFiltersInput
+  or: [ComponentSharedMetaSocialFiltersInput]
+  socialNetwork: StringFilterInput
+  title: StringFilterInput
+}
+
+input ComponentSharedMetaSocialInput {
+  description: String
+  id: ID
+  image: ID
+  socialNetwork: ENUM_COMPONENTSHAREDMETASOCIAL_SOCIALNETWORK
+  title: String
+}
+
+type ComponentSharedSeo {
+  canonicalURL: String
+  id: ID!
+  keywords: String
+  metaDescription: String!
+  metaImage: UploadFileEntityResponse
+  metaRobots: String
+  metaSocial(filters: ComponentSharedMetaSocialFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentSharedMetaSocial]
+  metaTitle: String!
+  metaViewport: String
+  structuredData: JSON
+}
+
+input ComponentSharedSeoFiltersInput {
+  and: [ComponentSharedSeoFiltersInput]
+  canonicalURL: StringFilterInput
+  keywords: StringFilterInput
+  metaDescription: StringFilterInput
+  metaRobots: StringFilterInput
+  metaSocial: ComponentSharedMetaSocialFiltersInput
+  metaTitle: StringFilterInput
+  metaViewport: StringFilterInput
+  not: ComponentSharedSeoFiltersInput
+  or: [ComponentSharedSeoFiltersInput]
+  structuredData: JSONFilterInput
+}
+
+input ComponentSharedSeoInput {
+  canonicalURL: String
+  id: ID
+  keywords: String
+  metaDescription: String
+  metaImage: ID
+  metaRobots: String
+  metaSocial: [ComponentSharedMetaSocialInput]
+  metaTitle: String
+  metaViewport: String
+  structuredData: JSON
 }
 
 type ContentReleasesRelease {
@@ -565,6 +656,11 @@ input DateTimeFilterInput {
   startsWith: DateTime
 }
 
+enum ENUM_COMPONENTSHAREDMETASOCIAL_SOCIALNETWORK {
+  Facebook
+  Twitter
+}
+
 enum ENUM_CONTENTRELEASESRELEASEACTION_TYPE {
   publish
   unpublish
@@ -661,7 +757,7 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = BusinessCard | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPrintSos | ComponentBlockProductSpecification | ComponentElementsBadge | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ContentReleasesRelease | ContentReleasesReleaseAction | Footer | GoogleReview | Home | I18NLocale | Landing | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = BusinessCard | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockEcoCard | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPrintSos | ComponentBlockProductSpecification | ComponentElementsBadge | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentSharedMetaSocial | ComponentSharedSeo | ContentReleasesRelease | ContentReleasesReleaseAction | Footer | GoogleReview | Header | Home | I18NLocale | Landing | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GoogleReview {
   averageRating: Float
@@ -704,6 +800,55 @@ input GoogleReviewInput {
 
 type GoogleReviewRelationResponseCollection {
   data: [GoogleReviewEntity!]!
+}
+
+type Header {
+  appBarCategory: JSON
+  bestSellers: JSON
+  createdAt: DateTime
+  publishedAt: DateTime
+  quickBuys: JSON
+  specialOffers: JSON
+  updatedAt: DateTime
+}
+
+type HeaderEntity {
+  attributes: Header
+  id: ID
+}
+
+type HeaderEntityResponse {
+  data: HeaderEntity
+}
+
+type HeaderEntityResponseCollection {
+  data: [HeaderEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input HeaderFiltersInput {
+  and: [HeaderFiltersInput]
+  appBarCategory: JSONFilterInput
+  bestSellers: JSONFilterInput
+  createdAt: DateTimeFilterInput
+  not: HeaderFiltersInput
+  or: [HeaderFiltersInput]
+  publishedAt: DateTimeFilterInput
+  quickBuys: JSONFilterInput
+  specialOffers: JSONFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input HeaderInput {
+  appBarCategory: JSON
+  bestSellers: JSON
+  publishedAt: DateTime
+  quickBuys: JSON
+  specialOffers: JSON
+}
+
+type HeaderRelationResponseCollection {
+  data: [HeaderEntity!]!
 }
 
 type Home {
@@ -966,6 +1111,7 @@ type Mutation {
   deleteContentReleasesReleaseAction(id: ID!): ContentReleasesReleaseActionEntityResponse
   deleteFooter: FooterEntityResponse
   deleteGoogleReview: GoogleReviewEntityResponse
+  deleteHeader: HeaderEntityResponse
   deleteHome(id: ID!): HomeEntityResponse
   deleteLanding(id: ID!): LandingEntityResponse
   deleteUploadFile(id: ID!): UploadFileEntityResponse
@@ -999,6 +1145,7 @@ type Mutation {
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
   updateFooter(data: FooterInput!): FooterEntityResponse
   updateGoogleReview(data: GoogleReviewInput!): GoogleReviewEntityResponse
+  updateHeader(data: HeaderInput!): HeaderEntityResponse
   updateHome(data: HomeInput!, id: ID!): HomeEntityResponse
   updateLanding(data: LandingInput!, id: ID!): LandingEntityResponse
   updateUploadFile(data: UploadFileInput!, id: ID!): UploadFileEntityResponse
@@ -1040,6 +1187,7 @@ type Query {
   contentReleasesReleases(filters: ContentReleasesReleaseFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ContentReleasesReleaseEntityResponseCollection
   footer(publicationState: PublicationState = LIVE): FooterEntityResponse
   googleReview(publicationState: PublicationState = LIVE): GoogleReviewEntityResponse
+  header(publicationState: PublicationState = LIVE): HeaderEntityResponse
   home(id: ID): HomeEntityResponse
   homes(filters: HomeFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): HomeEntityResponseCollection
   i18NLocale(id: ID): I18NLocaleEntityResponse

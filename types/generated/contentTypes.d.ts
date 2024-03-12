@@ -793,7 +793,7 @@ export interface ApiBusinessCardBusinessCard extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    pageCover: Attribute.Component<'block.page-cover'>;
+    pageCover: Attribute.Component<'block.page-cover'> & Attribute.Required;
     pageHeading: Attribute.Component<'block.page-heading'>;
     exploreOurRange: Attribute.Component<'block.explore-range-cards', true>;
     productSpecifications: Attribute.Component<
@@ -803,6 +803,7 @@ export interface ApiBusinessCardBusinessCard extends Schema.CollectionType {
     printPanic: Attribute.Component<'block.faq'>;
     printSos: Attribute.Component<'block.print-sos'>;
     printspiration: Attribute.Component<'elements.new-image', true>;
+    ecoCard: Attribute.Component<'block.eco-card'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -889,6 +890,40 @@ export interface ApiGoogleReviewGoogleReview extends Schema.SingleType {
   };
 }
 
+export interface ApiHeaderHeader extends Schema.SingleType {
+  collectionName: 'headers';
+  info: {
+    singularName: 'header';
+    pluralName: 'headers';
+    displayName: 'Header';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    appBarCategory: Attribute.JSON;
+    bestSellers: Attribute.JSON;
+    specialOffers: Attribute.JSON;
+    quickBuys: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::header.header',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::header.header',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiHomeHome extends Schema.CollectionType {
   collectionName: 'homes';
   info: {
@@ -965,6 +1000,7 @@ declare module '@strapi/types' {
       'api::business-card.business-card': ApiBusinessCardBusinessCard;
       'api::footer.footer': ApiFooterFooter;
       'api::google-review.google-review': ApiGoogleReviewGoogleReview;
+      'api::header.header': ApiHeaderHeader;
       'api::home.home': ApiHomeHome;
       'api::landing.landing': ApiLandingLanding;
     }

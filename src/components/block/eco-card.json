@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_block_eco_cards",
+  "info": {
+    "displayName": "EcoCard",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "heading": {
+      "type": "string"
+    },
+    "content": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.list-item-with-image"
+    }
+  }
+}
