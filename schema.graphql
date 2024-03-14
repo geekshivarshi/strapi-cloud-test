@@ -806,6 +806,8 @@ type Header {
   appBarCategory: JSON
   bestSellers: JSON
   createdAt: DateTime
+  imageLink: ComponentElementsLink
+  popoverImage: UploadFileEntityResponse
   publishedAt: DateTime
   quickBuys: JSON
   specialOffers: JSON
@@ -831,6 +833,7 @@ input HeaderFiltersInput {
   appBarCategory: JSONFilterInput
   bestSellers: JSONFilterInput
   createdAt: DateTimeFilterInput
+  imageLink: ComponentElementsLinkFiltersInput
   not: HeaderFiltersInput
   or: [HeaderFiltersInput]
   publishedAt: DateTimeFilterInput
@@ -842,6 +845,8 @@ input HeaderFiltersInput {
 input HeaderInput {
   appBarCategory: JSON
   bestSellers: JSON
+  imageLink: ComponentElementsLinkInput
+  popoverImage: ID
   publishedAt: DateTime
   quickBuys: JSON
   specialOffers: JSON

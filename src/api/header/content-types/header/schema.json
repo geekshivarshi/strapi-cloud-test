@@ -23,6 +23,21 @@
     },
     "quickBuys": {
       "type": "json"
+    },
+    "popoverImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "imageLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.link"
     }
   }
 }
