@@ -27,18 +27,33 @@
       "repeatable": true,
       "component": "elements.image"
     },
-    "chatImg": {
-      "type": "component",
-      "repeatable": false,
-      "component": "elements.image"
-    },
     "copyRight": {
       "type": "string"
     },
-    "footerDrawingImg": {
-      "type": "component",
-      "repeatable": false,
-      "component": "elements.image"
+    "footerDrawingImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "ChatBotImg": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "ChatBotText": {
+      "type": "string"
     }
   }
 }

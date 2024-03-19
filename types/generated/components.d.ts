@@ -19,8 +19,8 @@ export interface BlockCta extends Schema.Component {
     description: '';
   };
   attributes: {
-    img: Attribute.Component<'elements.image'>;
     heading: Attribute.String;
+    image: Attribute.Media;
   };
 }
 
@@ -195,7 +195,7 @@ export interface ElementsQa extends Schema.Component {
   };
   attributes: {
     question: Attribute.String & Attribute.Required;
-    answer: Attribute.Text & Attribute.Required;
+    answer: Attribute.RichText;
   };
 }
 
