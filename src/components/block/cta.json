@@ -6,13 +6,18 @@
   },
   "options": {},
   "attributes": {
-    "img": {
-      "type": "component",
-      "repeatable": false,
-      "component": "elements.image"
-    },
     "heading": {
       "type": "string"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

@@ -837,9 +837,10 @@ export interface ApiFooterFooter extends Schema.SingleType {
     cta: Attribute.Component<'block.cta'>;
     category: Attribute.Component<'block.catergory', true>;
     sociaLMedia: Attribute.Component<'elements.image', true>;
-    chatImg: Attribute.Component<'elements.image'>;
     copyRight: Attribute.String;
-    footerDrawingImg: Attribute.Component<'elements.image'>;
+    footerDrawingImage: Attribute.Media;
+    ChatBotImg: Attribute.Media;
+    ChatBotText: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -906,6 +907,8 @@ export interface ApiHeaderHeader extends Schema.SingleType {
     bestSellers: Attribute.JSON;
     specialOffers: Attribute.JSON;
     quickBuys: Attribute.JSON;
+    popoverImage: Attribute.Media;
+    imageLink: Attribute.Component<'elements.link'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

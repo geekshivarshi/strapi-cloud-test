@@ -112,13 +112,12 @@ input ComponentBlockCatergoryInput {
 type ComponentBlockCta {
   heading: String
   id: ID!
-  img: ComponentElementsImage
+  image: UploadFileEntityResponse
 }
 
 input ComponentBlockCtaFiltersInput {
   and: [ComponentBlockCtaFiltersInput]
   heading: StringFilterInput
-  img: ComponentElementsImageFiltersInput
   not: ComponentBlockCtaFiltersInput
   or: [ComponentBlockCtaFiltersInput]
 }
@@ -126,7 +125,7 @@ input ComponentBlockCtaFiltersInput {
 input ComponentBlockCtaInput {
   heading: String
   id: ID
-  img: ComponentElementsImageInput
+  image: ID
 }
 
 type ComponentBlockEcoCard {
@@ -420,7 +419,7 @@ input ComponentElementsNewImageInput {
 }
 
 type ComponentElementsQa {
-  answer: String!
+  answer: String
   id: ID!
   question: String!
 }
@@ -703,12 +702,13 @@ input FloatFilterInput {
 }
 
 type Footer {
+  ChatBotImg: UploadFileEntityResponse
+  ChatBotText: String
   category(filters: ComponentBlockCatergoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockCatergory]
-  chatImg: ComponentElementsImage
   copyRight: String
   createdAt: DateTime
   cta: ComponentBlockCta
-  footerDrawingImg: ComponentElementsImage
+  footerDrawingImage: UploadFileEntityResponse
   publishedAt: DateTime
   sociaLMedia(filters: ComponentElementsImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsImage]
   updatedAt: DateTime
@@ -729,13 +729,12 @@ type FooterEntityResponseCollection {
 }
 
 input FooterFiltersInput {
+  ChatBotText: StringFilterInput
   and: [FooterFiltersInput]
   category: ComponentBlockCatergoryFiltersInput
-  chatImg: ComponentElementsImageFiltersInput
   copyRight: StringFilterInput
   createdAt: DateTimeFilterInput
   cta: ComponentBlockCtaFiltersInput
-  footerDrawingImg: ComponentElementsImageFiltersInput
   not: FooterFiltersInput
   or: [FooterFiltersInput]
   publishedAt: DateTimeFilterInput
@@ -744,11 +743,12 @@ input FooterFiltersInput {
 }
 
 input FooterInput {
+  ChatBotImg: ID
+  ChatBotText: String
   category: [ComponentBlockCatergoryInput]
-  chatImg: ComponentElementsImageInput
   copyRight: String
   cta: ComponentBlockCtaInput
-  footerDrawingImg: ComponentElementsImageInput
+  footerDrawingImage: ID
   publishedAt: DateTime
   sociaLMedia: [ComponentElementsImageInput]
 }
@@ -806,6 +806,8 @@ type Header {
   appBarCategory: JSON
   bestSellers: JSON
   createdAt: DateTime
+  imageLink: ComponentElementsLink
+  popoverImage: UploadFileEntityResponse
   publishedAt: DateTime
   quickBuys: JSON
   specialOffers: JSON
@@ -831,6 +833,7 @@ input HeaderFiltersInput {
   appBarCategory: JSONFilterInput
   bestSellers: JSONFilterInput
   createdAt: DateTimeFilterInput
+  imageLink: ComponentElementsLinkFiltersInput
   not: HeaderFiltersInput
   or: [HeaderFiltersInput]
   publishedAt: DateTimeFilterInput
@@ -842,6 +845,8 @@ input HeaderFiltersInput {
 input HeaderInput {
   appBarCategory: JSON
   bestSellers: JSON
+  imageLink: ComponentElementsLinkInput
+  popoverImage: ID
   publishedAt: DateTime
   quickBuys: JSON
   specialOffers: JSON
