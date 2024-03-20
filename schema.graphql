@@ -717,6 +717,7 @@ type Footer {
   footerDrawingImage: UploadFileEntityResponse
   publishedAt: DateTime
   sociaLMedia(filters: ComponentElementsImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsImage]
+  topLeftImage: UploadFileEntityResponse
   updatedAt: DateTime
 }
 
@@ -757,6 +758,7 @@ input FooterInput {
   footerDrawingImage: ID
   publishedAt: DateTime
   sociaLMedia: [ComponentElementsImageInput]
+  topLeftImage: ID
 }
 
 type FooterRelationResponseCollection {

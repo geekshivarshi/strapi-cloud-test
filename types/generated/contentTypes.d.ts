@@ -841,6 +841,7 @@ export interface ApiFooterFooter extends Schema.SingleType {
     footerDrawingImage: Attribute.Media;
     ChatBotImg: Attribute.Media;
     ChatBotText: Attribute.String;
+    topLeftImage: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
