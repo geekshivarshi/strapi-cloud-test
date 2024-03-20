@@ -909,6 +909,9 @@ export interface ApiHeaderHeader extends Schema.SingleType {
     quickBuys: Attribute.JSON;
     popoverImage: Attribute.Media;
     imageLink: Attribute.Component<'elements.link'>;
+    topHeaderText: Attribute.String;
+    topHeaderCouponCode: Attribute.String;
+    isTopHeaderVisible: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

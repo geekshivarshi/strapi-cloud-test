@@ -21,6 +21,8 @@ export interface BlockCta extends Schema.Component {
   attributes: {
     heading: Attribute.String;
     image: Attribute.Media;
+    subHeading: Attribute.String;
+    inputs: Attribute.JSON;
   };
 }
 

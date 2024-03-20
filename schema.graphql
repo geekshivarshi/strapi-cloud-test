@@ -113,19 +113,25 @@ type ComponentBlockCta {
   heading: String
   id: ID!
   image: UploadFileEntityResponse
+  inputs: JSON
+  subHeading: String
 }
 
 input ComponentBlockCtaFiltersInput {
   and: [ComponentBlockCtaFiltersInput]
   heading: StringFilterInput
+  inputs: JSONFilterInput
   not: ComponentBlockCtaFiltersInput
   or: [ComponentBlockCtaFiltersInput]
+  subHeading: StringFilterInput
 }
 
 input ComponentBlockCtaInput {
   heading: String
   id: ID
   image: ID
+  inputs: JSON
+  subHeading: String
 }
 
 type ComponentBlockEcoCard {
@@ -807,10 +813,13 @@ type Header {
   bestSellers: JSON
   createdAt: DateTime
   imageLink: ComponentElementsLink
+  isTopHeaderVisible: Boolean
   popoverImage: UploadFileEntityResponse
   publishedAt: DateTime
   quickBuys: JSON
   specialOffers: JSON
+  topHeaderCouponCode: String
+  topHeaderText: String
   updatedAt: DateTime
 }
 
@@ -834,11 +843,14 @@ input HeaderFiltersInput {
   bestSellers: JSONFilterInput
   createdAt: DateTimeFilterInput
   imageLink: ComponentElementsLinkFiltersInput
+  isTopHeaderVisible: BooleanFilterInput
   not: HeaderFiltersInput
   or: [HeaderFiltersInput]
   publishedAt: DateTimeFilterInput
   quickBuys: JSONFilterInput
   specialOffers: JSONFilterInput
+  topHeaderCouponCode: StringFilterInput
+  topHeaderText: StringFilterInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -846,10 +858,13 @@ input HeaderInput {
   appBarCategory: JSON
   bestSellers: JSON
   imageLink: ComponentElementsLinkInput
+  isTopHeaderVisible: Boolean
   popoverImage: ID
   publishedAt: DateTime
   quickBuys: JSON
   specialOffers: JSON
+  topHeaderCouponCode: String
+  topHeaderText: String
 }
 
 type HeaderRelationResponseCollection {
