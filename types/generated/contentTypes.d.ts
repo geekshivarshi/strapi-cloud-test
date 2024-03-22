@@ -841,6 +841,7 @@ export interface ApiFooterFooter extends Schema.SingleType {
     footerDrawingImage: Attribute.Media;
     ChatBotImg: Attribute.Media;
     ChatBotText: Attribute.String;
+    topLeftImage: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -985,6 +986,37 @@ export interface ApiLandingLanding extends Schema.CollectionType {
   };
 }
 
+export interface ApiNeedDesignNeedDesign extends Schema.SingleType {
+  collectionName: 'need_designs';
+  info: {
+    singularName: 'need-design';
+    pluralName: 'need-designs';
+    displayName: 'Need Design';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    needDesign: Attribute.Component<'elements.link'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::need-design.need-design',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::need-design.need-design',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1009,6 +1041,7 @@ declare module '@strapi/types' {
       'api::header.header': ApiHeaderHeader;
       'api::home.home': ApiHomeHome;
       'api::landing.landing': ApiLandingLanding;
+      'api::need-design.need-design': ApiNeedDesignNeedDesign;
     }
   }
 }

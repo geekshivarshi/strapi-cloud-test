@@ -717,6 +717,7 @@ type Footer {
   footerDrawingImage: UploadFileEntityResponse
   publishedAt: DateTime
   sociaLMedia(filters: ComponentElementsImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsImage]
+  topLeftImage: UploadFileEntityResponse
   updatedAt: DateTime
 }
 
@@ -757,13 +758,14 @@ input FooterInput {
   footerDrawingImage: ID
   publishedAt: DateTime
   sociaLMedia: [ComponentElementsImageInput]
+  topLeftImage: ID
 }
 
 type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = BusinessCard | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockEcoCard | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPrintSos | ComponentBlockProductSpecification | ComponentElementsBadge | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentSharedMetaSocial | ComponentSharedSeo | ContentReleasesRelease | ContentReleasesReleaseAction | Footer | GoogleReview | Header | Home | I18NLocale | Landing | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = BusinessCard | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockEcoCard | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPrintSos | ComponentBlockProductSpecification | ComponentElementsBadge | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentSharedMetaSocial | ComponentSharedSeo | ContentReleasesRelease | ContentReleasesReleaseAction | Footer | GoogleReview | Header | Home | I18NLocale | Landing | NeedDesign | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GoogleReview {
   averageRating: Float
@@ -1134,6 +1136,7 @@ type Mutation {
   deleteHeader: HeaderEntityResponse
   deleteHome(id: ID!): HomeEntityResponse
   deleteLanding(id: ID!): LandingEntityResponse
+  deleteNeedDesign: NeedDesignEntityResponse
   deleteUploadFile(id: ID!): UploadFileEntityResponse
   deleteUploadFolder(id: ID!): UploadFolderEntityResponse
 
@@ -1168,6 +1171,7 @@ type Mutation {
   updateHeader(data: HeaderInput!): HeaderEntityResponse
   updateHome(data: HomeInput!, id: ID!): HomeEntityResponse
   updateLanding(data: LandingInput!, id: ID!): LandingEntityResponse
+  updateNeedDesign(data: NeedDesignInput!): NeedDesignEntityResponse
   updateUploadFile(data: UploadFileInput!, id: ID!): UploadFileEntityResponse
   updateUploadFolder(data: UploadFolderInput!, id: ID!): UploadFolderEntityResponse
 
@@ -1177,6 +1181,46 @@ type Mutation {
   """Update an existing user"""
   updateUsersPermissionsUser(data: UsersPermissionsUserInput!, id: ID!): UsersPermissionsUserEntityResponse!
   upload(field: String, file: Upload!, info: FileInfoInput, ref: String, refId: ID): UploadFileEntityResponse!
+}
+
+type NeedDesign {
+  createdAt: DateTime
+  needDesign: ComponentElementsLink
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type NeedDesignEntity {
+  attributes: NeedDesign
+  id: ID
+}
+
+type NeedDesignEntityResponse {
+  data: NeedDesignEntity
+}
+
+type NeedDesignEntityResponseCollection {
+  data: [NeedDesignEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input NeedDesignFiltersInput {
+  and: [NeedDesignFiltersInput]
+  createdAt: DateTimeFilterInput
+  needDesign: ComponentElementsLinkFiltersInput
+  not: NeedDesignFiltersInput
+  or: [NeedDesignFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input NeedDesignInput {
+  needDesign: ComponentElementsLinkInput
+  publishedAt: DateTime
+}
+
+type NeedDesignRelationResponseCollection {
+  data: [NeedDesignEntity!]!
 }
 
 type Pagination {
@@ -1215,6 +1259,7 @@ type Query {
   landing(id: ID): LandingEntityResponse
   landings(filters: LandingFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): LandingEntityResponseCollection
   me: UsersPermissionsMe
+  needDesign(publicationState: PublicationState = LIVE): NeedDesignEntityResponse
   uploadFile(id: ID): UploadFileEntityResponse
   uploadFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileEntityResponseCollection
   uploadFolder(id: ID): UploadFolderEntityResponse
