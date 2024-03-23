@@ -1,0 +1,136 @@
+name: Env generation
+
+on:
+  push:
+    branches:
+      - staging
+      - master
+      - test
+
+jobs:
+  envgen:
+    name: envgen
+    runs-on: ubuntu-latest 
+    steps:
+      - name: Extract json envfile
+        run: |
+          echo "$ALLMYSECRETS" >> env.json
+        env:
+          ALLMYSECRETS: ${{ toJSON(secrets) }}
+          ALLMYVARS: ${{ toJSON(vars) }}
+          
+      - name: Upload .envtest as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: env_json
+          path: env.json
+
+  extract: 
+    name: extract env from json file
+    runs-on: ubuntu-latest 
+    needs: envgen
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
+      - name: Download artifacts envfile and Extract env from json
+        uses: actions/download-artifact@v3
+        with:
+          name: env_json
+      - run: |
+
+          sh generate_env.sh env.json ${{ github.ref }} >> .env.temp
+
+          branch_name=${{ github.ref }}
+          echo "BRANCH_NAME=$branch_name"
+
+          if [ $branch_name = "refs/heads/dev" ]; then
+            cat .env.temp | grep DEV | sed 's/_DEV//g'   >> .env
+          elif [ $branch_name = "refs/heads/test" ]; then  
+            cat .env.temp | grep STAG | sed 's/_STAG//g' >> .env
+          elif [ $branch_name = "refs/heads/master" ]; then
+            cat .env.temp | grep PROD | sed 's/_PROD//g' >> .env
+          fi
+
+      
+      - name: Upload .env as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: env
+          path: .env
+   
+
+  Build-And-Push-To-DO-Container-Registry:
+  
+     runs-on: ubuntu-latest
+     needs: extract
+
+     steps:
+
+       - name: Checkout repository
+         uses: actions/checkout@v2
+
+       - name: Download .env artifact
+         uses: actions/download-artifact@v2
+         with:
+          name: env
+          path: .
+
+       - name: Display .env
+         run: | 
+           cat .env
+
+       - name: Set up Docker Buildx
+         uses: docker/setup-buildx-action@v1
+   
+       - name: Install doctl
+         run: |
+           curl -OL https://github.com/digitalocean/doctl/releases/download/v1.94.0/doctl-1.94.0-linux-amd64.tar.gz
+           tar xf doctl-1.94.0-linux-amd64.tar.gz
+           sudo mv doctl /usr/local/bin
+          
+      
+       - name: Login to DO Container Registry
+         run: doctl registry login --access-token ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+             
+   
+       - name: Build Docker image
+         run: |
+           docker build -f Dockerfile -t strapi-cms:latest .
+   
+       - name: Tag Docker image
+         run: |
+           docker tag strapi-cms:latest registry.digitalocean.com/kaizen-staging/strapi-cms:latest
+   
+       - name: Push Docker image to DO Container Registry
+         run: |
+           docker push registry.digitalocean.com/kaizen-staging/strapi-cms:latest
+   
+
+       - name: List and delete old images
+         run: |
+
+           # List all manifests, sort by UpdatedAt, and keep only the two most recent
+           MANIFESTS=$(doctl registry repository list-manifests kaizen-staging/strapi-cms --format JSON | jq -r '.manifests[] | select(.mediaType == "application/vnd.docker.distribution.manifest.v2+json") | "\(.digest) \(.updatedAt)"' | sort -r | tail -n +3 | awk '{print $1}')
+           # Delete all but the latest two manifests
+           for MANIFEST in $MANIFESTS; do
+               doctl registry repository delete-manifest kaizen-staging/strapi-cms $MANIFEST
+           done
+   
+
+
+  ssh-into-management-node:
+
+     runs-on: ubuntu-latest
+     needs: Build-And-Push-To-DO-Container-Registry
+     steps:
+      - name: Executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@master
+        with:
+          host: 209.38.168.50
+          username: kaizen-backend-staging
+          key: ${{ secrets.MGMT_NODE_SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+             ./update-3.sh
