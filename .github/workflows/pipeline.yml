@@ -128,7 +128,7 @@ jobs:
       - name: Executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
         with:
-          host: 209.38.168.50
+          host: 159.223.246.41
           username: kaizen-backend-staging
           key: ${{ secrets.MGMT_NODE_SSH_PRIVATE_KEY }}
           port: 22
