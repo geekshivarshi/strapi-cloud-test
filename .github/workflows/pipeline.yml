@@ -5,7 +5,7 @@ on:
     branches:
       - staging
       - master
-      - test
+
 
 jobs:
   envgen:
@@ -47,7 +47,7 @@ jobs:
 
           if [ $branch_name = "refs/heads/dev" ]; then
             cat .env.temp | grep DEV | sed 's/_DEV//g'   >> .env
-          elif [ $branch_name = "refs/heads/test" ]; then  
+          elif [ $branch_name = "refs/heads/staging" ]; then  
             cat .env.temp | grep STAG | sed 's/_STAG//g' >> .env
           elif [ $branch_name = "refs/heads/master" ]; then
             cat .env.temp | grep PROD | sed 's/_PROD//g' >> .env
@@ -108,15 +108,16 @@ jobs:
            docker push registry.digitalocean.com/kaizen-staging/strapi-cms:latest
    
 
-       - name: List and delete old images
-         run: |
-
-           # List all manifests, sort by UpdatedAt, and keep only the two most recent
-           MANIFESTS=$(doctl registry repository list-manifests kaizen-staging/strapi-cms --format JSON | jq -r '.manifests[] | select(.mediaType == "application/vnd.docker.distribution.manifest.v2+json") | "\(.digest) \(.updatedAt)"' | sort -r | tail -n +3 | awk '{print $1}')
-           # Delete all but the latest two manifests
-           for MANIFEST in $MANIFESTS; do
-               doctl registry repository delete-manifest kaizen-staging/strapi-cms $MANIFEST
-           done
+       - name: Install doctl
+         uses: digitalocean/action-doctl@v2.5.1
+         with:
+            token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+  
+       - name: Remove old images from Container Registry
+         uses: ripplr-io/docr-image-remove@v1
+         with:
+            image_repository: cms
+            buffer_size: 1
    
 
 
