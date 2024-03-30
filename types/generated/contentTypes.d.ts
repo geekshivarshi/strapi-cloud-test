@@ -836,11 +836,11 @@ export interface ApiFooterFooter extends Schema.SingleType {
   attributes: {
     cta: Attribute.Component<'block.cta'>;
     category: Attribute.Component<'block.catergory', true>;
-    sociaLMedia: Attribute.Component<'elements.image', true>;
+    socialMedia: Attribute.Component<'elements.image', true>;
     copyRight: Attribute.String;
     footerDrawingImage: Attribute.Media;
-    ChatBotImg: Attribute.Media;
-    ChatBotText: Attribute.String;
+    chatBotImg: Attribute.Media;
+    chatBotText: Attribute.String;
     topLeftImage: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
