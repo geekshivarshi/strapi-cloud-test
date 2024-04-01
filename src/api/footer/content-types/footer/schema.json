@@ -22,7 +22,7 @@
       "repeatable": true,
       "component": "block.catergory"
     },
-    "sociaLMedia": {
+    "socialMedia": {
       "type": "component",
       "repeatable": true,
       "component": "elements.image"
@@ -41,7 +41,7 @@
         "audios"
       ]
     },
-    "ChatBotImg": {
+    "chatBotImg": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -52,18 +52,19 @@
         "audios"
       ]
     },
-    "ChatBotText": {
+    "chatBotText": {
       "type": "string"
     },
     "topLeftImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }

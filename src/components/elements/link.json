@@ -19,6 +19,16 @@
     "isExternal": {
       "type": "boolean",
       "default": false
+    },
+    "icon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

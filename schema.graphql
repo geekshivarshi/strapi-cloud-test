@@ -352,6 +352,7 @@ input ComponentElementsImageInput {
 }
 
 type ComponentElementsLink {
+  icon: UploadFileEntityResponse
   id: ID!
   isExternal: Boolean
   isUrl: Boolean
@@ -370,6 +371,7 @@ input ComponentElementsLinkFiltersInput {
 }
 
 input ComponentElementsLinkInput {
+  icon: ID
   id: ID
   isExternal: Boolean
   isUrl: Boolean
@@ -708,15 +710,15 @@ input FloatFilterInput {
 }
 
 type Footer {
-  ChatBotImg: UploadFileEntityResponse
-  ChatBotText: String
   category(filters: ComponentBlockCatergoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockCatergory]
+  chatBotImg: UploadFileEntityResponse
+  chatBotText: String
   copyRight: String
   createdAt: DateTime
   cta: ComponentBlockCta
   footerDrawingImage: UploadFileEntityResponse
   publishedAt: DateTime
-  sociaLMedia(filters: ComponentElementsImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsImage]
+  socialMedia(filters: ComponentElementsImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsImage]
   topLeftImage: UploadFileEntityResponse
   updatedAt: DateTime
 }
@@ -736,28 +738,28 @@ type FooterEntityResponseCollection {
 }
 
 input FooterFiltersInput {
-  ChatBotText: StringFilterInput
   and: [FooterFiltersInput]
   category: ComponentBlockCatergoryFiltersInput
+  chatBotText: StringFilterInput
   copyRight: StringFilterInput
   createdAt: DateTimeFilterInput
   cta: ComponentBlockCtaFiltersInput
   not: FooterFiltersInput
   or: [FooterFiltersInput]
   publishedAt: DateTimeFilterInput
-  sociaLMedia: ComponentElementsImageFiltersInput
+  socialMedia: ComponentElementsImageFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
 input FooterInput {
-  ChatBotImg: ID
-  ChatBotText: String
   category: [ComponentBlockCatergoryInput]
+  chatBotImg: ID
+  chatBotText: String
   copyRight: String
   cta: ComponentBlockCtaInput
   footerDrawingImage: ID
   publishedAt: DateTime
-  sociaLMedia: [ComponentElementsImageInput]
+  socialMedia: [ComponentElementsImageInput]
   topLeftImage: ID
 }
 

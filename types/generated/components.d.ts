@@ -159,6 +159,7 @@ export interface ElementsLink extends Schema.Component {
     isUrl: Attribute.Boolean & Attribute.DefaultTo<true>;
     url: Attribute.String;
     isExternal: Attribute.Boolean & Attribute.DefaultTo<false>;
+    icon: Attribute.Media;
   };
 }
 
