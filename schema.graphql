@@ -212,9 +212,10 @@ input ComponentBlockFaqInput {
 }
 
 type ComponentBlockPageCover {
+  desktopImage: UploadFileEntityResponse!
   heading: String!
   id: ID!
-  image: UploadFileEntityResponse!
+  mobileImage: UploadFileEntityResponse!
 }
 
 input ComponentBlockPageCoverFiltersInput {
@@ -225,9 +226,10 @@ input ComponentBlockPageCoverFiltersInput {
 }
 
 input ComponentBlockPageCoverInput {
+  desktopImage: ID
   heading: String
   id: ID
-  image: ID
+  mobileImage: ID
 }
 
 type ComponentBlockPageHeading {
