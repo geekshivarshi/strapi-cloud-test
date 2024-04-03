@@ -822,6 +822,36 @@ export interface ApiBusinessCardBusinessCard extends Schema.CollectionType {
   };
 }
 
+export interface ApiEcoRangeEcoRange extends Schema.SingleType {
+  collectionName: 'eco_ranges';
+  info: {
+    singularName: 'eco-range';
+    pluralName: 'eco-ranges';
+    displayName: 'Eco Range';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    link: Attribute.Component<'elements.link'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::eco-range.eco-range',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::eco-range.eco-range',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiFooterFooter extends Schema.SingleType {
   collectionName: 'footers';
   info: {
@@ -836,11 +866,11 @@ export interface ApiFooterFooter extends Schema.SingleType {
   attributes: {
     cta: Attribute.Component<'block.cta'>;
     category: Attribute.Component<'block.catergory', true>;
-    sociaLMedia: Attribute.Component<'elements.image', true>;
+    socialMedia: Attribute.Component<'elements.image', true>;
     copyRight: Attribute.String;
     footerDrawingImage: Attribute.Media;
-    ChatBotImg: Attribute.Media;
-    ChatBotText: Attribute.String;
+    chatBotImg: Attribute.Media;
+    chatBotText: Attribute.String;
     topLeftImage: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -874,6 +904,7 @@ export interface ApiGoogleReviewGoogleReview extends Schema.SingleType {
   attributes: {
     averageRating: Attribute.Decimal;
     totalReviews: Attribute.BigInteger;
+    link: Attribute.Component<'elements.link'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1036,6 +1067,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::business-card.business-card': ApiBusinessCardBusinessCard;
+      'api::eco-range.eco-range': ApiEcoRangeEcoRange;
       'api::footer.footer': ApiFooterFooter;
       'api::google-review.google-review': ApiGoogleReviewGoogleReview;
       'api::header.header': ApiHeaderHeader;

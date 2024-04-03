@@ -212,9 +212,10 @@ input ComponentBlockFaqInput {
 }
 
 type ComponentBlockPageCover {
+  desktopImage: UploadFileEntityResponse!
   heading: String!
   id: ID!
-  image: UploadFileEntityResponse!
+  mobileImage: UploadFileEntityResponse!
 }
 
 input ComponentBlockPageCoverFiltersInput {
@@ -225,9 +226,10 @@ input ComponentBlockPageCoverFiltersInput {
 }
 
 input ComponentBlockPageCoverInput {
+  desktopImage: ID
   heading: String
   id: ID
-  image: ID
+  mobileImage: ID
 }
 
 type ComponentBlockPageHeading {
@@ -352,6 +354,7 @@ input ComponentElementsImageInput {
 }
 
 type ComponentElementsLink {
+  icon: UploadFileEntityResponse
   id: ID!
   isExternal: Boolean
   isUrl: Boolean
@@ -370,6 +373,7 @@ input ComponentElementsLinkFiltersInput {
 }
 
 input ComponentElementsLinkInput {
+  icon: ID
   id: ID
   isExternal: Boolean
   isUrl: Boolean
@@ -671,6 +675,46 @@ enum ENUM_CONTENTRELEASESRELEASEACTION_TYPE {
   unpublish
 }
 
+type EcoRange {
+  createdAt: DateTime
+  link: ComponentElementsLink
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type EcoRangeEntity {
+  attributes: EcoRange
+  id: ID
+}
+
+type EcoRangeEntityResponse {
+  data: EcoRangeEntity
+}
+
+type EcoRangeEntityResponseCollection {
+  data: [EcoRangeEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input EcoRangeFiltersInput {
+  and: [EcoRangeFiltersInput]
+  createdAt: DateTimeFilterInput
+  link: ComponentElementsLinkFiltersInput
+  not: EcoRangeFiltersInput
+  or: [EcoRangeFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input EcoRangeInput {
+  link: ComponentElementsLinkInput
+  publishedAt: DateTime
+}
+
+type EcoRangeRelationResponseCollection {
+  data: [EcoRangeEntity!]!
+}
+
 type Error {
   code: String!
   message: String
@@ -708,15 +752,15 @@ input FloatFilterInput {
 }
 
 type Footer {
-  ChatBotImg: UploadFileEntityResponse
-  ChatBotText: String
   category(filters: ComponentBlockCatergoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockCatergory]
+  chatBotImg: UploadFileEntityResponse
+  chatBotText: String
   copyRight: String
   createdAt: DateTime
   cta: ComponentBlockCta
   footerDrawingImage: UploadFileEntityResponse
   publishedAt: DateTime
-  sociaLMedia(filters: ComponentElementsImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsImage]
+  socialMedia(filters: ComponentElementsImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsImage]
   topLeftImage: UploadFileEntityResponse
   updatedAt: DateTime
 }
@@ -736,28 +780,28 @@ type FooterEntityResponseCollection {
 }
 
 input FooterFiltersInput {
-  ChatBotText: StringFilterInput
   and: [FooterFiltersInput]
   category: ComponentBlockCatergoryFiltersInput
+  chatBotText: StringFilterInput
   copyRight: StringFilterInput
   createdAt: DateTimeFilterInput
   cta: ComponentBlockCtaFiltersInput
   not: FooterFiltersInput
   or: [FooterFiltersInput]
   publishedAt: DateTimeFilterInput
-  sociaLMedia: ComponentElementsImageFiltersInput
+  socialMedia: ComponentElementsImageFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
 input FooterInput {
-  ChatBotImg: ID
-  ChatBotText: String
   category: [ComponentBlockCatergoryInput]
+  chatBotImg: ID
+  chatBotText: String
   copyRight: String
   cta: ComponentBlockCtaInput
   footerDrawingImage: ID
   publishedAt: DateTime
-  sociaLMedia: [ComponentElementsImageInput]
+  socialMedia: [ComponentElementsImageInput]
   topLeftImage: ID
 }
 
@@ -765,11 +809,12 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = BusinessCard | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockEcoCard | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPrintSos | ComponentBlockProductSpecification | ComponentElementsBadge | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentSharedMetaSocial | ComponentSharedSeo | ContentReleasesRelease | ContentReleasesReleaseAction | Footer | GoogleReview | Header | Home | I18NLocale | Landing | NeedDesign | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = BusinessCard | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockEcoCard | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPrintSos | ComponentBlockProductSpecification | ComponentElementsBadge | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentSharedMetaSocial | ComponentSharedSeo | ContentReleasesRelease | ContentReleasesReleaseAction | EcoRange | Footer | GoogleReview | Header | Home | I18NLocale | Landing | NeedDesign | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GoogleReview {
   averageRating: Float
   createdAt: DateTime
+  link: ComponentElementsLink
   publishedAt: DateTime
   totalReviews: Long
   updatedAt: DateTime
@@ -793,6 +838,7 @@ input GoogleReviewFiltersInput {
   and: [GoogleReviewFiltersInput]
   averageRating: FloatFilterInput
   createdAt: DateTimeFilterInput
+  link: ComponentElementsLinkFiltersInput
   not: GoogleReviewFiltersInput
   or: [GoogleReviewFiltersInput]
   publishedAt: DateTimeFilterInput
@@ -802,6 +848,7 @@ input GoogleReviewFiltersInput {
 
 input GoogleReviewInput {
   averageRating: Float
+  link: ComponentElementsLinkInput
   publishedAt: DateTime
   totalReviews: Long
 }
@@ -1131,6 +1178,7 @@ type Mutation {
   deleteBusinessCard(id: ID!): BusinessCardEntityResponse
   deleteContentReleasesRelease(id: ID!): ContentReleasesReleaseEntityResponse
   deleteContentReleasesReleaseAction(id: ID!): ContentReleasesReleaseActionEntityResponse
+  deleteEcoRange: EcoRangeEntityResponse
   deleteFooter: FooterEntityResponse
   deleteGoogleReview: GoogleReviewEntityResponse
   deleteHeader: HeaderEntityResponse
@@ -1165,6 +1213,7 @@ type Mutation {
   updateBusinessCard(data: BusinessCardInput!, id: ID!): BusinessCardEntityResponse
   updateContentReleasesRelease(data: ContentReleasesReleaseInput!, id: ID!): ContentReleasesReleaseEntityResponse
   updateContentReleasesReleaseAction(data: ContentReleasesReleaseActionInput!, id: ID!): ContentReleasesReleaseActionEntityResponse
+  updateEcoRange(data: EcoRangeInput!): EcoRangeEntityResponse
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
   updateFooter(data: FooterInput!): FooterEntityResponse
   updateGoogleReview(data: GoogleReviewInput!): GoogleReviewEntityResponse
@@ -1249,6 +1298,7 @@ type Query {
   contentReleasesReleaseAction(id: ID): ContentReleasesReleaseActionEntityResponse
   contentReleasesReleaseActions(filters: ContentReleasesReleaseActionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ContentReleasesReleaseActionEntityResponseCollection
   contentReleasesReleases(filters: ContentReleasesReleaseFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ContentReleasesReleaseEntityResponseCollection
+  ecoRange(publicationState: PublicationState = LIVE): EcoRangeEntityResponse
   footer(publicationState: PublicationState = LIVE): FooterEntityResponse
   googleReview(publicationState: PublicationState = LIVE): GoogleReviewEntityResponse
   header(publicationState: PublicationState = LIVE): HeaderEntityResponse
