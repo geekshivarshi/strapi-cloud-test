@@ -8,6 +8,24 @@ on:
 
 
 jobs:
+
+  slack-notification-on-code-push:
+
+    permissions:
+      contents: read
+      actions: read
+    runs-on: ubuntu-latest
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    steps:
+    - uses: act10ns/slack@v2
+      with:
+        status: starting
+        channel: 'kaizen-dev'
+        message: Pipeline Triggered on Strapi-Cms
+      if: always()
+  
+
   envgen:
     name: envgen
     runs-on: ubuntu-latest 
@@ -135,3 +153,21 @@ jobs:
           port: 22
           script: |
              ./update-3.sh
+
+
+  slack-result-notificaton:
+
+    permissions:
+        contents: read
+        actions: read
+    runs-on: ubuntu-latest
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    needs: ssh-into-management-node
+    steps:
+      - uses: act10ns/slack@v2
+        with:
+          channel: 'kaizen-dev'
+          status: ${{ job.status }}
+          steps: ${{ toJson(steps) }}
+        if: always()
