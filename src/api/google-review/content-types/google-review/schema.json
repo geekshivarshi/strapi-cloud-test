@@ -17,6 +17,11 @@
     },
     "totalReviews": {
       "type": "biginteger"
+    },
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.link"
     }
   }
 }

@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "eco_ranges",
+  "info": {
+    "singularName": "eco-range",
+    "pluralName": "eco-ranges",
+    "displayName": "Eco Range"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.link"
+    }
+  }
+}
