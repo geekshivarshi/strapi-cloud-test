@@ -19,7 +19,7 @@ if [ ! -f "$json_file" ]; then
 fi
 
 
-jq -r 'to_entries[] | "\(.key)=\(.value | tostring | gsub("\"";""))"' "$json_file"
+jq -r 'to_entries[] | if .key == "GCS_PRIVATE_KEY_STAG" then "\(.key)=\(.value)" else "\(.key)=\(.value | tostring | gsub("\"";""))" end' "$json_file"
 
 # Append branch name to .env file
 # echo "BRANCH_NAME=$branch_name" 
