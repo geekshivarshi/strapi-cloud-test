@@ -1,4 +1,4 @@
-name: Env generation
+name: Strapi-CMS Pipeline
 
 on:
   push:
