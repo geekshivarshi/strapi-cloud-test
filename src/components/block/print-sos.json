@@ -10,10 +10,18 @@
       "type": "text",
       "required": true
     },
-    "ContactLink": {
+    "contactLink": {
       "type": "component",
       "repeatable": true,
       "component": "elements.link",
+      "required": true
+    },
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "subHeading": {
+      "type": "string",
       "required": true
     }
   }

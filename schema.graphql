@@ -31,13 +31,14 @@ type BusinessCard {
   createdAt: DateTime
   ecoCard: ComponentBlockEcoCard
   exploreOurRange(filters: ComponentBlockExploreRangeCardsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockExploreRangeCards]
+  ourMaterials: ComponentBlockProductSpecification
   pageCover: ComponentBlockPageCover!
   pageHeading: ComponentBlockPageHeading
   printPanic: ComponentBlockFaq
   printSos: ComponentBlockPrintSos
   printspiration(filters: ComponentElementsNewImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsNewImage]
-  productSpecifications(filters: ComponentBlockProductSpecificationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockProductSpecification]
   publishedAt: DateTime
+  ultimateTouches: ComponentBlockProductSpecification
   updatedAt: DateTime
 }
 
@@ -63,26 +64,28 @@ input BusinessCardFiltersInput {
   id: IDFilterInput
   not: BusinessCardFiltersInput
   or: [BusinessCardFiltersInput]
+  ourMaterials: ComponentBlockProductSpecificationFiltersInput
   pageCover: ComponentBlockPageCoverFiltersInput
   pageHeading: ComponentBlockPageHeadingFiltersInput
   printPanic: ComponentBlockFaqFiltersInput
   printSos: ComponentBlockPrintSosFiltersInput
   printspiration: ComponentElementsNewImageFiltersInput
-  productSpecifications: ComponentBlockProductSpecificationFiltersInput
   publishedAt: DateTimeFilterInput
+  ultimateTouches: ComponentBlockProductSpecificationFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
 input BusinessCardInput {
   ecoCard: ComponentBlockEcoCardInput
   exploreOurRange: [ComponentBlockExploreRangeCardsInput]
+  ourMaterials: ComponentBlockProductSpecificationInput
   pageCover: ComponentBlockPageCoverInput
   pageHeading: ComponentBlockPageHeadingInput
   printPanic: ComponentBlockFaqInput
   printSos: ComponentBlockPrintSosInput
   printspiration: [ComponentElementsNewImageInput]
-  productSpecifications: [ComponentBlockProductSpecificationInput]
   publishedAt: DateTime
+  ultimateTouches: ComponentBlockProductSpecificationInput
 }
 
 type BusinessCardRelationResponseCollection {
@@ -136,6 +139,7 @@ input ComponentBlockCtaInput {
 
 type ComponentBlockEcoCard {
   content(filters: ComponentElementsListItemWithImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsListItemWithImage]
+  coverImage: UploadFileEntityResponse
   heading: String
   id: ID!
   title: String
@@ -152,6 +156,7 @@ input ComponentBlockEcoCardFiltersInput {
 
 input ComponentBlockEcoCardInput {
   content: [ComponentElementsListItemWithImageInput]
+  coverImage: ID
   heading: String
   id: ID
   title: String
@@ -255,23 +260,29 @@ input ComponentBlockPageHeadingInput {
 }
 
 type ComponentBlockPrintSos {
-  ContactLink(filters: ComponentElementsLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsLink]!
+  contactLink(filters: ComponentElementsLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsLink]!
   description: String!
+  heading: String!
   id: ID!
+  subHeading: String!
 }
 
 input ComponentBlockPrintSosFiltersInput {
-  ContactLink: ComponentElementsLinkFiltersInput
   and: [ComponentBlockPrintSosFiltersInput]
+  contactLink: ComponentElementsLinkFiltersInput
   description: StringFilterInput
+  heading: StringFilterInput
   not: ComponentBlockPrintSosFiltersInput
   or: [ComponentBlockPrintSosFiltersInput]
+  subHeading: StringFilterInput
 }
 
 input ComponentBlockPrintSosInput {
-  ContactLink: [ComponentElementsLinkInput]
+  contactLink: [ComponentElementsLinkInput]
   description: String
+  heading: String
   id: ID
+  subHeading: String
 }
 
 type ComponentBlockProductSpecification {
@@ -306,7 +317,7 @@ type ComponentElementsBadge {
   id: ID!
   image: UploadFileEntityResponse
   text: String
-  type: String!
+  type: ENUM_COMPONENTELEMENTSBADGE_TYPE
 }
 
 input ComponentElementsBadgeFiltersInput {
@@ -321,7 +332,7 @@ input ComponentElementsBadgeInput {
   id: ID
   image: ID
   text: String
-  type: String
+  type: ENUM_COMPONENTELEMENTSBADGE_TYPE
 }
 
 type ComponentElementsImage {
@@ -663,6 +674,12 @@ input DateTimeFilterInput {
   null: Boolean
   or: [DateTime]
   startsWith: DateTime
+}
+
+enum ENUM_COMPONENTELEMENTSBADGE_TYPE {
+  banner
+  icon
+  none
 }
 
 enum ENUM_COMPONENTSHAREDMETASOCIAL_SOCIALNETWORK {

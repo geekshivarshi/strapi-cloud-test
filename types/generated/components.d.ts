@@ -36,6 +36,7 @@ export interface BlockEcoCard extends Schema.Component {
     title: Attribute.String;
     heading: Attribute.String;
     content: Attribute.Component<'elements.list-item-with-image', true>;
+    coverImage: Attribute.Media;
   };
 }
 
@@ -102,8 +103,10 @@ export interface BlockPrintSos extends Schema.Component {
   };
   attributes: {
     description: Attribute.Text & Attribute.Required;
-    ContactLink: Attribute.Component<'elements.link', true> &
+    contactLink: Attribute.Component<'elements.link', true> &
       Attribute.Required;
+    heading: Attribute.String & Attribute.Required;
+    subHeading: Attribute.String & Attribute.Required;
   };
 }
 
@@ -129,9 +132,9 @@ export interface ElementsBadge extends Schema.Component {
     description: '';
   };
   attributes: {
-    type: Attribute.String & Attribute.Required;
     text: Attribute.String;
     image: Attribute.Media;
+    type: Attribute.Enumeration<['banner', 'icon', 'none']>;
   };
 }
 
