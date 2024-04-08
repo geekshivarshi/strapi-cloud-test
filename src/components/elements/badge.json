@@ -6,10 +6,6 @@
   },
   "options": {},
   "attributes": {
-    "type": {
-      "type": "string",
-      "required": true
-    },
     "text": {
       "type": "string"
     },
@@ -22,6 +18,14 @@
         "files",
         "videos",
         "audios"
+      ]
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "banner",
+        "icon",
+        "none"
       ]
     }
   }

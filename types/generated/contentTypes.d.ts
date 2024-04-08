@@ -796,14 +796,12 @@ export interface ApiBusinessCardBusinessCard extends Schema.CollectionType {
     pageCover: Attribute.Component<'block.page-cover'> & Attribute.Required;
     pageHeading: Attribute.Component<'block.page-heading'>;
     exploreOurRange: Attribute.Component<'block.explore-range-cards', true>;
-    productSpecifications: Attribute.Component<
-      'block.product-specification',
-      true
-    >;
+    ourMaterials: Attribute.Component<'block.product-specification'>;
     printPanic: Attribute.Component<'block.faq'>;
     printSos: Attribute.Component<'block.print-sos'>;
     printspiration: Attribute.Component<'elements.new-image', true>;
     ecoCard: Attribute.Component<'block.eco-card'>;
+    ultimateTouches: Attribute.Component<'block.product-specification'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

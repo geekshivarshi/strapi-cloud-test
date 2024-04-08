@@ -28,9 +28,9 @@
       "repeatable": true,
       "component": "block.explore-range-cards"
     },
-    "productSpecifications": {
+    "ourMaterials": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "block.product-specification"
     },
     "printPanic": {
@@ -52,6 +52,11 @@
       "type": "component",
       "repeatable": false,
       "component": "block.eco-card"
+    },
+    "ultimateTouches": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.product-specification"
     }
   }
 }

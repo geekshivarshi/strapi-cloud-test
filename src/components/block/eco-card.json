@@ -16,6 +16,16 @@
       "type": "component",
       "repeatable": true,
       "component": "elements.list-item-with-image"
+    },
+    "coverImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
