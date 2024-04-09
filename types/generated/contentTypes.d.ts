@@ -996,7 +996,7 @@ export interface ApiLandingLanding extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    faq: Attribute.Component<'block.faq'>;
+    pageCover: Attribute.Component<'block.landing-page-cover'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

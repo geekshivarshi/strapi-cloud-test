@@ -12,10 +12,10 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "faq": {
+    "pageCover": {
       "type": "component",
       "repeatable": false,
-      "component": "block.faq"
+      "component": "block.landing-page-cover"
     }
   }
 }

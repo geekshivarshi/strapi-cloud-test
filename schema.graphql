@@ -216,6 +216,33 @@ input ComponentBlockFaqInput {
   subHeading: String
 }
 
+type ComponentBlockLandingPageCover {
+  coverImg: UploadFileEntityResponse
+  coverImgMobile: UploadFileEntityResponse
+  heading: String
+  id: ID!
+  productLinks(filters: ComponentElementsLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsLink]
+  subHeading: String
+}
+
+input ComponentBlockLandingPageCoverFiltersInput {
+  and: [ComponentBlockLandingPageCoverFiltersInput]
+  heading: StringFilterInput
+  not: ComponentBlockLandingPageCoverFiltersInput
+  or: [ComponentBlockLandingPageCoverFiltersInput]
+  productLinks: ComponentElementsLinkFiltersInput
+  subHeading: StringFilterInput
+}
+
+input ComponentBlockLandingPageCoverInput {
+  coverImg: ID
+  coverImgMobile: ID
+  heading: String
+  id: ID
+  productLinks: [ComponentElementsLinkInput]
+  subHeading: String
+}
+
 type ComponentBlockPageCover {
   desktopImage: UploadFileEntityResponse!
   heading: String!
@@ -826,7 +853,7 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = BusinessCard | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockEcoCard | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPrintSos | ComponentBlockProductSpecification | ComponentElementsBadge | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentSharedMetaSocial | ComponentSharedSeo | ContentReleasesRelease | ContentReleasesReleaseAction | EcoRange | Footer | GoogleReview | Header | Home | I18NLocale | Landing | NeedDesign | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = BusinessCard | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockEcoCard | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockLandingPageCover | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPrintSos | ComponentBlockProductSpecification | ComponentElementsBadge | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentSharedMetaSocial | ComponentSharedSeo | ContentReleasesRelease | ContentReleasesReleaseAction | EcoRange | Footer | GoogleReview | Header | Home | I18NLocale | Landing | NeedDesign | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GoogleReview {
   averageRating: Float
@@ -1107,7 +1134,7 @@ input JSONFilterInput {
 
 type Landing {
   createdAt: DateTime
-  faq: ComponentBlockFaq
+  pageCover: ComponentBlockLandingPageCover
   publishedAt: DateTime
   updatedAt: DateTime
 }
@@ -1129,16 +1156,16 @@ type LandingEntityResponseCollection {
 input LandingFiltersInput {
   and: [LandingFiltersInput]
   createdAt: DateTimeFilterInput
-  faq: ComponentBlockFaqFiltersInput
   id: IDFilterInput
   not: LandingFiltersInput
   or: [LandingFiltersInput]
+  pageCover: ComponentBlockLandingPageCoverFiltersInput
   publishedAt: DateTimeFilterInput
   updatedAt: DateTimeFilterInput
 }
 
 input LandingInput {
-  faq: ComponentBlockFaqInput
+  pageCover: ComponentBlockLandingPageCoverInput
   publishedAt: DateTime
 }
 

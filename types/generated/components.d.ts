@@ -69,6 +69,21 @@ export interface BlockFaq extends Schema.Component {
   };
 }
 
+export interface BlockLandingPageCover extends Schema.Component {
+  collectionName: 'components_block_landing_page_covers';
+  info: {
+    displayName: 'LandingPageCover';
+    description: '';
+  };
+  attributes: {
+    heading: Attribute.String;
+    subHeading: Attribute.String;
+    coverImg: Attribute.Media;
+    productLinks: Attribute.Component<'elements.link', true>;
+    coverImgMobile: Attribute.Media;
+  };
+}
+
 export interface BlockPageCover extends Schema.Component {
   collectionName: 'components_block_page_covers';
   info: {
@@ -265,6 +280,7 @@ declare module '@strapi/types' {
       'block.eco-card': BlockEcoCard;
       'block.explore-range-cards': BlockExploreRangeCards;
       'block.faq': BlockFaq;
+      'block.landing-page-cover': BlockLandingPageCover;
       'block.page-cover': BlockPageCover;
       'block.page-heading': BlockPageHeading;
       'block.print-sos': BlockPrintSos;
