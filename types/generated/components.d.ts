@@ -125,6 +125,19 @@ export interface BlockPrintSos extends Schema.Component {
   };
 }
 
+export interface BlockProductCardSection extends Schema.Component {
+  collectionName: 'components_block_product_card_section';
+  info: {
+    displayName: 'productCardSection';
+  };
+  attributes: {
+    heading: Attribute.String;
+    subHeading: Attribute.String;
+    description: Attribute.String;
+    exploreRangeCards: Attribute.Component<'block.explore-range-cards', true>;
+  };
+}
+
 export interface BlockProductSpecification extends Schema.Component {
   collectionName: 'components_block_product_specifications';
   info: {
@@ -284,6 +297,7 @@ declare module '@strapi/types' {
       'block.page-cover': BlockPageCover;
       'block.page-heading': BlockPageHeading;
       'block.print-sos': BlockPrintSos;
+      'block.product-card-section': BlockProductCardSection;
       'block.product-specification': BlockProductSpecification;
       'elements.badge': ElementsBadge;
       'elements.image': ElementsImage;

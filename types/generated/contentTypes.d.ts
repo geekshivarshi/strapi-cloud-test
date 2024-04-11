@@ -997,6 +997,11 @@ export interface ApiLandingLanding extends Schema.CollectionType {
   };
   attributes: {
     pageCover: Attribute.Component<'block.landing-page-cover'>;
+    printAndProsper: Attribute.Component<'block.product-card-section'>;
+    ExploreOurCategories: Attribute.Component<
+      'block.explore-range-cards',
+      true
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

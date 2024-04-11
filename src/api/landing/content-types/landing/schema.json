@@ -16,6 +16,16 @@
       "type": "component",
       "repeatable": false,
       "component": "block.landing-page-cover"
+    },
+    "printAndProsper": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.product-card-section"
+    },
+    "ExploreOurCategories": {
+      "type": "component",
+      "repeatable": true,
+      "component": "block.explore-range-cards"
     }
   }
 }

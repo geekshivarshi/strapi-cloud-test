@@ -312,6 +312,32 @@ input ComponentBlockPrintSosInput {
   subHeading: String
 }
 
+type ComponentBlockProductCardSection {
+  description: String
+  exploreRangeCards(filters: ComponentBlockExploreRangeCardsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockExploreRangeCards]
+  heading: String
+  id: ID!
+  subHeading: String
+}
+
+input ComponentBlockProductCardSectionFiltersInput {
+  and: [ComponentBlockProductCardSectionFiltersInput]
+  description: StringFilterInput
+  exploreRangeCards: ComponentBlockExploreRangeCardsFiltersInput
+  heading: StringFilterInput
+  not: ComponentBlockProductCardSectionFiltersInput
+  or: [ComponentBlockProductCardSectionFiltersInput]
+  subHeading: StringFilterInput
+}
+
+input ComponentBlockProductCardSectionInput {
+  description: String
+  exploreRangeCards: [ComponentBlockExploreRangeCardsInput]
+  heading: String
+  id: ID
+  subHeading: String
+}
+
 type ComponentBlockProductSpecification {
   coverImg: UploadFileEntityResponse!
   coverImgAlignment: String
@@ -853,7 +879,7 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = BusinessCard | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockEcoCard | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockLandingPageCover | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPrintSos | ComponentBlockProductSpecification | ComponentElementsBadge | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentSharedMetaSocial | ComponentSharedSeo | ContentReleasesRelease | ContentReleasesReleaseAction | EcoRange | Footer | GoogleReview | Header | Home | I18NLocale | Landing | NeedDesign | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = BusinessCard | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockEcoCard | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockLandingPageCover | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPrintSos | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentElementsBadge | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentSharedMetaSocial | ComponentSharedSeo | ContentReleasesRelease | ContentReleasesReleaseAction | EcoRange | Footer | GoogleReview | Header | Home | I18NLocale | Landing | NeedDesign | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GoogleReview {
   averageRating: Float
@@ -1133,8 +1159,10 @@ input JSONFilterInput {
 }
 
 type Landing {
+  ExploreOurCategories(filters: ComponentBlockExploreRangeCardsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockExploreRangeCards]
   createdAt: DateTime
   pageCover: ComponentBlockLandingPageCover
+  printAndProsper: ComponentBlockProductCardSection
   publishedAt: DateTime
   updatedAt: DateTime
 }
@@ -1154,18 +1182,22 @@ type LandingEntityResponseCollection {
 }
 
 input LandingFiltersInput {
+  ExploreOurCategories: ComponentBlockExploreRangeCardsFiltersInput
   and: [LandingFiltersInput]
   createdAt: DateTimeFilterInput
   id: IDFilterInput
   not: LandingFiltersInput
   or: [LandingFiltersInput]
   pageCover: ComponentBlockLandingPageCoverFiltersInput
+  printAndProsper: ComponentBlockProductCardSectionFiltersInput
   publishedAt: DateTimeFilterInput
   updatedAt: DateTimeFilterInput
 }
 
 input LandingInput {
+  ExploreOurCategories: [ComponentBlockExploreRangeCardsInput]
   pageCover: ComponentBlockLandingPageCoverInput
+  printAndProsper: ComponentBlockProductCardSectionInput
   publishedAt: DateTime
 }
 
