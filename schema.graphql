@@ -30,6 +30,7 @@ input BooleanFilterInput {
 type BusinessCard {
   createdAt: DateTime
   ecoCard: ComponentBlockEcoCard
+  exploreOurCategories: ComponentBlockProductCardSection
   exploreOurRange(filters: ComponentBlockExploreRangeCardsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockExploreRangeCards]
   ourMaterials: ComponentBlockProductSpecification
   pageCover: ComponentBlockPageCover!
@@ -60,6 +61,7 @@ input BusinessCardFiltersInput {
   and: [BusinessCardFiltersInput]
   createdAt: DateTimeFilterInput
   ecoCard: ComponentBlockEcoCardFiltersInput
+  exploreOurCategories: ComponentBlockProductCardSectionFiltersInput
   exploreOurRange: ComponentBlockExploreRangeCardsFiltersInput
   id: IDFilterInput
   not: BusinessCardFiltersInput
@@ -77,6 +79,7 @@ input BusinessCardFiltersInput {
 
 input BusinessCardInput {
   ecoCard: ComponentBlockEcoCardInput
+  exploreOurCategories: ComponentBlockProductCardSectionInput
   exploreOurRange: [ComponentBlockExploreRangeCardsInput]
   ourMaterials: ComponentBlockProductSpecificationInput
   pageCover: ComponentBlockPageCoverInput
@@ -138,15 +141,18 @@ input ComponentBlockCtaInput {
 }
 
 type ComponentBlockEcoCard {
+  buttonLink: ComponentElementsLink
   content(filters: ComponentElementsListItemWithImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsListItemWithImage]
   coverImage: UploadFileEntityResponse
   heading: String
   id: ID!
+  mobileCoverImage: UploadFileEntityResponse
   title: String
 }
 
 input ComponentBlockEcoCardFiltersInput {
   and: [ComponentBlockEcoCardFiltersInput]
+  buttonLink: ComponentElementsLinkFiltersInput
   content: ComponentElementsListItemWithImageFiltersInput
   heading: StringFilterInput
   not: ComponentBlockEcoCardFiltersInput
@@ -155,10 +161,12 @@ input ComponentBlockEcoCardFiltersInput {
 }
 
 input ComponentBlockEcoCardInput {
+  buttonLink: ComponentElementsLinkInput
   content: [ComponentElementsListItemWithImageInput]
   coverImage: ID
   heading: String
   id: ID
+  mobileCoverImage: ID
   title: String
 }
 
@@ -216,6 +224,33 @@ input ComponentBlockFaqInput {
   subHeading: String
 }
 
+type ComponentBlockLandingPageCover {
+  coverImg: UploadFileEntityResponse
+  coverImgMobile: UploadFileEntityResponse
+  heading: String
+  id: ID!
+  productLinks(filters: ComponentElementsLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsLink]
+  subHeading: String
+}
+
+input ComponentBlockLandingPageCoverFiltersInput {
+  and: [ComponentBlockLandingPageCoverFiltersInput]
+  heading: StringFilterInput
+  not: ComponentBlockLandingPageCoverFiltersInput
+  or: [ComponentBlockLandingPageCoverFiltersInput]
+  productLinks: ComponentElementsLinkFiltersInput
+  subHeading: StringFilterInput
+}
+
+input ComponentBlockLandingPageCoverInput {
+  coverImg: ID
+  coverImgMobile: ID
+  heading: String
+  id: ID
+  productLinks: [ComponentElementsLinkInput]
+  subHeading: String
+}
+
 type ComponentBlockPageCover {
   desktopImage: UploadFileEntityResponse!
   heading: String!
@@ -261,6 +296,7 @@ input ComponentBlockPageHeadingInput {
 
 type ComponentBlockPrintSos {
   contactLink(filters: ComponentElementsLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsLink]!
+  coverImage: UploadFileEntityResponse
   description: String!
   heading: String!
   id: ID!
@@ -279,7 +315,36 @@ input ComponentBlockPrintSosFiltersInput {
 
 input ComponentBlockPrintSosInput {
   contactLink: [ComponentElementsLinkInput]
+  coverImage: ID
   description: String
+  heading: String
+  id: ID
+  subHeading: String
+}
+
+type ComponentBlockProductCardSection {
+  description: String
+  exploreRangeCards(filters: ComponentBlockExploreRangeCardsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockExploreRangeCards]
+  headerImage: UploadFileEntityResponse
+  heading: String
+  id: ID!
+  subHeading: String
+}
+
+input ComponentBlockProductCardSectionFiltersInput {
+  and: [ComponentBlockProductCardSectionFiltersInput]
+  description: StringFilterInput
+  exploreRangeCards: ComponentBlockExploreRangeCardsFiltersInput
+  heading: StringFilterInput
+  not: ComponentBlockProductCardSectionFiltersInput
+  or: [ComponentBlockProductCardSectionFiltersInput]
+  subHeading: StringFilterInput
+}
+
+input ComponentBlockProductCardSectionInput {
+  description: String
+  exploreRangeCards: [ComponentBlockExploreRangeCardsInput]
+  headerImage: ID
   heading: String
   id: ID
   subHeading: String
@@ -826,7 +891,7 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = BusinessCard | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockEcoCard | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPrintSos | ComponentBlockProductSpecification | ComponentElementsBadge | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentSharedMetaSocial | ComponentSharedSeo | ContentReleasesRelease | ContentReleasesReleaseAction | EcoRange | Footer | GoogleReview | Header | Home | I18NLocale | Landing | NeedDesign | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = BusinessCard | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockEcoCard | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockLandingPageCover | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPrintSos | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentElementsBadge | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentSharedMetaSocial | ComponentSharedSeo | ContentReleasesRelease | ContentReleasesReleaseAction | EcoRange | Footer | GoogleReview | Header | Home | I18NLocale | Landing | NeedDesign | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GoogleReview {
   averageRating: Float
@@ -1107,7 +1172,12 @@ input JSONFilterInput {
 
 type Landing {
   createdAt: DateTime
-  faq: ComponentBlockFaq
+  ecoCard: ComponentBlockEcoCard
+  enquirySection: ComponentBlockPrintSos
+  exploreEcoRange: ComponentBlockProductCardSection
+  exploreOurCategories: ComponentBlockProductCardSection
+  pageCover: ComponentBlockLandingPageCover
+  printAndProsper: ComponentBlockProductCardSection
   publishedAt: DateTime
   updatedAt: DateTime
 }
@@ -1129,16 +1199,26 @@ type LandingEntityResponseCollection {
 input LandingFiltersInput {
   and: [LandingFiltersInput]
   createdAt: DateTimeFilterInput
-  faq: ComponentBlockFaqFiltersInput
+  ecoCard: ComponentBlockEcoCardFiltersInput
+  enquirySection: ComponentBlockPrintSosFiltersInput
+  exploreEcoRange: ComponentBlockProductCardSectionFiltersInput
+  exploreOurCategories: ComponentBlockProductCardSectionFiltersInput
   id: IDFilterInput
   not: LandingFiltersInput
   or: [LandingFiltersInput]
+  pageCover: ComponentBlockLandingPageCoverFiltersInput
+  printAndProsper: ComponentBlockProductCardSectionFiltersInput
   publishedAt: DateTimeFilterInput
   updatedAt: DateTimeFilterInput
 }
 
 input LandingInput {
-  faq: ComponentBlockFaqInput
+  ecoCard: ComponentBlockEcoCardInput
+  enquirySection: ComponentBlockPrintSosInput
+  exploreEcoRange: ComponentBlockProductCardSectionInput
+  exploreOurCategories: ComponentBlockProductCardSectionInput
+  pageCover: ComponentBlockLandingPageCoverInput
+  printAndProsper: ComponentBlockProductCardSectionInput
   publishedAt: DateTime
 }
 

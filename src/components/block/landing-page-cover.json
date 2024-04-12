@@ -1,23 +1,18 @@
 {
-  "collectionName": "components_block_eco_cards",
+  "collectionName": "components_block_landing_page_covers",
   "info": {
-    "displayName": "EcoCard",
+    "displayName": "LandingPageCover",
     "description": ""
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
     "heading": {
       "type": "string"
     },
-    "content": {
-      "type": "component",
-      "repeatable": true,
-      "component": "elements.list-item-with-image"
+    "subHeading": {
+      "type": "string"
     },
-    "coverImage": {
+    "coverImg": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -28,12 +23,12 @@
         "audios"
       ]
     },
-    "buttonLink": {
+    "productLinks": {
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "elements.link"
     },
-    "mobileCoverImage": {
+    "coverImgMobile": {
       "allowedTypes": [
         "images",
         "files",

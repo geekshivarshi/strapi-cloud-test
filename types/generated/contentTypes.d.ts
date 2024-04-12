@@ -802,6 +802,7 @@ export interface ApiBusinessCardBusinessCard extends Schema.CollectionType {
     printspiration: Attribute.Component<'elements.new-image', true>;
     ecoCard: Attribute.Component<'block.eco-card'>;
     ultimateTouches: Attribute.Component<'block.product-specification'>;
+    exploreOurCategories: Attribute.Component<'block.product-card-section'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -996,7 +997,12 @@ export interface ApiLandingLanding extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    faq: Attribute.Component<'block.faq'>;
+    pageCover: Attribute.Component<'block.landing-page-cover'>;
+    printAndProsper: Attribute.Component<'block.product-card-section'>;
+    exploreOurCategories: Attribute.Component<'block.product-card-section'>;
+    ecoCard: Attribute.Component<'block.eco-card'>;
+    exploreEcoRange: Attribute.Component<'block.product-card-section'>;
+    enquirySection: Attribute.Component<'block.print-sos'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

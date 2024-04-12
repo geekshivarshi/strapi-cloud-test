@@ -37,6 +37,8 @@ export interface BlockEcoCard extends Schema.Component {
     heading: Attribute.String;
     content: Attribute.Component<'elements.list-item-with-image', true>;
     coverImage: Attribute.Media;
+    buttonLink: Attribute.Component<'elements.link'>;
+    mobileCoverImage: Attribute.Media;
   };
 }
 
@@ -66,6 +68,21 @@ export interface BlockFaq extends Schema.Component {
     heading: Attribute.String & Attribute.Required;
     subHeading: Attribute.String;
     QA: Attribute.Component<'elements.qa', true>;
+  };
+}
+
+export interface BlockLandingPageCover extends Schema.Component {
+  collectionName: 'components_block_landing_page_covers';
+  info: {
+    displayName: 'LandingPageCover';
+    description: '';
+  };
+  attributes: {
+    heading: Attribute.String;
+    subHeading: Attribute.String;
+    coverImg: Attribute.Media;
+    productLinks: Attribute.Component<'elements.link', true>;
+    coverImgMobile: Attribute.Media;
   };
 }
 
@@ -107,6 +124,21 @@ export interface BlockPrintSos extends Schema.Component {
       Attribute.Required;
     heading: Attribute.String & Attribute.Required;
     subHeading: Attribute.String & Attribute.Required;
+    coverImage: Attribute.Media;
+  };
+}
+
+export interface BlockProductCardSection extends Schema.Component {
+  collectionName: 'components_block_product_card_section';
+  info: {
+    displayName: 'productCardSection';
+  };
+  attributes: {
+    heading: Attribute.String;
+    subHeading: Attribute.String;
+    description: Attribute.String;
+    exploreRangeCards: Attribute.Component<'block.explore-range-cards', true>;
+    headerImage: Attribute.Media;
   };
 }
 
@@ -265,9 +297,11 @@ declare module '@strapi/types' {
       'block.eco-card': BlockEcoCard;
       'block.explore-range-cards': BlockExploreRangeCards;
       'block.faq': BlockFaq;
+      'block.landing-page-cover': BlockLandingPageCover;
       'block.page-cover': BlockPageCover;
       'block.page-heading': BlockPageHeading;
       'block.print-sos': BlockPrintSos;
+      'block.product-card-section': BlockProductCardSection;
       'block.product-specification': BlockProductSpecification;
       'elements.badge': ElementsBadge;
       'elements.image': ElementsImage;

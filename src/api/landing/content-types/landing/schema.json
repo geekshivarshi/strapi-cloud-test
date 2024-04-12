@@ -12,10 +12,35 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "faq": {
+    "pageCover": {
       "type": "component",
       "repeatable": false,
-      "component": "block.faq"
+      "component": "block.landing-page-cover"
+    },
+    "printAndProsper": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.product-card-section"
+    },
+    "exploreOurCategories": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.product-card-section"
+    },
+    "ecoCard": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.eco-card"
+    },
+    "exploreEcoRange": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.product-card-section"
+    },
+    "enquirySection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.print-sos"
     }
   }
 }

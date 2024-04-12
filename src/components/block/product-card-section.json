@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_block_product_card_section",
+  "info": {
+    "displayName": "productCardSection"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "subHeading": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "exploreRangeCards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "block.explore-range-cards"
+    },
+    "headerImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
