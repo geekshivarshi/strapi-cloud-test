@@ -37,6 +37,8 @@ export interface BlockEcoCard extends Schema.Component {
     heading: Attribute.String;
     content: Attribute.Component<'elements.list-item-with-image', true>;
     coverImage: Attribute.Media;
+    buttonLink: Attribute.Component<'elements.link'>;
+    mobileCoverImage: Attribute.Media;
   };
 }
 
@@ -122,6 +124,7 @@ export interface BlockPrintSos extends Schema.Component {
       Attribute.Required;
     heading: Attribute.String & Attribute.Required;
     subHeading: Attribute.String & Attribute.Required;
+    coverImage: Attribute.Media;
   };
 }
 
@@ -135,6 +138,7 @@ export interface BlockProductCardSection extends Schema.Component {
     subHeading: Attribute.String;
     description: Attribute.String;
     exploreRangeCards: Attribute.Component<'block.explore-range-cards', true>;
+    headerImage: Attribute.Media;
   };
 }
 

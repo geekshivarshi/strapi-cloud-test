@@ -18,6 +18,16 @@
       "type": "component",
       "repeatable": true,
       "component": "block.explore-range-cards"
+    },
+    "headerImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

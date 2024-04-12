@@ -18,6 +18,22 @@
       "component": "elements.list-item-with-image"
     },
     "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "buttonLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.link"
+    },
+    "mobileCoverImage": {
       "allowedTypes": [
         "images",
         "files",

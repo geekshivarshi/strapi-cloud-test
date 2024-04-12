@@ -22,10 +22,25 @@
       "repeatable": false,
       "component": "block.product-card-section"
     },
-    "ExploreOurCategories": {
+    "exploreOurCategories": {
       "type": "component",
-      "repeatable": true,
-      "component": "block.explore-range-cards"
+      "repeatable": false,
+      "component": "block.product-card-section"
+    },
+    "ecoCard": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.eco-card"
+    },
+    "exploreEcoRange": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.product-card-section"
+    },
+    "enquirySection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.print-sos"
     }
   }
 }

@@ -30,6 +30,7 @@ input BooleanFilterInput {
 type BusinessCard {
   createdAt: DateTime
   ecoCard: ComponentBlockEcoCard
+  exploreOurCategories: ComponentBlockProductCardSection
   exploreOurRange(filters: ComponentBlockExploreRangeCardsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockExploreRangeCards]
   ourMaterials: ComponentBlockProductSpecification
   pageCover: ComponentBlockPageCover!
@@ -60,6 +61,7 @@ input BusinessCardFiltersInput {
   and: [BusinessCardFiltersInput]
   createdAt: DateTimeFilterInput
   ecoCard: ComponentBlockEcoCardFiltersInput
+  exploreOurCategories: ComponentBlockProductCardSectionFiltersInput
   exploreOurRange: ComponentBlockExploreRangeCardsFiltersInput
   id: IDFilterInput
   not: BusinessCardFiltersInput
@@ -77,6 +79,7 @@ input BusinessCardFiltersInput {
 
 input BusinessCardInput {
   ecoCard: ComponentBlockEcoCardInput
+  exploreOurCategories: ComponentBlockProductCardSectionInput
   exploreOurRange: [ComponentBlockExploreRangeCardsInput]
   ourMaterials: ComponentBlockProductSpecificationInput
   pageCover: ComponentBlockPageCoverInput
@@ -138,15 +141,18 @@ input ComponentBlockCtaInput {
 }
 
 type ComponentBlockEcoCard {
+  buttonLink: ComponentElementsLink
   content(filters: ComponentElementsListItemWithImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsListItemWithImage]
   coverImage: UploadFileEntityResponse
   heading: String
   id: ID!
+  mobileCoverImage: UploadFileEntityResponse
   title: String
 }
 
 input ComponentBlockEcoCardFiltersInput {
   and: [ComponentBlockEcoCardFiltersInput]
+  buttonLink: ComponentElementsLinkFiltersInput
   content: ComponentElementsListItemWithImageFiltersInput
   heading: StringFilterInput
   not: ComponentBlockEcoCardFiltersInput
@@ -155,10 +161,12 @@ input ComponentBlockEcoCardFiltersInput {
 }
 
 input ComponentBlockEcoCardInput {
+  buttonLink: ComponentElementsLinkInput
   content: [ComponentElementsListItemWithImageInput]
   coverImage: ID
   heading: String
   id: ID
+  mobileCoverImage: ID
   title: String
 }
 
@@ -288,6 +296,7 @@ input ComponentBlockPageHeadingInput {
 
 type ComponentBlockPrintSos {
   contactLink(filters: ComponentElementsLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsLink]!
+  coverImage: UploadFileEntityResponse
   description: String!
   heading: String!
   id: ID!
@@ -306,6 +315,7 @@ input ComponentBlockPrintSosFiltersInput {
 
 input ComponentBlockPrintSosInput {
   contactLink: [ComponentElementsLinkInput]
+  coverImage: ID
   description: String
   heading: String
   id: ID
@@ -315,6 +325,7 @@ input ComponentBlockPrintSosInput {
 type ComponentBlockProductCardSection {
   description: String
   exploreRangeCards(filters: ComponentBlockExploreRangeCardsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockExploreRangeCards]
+  headerImage: UploadFileEntityResponse
   heading: String
   id: ID!
   subHeading: String
@@ -333,6 +344,7 @@ input ComponentBlockProductCardSectionFiltersInput {
 input ComponentBlockProductCardSectionInput {
   description: String
   exploreRangeCards: [ComponentBlockExploreRangeCardsInput]
+  headerImage: ID
   heading: String
   id: ID
   subHeading: String
@@ -1159,8 +1171,11 @@ input JSONFilterInput {
 }
 
 type Landing {
-  ExploreOurCategories(filters: ComponentBlockExploreRangeCardsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockExploreRangeCards]
   createdAt: DateTime
+  ecoCard: ComponentBlockEcoCard
+  enquirySection: ComponentBlockPrintSos
+  exploreEcoRange: ComponentBlockProductCardSection
+  exploreOurCategories: ComponentBlockProductCardSection
   pageCover: ComponentBlockLandingPageCover
   printAndProsper: ComponentBlockProductCardSection
   publishedAt: DateTime
@@ -1182,9 +1197,12 @@ type LandingEntityResponseCollection {
 }
 
 input LandingFiltersInput {
-  ExploreOurCategories: ComponentBlockExploreRangeCardsFiltersInput
   and: [LandingFiltersInput]
   createdAt: DateTimeFilterInput
+  ecoCard: ComponentBlockEcoCardFiltersInput
+  enquirySection: ComponentBlockPrintSosFiltersInput
+  exploreEcoRange: ComponentBlockProductCardSectionFiltersInput
+  exploreOurCategories: ComponentBlockProductCardSectionFiltersInput
   id: IDFilterInput
   not: LandingFiltersInput
   or: [LandingFiltersInput]
@@ -1195,7 +1213,10 @@ input LandingFiltersInput {
 }
 
 input LandingInput {
-  ExploreOurCategories: [ComponentBlockExploreRangeCardsInput]
+  ecoCard: ComponentBlockEcoCardInput
+  enquirySection: ComponentBlockPrintSosInput
+  exploreEcoRange: ComponentBlockProductCardSectionInput
+  exploreOurCategories: ComponentBlockProductCardSectionInput
   pageCover: ComponentBlockLandingPageCoverInput
   printAndProsper: ComponentBlockProductCardSectionInput
   publishedAt: DateTime
