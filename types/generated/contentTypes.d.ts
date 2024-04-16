@@ -1003,6 +1003,10 @@ export interface ApiLandingLanding extends Schema.CollectionType {
     ecoCard: Attribute.Component<'block.eco-card'>;
     exploreEcoRange: Attribute.Component<'block.product-card-section'>;
     enquirySection: Attribute.Component<'block.print-sos'>;
+    printWithKaizen: Attribute.Component<'block.print-with-kaizen'>;
+    reel: Attribute.Media;
+    printingSection: Attribute.Component<'block.insta-post-section'>;
+    customerReviews: Attribute.Component<'block.customer-reviews', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_block_print_with_kaizens",
+  "info": {
+    "displayName": "printWithKaizen"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "specifications": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.list-item-with-image"
+    }
+  }
+}
