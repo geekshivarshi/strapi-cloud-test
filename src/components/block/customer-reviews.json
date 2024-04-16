@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_block_customer_reviews",
+  "info": {
+    "displayName": "customerReviews",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "subHeading": {
+      "type": "text"
+    },
+    "customerName": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.list-item-with-image"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_elements_advance_images",
+  "info": {
+    "displayName": "advanceImage"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "reel",
+        "multiple-images",
+        "image"
+      ]
+    },
+    "imageUrl": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.link"
+    }
+  }
+}

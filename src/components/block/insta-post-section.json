@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_block_insta_post_sections",
+  "info": {
+    "displayName": "instaPostSection",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "instagramLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.link"
+    },
+    "images": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.advance-image"
+    }
+  }
+}

@@ -26,6 +26,19 @@ export interface BlockCta extends Schema.Component {
   };
 }
 
+export interface BlockCustomerReviews extends Schema.Component {
+  collectionName: 'components_block_customer_reviews';
+  info: {
+    displayName: 'customerReviews';
+    description: '';
+  };
+  attributes: {
+    heading: Attribute.String;
+    subHeading: Attribute.Text;
+    customerName: Attribute.Component<'elements.list-item-with-image'>;
+  };
+}
+
 export interface BlockEcoCard extends Schema.Component {
   collectionName: 'components_block_eco_cards';
   info: {
@@ -68,6 +81,19 @@ export interface BlockFaq extends Schema.Component {
     heading: Attribute.String & Attribute.Required;
     subHeading: Attribute.String;
     QA: Attribute.Component<'elements.qa', true>;
+  };
+}
+
+export interface BlockInstaPostSection extends Schema.Component {
+  collectionName: 'components_block_insta_post_sections';
+  info: {
+    displayName: 'instaPostSection';
+    description: '';
+  };
+  attributes: {
+    heading: Attribute.String;
+    instagramLink: Attribute.Component<'elements.link'>;
+    images: Attribute.Component<'elements.advance-image', true>;
   };
 }
 
@@ -128,6 +154,17 @@ export interface BlockPrintSos extends Schema.Component {
   };
 }
 
+export interface BlockPrintWithKaizen extends Schema.Component {
+  collectionName: 'components_block_print_with_kaizens';
+  info: {
+    displayName: 'printWithKaizen';
+  };
+  attributes: {
+    heading: Attribute.String;
+    specifications: Attribute.Component<'elements.list-item-with-image', true>;
+  };
+}
+
 export interface BlockProductCardSection extends Schema.Component {
   collectionName: 'components_block_product_card_section';
   info: {
@@ -154,6 +191,18 @@ export interface BlockProductSpecification extends Schema.Component {
     description: Attribute.Component<'elements.list-item-with-image', true>;
     coverImg: Attribute.Media & Attribute.Required;
     coverImgAlignment: Attribute.String;
+  };
+}
+
+export interface ElementsAdvanceImage extends Schema.Component {
+  collectionName: 'components_elements_advance_images';
+  info: {
+    displayName: 'advanceImage';
+  };
+  attributes: {
+    image: Attribute.Media;
+    type: Attribute.Enumeration<['reel', 'multiple-images', 'image']>;
+    imageUrl: Attribute.Component<'elements.link'>;
   };
 }
 
@@ -294,15 +343,19 @@ declare module '@strapi/types' {
     export interface Components {
       'block.catergory': BlockCatergory;
       'block.cta': BlockCta;
+      'block.customer-reviews': BlockCustomerReviews;
       'block.eco-card': BlockEcoCard;
       'block.explore-range-cards': BlockExploreRangeCards;
       'block.faq': BlockFaq;
+      'block.insta-post-section': BlockInstaPostSection;
       'block.landing-page-cover': BlockLandingPageCover;
       'block.page-cover': BlockPageCover;
       'block.page-heading': BlockPageHeading;
       'block.print-sos': BlockPrintSos;
+      'block.print-with-kaizen': BlockPrintWithKaizen;
       'block.product-card-section': BlockProductCardSection;
       'block.product-specification': BlockProductSpecification;
+      'elements.advance-image': ElementsAdvanceImage;
       'elements.badge': ElementsBadge;
       'elements.image': ElementsImage;
       'elements.link': ElementsLink;
