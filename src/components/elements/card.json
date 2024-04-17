@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_elements_cards",
+  "info": {
+    "displayName": "Card",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "subheading": {
+      "type": "string"
+    },
+    "content": {
+      "type": "text"
+    },
+    "headerImage": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.new-image"
+    },
+    "backgroundImage": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.new-image"
+    }
+  }
+}

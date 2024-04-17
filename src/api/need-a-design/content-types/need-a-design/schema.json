@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "need_a_designs",
+  "info": {
+    "singularName": "need-a-design",
+    "pluralName": "need-a-designs",
+    "displayName": "need a design",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pageCover": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.page-cover"
+    },
+    "formStyleImages": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.list-item-with-image"
+    },
+    "header": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.card-with-image-item"
+    }
+  }
+}

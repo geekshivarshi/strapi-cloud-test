@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "industries",
+  "info": {
+    "singularName": "industry",
+    "pluralName": "industries",
+    "displayName": "Industry",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pageCover": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.page-cover"
+    },
+    "exploreCategories": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.explore-categories"
+    },
+    "partners": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.partners"
+    }
+  }
+}

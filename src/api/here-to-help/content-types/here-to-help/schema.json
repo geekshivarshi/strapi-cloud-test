@@ -1,0 +1,49 @@
+{
+  "kind": "singleType",
+  "collectionName": "here_to_helps",
+  "info": {
+    "singularName": "here-to-help",
+    "pluralName": "here-to-helps",
+    "displayName": "Here to Help",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "subHeading": {
+      "type": "string"
+    },
+    "leftImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "rightImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "descriptionPoints": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.bullet-points"
+    }
+  }
+}

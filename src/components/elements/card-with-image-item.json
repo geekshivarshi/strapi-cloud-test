@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_elements_card_with_image_items",
+  "info": {
+    "displayName": "CardWithImageItem",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "subHeading": {
+      "type": "string"
+    },
+    "listItem": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.list-item-with-image"
+    },
+    "headerImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

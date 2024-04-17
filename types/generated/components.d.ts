@@ -55,6 +55,20 @@ export interface BlockEcoCard extends Schema.Component {
   };
 }
 
+export interface BlockExploreCategories extends Schema.Component {
+  collectionName: 'components_block_explore_categories';
+  info: {
+    displayName: 'ExploreCategories';
+    icon: 'cube';
+  };
+  attributes: {
+    heading: Attribute.String;
+    headingImage: Attribute.Media;
+    topImage: Attribute.Media;
+    card: Attribute.Component<'elements.card', true>;
+  };
+}
+
 export interface BlockExploreRangeCards extends Schema.Component {
   collectionName: 'components_block_explore_range_cards';
   info: {
@@ -135,6 +149,20 @@ export interface BlockPageHeading extends Schema.Component {
     heading: Attribute.String & Attribute.Required;
     subHeading: Attribute.String & Attribute.Required;
     image: Attribute.Media;
+  };
+}
+
+export interface BlockPartners extends Schema.Component {
+  collectionName: 'components_block_partners';
+  info: {
+    displayName: 'Partners';
+    icon: 'briefcase';
+    description: '';
+  };
+  attributes: {
+    heading: Attribute.String;
+    subHeading: Attribute.String;
+    logos: Attribute.Component<'elements.new-image', true>;
   };
 }
 
@@ -219,6 +247,46 @@ export interface ElementsBadge extends Schema.Component {
   };
 }
 
+export interface ElementsBulletPoints extends Schema.Component {
+  collectionName: 'components_elements_bullet_points';
+  info: {
+    displayName: 'Bullet Points';
+    icon: 'bulletList';
+  };
+  attributes: {
+    point: Attribute.Text;
+  };
+}
+
+export interface ElementsCardWithImageItem extends Schema.Component {
+  collectionName: 'components_elements_card_with_image_items';
+  info: {
+    displayName: 'CardWithImageItem';
+    icon: 'picture';
+  };
+  attributes: {
+    heading: Attribute.String;
+    subHeading: Attribute.String;
+    listItem: Attribute.Component<'elements.list-item-with-image', true>;
+    headerImage: Attribute.Media;
+  };
+}
+
+export interface ElementsCard extends Schema.Component {
+  collectionName: 'components_elements_cards';
+  info: {
+    displayName: 'Card';
+    description: '';
+  };
+  attributes: {
+    heading: Attribute.String;
+    subheading: Attribute.String;
+    content: Attribute.Text;
+    headerImage: Attribute.Component<'elements.new-image'>;
+    backgroundImage: Attribute.Component<'elements.new-image'>;
+  };
+}
+
 export interface ElementsImage extends Schema.Component {
   collectionName: 'components_elements_images';
   info: {
@@ -287,6 +355,18 @@ export interface ElementsQa extends Schema.Component {
   };
 }
 
+export interface ElementsSection extends Schema.Component {
+  collectionName: 'components_elements_sections';
+  info: {
+    displayName: 'Section';
+  };
+  attributes: {
+    heading: Attribute.String;
+    subheading: Attribute.String;
+    points: Attribute.Component<'elements.bullet-points', true>;
+  };
+}
+
 export interface SharedMetaSocial extends Schema.Component {
   collectionName: 'components_shared_meta_socials';
   info: {
@@ -345,23 +425,29 @@ declare module '@strapi/types' {
       'block.cta': BlockCta;
       'block.customer-reviews': BlockCustomerReviews;
       'block.eco-card': BlockEcoCard;
+      'block.explore-categories': BlockExploreCategories;
       'block.explore-range-cards': BlockExploreRangeCards;
       'block.faq': BlockFaq;
       'block.insta-post-section': BlockInstaPostSection;
       'block.landing-page-cover': BlockLandingPageCover;
       'block.page-cover': BlockPageCover;
       'block.page-heading': BlockPageHeading;
+      'block.partners': BlockPartners;
       'block.print-sos': BlockPrintSos;
       'block.print-with-kaizen': BlockPrintWithKaizen;
       'block.product-card-section': BlockProductCardSection;
       'block.product-specification': BlockProductSpecification;
       'elements.advance-image': ElementsAdvanceImage;
       'elements.badge': ElementsBadge;
+      'elements.bullet-points': ElementsBulletPoints;
+      'elements.card-with-image-item': ElementsCardWithImageItem;
+      'elements.card': ElementsCard;
       'elements.image': ElementsImage;
       'elements.link': ElementsLink;
       'elements.list-item-with-image': ElementsListItemWithImage;
       'elements.new-image': ElementsNewImage;
       'elements.qa': ElementsQa;
+      'elements.section': ElementsSection;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
     }
