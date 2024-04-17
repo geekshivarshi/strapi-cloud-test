@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "print_enquiries",
+  "info": {
+    "singularName": "print-enquiry",
+    "pluralName": "print-enquiries",
+    "displayName": "printEnquiry"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "printSos": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.print-sos"
+    }
+  }
+}

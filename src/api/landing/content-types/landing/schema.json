@@ -47,17 +47,6 @@
       "repeatable": false,
       "component": "block.print-with-kaizen"
     },
-    "reel": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "printingSection": {
       "type": "component",
       "repeatable": false,

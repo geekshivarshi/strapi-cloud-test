@@ -799,10 +799,10 @@ export interface ApiBusinessCardBusinessCard extends Schema.CollectionType {
     ourMaterials: Attribute.Component<'block.product-specification'>;
     printPanic: Attribute.Component<'block.faq'>;
     printSos: Attribute.Component<'block.print-sos'>;
-    printspiration: Attribute.Component<'elements.new-image', true>;
     ecoCard: Attribute.Component<'block.eco-card'>;
     ultimateTouches: Attribute.Component<'block.product-specification'>;
     exploreOurCategories: Attribute.Component<'block.product-card-section'>;
+    printspiration: Attribute.Component<'block.printspiration'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1004,7 +1004,6 @@ export interface ApiLandingLanding extends Schema.CollectionType {
     exploreEcoRange: Attribute.Component<'block.product-card-section'>;
     enquirySection: Attribute.Component<'block.print-sos'>;
     printWithKaizen: Attribute.Component<'block.print-with-kaizen'>;
-    reel: Attribute.Media;
     printingSection: Attribute.Component<'block.insta-post-section'>;
     customerReviews: Attribute.Component<'block.customer-reviews', true>;
     createdAt: Attribute.DateTime;
@@ -1056,6 +1055,74 @@ export interface ApiNeedDesignNeedDesign extends Schema.SingleType {
   };
 }
 
+export interface ApiPosterPoster extends Schema.CollectionType {
+  collectionName: 'posters';
+  info: {
+    singularName: 'poster';
+    pluralName: 'posters';
+    displayName: 'poster';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageCover: Attribute.Component<'block.page-cover'>;
+    pageHeading: Attribute.Component<'block.page-heading'>;
+    printspiration: Attribute.Component<'block.printspiration'>;
+    ourMaterials: Attribute.Component<'block.product-specification'>;
+    ecoCard: Attribute.Component<'block.eco-card'>;
+    exploreOurRange: Attribute.Component<'block.product-card-section'>;
+    ourSize: Attribute.Component<'block.product-specification-with-twosub-headings'>;
+    printPanic: Attribute.Component<'block.faq'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::poster.poster',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::poster.poster',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPrintEnquiryPrintEnquiry extends Schema.SingleType {
+  collectionName: 'print_enquiries';
+  info: {
+    singularName: 'print-enquiry';
+    pluralName: 'print-enquiries';
+    displayName: 'printEnquiry';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    printSos: Attribute.Component<'block.print-sos'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::print-enquiry.print-enquiry',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::print-enquiry.print-enquiry',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1082,6 +1149,8 @@ declare module '@strapi/types' {
       'api::home.home': ApiHomeHome;
       'api::landing.landing': ApiLandingLanding;
       'api::need-design.need-design': ApiNeedDesignNeedDesign;
+      'api::poster.poster': ApiPosterPoster;
+      'api::print-enquiry.print-enquiry': ApiPrintEnquiryPrintEnquiry;
     }
   }
 }
