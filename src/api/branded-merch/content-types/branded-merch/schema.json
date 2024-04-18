@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "branded_merches",
+  "info": {
+    "singularName": "branded-merch",
+    "pluralName": "branded-merches",
+    "displayName": "Branded Merch",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pageCover": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.page-cover"
+    },
+    "brochure": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.section"
+    },
+    "brochureCarousel": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.new-image"
+    }
+  }
+}

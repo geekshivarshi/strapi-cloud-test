@@ -27,6 +27,53 @@ input BooleanFilterInput {
   startsWith: Boolean
 }
 
+type BrandedMerch {
+  brochure: ComponentElementsSection
+  brochureCarousel(filters: ComponentElementsNewImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsNewImage]
+  createdAt: DateTime
+  pageCover: ComponentBlockPageCover
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type BrandedMerchEntity {
+  attributes: BrandedMerch
+  id: ID
+}
+
+type BrandedMerchEntityResponse {
+  data: BrandedMerchEntity
+}
+
+type BrandedMerchEntityResponseCollection {
+  data: [BrandedMerchEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input BrandedMerchFiltersInput {
+  and: [BrandedMerchFiltersInput]
+  brochure: ComponentElementsSectionFiltersInput
+  brochureCarousel: ComponentElementsNewImageFiltersInput
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  not: BrandedMerchFiltersInput
+  or: [BrandedMerchFiltersInput]
+  pageCover: ComponentBlockPageCoverFiltersInput
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input BrandedMerchInput {
+  brochure: ComponentElementsSectionInput
+  brochureCarousel: [ComponentElementsNewImageInput]
+  pageCover: ComponentBlockPageCoverInput
+  publishedAt: DateTime
+}
+
+type BrandedMerchRelationResponseCollection {
+  data: [BrandedMerchEntity!]!
+}
+
 type BusinessCard {
   createdAt: DateTime
   ecoCard: ComponentBlockEcoCard
@@ -93,6 +140,54 @@ input BusinessCardInput {
 
 type BusinessCardRelationResponseCollection {
   data: [BusinessCardEntity!]!
+}
+
+type ChatToKaibot {
+  createdAt: DateTime
+  footerText: String
+  headerImage: UploadFileEntityResponse
+  heading: String
+  publishedAt: DateTime
+  subHeading: String
+  updatedAt: DateTime
+}
+
+type ChatToKaibotEntity {
+  attributes: ChatToKaibot
+  id: ID
+}
+
+type ChatToKaibotEntityResponse {
+  data: ChatToKaibotEntity
+}
+
+type ChatToKaibotEntityResponseCollection {
+  data: [ChatToKaibotEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input ChatToKaibotFiltersInput {
+  and: [ChatToKaibotFiltersInput]
+  createdAt: DateTimeFilterInput
+  footerText: StringFilterInput
+  heading: StringFilterInput
+  not: ChatToKaibotFiltersInput
+  or: [ChatToKaibotFiltersInput]
+  publishedAt: DateTimeFilterInput
+  subHeading: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input ChatToKaibotInput {
+  footerText: String
+  headerImage: ID
+  heading: String
+  publishedAt: DateTime
+  subHeading: String
+}
+
+type ChatToKaibotRelationResponseCollection {
+  data: [ChatToKaibotEntity!]!
 }
 
 type ComponentBlockCatergory {
@@ -191,6 +286,30 @@ input ComponentBlockEcoCardInput {
   id: ID
   mobileCoverImage: ID
   title: String
+}
+
+type ComponentBlockExploreCategories {
+  card(filters: ComponentElementsCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsCard]
+  heading: String
+  headingImage: UploadFileEntityResponse
+  id: ID!
+  topImage: UploadFileEntityResponse
+}
+
+input ComponentBlockExploreCategoriesFiltersInput {
+  and: [ComponentBlockExploreCategoriesFiltersInput]
+  card: ComponentElementsCardFiltersInput
+  heading: StringFilterInput
+  not: ComponentBlockExploreCategoriesFiltersInput
+  or: [ComponentBlockExploreCategoriesFiltersInput]
+}
+
+input ComponentBlockExploreCategoriesInput {
+  card: [ComponentElementsCardInput]
+  heading: String
+  headingImage: ID
+  id: ID
+  topImage: ID
 }
 
 type ComponentBlockExploreRangeCards {
@@ -337,6 +456,29 @@ input ComponentBlockPageHeadingInput {
   heading: String
   id: ID
   image: ID
+  subHeading: String
+}
+
+type ComponentBlockPartners {
+  heading: String
+  id: ID!
+  logos(filters: ComponentElementsNewImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsNewImage]
+  subHeading: String
+}
+
+input ComponentBlockPartnersFiltersInput {
+  and: [ComponentBlockPartnersFiltersInput]
+  heading: StringFilterInput
+  logos: ComponentElementsNewImageFiltersInput
+  not: ComponentBlockPartnersFiltersInput
+  or: [ComponentBlockPartnersFiltersInput]
+  subHeading: StringFilterInput
+}
+
+input ComponentBlockPartnersInput {
+  heading: String
+  id: ID
+  logos: [ComponentElementsNewImageInput]
   subHeading: String
 }
 
@@ -488,6 +630,77 @@ input ComponentElementsBadgeInput {
   type: ENUM_COMPONENTELEMENTSBADGE_TYPE
 }
 
+type ComponentElementsBulletPoints {
+  id: ID!
+  point: String
+}
+
+input ComponentElementsBulletPointsFiltersInput {
+  and: [ComponentElementsBulletPointsFiltersInput]
+  not: ComponentElementsBulletPointsFiltersInput
+  or: [ComponentElementsBulletPointsFiltersInput]
+  point: StringFilterInput
+}
+
+input ComponentElementsBulletPointsInput {
+  id: ID
+  point: String
+}
+
+type ComponentElementsCard {
+  backgroundImage: ComponentElementsNewImage
+  content: String
+  headerImage: ComponentElementsNewImage
+  heading: String
+  id: ID!
+  subheading: String
+}
+
+input ComponentElementsCardFiltersInput {
+  and: [ComponentElementsCardFiltersInput]
+  backgroundImage: ComponentElementsNewImageFiltersInput
+  content: StringFilterInput
+  headerImage: ComponentElementsNewImageFiltersInput
+  heading: StringFilterInput
+  not: ComponentElementsCardFiltersInput
+  or: [ComponentElementsCardFiltersInput]
+  subheading: StringFilterInput
+}
+
+input ComponentElementsCardInput {
+  backgroundImage: ComponentElementsNewImageInput
+  content: String
+  headerImage: ComponentElementsNewImageInput
+  heading: String
+  id: ID
+  subheading: String
+}
+
+type ComponentElementsCardWithImageItem {
+  headerImage: UploadFileEntityResponse
+  heading: String
+  id: ID!
+  listItem(filters: ComponentElementsListItemWithImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsListItemWithImage]
+  subHeading: String
+}
+
+input ComponentElementsCardWithImageItemFiltersInput {
+  and: [ComponentElementsCardWithImageItemFiltersInput]
+  heading: StringFilterInput
+  listItem: ComponentElementsListItemWithImageFiltersInput
+  not: ComponentElementsCardWithImageItemFiltersInput
+  or: [ComponentElementsCardWithImageItemFiltersInput]
+  subHeading: StringFilterInput
+}
+
+input ComponentElementsCardWithImageItemInput {
+  headerImage: ID
+  heading: String
+  id: ID
+  listItem: [ComponentElementsListItemWithImageInput]
+  subHeading: String
+}
+
 type ComponentElementsImage {
   alt: String!
   id: ID!
@@ -612,6 +825,29 @@ input ComponentElementsQaInput {
   question: String
 }
 
+type ComponentElementsSection {
+  heading: String
+  id: ID!
+  points(filters: ComponentElementsBulletPointsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsBulletPoints]
+  subheading: String
+}
+
+input ComponentElementsSectionFiltersInput {
+  and: [ComponentElementsSectionFiltersInput]
+  heading: StringFilterInput
+  not: ComponentElementsSectionFiltersInput
+  or: [ComponentElementsSectionFiltersInput]
+  points: ComponentElementsBulletPointsFiltersInput
+  subheading: StringFilterInput
+}
+
+input ComponentElementsSectionInput {
+  heading: String
+  id: ID
+  points: [ComponentElementsBulletPointsInput]
+  subheading: String
+}
+
 type ComponentSharedMetaSocial {
   description: String!
   id: ID!
@@ -675,6 +911,50 @@ input ComponentSharedSeoInput {
   metaTitle: String
   metaViewport: String
   structuredData: JSON
+}
+
+type ContactUs {
+  createdAt: DateTime
+  pageCover: ComponentBlockPageCover
+  pageHeader: ComponentElementsCardWithImageItem
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type ContactUsEntity {
+  attributes: ContactUs
+  id: ID
+}
+
+type ContactUsEntityResponse {
+  data: ContactUsEntity
+}
+
+type ContactUsEntityResponseCollection {
+  data: [ContactUsEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input ContactUsFiltersInput {
+  and: [ContactUsFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  not: ContactUsFiltersInput
+  or: [ContactUsFiltersInput]
+  pageCover: ComponentBlockPageCoverFiltersInput
+  pageHeader: ComponentElementsCardWithImageItemFiltersInput
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input ContactUsInput {
+  pageCover: ComponentBlockPageCoverInput
+  pageHeader: ComponentElementsCardWithImageItemInput
+  publishedAt: DateTime
+}
+
+type ContactUsRelationResponseCollection {
+  data: [ContactUsEntity!]!
 }
 
 type ContentReleasesRelease {
@@ -985,7 +1265,7 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = BusinessCard | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockInstaPostSection | ComponentBlockLandingPageCover | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentSharedMetaSocial | ComponentSharedSeo | ContentReleasesRelease | ContentReleasesReleaseAction | EcoRange | Footer | GoogleReview | Header | Home | I18NLocale | Landing | NeedDesign | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockInstaPostSection | ComponentBlockLandingPageCover | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | EcoRange | Footer | GoogleReview | Header | HereToHelp | Home | I18NLocale | Industry | Landing | NeedADesign | NeedDesign | OpenHour | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GoogleReview {
   averageRating: Float
@@ -1094,6 +1374,56 @@ input HeaderInput {
 
 type HeaderRelationResponseCollection {
   data: [HeaderEntity!]!
+}
+
+type HereToHelp {
+  createdAt: DateTime
+  descriptionPoints(filters: ComponentElementsBulletPointsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsBulletPoints]
+  heading: String
+  leftImage: UploadFileEntityResponse
+  publishedAt: DateTime
+  rightImage: UploadFileEntityResponse
+  subHeading: String
+  updatedAt: DateTime
+}
+
+type HereToHelpEntity {
+  attributes: HereToHelp
+  id: ID
+}
+
+type HereToHelpEntityResponse {
+  data: HereToHelpEntity
+}
+
+type HereToHelpEntityResponseCollection {
+  data: [HereToHelpEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input HereToHelpFiltersInput {
+  and: [HereToHelpFiltersInput]
+  createdAt: DateTimeFilterInput
+  descriptionPoints: ComponentElementsBulletPointsFiltersInput
+  heading: StringFilterInput
+  not: HereToHelpFiltersInput
+  or: [HereToHelpFiltersInput]
+  publishedAt: DateTimeFilterInput
+  subHeading: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input HereToHelpInput {
+  descriptionPoints: [ComponentElementsBulletPointsInput]
+  heading: String
+  leftImage: ID
+  publishedAt: DateTime
+  rightImage: ID
+  subHeading: String
+}
+
+type HereToHelpRelationResponseCollection {
+  data: [HereToHelpEntity!]!
 }
 
 type Home {
@@ -1207,6 +1537,53 @@ input IDFilterInput {
   null: Boolean
   or: [ID]
   startsWith: ID
+}
+
+type Industry {
+  createdAt: DateTime
+  exploreCategories: ComponentBlockExploreCategories
+  pageCover: ComponentBlockPageCover
+  partners: ComponentBlockPartners
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type IndustryEntity {
+  attributes: Industry
+  id: ID
+}
+
+type IndustryEntityResponse {
+  data: IndustryEntity
+}
+
+type IndustryEntityResponseCollection {
+  data: [IndustryEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input IndustryFiltersInput {
+  and: [IndustryFiltersInput]
+  createdAt: DateTimeFilterInput
+  exploreCategories: ComponentBlockExploreCategoriesFiltersInput
+  id: IDFilterInput
+  not: IndustryFiltersInput
+  or: [IndustryFiltersInput]
+  pageCover: ComponentBlockPageCoverFiltersInput
+  partners: ComponentBlockPartnersFiltersInput
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input IndustryInput {
+  exploreCategories: ComponentBlockExploreCategoriesInput
+  pageCover: ComponentBlockPageCoverInput
+  partners: ComponentBlockPartnersInput
+  publishedAt: DateTime
+}
+
+type IndustryRelationResponseCollection {
+  data: [IndustryEntity!]!
 }
 
 input IntFilterInput {
@@ -1364,11 +1741,15 @@ input LongFilterInput {
 type Mutation {
   """Change user password. Confirm with the current password."""
   changePassword(currentPassword: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
+  createBrandedMerch(data: BrandedMerchInput!): BrandedMerchEntityResponse
   createBusinessCard(data: BusinessCardInput!): BusinessCardEntityResponse
+  createContactUs(data: ContactUsInput!): ContactUsEntityResponse
   createContentReleasesRelease(data: ContentReleasesReleaseInput!): ContentReleasesReleaseEntityResponse
   createContentReleasesReleaseAction(data: ContentReleasesReleaseActionInput!): ContentReleasesReleaseActionEntityResponse
   createHome(data: HomeInput!): HomeEntityResponse
+  createIndustry(data: IndustryInput!): IndustryEntityResponse
   createLanding(data: LandingInput!): LandingEntityResponse
+  createNeedADesign(data: NeedADesignInput!): NeedADesignEntityResponse
   createUploadFile(data: UploadFileInput!): UploadFileEntityResponse
   createUploadFolder(data: UploadFolderInput!): UploadFolderEntityResponse
 
@@ -1377,16 +1758,23 @@ type Mutation {
 
   """Create a new user"""
   createUsersPermissionsUser(data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
+  deleteBrandedMerch(id: ID!): BrandedMerchEntityResponse
   deleteBusinessCard(id: ID!): BusinessCardEntityResponse
+  deleteChatToKaibot: ChatToKaibotEntityResponse
+  deleteContactUs(id: ID!): ContactUsEntityResponse
   deleteContentReleasesRelease(id: ID!): ContentReleasesReleaseEntityResponse
   deleteContentReleasesReleaseAction(id: ID!): ContentReleasesReleaseActionEntityResponse
   deleteEcoRange: EcoRangeEntityResponse
   deleteFooter: FooterEntityResponse
   deleteGoogleReview: GoogleReviewEntityResponse
   deleteHeader: HeaderEntityResponse
+  deleteHereToHelp: HereToHelpEntityResponse
   deleteHome(id: ID!): HomeEntityResponse
+  deleteIndustry(id: ID!): IndustryEntityResponse
   deleteLanding(id: ID!): LandingEntityResponse
+  deleteNeedADesign(id: ID!): NeedADesignEntityResponse
   deleteNeedDesign: NeedDesignEntityResponse
+  deleteOpenHour: OpenHourEntityResponse
   deleteUploadFile(id: ID!): UploadFileEntityResponse
   deleteUploadFolder(id: ID!): UploadFolderEntityResponse
 
@@ -1412,7 +1800,10 @@ type Mutation {
   Reset user password. Confirm with a code (resetToken from forgotPassword)
   """
   resetPassword(code: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
+  updateBrandedMerch(data: BrandedMerchInput!, id: ID!): BrandedMerchEntityResponse
   updateBusinessCard(data: BusinessCardInput!, id: ID!): BusinessCardEntityResponse
+  updateChatToKaibot(data: ChatToKaibotInput!): ChatToKaibotEntityResponse
+  updateContactUs(data: ContactUsInput!, id: ID!): ContactUsEntityResponse
   updateContentReleasesRelease(data: ContentReleasesReleaseInput!, id: ID!): ContentReleasesReleaseEntityResponse
   updateContentReleasesReleaseAction(data: ContentReleasesReleaseActionInput!, id: ID!): ContentReleasesReleaseActionEntityResponse
   updateEcoRange(data: EcoRangeInput!): EcoRangeEntityResponse
@@ -1420,9 +1811,13 @@ type Mutation {
   updateFooter(data: FooterInput!): FooterEntityResponse
   updateGoogleReview(data: GoogleReviewInput!): GoogleReviewEntityResponse
   updateHeader(data: HeaderInput!): HeaderEntityResponse
+  updateHereToHelp(data: HereToHelpInput!): HereToHelpEntityResponse
   updateHome(data: HomeInput!, id: ID!): HomeEntityResponse
+  updateIndustry(data: IndustryInput!, id: ID!): IndustryEntityResponse
   updateLanding(data: LandingInput!, id: ID!): LandingEntityResponse
+  updateNeedADesign(data: NeedADesignInput!, id: ID!): NeedADesignEntityResponse
   updateNeedDesign(data: NeedDesignInput!): NeedDesignEntityResponse
+  updateOpenHour(data: OpenHourInput!): OpenHourEntityResponse
   updateUploadFile(data: UploadFileInput!, id: ID!): UploadFileEntityResponse
   updateUploadFolder(data: UploadFolderInput!, id: ID!): UploadFolderEntityResponse
 
@@ -1432,6 +1827,53 @@ type Mutation {
   """Update an existing user"""
   updateUsersPermissionsUser(data: UsersPermissionsUserInput!, id: ID!): UsersPermissionsUserEntityResponse!
   upload(field: String, file: Upload!, info: FileInfoInput, ref: String, refId: ID): UploadFileEntityResponse!
+}
+
+type NeedADesign {
+  createdAt: DateTime
+  formStyleImages(filters: ComponentElementsListItemWithImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsListItemWithImage]
+  header: ComponentElementsCardWithImageItem
+  pageCover: ComponentBlockPageCover
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type NeedADesignEntity {
+  attributes: NeedADesign
+  id: ID
+}
+
+type NeedADesignEntityResponse {
+  data: NeedADesignEntity
+}
+
+type NeedADesignEntityResponseCollection {
+  data: [NeedADesignEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input NeedADesignFiltersInput {
+  and: [NeedADesignFiltersInput]
+  createdAt: DateTimeFilterInput
+  formStyleImages: ComponentElementsListItemWithImageFiltersInput
+  header: ComponentElementsCardWithImageItemFiltersInput
+  id: IDFilterInput
+  not: NeedADesignFiltersInput
+  or: [NeedADesignFiltersInput]
+  pageCover: ComponentBlockPageCoverFiltersInput
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input NeedADesignInput {
+  formStyleImages: [ComponentElementsListItemWithImageInput]
+  header: ComponentElementsCardWithImageItemInput
+  pageCover: ComponentBlockPageCoverInput
+  publishedAt: DateTime
+}
+
+type NeedADesignRelationResponseCollection {
+  data: [NeedADesignEntity!]!
 }
 
 type NeedDesign {
@@ -1474,6 +1916,54 @@ type NeedDesignRelationResponseCollection {
   data: [NeedDesignEntity!]!
 }
 
+type OpenHour {
+  createdAt: DateTime
+  headerImage: UploadFileEntityResponse
+  heading: String
+  points(filters: ComponentElementsBulletPointsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsBulletPoints]
+  publishedAt: DateTime
+  qa(filters: ComponentElementsQaFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsQa]
+  updatedAt: DateTime
+}
+
+type OpenHourEntity {
+  attributes: OpenHour
+  id: ID
+}
+
+type OpenHourEntityResponse {
+  data: OpenHourEntity
+}
+
+type OpenHourEntityResponseCollection {
+  data: [OpenHourEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input OpenHourFiltersInput {
+  and: [OpenHourFiltersInput]
+  createdAt: DateTimeFilterInput
+  heading: StringFilterInput
+  not: OpenHourFiltersInput
+  or: [OpenHourFiltersInput]
+  points: ComponentElementsBulletPointsFiltersInput
+  publishedAt: DateTimeFilterInput
+  qa: ComponentElementsQaFiltersInput
+  updatedAt: DateTimeFilterInput
+}
+
+input OpenHourInput {
+  headerImage: ID
+  heading: String
+  points: [ComponentElementsBulletPointsInput]
+  publishedAt: DateTime
+  qa: [ComponentElementsQaInput]
+}
+
+type OpenHourRelationResponseCollection {
+  data: [OpenHourEntity!]!
+}
+
 type Pagination {
   page: Int!
   pageCount: Int!
@@ -1494,8 +1984,13 @@ enum PublicationState {
 }
 
 type Query {
+  brandedMerch(id: ID): BrandedMerchEntityResponse
+  brandedMerches(filters: BrandedMerchFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BrandedMerchEntityResponseCollection
   businessCard(id: ID): BusinessCardEntityResponse
   businessCards(filters: BusinessCardFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BusinessCardEntityResponseCollection
+  chatToKaibot(publicationState: PublicationState = LIVE): ChatToKaibotEntityResponse
+  contactUs(id: ID): ContactUsEntityResponse
+  contactUses(filters: ContactUsFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ContactUsEntityResponseCollection
   contentReleasesRelease(id: ID): ContentReleasesReleaseEntityResponse
   contentReleasesReleaseAction(id: ID): ContentReleasesReleaseActionEntityResponse
   contentReleasesReleaseActions(filters: ContentReleasesReleaseActionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ContentReleasesReleaseActionEntityResponseCollection
@@ -1504,14 +1999,20 @@ type Query {
   footer(publicationState: PublicationState = LIVE): FooterEntityResponse
   googleReview(publicationState: PublicationState = LIVE): GoogleReviewEntityResponse
   header(publicationState: PublicationState = LIVE): HeaderEntityResponse
+  hereToHelp(publicationState: PublicationState = LIVE): HereToHelpEntityResponse
   home(id: ID): HomeEntityResponse
   homes(filters: HomeFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): HomeEntityResponseCollection
   i18NLocale(id: ID): I18NLocaleEntityResponse
   i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection
+  industries(filters: IndustryFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): IndustryEntityResponseCollection
+  industry(id: ID): IndustryEntityResponse
   landing(id: ID): LandingEntityResponse
   landings(filters: LandingFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): LandingEntityResponseCollection
   me: UsersPermissionsMe
+  needADesign(id: ID): NeedADesignEntityResponse
+  needADesigns(filters: NeedADesignFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): NeedADesignEntityResponseCollection
   needDesign(publicationState: PublicationState = LIVE): NeedDesignEntityResponse
+  openHour(publicationState: PublicationState = LIVE): OpenHourEntityResponse
   uploadFile(id: ID): UploadFileEntityResponse
   uploadFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileEntityResponseCollection
   uploadFolder(id: ID): UploadFolderEntityResponse

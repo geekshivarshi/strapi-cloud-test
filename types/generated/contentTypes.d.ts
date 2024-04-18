@@ -781,6 +781,39 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiBrandedMerchBrandedMerch extends Schema.CollectionType {
+  collectionName: 'branded_merches';
+  info: {
+    singularName: 'branded-merch';
+    pluralName: 'branded-merches';
+    displayName: 'Branded Merch';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageCover: Attribute.Component<'block.page-cover'>;
+    brochure: Attribute.Component<'elements.section'>;
+    brochureCarousel: Attribute.Component<'elements.new-image', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::branded-merch.branded-merch',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::branded-merch.branded-merch',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiBusinessCardBusinessCard extends Schema.CollectionType {
   collectionName: 'business_cards';
   info: {
@@ -814,6 +847,71 @@ export interface ApiBusinessCardBusinessCard extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::business-card.business-card',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiChatToKaibotChatToKaibot extends Schema.SingleType {
+  collectionName: 'chat_to_kaibots';
+  info: {
+    singularName: 'chat-to-kaibot';
+    pluralName: 'chat-to-kaibots';
+    displayName: 'Chat To Kaibot';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    heading: Attribute.String;
+    subHeading: Attribute.String;
+    headerImage: Attribute.Media;
+    footerText: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::chat-to-kaibot.chat-to-kaibot',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::chat-to-kaibot.chat-to-kaibot',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiContactUsContactUs extends Schema.CollectionType {
+  collectionName: 'contact_uses';
+  info: {
+    singularName: 'contact-us';
+    pluralName: 'contact-uses';
+    displayName: 'Contact us';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageCover: Attribute.Component<'block.page-cover'>;
+    pageHeader: Attribute.Component<'elements.card-with-image-item'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contact-us.contact-us',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contact-us.contact-us',
       'oneToOne',
       'admin::user'
     > &
@@ -961,6 +1059,41 @@ export interface ApiHeaderHeader extends Schema.SingleType {
   };
 }
 
+export interface ApiHereToHelpHereToHelp extends Schema.SingleType {
+  collectionName: 'here_to_helps';
+  info: {
+    singularName: 'here-to-help';
+    pluralName: 'here-to-helps';
+    displayName: 'Here to Help';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    heading: Attribute.String;
+    subHeading: Attribute.String;
+    leftImage: Attribute.Media;
+    rightImage: Attribute.Media;
+    descriptionPoints: Attribute.Component<'elements.bullet-points', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::here-to-help.here-to-help',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::here-to-help.here-to-help',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiHomeHome extends Schema.CollectionType {
   collectionName: 'homes';
   info: {
@@ -981,6 +1114,39 @@ export interface ApiHomeHome extends Schema.CollectionType {
     createdBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiIndustryIndustry extends Schema.CollectionType {
+  collectionName: 'industries';
+  info: {
+    singularName: 'industry';
+    pluralName: 'industries';
+    displayName: 'Industry';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageCover: Attribute.Component<'block.page-cover'>;
+    exploreCategories: Attribute.Component<'block.explore-categories'>;
+    partners: Attribute.Component<'block.partners'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::industry.industry',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::industry.industry',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -1025,6 +1191,39 @@ export interface ApiLandingLanding extends Schema.CollectionType {
   };
 }
 
+export interface ApiNeedADesignNeedADesign extends Schema.CollectionType {
+  collectionName: 'need_a_designs';
+  info: {
+    singularName: 'need-a-design';
+    pluralName: 'need-a-designs';
+    displayName: 'need a design';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageCover: Attribute.Component<'block.page-cover'>;
+    formStyleImages: Attribute.Component<'elements.list-item-with-image', true>;
+    header: Attribute.Component<'elements.card-with-image-item'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::need-a-design.need-a-design',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::need-a-design.need-a-design',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiNeedDesignNeedDesign extends Schema.SingleType {
   collectionName: 'need_designs';
   info: {
@@ -1056,6 +1255,40 @@ export interface ApiNeedDesignNeedDesign extends Schema.SingleType {
   };
 }
 
+export interface ApiOpenHourOpenHour extends Schema.SingleType {
+  collectionName: 'open_hours';
+  info: {
+    singularName: 'open-hour';
+    pluralName: 'open-hours';
+    displayName: 'Open Hour';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    heading: Attribute.String;
+    points: Attribute.Component<'elements.bullet-points', true>;
+    qa: Attribute.Component<'elements.qa', true>;
+    headerImage: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::open-hour.open-hour',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::open-hour.open-hour',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1074,14 +1307,21 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::branded-merch.branded-merch': ApiBrandedMerchBrandedMerch;
       'api::business-card.business-card': ApiBusinessCardBusinessCard;
+      'api::chat-to-kaibot.chat-to-kaibot': ApiChatToKaibotChatToKaibot;
+      'api::contact-us.contact-us': ApiContactUsContactUs;
       'api::eco-range.eco-range': ApiEcoRangeEcoRange;
       'api::footer.footer': ApiFooterFooter;
       'api::google-review.google-review': ApiGoogleReviewGoogleReview;
       'api::header.header': ApiHeaderHeader;
+      'api::here-to-help.here-to-help': ApiHereToHelpHereToHelp;
       'api::home.home': ApiHomeHome;
+      'api::industry.industry': ApiIndustryIndustry;
       'api::landing.landing': ApiLandingLanding;
+      'api::need-a-design.need-a-design': ApiNeedADesignNeedADesign;
       'api::need-design.need-design': ApiNeedDesignNeedDesign;
+      'api::open-hour.open-hour': ApiOpenHourOpenHour;
     }
   }
 }

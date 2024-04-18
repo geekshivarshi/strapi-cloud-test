@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_elements_sections",
+  "info": {
+    "displayName": "Section"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "subheading": {
+      "type": "string"
+    },
+    "points": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.bullet-points"
+    }
+  }
+}
