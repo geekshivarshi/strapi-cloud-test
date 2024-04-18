@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_block_partners",
+  "info": {
+    "displayName": "Partners",
+    "icon": "briefcase",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "subHeading": {
+      "type": "string"
+    },
+    "logos": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.new-image"
+    }
+  }
+}

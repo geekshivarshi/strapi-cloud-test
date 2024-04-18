@@ -1,0 +1,39 @@
+{
+  "kind": "singleType",
+  "collectionName": "open_hours",
+  "info": {
+    "singularName": "open-hour",
+    "pluralName": "open-hours",
+    "displayName": "Open Hour",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "points": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.bullet-points"
+    },
+    "qa": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.qa"
+    },
+    "headerImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
