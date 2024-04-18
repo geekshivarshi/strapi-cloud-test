@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_block_printspirations",
+  "info": {
+    "displayName": "printspiration",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "heading": {
+      "type": "string"
+    },
+    "images": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.image"
+    }
+  }
+}

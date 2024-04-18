@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "business_cards",
+  "collectionName": "posters",
   "info": {
-    "singularName": "business-card",
-    "pluralName": "business-cards",
-    "displayName": "Business card",
+    "singularName": "poster",
+    "pluralName": "posters",
+    "displayName": "poster",
     "description": ""
   },
   "options": {
@@ -15,53 +15,42 @@
     "pageCover": {
       "type": "component",
       "repeatable": false,
-      "component": "block.page-cover",
-      "required": true
+      "component": "block.page-cover"
     },
     "pageHeading": {
       "type": "component",
       "repeatable": false,
       "component": "block.page-heading"
     },
-    "exploreOurRange": {
+    "printspiration": {
       "type": "component",
-      "repeatable": true,
-      "component": "block.explore-range-cards"
+      "repeatable": false,
+      "component": "block.printspiration"
     },
     "ourMaterials": {
       "type": "component",
       "repeatable": false,
       "component": "block.product-specification"
     },
-    "printPanic": {
-      "type": "component",
-      "repeatable": false,
-      "component": "block.faq"
-    },
-    "printSos": {
-      "type": "component",
-      "repeatable": false,
-      "component": "block.print-sos"
-    },
     "ecoCard": {
       "type": "component",
       "repeatable": false,
       "component": "block.eco-card"
     },
-    "ultimateTouches": {
-      "type": "component",
-      "repeatable": false,
-      "component": "block.product-specification"
-    },
-    "exploreOurCategories": {
+    "exploreOurRange": {
       "type": "component",
       "repeatable": false,
       "component": "block.product-card-section"
     },
-    "printspiration": {
+    "ourSize": {
       "type": "component",
       "repeatable": false,
-      "component": "block.printspiration"
+      "component": "block.product-specification-with-twosub-headings"
+    },
+    "printPanic": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.faq"
     }
   }
 }

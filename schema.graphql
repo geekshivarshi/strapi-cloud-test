@@ -84,7 +84,7 @@ type BusinessCard {
   pageHeading: ComponentBlockPageHeading
   printPanic: ComponentBlockFaq
   printSos: ComponentBlockPrintSos
-  printspiration(filters: ComponentElementsNewImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsNewImage]
+  printspiration: ComponentBlockPrintspiration
   publishedAt: DateTime
   ultimateTouches: ComponentBlockProductSpecification
   updatedAt: DateTime
@@ -118,7 +118,7 @@ input BusinessCardFiltersInput {
   pageHeading: ComponentBlockPageHeadingFiltersInput
   printPanic: ComponentBlockFaqFiltersInput
   printSos: ComponentBlockPrintSosFiltersInput
-  printspiration: ComponentElementsNewImageFiltersInput
+  printspiration: ComponentBlockPrintspirationFiltersInput
   publishedAt: DateTimeFilterInput
   ultimateTouches: ComponentBlockProductSpecificationFiltersInput
   updatedAt: DateTimeFilterInput
@@ -133,7 +133,7 @@ input BusinessCardInput {
   pageHeading: ComponentBlockPageHeadingInput
   printPanic: ComponentBlockFaqInput
   printSos: ComponentBlockPrintSosInput
-  printspiration: [ComponentElementsNewImageInput]
+  printspiration: ComponentBlockPrintspirationInput
   publishedAt: DateTime
   ultimateTouches: ComponentBlockProductSpecificationInput
 }
@@ -530,6 +530,29 @@ input ComponentBlockPrintWithKaizenInput {
   specifications: [ComponentElementsListItemWithImageInput]
 }
 
+type ComponentBlockPrintspiration {
+  heading: String
+  id: ID!
+  images(filters: ComponentElementsImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsImage]
+  title: String
+}
+
+input ComponentBlockPrintspirationFiltersInput {
+  and: [ComponentBlockPrintspirationFiltersInput]
+  heading: StringFilterInput
+  images: ComponentElementsImageFiltersInput
+  not: ComponentBlockPrintspirationFiltersInput
+  or: [ComponentBlockPrintspirationFiltersInput]
+  title: StringFilterInput
+}
+
+input ComponentBlockPrintspirationInput {
+  heading: String
+  id: ID
+  images: [ComponentElementsImageInput]
+  title: String
+}
+
 type ComponentBlockProductCardSection {
   description: String
   exploreRangeCards(filters: ComponentBlockExploreRangeCardsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockExploreRangeCards]
@@ -584,6 +607,37 @@ input ComponentBlockProductSpecificationInput {
   heading: String
   id: ID
   subHeading: String
+}
+
+type ComponentBlockProductSpecificationWithTwosubHeadings {
+  coverImg: UploadFileEntityResponse
+  coverImgAlignment: String
+  description(filters: ComponentElementsListItemWithImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsListItemWithImage]
+  heading: String
+  id: ID!
+  subHeading1: String
+  subHeading2: String
+}
+
+input ComponentBlockProductSpecificationWithTwosubHeadingsFiltersInput {
+  and: [ComponentBlockProductSpecificationWithTwosubHeadingsFiltersInput]
+  coverImgAlignment: StringFilterInput
+  description: ComponentElementsListItemWithImageFiltersInput
+  heading: StringFilterInput
+  not: ComponentBlockProductSpecificationWithTwosubHeadingsFiltersInput
+  or: [ComponentBlockProductSpecificationWithTwosubHeadingsFiltersInput]
+  subHeading1: StringFilterInput
+  subHeading2: StringFilterInput
+}
+
+input ComponentBlockProductSpecificationWithTwosubHeadingsInput {
+  coverImg: ID
+  coverImgAlignment: String
+  description: [ComponentElementsListItemWithImageInput]
+  heading: String
+  id: ID
+  subHeading1: String
+  subHeading2: String
 }
 
 type ComponentElementsAdvanceImage {
@@ -1265,7 +1319,7 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockInstaPostSection | ComponentBlockLandingPageCover | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | EcoRange | Footer | GoogleReview | Header | HereToHelp | Home | I18NLocale | Industry | Landing | NeedADesign | NeedDesign | OpenHour | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockInstaPostSection | ComponentBlockLandingPageCover | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | EcoRange | Footer | GoogleReview | Header | HereToHelp | Home | I18NLocale | Industry | Landing | NeedADesign | NeedDesign | OpenHour | Poster | PrintEnquiry | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GoogleReview {
   averageRating: Float
@@ -1653,7 +1707,6 @@ type Landing {
   printWithKaizen: ComponentBlockPrintWithKaizen
   printingSection: ComponentBlockInstaPostSection
   publishedAt: DateTime
-  reel: UploadFileEntityResponse
   updatedAt: DateTime
 }
 
@@ -1701,7 +1754,6 @@ input LandingInput {
   printWithKaizen: ComponentBlockPrintWithKaizenInput
   printingSection: ComponentBlockInstaPostSectionInput
   publishedAt: DateTime
-  reel: ID
 }
 
 type LandingRelationResponseCollection {
@@ -1750,6 +1802,7 @@ type Mutation {
   createIndustry(data: IndustryInput!): IndustryEntityResponse
   createLanding(data: LandingInput!): LandingEntityResponse
   createNeedADesign(data: NeedADesignInput!): NeedADesignEntityResponse
+  createPoster(data: PosterInput!): PosterEntityResponse
   createUploadFile(data: UploadFileInput!): UploadFileEntityResponse
   createUploadFolder(data: UploadFolderInput!): UploadFolderEntityResponse
 
@@ -1775,6 +1828,8 @@ type Mutation {
   deleteNeedADesign(id: ID!): NeedADesignEntityResponse
   deleteNeedDesign: NeedDesignEntityResponse
   deleteOpenHour: OpenHourEntityResponse
+  deletePoster(id: ID!): PosterEntityResponse
+  deletePrintEnquiry: PrintEnquiryEntityResponse
   deleteUploadFile(id: ID!): UploadFileEntityResponse
   deleteUploadFolder(id: ID!): UploadFolderEntityResponse
 
@@ -1818,6 +1873,8 @@ type Mutation {
   updateNeedADesign(data: NeedADesignInput!, id: ID!): NeedADesignEntityResponse
   updateNeedDesign(data: NeedDesignInput!): NeedDesignEntityResponse
   updateOpenHour(data: OpenHourInput!): OpenHourEntityResponse
+  updatePoster(data: PosterInput!, id: ID!): PosterEntityResponse
+  updatePrintEnquiry(data: PrintEnquiryInput!): PrintEnquiryEntityResponse
   updateUploadFile(data: UploadFileInput!, id: ID!): UploadFileEntityResponse
   updateUploadFolder(data: UploadFolderInput!, id: ID!): UploadFolderEntityResponse
 
@@ -1978,6 +2035,108 @@ input PaginationArg {
   start: Int
 }
 
+type Poster {
+  createdAt: DateTime
+  ecoCard: ComponentBlockEcoCard
+  exploreOurRange: ComponentBlockProductCardSection
+  ourMaterials: ComponentBlockProductSpecification
+  ourSize: ComponentBlockProductSpecificationWithTwosubHeadings
+  pageCover: ComponentBlockPageCover
+  pageHeading: ComponentBlockPageHeading
+  printPanic: ComponentBlockFaq
+  printspiration: ComponentBlockPrintspiration
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type PosterEntity {
+  attributes: Poster
+  id: ID
+}
+
+type PosterEntityResponse {
+  data: PosterEntity
+}
+
+type PosterEntityResponseCollection {
+  data: [PosterEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input PosterFiltersInput {
+  and: [PosterFiltersInput]
+  createdAt: DateTimeFilterInput
+  ecoCard: ComponentBlockEcoCardFiltersInput
+  exploreOurRange: ComponentBlockProductCardSectionFiltersInput
+  id: IDFilterInput
+  not: PosterFiltersInput
+  or: [PosterFiltersInput]
+  ourMaterials: ComponentBlockProductSpecificationFiltersInput
+  ourSize: ComponentBlockProductSpecificationWithTwosubHeadingsFiltersInput
+  pageCover: ComponentBlockPageCoverFiltersInput
+  pageHeading: ComponentBlockPageHeadingFiltersInput
+  printPanic: ComponentBlockFaqFiltersInput
+  printspiration: ComponentBlockPrintspirationFiltersInput
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input PosterInput {
+  ecoCard: ComponentBlockEcoCardInput
+  exploreOurRange: ComponentBlockProductCardSectionInput
+  ourMaterials: ComponentBlockProductSpecificationInput
+  ourSize: ComponentBlockProductSpecificationWithTwosubHeadingsInput
+  pageCover: ComponentBlockPageCoverInput
+  pageHeading: ComponentBlockPageHeadingInput
+  printPanic: ComponentBlockFaqInput
+  printspiration: ComponentBlockPrintspirationInput
+  publishedAt: DateTime
+}
+
+type PosterRelationResponseCollection {
+  data: [PosterEntity!]!
+}
+
+type PrintEnquiry {
+  createdAt: DateTime
+  printSos: ComponentBlockPrintSos
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type PrintEnquiryEntity {
+  attributes: PrintEnquiry
+  id: ID
+}
+
+type PrintEnquiryEntityResponse {
+  data: PrintEnquiryEntity
+}
+
+type PrintEnquiryEntityResponseCollection {
+  data: [PrintEnquiryEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input PrintEnquiryFiltersInput {
+  and: [PrintEnquiryFiltersInput]
+  createdAt: DateTimeFilterInput
+  not: PrintEnquiryFiltersInput
+  or: [PrintEnquiryFiltersInput]
+  printSos: ComponentBlockPrintSosFiltersInput
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input PrintEnquiryInput {
+  printSos: ComponentBlockPrintSosInput
+  publishedAt: DateTime
+}
+
+type PrintEnquiryRelationResponseCollection {
+  data: [PrintEnquiryEntity!]!
+}
+
 enum PublicationState {
   LIVE
   PREVIEW
@@ -2013,6 +2172,9 @@ type Query {
   needADesigns(filters: NeedADesignFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): NeedADesignEntityResponseCollection
   needDesign(publicationState: PublicationState = LIVE): NeedDesignEntityResponse
   openHour(publicationState: PublicationState = LIVE): OpenHourEntityResponse
+  poster(id: ID): PosterEntityResponse
+  posters(filters: PosterFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PosterEntityResponseCollection
+  printEnquiry(publicationState: PublicationState = LIVE): PrintEnquiryEntityResponse
   uploadFile(id: ID): UploadFileEntityResponse
   uploadFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileEntityResponseCollection
   uploadFolder(id: ID): UploadFolderEntityResponse

@@ -193,6 +193,19 @@ export interface BlockPrintWithKaizen extends Schema.Component {
   };
 }
 
+export interface BlockPrintspiration extends Schema.Component {
+  collectionName: 'components_block_printspirations';
+  info: {
+    displayName: 'printspiration';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    heading: Attribute.String;
+    images: Attribute.Component<'elements.image', true>;
+  };
+}
+
 export interface BlockProductCardSection extends Schema.Component {
   collectionName: 'components_block_product_card_section';
   info: {
@@ -204,6 +217,22 @@ export interface BlockProductCardSection extends Schema.Component {
     description: Attribute.String;
     exploreRangeCards: Attribute.Component<'block.explore-range-cards', true>;
     headerImage: Attribute.Media;
+  };
+}
+
+export interface BlockProductSpecificationWithTwosubHeadings
+  extends Schema.Component {
+  collectionName: 'components_block_product_specs_with_two_sub_headings';
+  info: {
+    displayName: 'ProductSpecsWithTwoSubHeadings';
+  };
+  attributes: {
+    heading: Attribute.String;
+    subHeading1: Attribute.Text;
+    subHeading2: Attribute.Text;
+    coverImg: Attribute.Media;
+    coverImgAlignment: Attribute.String;
+    description: Attribute.Component<'elements.list-item-with-image', true>;
   };
 }
 
@@ -435,7 +464,9 @@ declare module '@strapi/types' {
       'block.partners': BlockPartners;
       'block.print-sos': BlockPrintSos;
       'block.print-with-kaizen': BlockPrintWithKaizen;
+      'block.printspiration': BlockPrintspiration;
       'block.product-card-section': BlockProductCardSection;
+      'block.product-specification-with-twosub-headings': BlockProductSpecificationWithTwosubHeadings;
       'block.product-specification': BlockProductSpecification;
       'elements.advance-image': ElementsAdvanceImage;
       'elements.badge': ElementsBadge;
