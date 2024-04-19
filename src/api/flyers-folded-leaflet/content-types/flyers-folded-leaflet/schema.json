@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "flyers_folded_leaflets",
+  "info": {
+    "singularName": "flyers-folded-leaflet",
+    "pluralName": "flyers-folded-leaflets",
+    "displayName": "Flyers-folded-leaflet",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pageCover": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.page-cover"
+    },
+    "pageHeading": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.page-heading"
+    },
+    "exploreOurRange": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.product-card-section"
+    },
+    "printspiration": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.printspiration"
+    },
+    "ourMaterials": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.product-specification"
+    },
+    "ecoCard": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.eco-card"
+    },
+    "printPanic": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.faq"
+    }
+  }
+}
