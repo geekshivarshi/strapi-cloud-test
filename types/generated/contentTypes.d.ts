@@ -949,6 +949,44 @@ export interface ApiEcoRangeEcoRange extends Schema.SingleType {
   };
 }
 
+export interface ApiFlyersFoldedLeafletFlyersFoldedLeaflet
+  extends Schema.CollectionType {
+  collectionName: 'flyers_folded_leaflets';
+  info: {
+    singularName: 'flyers-folded-leaflet';
+    pluralName: 'flyers-folded-leaflets';
+    displayName: 'Flyers-folded-leaflet';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageCover: Attribute.Component<'block.page-cover'>;
+    pageHeading: Attribute.Component<'block.page-heading'>;
+    exploreOurRange: Attribute.Component<'block.product-card-section'>;
+    printspiration: Attribute.Component<'block.printspiration'>;
+    ourMaterials: Attribute.Component<'block.product-specification'>;
+    ecoCard: Attribute.Component<'block.eco-card'>;
+    printPanic: Attribute.Component<'block.faq'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::flyers-folded-leaflet.flyers-folded-leaflet',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::flyers-folded-leaflet.flyers-folded-leaflet',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiFooterFooter extends Schema.SingleType {
   collectionName: 'footers';
   info: {
@@ -1379,6 +1417,7 @@ declare module '@strapi/types' {
       'api::chat-to-kaibot.chat-to-kaibot': ApiChatToKaibotChatToKaibot;
       'api::contact-us.contact-us': ApiContactUsContactUs;
       'api::eco-range.eco-range': ApiEcoRangeEcoRange;
+      'api::flyers-folded-leaflet.flyers-folded-leaflet': ApiFlyersFoldedLeafletFlyersFoldedLeaflet;
       'api::footer.footer': ApiFooterFooter;
       'api::google-review.google-review': ApiGoogleReviewGoogleReview;
       'api::header.header': ApiHeaderHeader;

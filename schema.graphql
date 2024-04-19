@@ -1261,6 +1261,65 @@ input FloatFilterInput {
   startsWith: Float
 }
 
+type FlyersFoldedLeaflet {
+  createdAt: DateTime
+  ecoCard: ComponentBlockEcoCard
+  exploreOurRange: ComponentBlockProductCardSection
+  ourMaterials: ComponentBlockProductSpecification
+  pageCover: ComponentBlockPageCover
+  pageHeading: ComponentBlockPageHeading
+  printPanic: ComponentBlockFaq
+  printspiration: ComponentBlockPrintspiration
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type FlyersFoldedLeafletEntity {
+  attributes: FlyersFoldedLeaflet
+  id: ID
+}
+
+type FlyersFoldedLeafletEntityResponse {
+  data: FlyersFoldedLeafletEntity
+}
+
+type FlyersFoldedLeafletEntityResponseCollection {
+  data: [FlyersFoldedLeafletEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input FlyersFoldedLeafletFiltersInput {
+  and: [FlyersFoldedLeafletFiltersInput]
+  createdAt: DateTimeFilterInput
+  ecoCard: ComponentBlockEcoCardFiltersInput
+  exploreOurRange: ComponentBlockProductCardSectionFiltersInput
+  id: IDFilterInput
+  not: FlyersFoldedLeafletFiltersInput
+  or: [FlyersFoldedLeafletFiltersInput]
+  ourMaterials: ComponentBlockProductSpecificationFiltersInput
+  pageCover: ComponentBlockPageCoverFiltersInput
+  pageHeading: ComponentBlockPageHeadingFiltersInput
+  printPanic: ComponentBlockFaqFiltersInput
+  printspiration: ComponentBlockPrintspirationFiltersInput
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input FlyersFoldedLeafletInput {
+  ecoCard: ComponentBlockEcoCardInput
+  exploreOurRange: ComponentBlockProductCardSectionInput
+  ourMaterials: ComponentBlockProductSpecificationInput
+  pageCover: ComponentBlockPageCoverInput
+  pageHeading: ComponentBlockPageHeadingInput
+  printPanic: ComponentBlockFaqInput
+  printspiration: ComponentBlockPrintspirationInput
+  publishedAt: DateTime
+}
+
+type FlyersFoldedLeafletRelationResponseCollection {
+  data: [FlyersFoldedLeafletEntity!]!
+}
+
 type Footer {
   category(filters: ComponentBlockCatergoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockCatergory]
   chatBotImg: UploadFileEntityResponse
@@ -1319,7 +1378,7 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockInstaPostSection | ComponentBlockLandingPageCover | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | EcoRange | Footer | GoogleReview | Header | HereToHelp | Home | I18NLocale | Industry | Landing | NeedADesign | NeedDesign | OpenHour | Poster | PrintEnquiry | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockInstaPostSection | ComponentBlockLandingPageCover | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | EcoRange | FlyersFoldedLeaflet | Footer | GoogleReview | Header | HereToHelp | Home | I18NLocale | Industry | Landing | NeedADesign | NeedDesign | OpenHour | Poster | PrintEnquiry | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GoogleReview {
   averageRating: Float
@@ -1798,6 +1857,7 @@ type Mutation {
   createContactUs(data: ContactUsInput!): ContactUsEntityResponse
   createContentReleasesRelease(data: ContentReleasesReleaseInput!): ContentReleasesReleaseEntityResponse
   createContentReleasesReleaseAction(data: ContentReleasesReleaseActionInput!): ContentReleasesReleaseActionEntityResponse
+  createFlyersFoldedLeaflet(data: FlyersFoldedLeafletInput!): FlyersFoldedLeafletEntityResponse
   createHome(data: HomeInput!): HomeEntityResponse
   createIndustry(data: IndustryInput!): IndustryEntityResponse
   createLanding(data: LandingInput!): LandingEntityResponse
@@ -1818,6 +1878,7 @@ type Mutation {
   deleteContentReleasesRelease(id: ID!): ContentReleasesReleaseEntityResponse
   deleteContentReleasesReleaseAction(id: ID!): ContentReleasesReleaseActionEntityResponse
   deleteEcoRange: EcoRangeEntityResponse
+  deleteFlyersFoldedLeaflet(id: ID!): FlyersFoldedLeafletEntityResponse
   deleteFooter: FooterEntityResponse
   deleteGoogleReview: GoogleReviewEntityResponse
   deleteHeader: HeaderEntityResponse
@@ -1863,6 +1924,7 @@ type Mutation {
   updateContentReleasesReleaseAction(data: ContentReleasesReleaseActionInput!, id: ID!): ContentReleasesReleaseActionEntityResponse
   updateEcoRange(data: EcoRangeInput!): EcoRangeEntityResponse
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
+  updateFlyersFoldedLeaflet(data: FlyersFoldedLeafletInput!, id: ID!): FlyersFoldedLeafletEntityResponse
   updateFooter(data: FooterInput!): FooterEntityResponse
   updateGoogleReview(data: GoogleReviewInput!): GoogleReviewEntityResponse
   updateHeader(data: HeaderInput!): HeaderEntityResponse
@@ -2155,6 +2217,8 @@ type Query {
   contentReleasesReleaseActions(filters: ContentReleasesReleaseActionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ContentReleasesReleaseActionEntityResponseCollection
   contentReleasesReleases(filters: ContentReleasesReleaseFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ContentReleasesReleaseEntityResponseCollection
   ecoRange(publicationState: PublicationState = LIVE): EcoRangeEntityResponse
+  flyersFoldedLeaflet(id: ID): FlyersFoldedLeafletEntityResponse
+  flyersFoldedLeaflets(filters: FlyersFoldedLeafletFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): FlyersFoldedLeafletEntityResponseCollection
   footer(publicationState: PublicationState = LIVE): FooterEntityResponse
   googleReview(publicationState: PublicationState = LIVE): GoogleReviewEntityResponse
   header(publicationState: PublicationState = LIVE): HeaderEntityResponse
