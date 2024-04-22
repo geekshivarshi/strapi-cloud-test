@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "flyers_folded_leaflets",
+  "collectionName": "banner_and_signages",
   "info": {
-    "singularName": "flyers-folded-leaflet",
-    "pluralName": "flyers-folded-leaflets",
-    "displayName": "FlyersAndFoldedLeaflet",
+    "singularName": "banner-and-signage",
+    "pluralName": "banner-and-signages",
+    "displayName": "banner and Signage",
     "description": ""
   },
   "options": {
@@ -32,11 +32,6 @@
       "repeatable": false,
       "component": "block.printspiration"
     },
-    "ourMaterials": {
-      "type": "component",
-      "repeatable": false,
-      "component": "block.product-specification"
-    },
     "ecoCard": {
       "type": "component",
       "repeatable": false,
@@ -46,6 +41,16 @@
       "type": "component",
       "repeatable": false,
       "component": "block.faq"
+    },
+    "bannerUsageGuide": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.product-specification"
+    },
+    "videoSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.video-section"
     }
   }
 }

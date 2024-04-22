@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "flyers_folded_leaflets",
+  "collectionName": "kaizen_eco_ranges",
   "info": {
-    "singularName": "flyers-folded-leaflet",
-    "pluralName": "flyers-folded-leaflets",
-    "displayName": "FlyersAndFoldedLeaflet",
-    "description": ""
+    "singularName": "kaizen-eco-range",
+    "pluralName": "kaizen-eco-ranges",
+    "displayName": "kaizenEcoRange"
   },
   "options": {
     "draftAndPublish": true
@@ -27,25 +26,10 @@
       "repeatable": false,
       "component": "block.product-card-section"
     },
-    "printspiration": {
-      "type": "component",
-      "repeatable": false,
-      "component": "block.printspiration"
-    },
-    "ourMaterials": {
-      "type": "component",
-      "repeatable": false,
-      "component": "block.product-specification"
-    },
     "ecoCard": {
       "type": "component",
       "repeatable": false,
       "component": "block.eco-card"
-    },
-    "printPanic": {
-      "type": "component",
-      "repeatable": false,
-      "component": "block.faq"
     }
   }
 }

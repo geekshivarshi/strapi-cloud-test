@@ -33,6 +33,9 @@
     },
     "coverImgAlignment": {
       "type": "string"
+    },
+    "subHeading2": {
+      "type": "text"
     }
   }
 }

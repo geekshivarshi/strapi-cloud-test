@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "get_a_quotes",
+  "info": {
+    "singularName": "get-a-quote",
+    "pluralName": "get-a-quotes",
+    "displayName": "Get a Quote"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "text"
+    },
+    "buttonLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.link"
+    }
+  }
+}
