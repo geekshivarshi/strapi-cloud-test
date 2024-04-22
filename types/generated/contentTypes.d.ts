@@ -781,6 +781,45 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiBannerAndSignageBannerAndSignage
+  extends Schema.CollectionType {
+  collectionName: 'banner_and_signages';
+  info: {
+    singularName: 'banner-and-signage';
+    pluralName: 'banner-and-signages';
+    displayName: 'banner and Signage';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageCover: Attribute.Component<'block.page-cover'>;
+    pageHeading: Attribute.Component<'block.page-heading'>;
+    exploreOurRange: Attribute.Component<'block.product-card-section'>;
+    printspiration: Attribute.Component<'block.printspiration'>;
+    ecoCard: Attribute.Component<'block.eco-card'>;
+    printPanic: Attribute.Component<'block.faq'>;
+    bannerUsageGuide: Attribute.Component<'block.product-specification'>;
+    videoSection: Attribute.Component<'block.video-section'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::banner-and-signage.banner-and-signage',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::banner-and-signage.banner-and-signage',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiBrandedMerchBrandedMerch extends Schema.CollectionType {
   collectionName: 'branded_merches';
   info: {
@@ -955,7 +994,7 @@ export interface ApiFlyersFoldedLeafletFlyersFoldedLeaflet
   info: {
     singularName: 'flyers-folded-leaflet';
     pluralName: 'flyers-folded-leaflets';
-    displayName: 'Flyers-folded-leaflet';
+    displayName: 'FlyersAndFoldedLeaflet';
     description: '';
   };
   options: {
@@ -1018,6 +1057,37 @@ export interface ApiFooterFooter extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGetAQuoteGetAQuote extends Schema.SingleType {
+  collectionName: 'get_a_quotes';
+  info: {
+    singularName: 'get-a-quote';
+    pluralName: 'get-a-quotes';
+    displayName: 'Get a Quote';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    heading: Attribute.Text;
+    buttonLink: Attribute.Component<'elements.link'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::get-a-quote.get-a-quote',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::get-a-quote.get-a-quote',
       'oneToOne',
       'admin::user'
     > &
@@ -1189,6 +1259,39 @@ export interface ApiIndustryIndustry extends Schema.CollectionType {
   };
 }
 
+export interface ApiKaizenEcoRangeKaizenEcoRange extends Schema.CollectionType {
+  collectionName: 'kaizen_eco_ranges';
+  info: {
+    singularName: 'kaizen-eco-range';
+    pluralName: 'kaizen-eco-ranges';
+    displayName: 'kaizenEcoRange';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageCover: Attribute.Component<'block.page-cover'>;
+    pageHeading: Attribute.Component<'block.page-heading'>;
+    exploreOurRange: Attribute.Component<'block.product-card-section'>;
+    ecoCard: Attribute.Component<'block.eco-card'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::kaizen-eco-range.kaizen-eco-range',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::kaizen-eco-range.kaizen-eco-range',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiLandingLanding extends Schema.CollectionType {
   collectionName: 'landings';
   info: {
@@ -1221,6 +1324,38 @@ export interface ApiLandingLanding extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::landing.landing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMarketingAndPromoMarketingAndPromo
+  extends Schema.CollectionType {
+  collectionName: 'marketing_and_promos';
+  info: {
+    singularName: 'marketing-and-promo';
+    pluralName: 'marketing-and-promos';
+    displayName: 'marketingAndPromo';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageCover: Attribute.Component<'block.page-cover'>;
+    pageHeading: Attribute.Component<'block.page-heading'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::marketing-and-promo.marketing-and-promo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::marketing-and-promo.marketing-and-promo',
       'oneToOne',
       'admin::user'
     > &
@@ -1344,8 +1479,8 @@ export interface ApiPosterPoster extends Schema.CollectionType {
     ourMaterials: Attribute.Component<'block.product-specification'>;
     ecoCard: Attribute.Component<'block.eco-card'>;
     exploreOurRange: Attribute.Component<'block.product-card-section'>;
-    ourSize: Attribute.Component<'block.product-specification-with-twosub-headings'>;
     printPanic: Attribute.Component<'block.faq'>;
+    ourSize: Attribute.Component<'block.product-specification'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1394,6 +1529,109 @@ export interface ApiPrintEnquiryPrintEnquiry extends Schema.SingleType {
   };
 }
 
+export interface ApiQuickPrintBuyQuickPrintBuy extends Schema.CollectionType {
+  collectionName: 'quick_print_buys';
+  info: {
+    singularName: 'quick-print-buy';
+    pluralName: 'quick-print-buys';
+    displayName: 'quickPrintBuy';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageCover: Attribute.Component<'block.page-cover'>;
+    pageHeading: Attribute.Component<'block.page-heading'>;
+    exploreOurRange: Attribute.Component<'block.product-card-section'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::quick-print-buy.quick-print-buy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::quick-print-buy.quick-print-buy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiStationaryAndOfficeStationaryAndOffice
+  extends Schema.CollectionType {
+  collectionName: 'stationary_and_offices';
+  info: {
+    singularName: 'stationary-and-office';
+    pluralName: 'stationary-and-offices';
+    displayName: 'stationaryAndOffice';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageCover: Attribute.Component<'block.page-cover'>;
+    pageHeading: Attribute.Component<'block.page-heading'>;
+    exploreOurRange: Attribute.Component<'block.product-card-section'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::stationary-and-office.stationary-and-office',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::stationary-and-office.stationary-and-office',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiStickerSticker extends Schema.CollectionType {
+  collectionName: 'stickers';
+  info: {
+    singularName: 'sticker';
+    pluralName: 'stickers';
+    displayName: 'sticker';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageCover: Attribute.Component<'block.page-cover'>;
+    pageHeading: Attribute.Component<'block.page-heading'>;
+    exploreOurRange: Attribute.Component<'block.product-card-section'>;
+    printspiration: Attribute.Component<'block.printspiration'>;
+    StickerLabelBenefits: Attribute.Component<'block.product-specification'>;
+    stickersUsage: Attribute.Component<'block.product-specification'>;
+    printPanic: Attribute.Component<'block.faq'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::sticker.sticker',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::sticker.sticker',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1412,6 +1650,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::banner-and-signage.banner-and-signage': ApiBannerAndSignageBannerAndSignage;
       'api::branded-merch.branded-merch': ApiBrandedMerchBrandedMerch;
       'api::business-card.business-card': ApiBusinessCardBusinessCard;
       'api::chat-to-kaibot.chat-to-kaibot': ApiChatToKaibotChatToKaibot;
@@ -1419,17 +1658,23 @@ declare module '@strapi/types' {
       'api::eco-range.eco-range': ApiEcoRangeEcoRange;
       'api::flyers-folded-leaflet.flyers-folded-leaflet': ApiFlyersFoldedLeafletFlyersFoldedLeaflet;
       'api::footer.footer': ApiFooterFooter;
+      'api::get-a-quote.get-a-quote': ApiGetAQuoteGetAQuote;
       'api::google-review.google-review': ApiGoogleReviewGoogleReview;
       'api::header.header': ApiHeaderHeader;
       'api::here-to-help.here-to-help': ApiHereToHelpHereToHelp;
       'api::home.home': ApiHomeHome;
       'api::industry.industry': ApiIndustryIndustry;
+      'api::kaizen-eco-range.kaizen-eco-range': ApiKaizenEcoRangeKaizenEcoRange;
       'api::landing.landing': ApiLandingLanding;
+      'api::marketing-and-promo.marketing-and-promo': ApiMarketingAndPromoMarketingAndPromo;
       'api::need-a-design.need-a-design': ApiNeedADesignNeedADesign;
       'api::need-design.need-design': ApiNeedDesignNeedDesign;
       'api::open-hour.open-hour': ApiOpenHourOpenHour;
       'api::poster.poster': ApiPosterPoster;
       'api::print-enquiry.print-enquiry': ApiPrintEnquiryPrintEnquiry;
+      'api::quick-print-buy.quick-print-buy': ApiQuickPrintBuyQuickPrintBuy;
+      'api::stationary-and-office.stationary-and-office': ApiStationaryAndOfficeStationaryAndOffice;
+      'api::sticker.sticker': ApiStickerSticker;
     }
   }
 }

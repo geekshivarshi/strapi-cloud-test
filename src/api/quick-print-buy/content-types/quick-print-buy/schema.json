@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "quick_print_buys",
+  "info": {
+    "singularName": "quick-print-buy",
+    "pluralName": "quick-print-buys",
+    "displayName": "quickPrintBuy"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pageCover": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.page-cover"
+    },
+    "pageHeading": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.page-heading"
+    },
+    "exploreOurRange": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.product-card-section"
+    }
+  }
+}

@@ -42,15 +42,15 @@
       "repeatable": false,
       "component": "block.product-card-section"
     },
-    "ourSize": {
-      "type": "component",
-      "repeatable": false,
-      "component": "block.product-specification-with-twosub-headings"
-    },
     "printPanic": {
       "type": "component",
       "repeatable": false,
       "component": "block.faq"
+    },
+    "ourSize": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.product-specification"
     }
   }
 }

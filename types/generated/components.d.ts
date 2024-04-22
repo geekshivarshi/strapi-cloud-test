@@ -248,6 +248,20 @@ export interface BlockProductSpecification extends Schema.Component {
     description: Attribute.Component<'elements.list-item-with-image', true>;
     coverImg: Attribute.Media & Attribute.Required;
     coverImgAlignment: Attribute.String;
+    subHeading2: Attribute.Text;
+  };
+}
+
+export interface BlockVideoSection extends Schema.Component {
+  collectionName: 'components_block_video_sections';
+  info: {
+    displayName: 'videoSection';
+    description: '';
+  };
+  attributes: {
+    heading: Attribute.String;
+    subHeading: Attribute.Text;
+    video: Attribute.Media;
   };
 }
 
@@ -468,6 +482,7 @@ declare module '@strapi/types' {
       'block.product-card-section': BlockProductCardSection;
       'block.product-specification-with-twosub-headings': BlockProductSpecificationWithTwosubHeadings;
       'block.product-specification': BlockProductSpecification;
+      'block.video-section': BlockVideoSection;
       'elements.advance-image': ElementsAdvanceImage;
       'elements.badge': ElementsBadge;
       'elements.bullet-points': ElementsBulletPoints;

@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "marketing_and_promos",
+  "info": {
+    "singularName": "marketing-and-promo",
+    "pluralName": "marketing-and-promos",
+    "displayName": "marketingAndPromo"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pageCover": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.page-cover"
+    },
+    "pageHeading": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.page-heading"
+    }
+  }
+}
