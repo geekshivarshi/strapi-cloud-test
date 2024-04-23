@@ -52,6 +52,7 @@ export interface BlockEcoCard extends Schema.Component {
     coverImage: Attribute.Media;
     buttonLink: Attribute.Component<'elements.link'>;
     mobileCoverImage: Attribute.Media;
+    logoImage: Attribute.Media;
   };
 }
 
@@ -147,7 +148,7 @@ export interface BlockPageHeading extends Schema.Component {
   };
   attributes: {
     heading: Attribute.String & Attribute.Required;
-    subHeading: Attribute.String & Attribute.Required;
+    subHeading: Attribute.Text & Attribute.Required;
     image: Attribute.Media;
   };
 }

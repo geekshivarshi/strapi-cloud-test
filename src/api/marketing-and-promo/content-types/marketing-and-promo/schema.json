@@ -4,7 +4,8 @@
   "info": {
     "singularName": "marketing-and-promo",
     "pluralName": "marketing-and-promos",
-    "displayName": "marketingAndPromo"
+    "displayName": "marketingAndPromo",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -20,6 +21,11 @@
       "type": "component",
       "repeatable": false,
       "component": "block.page-heading"
+    },
+    "exploreOurRange": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.product-card-section"
     }
   }
 }
