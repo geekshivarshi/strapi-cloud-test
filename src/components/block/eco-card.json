@@ -34,6 +34,17 @@
       "component": "elements.link"
     },
     "mobileCoverImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "logoImage": {
       "allowedTypes": [
         "images",
         "files",

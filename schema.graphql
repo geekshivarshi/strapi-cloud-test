@@ -326,6 +326,7 @@ type ComponentBlockEcoCard {
   coverImage: UploadFileEntityResponse
   heading: String
   id: ID!
+  logoImage: UploadFileEntityResponse
   mobileCoverImage: UploadFileEntityResponse
   title: String
 }
@@ -346,6 +347,7 @@ input ComponentBlockEcoCardInput {
   coverImage: ID
   heading: String
   id: ID
+  logoImage: ID
   mobileCoverImage: ID
   title: String
 }
@@ -2031,6 +2033,7 @@ input LongFilterInput {
 
 type MarketingAndPromo {
   createdAt: DateTime
+  exploreOurRange: ComponentBlockProductCardSection
   pageCover: ComponentBlockPageCover
   pageHeading: ComponentBlockPageHeading
   publishedAt: DateTime
@@ -2054,6 +2057,7 @@ type MarketingAndPromoEntityResponseCollection {
 input MarketingAndPromoFiltersInput {
   and: [MarketingAndPromoFiltersInput]
   createdAt: DateTimeFilterInput
+  exploreOurRange: ComponentBlockProductCardSectionFiltersInput
   id: IDFilterInput
   not: MarketingAndPromoFiltersInput
   or: [MarketingAndPromoFiltersInput]
@@ -2064,6 +2068,7 @@ input MarketingAndPromoFiltersInput {
 }
 
 input MarketingAndPromoInput {
+  exploreOurRange: ComponentBlockProductCardSectionInput
   pageCover: ComponentBlockPageCoverInput
   pageHeading: ComponentBlockPageHeadingInput
   publishedAt: DateTime

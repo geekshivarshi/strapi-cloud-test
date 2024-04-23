@@ -1338,6 +1338,7 @@ export interface ApiMarketingAndPromoMarketingAndPromo
     singularName: 'marketing-and-promo';
     pluralName: 'marketing-and-promos';
     displayName: 'marketingAndPromo';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1345,6 +1346,7 @@ export interface ApiMarketingAndPromoMarketingAndPromo
   attributes: {
     pageCover: Attribute.Component<'block.page-cover'>;
     pageHeading: Attribute.Component<'block.page-heading'>;
+    exploreOurRange: Attribute.Component<'block.product-card-section'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
