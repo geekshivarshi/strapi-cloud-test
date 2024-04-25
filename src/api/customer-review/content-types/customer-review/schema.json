@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "customer_reviews",
+  "info": {
+    "singularName": "customer-review",
+    "pluralName": "customer-reviews",
+    "displayName": "customerReview",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "customerReview": {
+      "type": "component",
+      "repeatable": true,
+      "component": "block.customer-reviews"
+    }
+  }
+}

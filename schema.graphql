@@ -1192,6 +1192,46 @@ type ContentReleasesReleaseRelationResponseCollection {
   data: [ContentReleasesReleaseEntity!]!
 }
 
+type CustomerReview {
+  createdAt: DateTime
+  customerReview(filters: ComponentBlockCustomerReviewsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockCustomerReviews]
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type CustomerReviewEntity {
+  attributes: CustomerReview
+  id: ID
+}
+
+type CustomerReviewEntityResponse {
+  data: CustomerReviewEntity
+}
+
+type CustomerReviewEntityResponseCollection {
+  data: [CustomerReviewEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input CustomerReviewFiltersInput {
+  and: [CustomerReviewFiltersInput]
+  createdAt: DateTimeFilterInput
+  customerReview: ComponentBlockCustomerReviewsFiltersInput
+  not: CustomerReviewFiltersInput
+  or: [CustomerReviewFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input CustomerReviewInput {
+  customerReview: [ComponentBlockCustomerReviewsInput]
+  publishedAt: DateTime
+}
+
+type CustomerReviewRelationResponseCollection {
+  data: [CustomerReviewEntity!]!
+}
+
 """
 A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
 """
@@ -1467,7 +1507,7 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = BannerAndSignage | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockInstaPostSection | ComponentBlockLandingPageCover | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | EcoRange | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | Home | I18NLocale | Industry | KaizenEcoRange | Landing | MarketingAndPromo | NeedADesign | NeedDesign | OpenHour | Poster | PrintEnquiry | QuickPrintBuy | StationaryAndOffice | Sticker | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = BannerAndSignage | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockInstaPostSection | ComponentBlockLandingPageCover | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CustomerReview | EcoRange | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | Home | I18NLocale | Industry | KaizenEcoRange | Landing | MarketingAndPromo | NeedADesign | NeedDesign | OpenHour | Poster | PrintEnquiry | QuickPrintBuy | StationaryAndOffice | Sticker | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GetAQuote {
   buttonLink: ComponentElementsLink
@@ -1938,7 +1978,6 @@ type KaizenEcoRangeRelationResponseCollection {
 
 type Landing {
   createdAt: DateTime
-  customerReviews(filters: ComponentBlockCustomerReviewsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockCustomerReviews]
   ecoCard: ComponentBlockEcoCard
   enquirySection: ComponentBlockPrintSos
   exploreEcoRange: ComponentBlockProductCardSection
@@ -1968,7 +2007,6 @@ type LandingEntityResponseCollection {
 input LandingFiltersInput {
   and: [LandingFiltersInput]
   createdAt: DateTimeFilterInput
-  customerReviews: ComponentBlockCustomerReviewsFiltersInput
   ecoCard: ComponentBlockEcoCardFiltersInput
   enquirySection: ComponentBlockPrintSosFiltersInput
   exploreEcoRange: ComponentBlockProductCardSectionFiltersInput
@@ -1985,7 +2023,6 @@ input LandingFiltersInput {
 }
 
 input LandingInput {
-  customerReviews: [ComponentBlockCustomerReviewsInput]
   ecoCard: ComponentBlockEcoCardInput
   enquirySection: ComponentBlockPrintSosInput
   exploreEcoRange: ComponentBlockProductCardSectionInput
@@ -2113,6 +2150,7 @@ type Mutation {
   deleteContactUs(id: ID!): ContactUsEntityResponse
   deleteContentReleasesRelease(id: ID!): ContentReleasesReleaseEntityResponse
   deleteContentReleasesReleaseAction(id: ID!): ContentReleasesReleaseActionEntityResponse
+  deleteCustomerReview: CustomerReviewEntityResponse
   deleteEcoRange: EcoRangeEntityResponse
   deleteFlyersFoldedLeaflet(id: ID!): FlyersFoldedLeafletEntityResponse
   deleteFooter: FooterEntityResponse
@@ -2165,6 +2203,7 @@ type Mutation {
   updateContactUs(data: ContactUsInput!, id: ID!): ContactUsEntityResponse
   updateContentReleasesRelease(data: ContentReleasesReleaseInput!, id: ID!): ContentReleasesReleaseEntityResponse
   updateContentReleasesReleaseAction(data: ContentReleasesReleaseActionInput!, id: ID!): ContentReleasesReleaseActionEntityResponse
+  updateCustomerReview(data: CustomerReviewInput!): CustomerReviewEntityResponse
   updateEcoRange(data: EcoRangeInput!): EcoRangeEntityResponse
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
   updateFlyersFoldedLeaflet(data: FlyersFoldedLeafletInput!, id: ID!): FlyersFoldedLeafletEntityResponse
@@ -2467,6 +2506,7 @@ type Query {
   contentReleasesReleaseAction(id: ID): ContentReleasesReleaseActionEntityResponse
   contentReleasesReleaseActions(filters: ContentReleasesReleaseActionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ContentReleasesReleaseActionEntityResponseCollection
   contentReleasesReleases(filters: ContentReleasesReleaseFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ContentReleasesReleaseEntityResponseCollection
+  customerReview(publicationState: PublicationState = LIVE): CustomerReviewEntityResponse
   ecoRange(publicationState: PublicationState = LIVE): EcoRangeEntityResponse
   flyersFoldedLeaflet(id: ID): FlyersFoldedLeafletEntityResponse
   flyersFoldedLeaflets(filters: FlyersFoldedLeafletFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): FlyersFoldedLeafletEntityResponseCollection
