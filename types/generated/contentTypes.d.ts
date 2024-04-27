@@ -958,6 +958,37 @@ export interface ApiContactUsContactUs extends Schema.CollectionType {
   };
 }
 
+export interface ApiCustomerReviewCustomerReview extends Schema.SingleType {
+  collectionName: 'customer_reviews';
+  info: {
+    singularName: 'customer-review';
+    pluralName: 'customer-reviews';
+    displayName: 'customerReview';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    customerReview: Attribute.Component<'block.customer-reviews', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::customer-review.customer-review',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::customer-review.customer-review',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiEcoRangeEcoRange extends Schema.SingleType {
   collectionName: 'eco_ranges';
   info: {
@@ -1312,7 +1343,6 @@ export interface ApiLandingLanding extends Schema.CollectionType {
     enquirySection: Attribute.Component<'block.print-sos'>;
     printWithKaizen: Attribute.Component<'block.print-with-kaizen'>;
     printingSection: Attribute.Component<'block.insta-post-section'>;
-    customerReviews: Attribute.Component<'block.customer-reviews', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1657,6 +1687,7 @@ declare module '@strapi/types' {
       'api::business-card.business-card': ApiBusinessCardBusinessCard;
       'api::chat-to-kaibot.chat-to-kaibot': ApiChatToKaibotChatToKaibot;
       'api::contact-us.contact-us': ApiContactUsContactUs;
+      'api::customer-review.customer-review': ApiCustomerReviewCustomerReview;
       'api::eco-range.eco-range': ApiEcoRangeEcoRange;
       'api::flyers-folded-leaflet.flyers-folded-leaflet': ApiFlyersFoldedLeafletFlyersFoldedLeaflet;
       'api::footer.footer': ApiFooterFooter;

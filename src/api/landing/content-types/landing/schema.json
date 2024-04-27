@@ -51,11 +51,6 @@
       "type": "component",
       "repeatable": false,
       "component": "block.insta-post-section"
-    },
-    "customerReviews": {
-      "type": "component",
-      "repeatable": true,
-      "component": "block.customer-reviews"
     }
   }
 }
