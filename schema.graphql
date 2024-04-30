@@ -2,6 +2,48 @@
 ### Do not make changes to this file directly
 
 
+type Auth {
+  bottomLeftImage: UploadFileEntityResponse
+  bottomRightImage: UploadFileEntityResponse
+  createdAt: DateTime
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type AuthEntity {
+  attributes: Auth
+  id: ID
+}
+
+type AuthEntityResponse {
+  data: AuthEntity
+}
+
+type AuthEntityResponseCollection {
+  data: [AuthEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input AuthFiltersInput {
+  and: [AuthFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  not: AuthFiltersInput
+  or: [AuthFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input AuthInput {
+  bottomLeftImage: ID
+  bottomRightImage: ID
+  publishedAt: DateTime
+}
+
+type AuthRelationResponseCollection {
+  data: [AuthEntity!]!
+}
+
 type BannerAndSignage {
   bannerUsageGuide: ComponentBlockProductSpecification
   createdAt: DateTime
@@ -62,6 +104,49 @@ input BannerAndSignageInput {
 
 type BannerAndSignageRelationResponseCollection {
   data: [BannerAndSignageEntity!]!
+}
+
+type BenefitsOfKaizen {
+  createdAt: DateTime
+  heading: String
+  listItem(filters: ComponentElementsListItemWithImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsListItemWithImage]
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type BenefitsOfKaizenEntity {
+  attributes: BenefitsOfKaizen
+  id: ID
+}
+
+type BenefitsOfKaizenEntityResponse {
+  data: BenefitsOfKaizenEntity
+}
+
+type BenefitsOfKaizenEntityResponseCollection {
+  data: [BenefitsOfKaizenEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input BenefitsOfKaizenFiltersInput {
+  and: [BenefitsOfKaizenFiltersInput]
+  createdAt: DateTimeFilterInput
+  heading: StringFilterInput
+  listItem: ComponentElementsListItemWithImageFiltersInput
+  not: BenefitsOfKaizenFiltersInput
+  or: [BenefitsOfKaizenFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input BenefitsOfKaizenInput {
+  heading: String
+  listItem: [ComponentElementsListItemWithImageInput]
+  publishedAt: DateTime
+}
+
+type BenefitsOfKaizenRelationResponseCollection {
+  data: [BenefitsOfKaizenEntity!]!
 }
 
 input BooleanFilterInput {
@@ -1507,7 +1592,7 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = BannerAndSignage | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockInstaPostSection | ComponentBlockLandingPageCover | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CustomerReview | EcoRange | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | Home | I18NLocale | Industry | KaizenEcoRange | Landing | MarketingAndPromo | NeedADesign | NeedDesign | OpenHour | Poster | PrintEnquiry | QuickPrintBuy | StationaryAndOffice | Sticker | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = Auth | BannerAndSignage | BenefitsOfKaizen | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockInstaPostSection | ComponentBlockLandingPageCover | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CustomerReview | EcoRange | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | Home | I18NLocale | Industry | KaizenEcoRange | Landing | MarketingAndPromo | NeedADesign | NeedDesign | OpenHour | Poster | PrintEnquiry | QuickPrintBuy | StationaryAndOffice | Sticker | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GetAQuote {
   buttonLink: ComponentElementsLink
@@ -2118,6 +2203,7 @@ type MarketingAndPromoRelationResponseCollection {
 type Mutation {
   """Change user password. Confirm with the current password."""
   changePassword(currentPassword: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
+  createAuth(data: AuthInput!): AuthEntityResponse
   createBannerAndSignage(data: BannerAndSignageInput!): BannerAndSignageEntityResponse
   createBrandedMerch(data: BrandedMerchInput!): BrandedMerchEntityResponse
   createBusinessCard(data: BusinessCardInput!): BusinessCardEntityResponse
@@ -2143,7 +2229,9 @@ type Mutation {
 
   """Create a new user"""
   createUsersPermissionsUser(data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
+  deleteAuth(id: ID!): AuthEntityResponse
   deleteBannerAndSignage(id: ID!): BannerAndSignageEntityResponse
+  deleteBenefitsOfKaizen: BenefitsOfKaizenEntityResponse
   deleteBrandedMerch(id: ID!): BrandedMerchEntityResponse
   deleteBusinessCard(id: ID!): BusinessCardEntityResponse
   deleteChatToKaibot: ChatToKaibotEntityResponse
@@ -2196,7 +2284,9 @@ type Mutation {
   Reset user password. Confirm with a code (resetToken from forgotPassword)
   """
   resetPassword(code: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
+  updateAuth(data: AuthInput!, id: ID!): AuthEntityResponse
   updateBannerAndSignage(data: BannerAndSignageInput!, id: ID!): BannerAndSignageEntityResponse
+  updateBenefitsOfKaizen(data: BenefitsOfKaizenInput!): BenefitsOfKaizenEntityResponse
   updateBrandedMerch(data: BrandedMerchInput!, id: ID!): BrandedMerchEntityResponse
   updateBusinessCard(data: BusinessCardInput!, id: ID!): BusinessCardEntityResponse
   updateChatToKaibot(data: ChatToKaibotInput!): ChatToKaibotEntityResponse
@@ -2493,8 +2583,11 @@ enum PublicationState {
 }
 
 type Query {
+  auth(id: ID): AuthEntityResponse
+  auths(filters: AuthFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): AuthEntityResponseCollection
   bannerAndSignage(id: ID): BannerAndSignageEntityResponse
   bannerAndSignages(filters: BannerAndSignageFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BannerAndSignageEntityResponseCollection
+  benefitsOfKaizen(publicationState: PublicationState = LIVE): BenefitsOfKaizenEntityResponse
   brandedMerch(id: ID): BrandedMerchEntityResponse
   brandedMerches(filters: BrandedMerchFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BrandedMerchEntityResponseCollection
   businessCard(id: ID): BusinessCardEntityResponse

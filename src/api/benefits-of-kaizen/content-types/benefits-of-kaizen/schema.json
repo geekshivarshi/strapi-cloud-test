@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "benefits_of_kaizens",
+  "info": {
+    "singularName": "benefits-of-kaizen",
+    "pluralName": "benefits-of-kaizens",
+    "displayName": "Benefits of Kaizen"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "listItem": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.list-item-with-image"
+    }
+  }
+}
