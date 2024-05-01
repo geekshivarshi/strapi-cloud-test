@@ -781,6 +781,29 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAuthAuth extends Schema.CollectionType {
+  collectionName: 'auths';
+  info: {
+    singularName: 'auth';
+    pluralName: 'auths';
+    displayName: 'auth';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bottomLeftImage: Attribute.Media;
+    bottomRightImage: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::auth.auth', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::auth.auth', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiBannerAndSignageBannerAndSignage
   extends Schema.CollectionType {
   collectionName: 'banner_and_signages';
@@ -813,6 +836,37 @@ export interface ApiBannerAndSignageBannerAndSignage
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::banner-and-signage.banner-and-signage',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiBenefitsOfKaizenBenefitsOfKaizen extends Schema.SingleType {
+  collectionName: 'benefits_of_kaizens';
+  info: {
+    singularName: 'benefits-of-kaizen';
+    pluralName: 'benefits-of-kaizens';
+    displayName: 'Benefits of Kaizen';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    heading: Attribute.String;
+    listItem: Attribute.Component<'elements.list-item-with-image', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::benefits-of-kaizen.benefits-of-kaizen',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::benefits-of-kaizen.benefits-of-kaizen',
       'oneToOne',
       'admin::user'
     > &
@@ -1682,7 +1736,9 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::auth.auth': ApiAuthAuth;
       'api::banner-and-signage.banner-and-signage': ApiBannerAndSignageBannerAndSignage;
+      'api::benefits-of-kaizen.benefits-of-kaizen': ApiBenefitsOfKaizenBenefitsOfKaizen;
       'api::branded-merch.branded-merch': ApiBrandedMerchBrandedMerch;
       'api::business-card.business-card': ApiBusinessCardBusinessCard;
       'api::chat-to-kaibot.chat-to-kaibot': ApiChatToKaibotChatToKaibot;
