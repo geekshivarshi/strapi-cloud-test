@@ -4,20 +4,18 @@
   "info": {
     "singularName": "benefits-of-kaizen",
     "pluralName": "benefits-of-kaizens",
-    "displayName": "Benefits of Kaizen"
+    "displayName": "Benefits of Kaizen",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "heading": {
-      "type": "string"
-    },
-    "listItem": {
+    "benefitsWithKaizen": {
       "type": "component",
-      "repeatable": true,
-      "component": "elements.list-item-with-image"
+      "repeatable": false,
+      "component": "block.print-with-kaizen"
     }
   }
 }

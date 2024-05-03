@@ -12,6 +12,19 @@ export interface BlockCatergory extends Schema.Component {
   };
 }
 
+export interface BlockChatToKaibot extends Schema.Component {
+  collectionName: 'components_block_chat_to_kaibots';
+  info: {
+    displayName: 'chatToKaibot';
+  };
+  attributes: {
+    heading: Attribute.String;
+    subHeading: Attribute.String;
+    headerImage: Attribute.Media;
+    footerText: Attribute.String;
+  };
+}
+
 export interface BlockCta extends Schema.Component {
   collectionName: 'components_block_ctas';
   info: {
@@ -124,6 +137,19 @@ export interface BlockLandingPageCover extends Schema.Component {
     coverImg: Attribute.Media;
     productLinks: Attribute.Component<'elements.link', true>;
     coverImgMobile: Attribute.Media;
+  };
+}
+
+export interface BlockOpenHour extends Schema.Component {
+  collectionName: 'components_block_open_hours';
+  info: {
+    displayName: 'openHour';
+  };
+  attributes: {
+    heading: Attribute.String;
+    points: Attribute.Component<'elements.bullet-points', true>;
+    qa: Attribute.Component<'elements.qa', true>;
+    headerImage: Attribute.Media;
   };
 }
 
@@ -466,6 +492,7 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'block.catergory': BlockCatergory;
+      'block.chat-to-kaibot': BlockChatToKaibot;
       'block.cta': BlockCta;
       'block.customer-reviews': BlockCustomerReviews;
       'block.eco-card': BlockEcoCard;
@@ -474,6 +501,7 @@ declare module '@strapi/types' {
       'block.faq': BlockFaq;
       'block.insta-post-section': BlockInstaPostSection;
       'block.landing-page-cover': BlockLandingPageCover;
+      'block.open-hour': BlockOpenHour;
       'block.page-cover': BlockPageCover;
       'block.page-heading': BlockPageHeading;
       'block.partners': BlockPartners;

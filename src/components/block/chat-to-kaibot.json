@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_block_chat_to_kaibots",
+  "info": {
+    "displayName": "chatToKaibot"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "subHeading": {
+      "type": "string"
+    },
+    "headerImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "footerText": {
+      "type": "string"
+    }
+  }
+}

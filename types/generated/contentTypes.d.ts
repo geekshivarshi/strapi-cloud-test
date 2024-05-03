@@ -849,13 +849,13 @@ export interface ApiBenefitsOfKaizenBenefitsOfKaizen extends Schema.SingleType {
     singularName: 'benefits-of-kaizen';
     pluralName: 'benefits-of-kaizens';
     displayName: 'Benefits of Kaizen';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    heading: Attribute.String;
-    listItem: Attribute.Component<'elements.list-item-with-image', true>;
+    benefitsWithKaizen: Attribute.Component<'block.print-with-kaizen'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1066,6 +1066,40 @@ export interface ApiEcoRangeEcoRange extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::eco-range.eco-range',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFaqPageFaqPage extends Schema.CollectionType {
+  collectionName: 'faq_pages';
+  info: {
+    singularName: 'faq-page';
+    pluralName: 'faq-pages';
+    displayName: 'FaqPage';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageCover: Attribute.Component<'block.page-cover'>;
+    faq: Attribute.Component<'block.faq'>;
+    chatToKaibot: Attribute.Component<'block.chat-to-kaibot'>;
+    openHour: Attribute.Component<'block.open-hour'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::faq-page.faq-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::faq-page.faq-page',
       'oneToOne',
       'admin::user'
     > &
@@ -1370,6 +1404,39 @@ export interface ApiKaizenEcoRangeKaizenEcoRange extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::kaizen-eco-range.kaizen-eco-range',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiKaizenPromiseKaizenPromise extends Schema.CollectionType {
+  collectionName: 'kaizen_promises';
+  info: {
+    singularName: 'kaizen-promise';
+    pluralName: 'kaizen-promises';
+    displayName: 'KaizenPromise';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageCover: Attribute.Component<'block.page-cover'>;
+    pageHeading: Attribute.Component<'block.page-heading'>;
+    benefitsWithKaizen: Attribute.Component<'block.print-with-kaizen'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::kaizen-promise.kaizen-promise',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::kaizen-promise.kaizen-promise',
       'oneToOne',
       'admin::user'
     > &
@@ -1745,6 +1812,7 @@ declare module '@strapi/types' {
       'api::contact-us.contact-us': ApiContactUsContactUs;
       'api::customer-review.customer-review': ApiCustomerReviewCustomerReview;
       'api::eco-range.eco-range': ApiEcoRangeEcoRange;
+      'api::faq-page.faq-page': ApiFaqPageFaqPage;
       'api::flyers-folded-leaflet.flyers-folded-leaflet': ApiFlyersFoldedLeafletFlyersFoldedLeaflet;
       'api::footer.footer': ApiFooterFooter;
       'api::get-a-quote.get-a-quote': ApiGetAQuoteGetAQuote;
@@ -1754,6 +1822,7 @@ declare module '@strapi/types' {
       'api::home.home': ApiHomeHome;
       'api::industry.industry': ApiIndustryIndustry;
       'api::kaizen-eco-range.kaizen-eco-range': ApiKaizenEcoRangeKaizenEcoRange;
+      'api::kaizen-promise.kaizen-promise': ApiKaizenPromiseKaizenPromise;
       'api::landing.landing': ApiLandingLanding;
       'api::marketing-and-promo.marketing-and-promo': ApiMarketingAndPromoMarketingAndPromo;
       'api::need-a-design.need-a-design': ApiNeedADesignNeedADesign;
