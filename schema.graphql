@@ -107,9 +107,8 @@ type BannerAndSignageRelationResponseCollection {
 }
 
 type BenefitsOfKaizen {
+  benefitsWithKaizen: ComponentBlockPrintWithKaizen
   createdAt: DateTime
-  heading: String
-  listItem(filters: ComponentElementsListItemWithImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsListItemWithImage]
   publishedAt: DateTime
   updatedAt: DateTime
 }
@@ -130,9 +129,8 @@ type BenefitsOfKaizenEntityResponseCollection {
 
 input BenefitsOfKaizenFiltersInput {
   and: [BenefitsOfKaizenFiltersInput]
+  benefitsWithKaizen: ComponentBlockPrintWithKaizenFiltersInput
   createdAt: DateTimeFilterInput
-  heading: StringFilterInput
-  listItem: ComponentElementsListItemWithImageFiltersInput
   not: BenefitsOfKaizenFiltersInput
   or: [BenefitsOfKaizenFiltersInput]
   publishedAt: DateTimeFilterInput
@@ -140,8 +138,7 @@ input BenefitsOfKaizenFiltersInput {
 }
 
 input BenefitsOfKaizenInput {
-  heading: String
-  listItem: [ComponentElementsListItemWithImageInput]
+  benefitsWithKaizen: ComponentBlockPrintWithKaizenInput
   publishedAt: DateTime
 }
 
@@ -357,6 +354,31 @@ input ComponentBlockCatergoryInput {
   link: [ComponentElementsLinkInput]
 }
 
+type ComponentBlockChatToKaibot {
+  footerText: String
+  headerImage: UploadFileEntityResponse
+  heading: String
+  id: ID!
+  subHeading: String
+}
+
+input ComponentBlockChatToKaibotFiltersInput {
+  and: [ComponentBlockChatToKaibotFiltersInput]
+  footerText: StringFilterInput
+  heading: StringFilterInput
+  not: ComponentBlockChatToKaibotFiltersInput
+  or: [ComponentBlockChatToKaibotFiltersInput]
+  subHeading: StringFilterInput
+}
+
+input ComponentBlockChatToKaibotInput {
+  footerText: String
+  headerImage: ID
+  heading: String
+  id: ID
+  subHeading: String
+}
+
 type ComponentBlockCta {
   heading: String
   id: ID!
@@ -563,6 +585,31 @@ input ComponentBlockLandingPageCoverInput {
   id: ID
   productLinks: [ComponentElementsLinkInput]
   subHeading: String
+}
+
+type ComponentBlockOpenHour {
+  headerImage: UploadFileEntityResponse
+  heading: String
+  id: ID!
+  points(filters: ComponentElementsBulletPointsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsBulletPoints]
+  qa(filters: ComponentElementsQaFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsQa]
+}
+
+input ComponentBlockOpenHourFiltersInput {
+  and: [ComponentBlockOpenHourFiltersInput]
+  heading: StringFilterInput
+  not: ComponentBlockOpenHourFiltersInput
+  or: [ComponentBlockOpenHourFiltersInput]
+  points: ComponentElementsBulletPointsFiltersInput
+  qa: ComponentElementsQaFiltersInput
+}
+
+input ComponentBlockOpenHourInput {
+  headerImage: ID
+  heading: String
+  id: ID
+  points: [ComponentElementsBulletPointsInput]
+  qa: [ComponentElementsQaInput]
 }
 
 type ComponentBlockPageCover {
@@ -1444,6 +1491,56 @@ type Error {
   message: String
 }
 
+type FaqPage {
+  chatToKaibot: ComponentBlockChatToKaibot
+  createdAt: DateTime
+  faq: ComponentBlockFaq
+  openHour: ComponentBlockOpenHour
+  pageCover: ComponentBlockPageCover
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type FaqPageEntity {
+  attributes: FaqPage
+  id: ID
+}
+
+type FaqPageEntityResponse {
+  data: FaqPageEntity
+}
+
+type FaqPageEntityResponseCollection {
+  data: [FaqPageEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input FaqPageFiltersInput {
+  and: [FaqPageFiltersInput]
+  chatToKaibot: ComponentBlockChatToKaibotFiltersInput
+  createdAt: DateTimeFilterInput
+  faq: ComponentBlockFaqFiltersInput
+  id: IDFilterInput
+  not: FaqPageFiltersInput
+  openHour: ComponentBlockOpenHourFiltersInput
+  or: [FaqPageFiltersInput]
+  pageCover: ComponentBlockPageCoverFiltersInput
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input FaqPageInput {
+  chatToKaibot: ComponentBlockChatToKaibotInput
+  faq: ComponentBlockFaqInput
+  openHour: ComponentBlockOpenHourInput
+  pageCover: ComponentBlockPageCoverInput
+  publishedAt: DateTime
+}
+
+type FaqPageRelationResponseCollection {
+  data: [FaqPageEntity!]!
+}
+
 input FileInfoInput {
   alternativeText: String
   caption: String
@@ -1592,7 +1689,7 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = Auth | BannerAndSignage | BenefitsOfKaizen | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockInstaPostSection | ComponentBlockLandingPageCover | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CustomerReview | EcoRange | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | Home | I18NLocale | Industry | KaizenEcoRange | Landing | MarketingAndPromo | NeedADesign | NeedDesign | OpenHour | Poster | PrintEnquiry | QuickPrintBuy | StationaryAndOffice | Sticker | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = Auth | BannerAndSignage | BenefitsOfKaizen | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockInstaPostSection | ComponentBlockLandingPageCover | ComponentBlockOpenHour | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | Home | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | Landing | MarketingAndPromo | NeedADesign | NeedDesign | OpenHour | Poster | PrintEnquiry | QuickPrintBuy | StationaryAndOffice | Sticker | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GetAQuote {
   buttonLink: ComponentElementsLink
@@ -2061,6 +2158,53 @@ type KaizenEcoRangeRelationResponseCollection {
   data: [KaizenEcoRangeEntity!]!
 }
 
+type KaizenPromise {
+  benefitsWithKaizen: ComponentBlockPrintWithKaizen
+  createdAt: DateTime
+  pageCover: ComponentBlockPageCover
+  pageHeading: ComponentBlockPageHeading
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type KaizenPromiseEntity {
+  attributes: KaizenPromise
+  id: ID
+}
+
+type KaizenPromiseEntityResponse {
+  data: KaizenPromiseEntity
+}
+
+type KaizenPromiseEntityResponseCollection {
+  data: [KaizenPromiseEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input KaizenPromiseFiltersInput {
+  and: [KaizenPromiseFiltersInput]
+  benefitsWithKaizen: ComponentBlockPrintWithKaizenFiltersInput
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  not: KaizenPromiseFiltersInput
+  or: [KaizenPromiseFiltersInput]
+  pageCover: ComponentBlockPageCoverFiltersInput
+  pageHeading: ComponentBlockPageHeadingFiltersInput
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input KaizenPromiseInput {
+  benefitsWithKaizen: ComponentBlockPrintWithKaizenInput
+  pageCover: ComponentBlockPageCoverInput
+  pageHeading: ComponentBlockPageHeadingInput
+  publishedAt: DateTime
+}
+
+type KaizenPromiseRelationResponseCollection {
+  data: [KaizenPromiseEntity!]!
+}
+
 type Landing {
   createdAt: DateTime
   ecoCard: ComponentBlockEcoCard
@@ -2210,10 +2354,12 @@ type Mutation {
   createContactUs(data: ContactUsInput!): ContactUsEntityResponse
   createContentReleasesRelease(data: ContentReleasesReleaseInput!): ContentReleasesReleaseEntityResponse
   createContentReleasesReleaseAction(data: ContentReleasesReleaseActionInput!): ContentReleasesReleaseActionEntityResponse
+  createFaqPage(data: FaqPageInput!): FaqPageEntityResponse
   createFlyersFoldedLeaflet(data: FlyersFoldedLeafletInput!): FlyersFoldedLeafletEntityResponse
   createHome(data: HomeInput!): HomeEntityResponse
   createIndustry(data: IndustryInput!): IndustryEntityResponse
   createKaizenEcoRange(data: KaizenEcoRangeInput!): KaizenEcoRangeEntityResponse
+  createKaizenPromise(data: KaizenPromiseInput!): KaizenPromiseEntityResponse
   createLanding(data: LandingInput!): LandingEntityResponse
   createMarketingAndPromo(data: MarketingAndPromoInput!): MarketingAndPromoEntityResponse
   createNeedADesign(data: NeedADesignInput!): NeedADesignEntityResponse
@@ -2240,6 +2386,7 @@ type Mutation {
   deleteContentReleasesReleaseAction(id: ID!): ContentReleasesReleaseActionEntityResponse
   deleteCustomerReview: CustomerReviewEntityResponse
   deleteEcoRange: EcoRangeEntityResponse
+  deleteFaqPage(id: ID!): FaqPageEntityResponse
   deleteFlyersFoldedLeaflet(id: ID!): FlyersFoldedLeafletEntityResponse
   deleteFooter: FooterEntityResponse
   deleteGetAQuote: GetAQuoteEntityResponse
@@ -2249,6 +2396,7 @@ type Mutation {
   deleteHome(id: ID!): HomeEntityResponse
   deleteIndustry(id: ID!): IndustryEntityResponse
   deleteKaizenEcoRange(id: ID!): KaizenEcoRangeEntityResponse
+  deleteKaizenPromise(id: ID!): KaizenPromiseEntityResponse
   deleteLanding(id: ID!): LandingEntityResponse
   deleteMarketingAndPromo(id: ID!): MarketingAndPromoEntityResponse
   deleteNeedADesign(id: ID!): NeedADesignEntityResponse
@@ -2295,6 +2443,7 @@ type Mutation {
   updateContentReleasesReleaseAction(data: ContentReleasesReleaseActionInput!, id: ID!): ContentReleasesReleaseActionEntityResponse
   updateCustomerReview(data: CustomerReviewInput!): CustomerReviewEntityResponse
   updateEcoRange(data: EcoRangeInput!): EcoRangeEntityResponse
+  updateFaqPage(data: FaqPageInput!, id: ID!): FaqPageEntityResponse
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
   updateFlyersFoldedLeaflet(data: FlyersFoldedLeafletInput!, id: ID!): FlyersFoldedLeafletEntityResponse
   updateFooter(data: FooterInput!): FooterEntityResponse
@@ -2305,6 +2454,7 @@ type Mutation {
   updateHome(data: HomeInput!, id: ID!): HomeEntityResponse
   updateIndustry(data: IndustryInput!, id: ID!): IndustryEntityResponse
   updateKaizenEcoRange(data: KaizenEcoRangeInput!, id: ID!): KaizenEcoRangeEntityResponse
+  updateKaizenPromise(data: KaizenPromiseInput!, id: ID!): KaizenPromiseEntityResponse
   updateLanding(data: LandingInput!, id: ID!): LandingEntityResponse
   updateMarketingAndPromo(data: MarketingAndPromoInput!, id: ID!): MarketingAndPromoEntityResponse
   updateNeedADesign(data: NeedADesignInput!, id: ID!): NeedADesignEntityResponse
@@ -2601,6 +2751,8 @@ type Query {
   contentReleasesReleases(filters: ContentReleasesReleaseFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ContentReleasesReleaseEntityResponseCollection
   customerReview(publicationState: PublicationState = LIVE): CustomerReviewEntityResponse
   ecoRange(publicationState: PublicationState = LIVE): EcoRangeEntityResponse
+  faqPage(id: ID): FaqPageEntityResponse
+  faqPages(filters: FaqPageFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): FaqPageEntityResponseCollection
   flyersFoldedLeaflet(id: ID): FlyersFoldedLeafletEntityResponse
   flyersFoldedLeaflets(filters: FlyersFoldedLeafletFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): FlyersFoldedLeafletEntityResponseCollection
   footer(publicationState: PublicationState = LIVE): FooterEntityResponse
@@ -2616,6 +2768,8 @@ type Query {
   industry(id: ID): IndustryEntityResponse
   kaizenEcoRange(id: ID): KaizenEcoRangeEntityResponse
   kaizenEcoRanges(filters: KaizenEcoRangeFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): KaizenEcoRangeEntityResponseCollection
+  kaizenPromise(id: ID): KaizenPromiseEntityResponse
+  kaizenPromises(filters: KaizenPromiseFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): KaizenPromiseEntityResponseCollection
   landing(id: ID): LandingEntityResponse
   landings(filters: LandingFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): LandingEntityResponseCollection
   marketingAndPromo(id: ID): MarketingAndPromoEntityResponse

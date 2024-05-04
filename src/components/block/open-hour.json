@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_block_open_hours",
+  "info": {
+    "displayName": "openHour"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "points": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.bullet-points"
+    },
+    "qa": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.qa"
+    },
+    "headerImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

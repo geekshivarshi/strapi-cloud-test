@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "kaizen_promises",
+  "info": {
+    "singularName": "kaizen-promise",
+    "pluralName": "kaizen-promises",
+    "displayName": "KaizenPromise",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pageCover": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.page-cover"
+    },
+    "pageHeading": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.page-heading"
+    },
+    "benefitsWithKaizen": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.print-with-kaizen"
+    }
+  }
+}
