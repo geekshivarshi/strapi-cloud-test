@@ -11,7 +11,7 @@
       "required": true
     },
     "subHeading": {
-      "type": "string",
+      "type": "text",
       "required": true
     },
     "description": {

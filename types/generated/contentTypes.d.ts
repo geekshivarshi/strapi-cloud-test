@@ -1425,7 +1425,8 @@ export interface ApiKaizenPromiseKaizenPromise extends Schema.CollectionType {
   attributes: {
     pageCover: Attribute.Component<'block.page-cover'>;
     pageHeading: Attribute.Component<'block.page-heading'>;
-    benefitsWithKaizen: Attribute.Component<'block.print-with-kaizen'>;
+    fastFix: Attribute.Component<'block.product-specification'>;
+    kaizenProcess: Attribute.Component<'block.kaizen-process'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
