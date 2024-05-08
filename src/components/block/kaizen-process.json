@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_block_kaizen_processes",
+  "info": {
+    "displayName": "kaizenProcess",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "point1": {
+      "type": "text"
+    },
+    "point2": {
+      "type": "text"
+    },
+    "buttonLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.link"
+    },
+    "note1": {
+      "type": "text"
+    },
+    "note2": {
+      "type": "text"
+    },
+    "coverImgAlignment": {
+      "type": "string"
+    },
+    "coverImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

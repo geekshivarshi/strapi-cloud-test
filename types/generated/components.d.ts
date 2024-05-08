@@ -125,6 +125,24 @@ export interface BlockInstaPostSection extends Schema.Component {
   };
 }
 
+export interface BlockKaizenProcess extends Schema.Component {
+  collectionName: 'components_block_kaizen_processes';
+  info: {
+    displayName: 'kaizenProcess';
+    description: '';
+  };
+  attributes: {
+    heading: Attribute.String;
+    point1: Attribute.Text;
+    point2: Attribute.Text;
+    buttonLink: Attribute.Component<'elements.link'>;
+    note1: Attribute.Text;
+    note2: Attribute.Text;
+    coverImgAlignment: Attribute.String;
+    coverImage: Attribute.Media;
+  };
+}
+
 export interface BlockLandingPageCover extends Schema.Component {
   collectionName: 'components_block_landing_page_covers';
   info: {
@@ -271,7 +289,7 @@ export interface BlockProductSpecification extends Schema.Component {
   };
   attributes: {
     heading: Attribute.String & Attribute.Required;
-    subHeading: Attribute.String & Attribute.Required;
+    subHeading: Attribute.Text & Attribute.Required;
     description: Attribute.Component<'elements.list-item-with-image', true>;
     coverImg: Attribute.Media & Attribute.Required;
     coverImgAlignment: Attribute.String;
@@ -500,6 +518,7 @@ declare module '@strapi/types' {
       'block.explore-range-cards': BlockExploreRangeCards;
       'block.faq': BlockFaq;
       'block.insta-post-section': BlockInstaPostSection;
+      'block.kaizen-process': BlockKaizenProcess;
       'block.landing-page-cover': BlockLandingPageCover;
       'block.open-hour': BlockOpenHour;
       'block.page-cover': BlockPageCover;

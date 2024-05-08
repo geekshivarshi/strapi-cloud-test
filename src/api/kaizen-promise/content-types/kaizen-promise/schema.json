@@ -22,10 +22,15 @@
       "repeatable": false,
       "component": "block.page-heading"
     },
-    "benefitsWithKaizen": {
+    "fastFix": {
       "type": "component",
       "repeatable": false,
-      "component": "block.print-with-kaizen"
+      "component": "block.product-specification"
+    },
+    "kaizenProcess": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.kaizen-process"
     }
   }
 }

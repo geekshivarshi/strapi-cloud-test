@@ -560,6 +560,43 @@ input ComponentBlockInstaPostSectionInput {
   instagramLink: ComponentElementsLinkInput
 }
 
+type ComponentBlockKaizenProcess {
+  buttonLink: ComponentElementsLink
+  coverImage: UploadFileEntityResponse
+  coverImgAlignment: String
+  heading: String
+  id: ID!
+  note1: String
+  note2: String
+  point1: String
+  point2: String
+}
+
+input ComponentBlockKaizenProcessFiltersInput {
+  and: [ComponentBlockKaizenProcessFiltersInput]
+  buttonLink: ComponentElementsLinkFiltersInput
+  coverImgAlignment: StringFilterInput
+  heading: StringFilterInput
+  not: ComponentBlockKaizenProcessFiltersInput
+  note1: StringFilterInput
+  note2: StringFilterInput
+  or: [ComponentBlockKaizenProcessFiltersInput]
+  point1: StringFilterInput
+  point2: StringFilterInput
+}
+
+input ComponentBlockKaizenProcessInput {
+  buttonLink: ComponentElementsLinkInput
+  coverImage: ID
+  coverImgAlignment: String
+  heading: String
+  id: ID
+  note1: String
+  note2: String
+  point1: String
+  point2: String
+}
+
 type ComponentBlockLandingPageCover {
   coverImg: UploadFileEntityResponse
   coverImgMobile: UploadFileEntityResponse
@@ -1689,7 +1726,7 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = Auth | BannerAndSignage | BenefitsOfKaizen | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockInstaPostSection | ComponentBlockLandingPageCover | ComponentBlockOpenHour | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | Home | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | Landing | MarketingAndPromo | NeedADesign | NeedDesign | OpenHour | Poster | PrintEnquiry | QuickPrintBuy | StationaryAndOffice | Sticker | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = Auth | BannerAndSignage | BenefitsOfKaizen | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingPageCover | ComponentBlockOpenHour | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | Home | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | Landing | MarketingAndPromo | NeedADesign | NeedDesign | OpenHour | Poster | PrintEnquiry | QuickPrintBuy | StationaryAndOffice | Sticker | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GetAQuote {
   buttonLink: ComponentElementsLink
@@ -2159,8 +2196,9 @@ type KaizenEcoRangeRelationResponseCollection {
 }
 
 type KaizenPromise {
-  benefitsWithKaizen: ComponentBlockPrintWithKaizen
   createdAt: DateTime
+  fastFix: ComponentBlockProductSpecification
+  kaizenProcess: ComponentBlockKaizenProcess
   pageCover: ComponentBlockPageCover
   pageHeading: ComponentBlockPageHeading
   publishedAt: DateTime
@@ -2183,9 +2221,10 @@ type KaizenPromiseEntityResponseCollection {
 
 input KaizenPromiseFiltersInput {
   and: [KaizenPromiseFiltersInput]
-  benefitsWithKaizen: ComponentBlockPrintWithKaizenFiltersInput
   createdAt: DateTimeFilterInput
+  fastFix: ComponentBlockProductSpecificationFiltersInput
   id: IDFilterInput
+  kaizenProcess: ComponentBlockKaizenProcessFiltersInput
   not: KaizenPromiseFiltersInput
   or: [KaizenPromiseFiltersInput]
   pageCover: ComponentBlockPageCoverFiltersInput
@@ -2195,7 +2234,8 @@ input KaizenPromiseFiltersInput {
 }
 
 input KaizenPromiseInput {
-  benefitsWithKaizen: ComponentBlockPrintWithKaizenInput
+  fastFix: ComponentBlockProductSpecificationInput
+  kaizenProcess: ComponentBlockKaizenProcessInput
   pageCover: ComponentBlockPageCoverInput
   pageHeading: ComponentBlockPageHeadingInput
   publishedAt: DateTime
