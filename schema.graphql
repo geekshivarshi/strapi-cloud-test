@@ -1726,7 +1726,7 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = Auth | BannerAndSignage | BenefitsOfKaizen | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingPageCover | ComponentBlockOpenHour | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | Home | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | Landing | MarketingAndPromo | NeedADesign | NeedDesign | OpenHour | Poster | PrintEnquiry | QuickPrintBuy | StationaryAndOffice | Sticker | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = Auth | BannerAndSignage | BenefitsOfKaizen | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingPageCover | ComponentBlockOpenHour | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | Home | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | Landing | MarketingAndPromo | NeedADesign | NeedDesign | OpenHour | PaymentMethod | Poster | PrintEnquiry | QuickPrintBuy | StationaryAndOffice | Sticker | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GetAQuote {
   buttonLink: ComponentElementsLink
@@ -2403,6 +2403,7 @@ type Mutation {
   createLanding(data: LandingInput!): LandingEntityResponse
   createMarketingAndPromo(data: MarketingAndPromoInput!): MarketingAndPromoEntityResponse
   createNeedADesign(data: NeedADesignInput!): NeedADesignEntityResponse
+  createPaymentMethod(data: PaymentMethodInput!): PaymentMethodEntityResponse
   createPoster(data: PosterInput!): PosterEntityResponse
   createQuickPrintBuy(data: QuickPrintBuyInput!): QuickPrintBuyEntityResponse
   createStationaryAndOffice(data: StationaryAndOfficeInput!): StationaryAndOfficeEntityResponse
@@ -2442,6 +2443,7 @@ type Mutation {
   deleteNeedADesign(id: ID!): NeedADesignEntityResponse
   deleteNeedDesign: NeedDesignEntityResponse
   deleteOpenHour: OpenHourEntityResponse
+  deletePaymentMethod(id: ID!): PaymentMethodEntityResponse
   deletePoster(id: ID!): PosterEntityResponse
   deletePrintEnquiry: PrintEnquiryEntityResponse
   deleteQuickPrintBuy(id: ID!): QuickPrintBuyEntityResponse
@@ -2500,6 +2502,7 @@ type Mutation {
   updateNeedADesign(data: NeedADesignInput!, id: ID!): NeedADesignEntityResponse
   updateNeedDesign(data: NeedDesignInput!): NeedDesignEntityResponse
   updateOpenHour(data: OpenHourInput!): OpenHourEntityResponse
+  updatePaymentMethod(data: PaymentMethodInput!, id: ID!): PaymentMethodEntityResponse
   updatePoster(data: PosterInput!, id: ID!): PosterEntityResponse
   updatePrintEnquiry(data: PrintEnquiryInput!): PrintEnquiryEntityResponse
   updateQuickPrintBuy(data: QuickPrintBuyInput!, id: ID!): QuickPrintBuyEntityResponse
@@ -2665,6 +2668,61 @@ input PaginationArg {
   start: Int
 }
 
+type PaymentMethod {
+  contactLinks(filters: ComponentElementsLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsLink]
+  content: String
+  createdAt: DateTime
+  heading: String
+  images(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
+  pageCover: ComponentBlockPageCover
+  publishedAt: DateTime
+  title: String
+  updatedAt: DateTime
+}
+
+type PaymentMethodEntity {
+  attributes: PaymentMethod
+  id: ID
+}
+
+type PaymentMethodEntityResponse {
+  data: PaymentMethodEntity
+}
+
+type PaymentMethodEntityResponseCollection {
+  data: [PaymentMethodEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input PaymentMethodFiltersInput {
+  and: [PaymentMethodFiltersInput]
+  contactLinks: ComponentElementsLinkFiltersInput
+  content: StringFilterInput
+  createdAt: DateTimeFilterInput
+  heading: StringFilterInput
+  id: IDFilterInput
+  not: PaymentMethodFiltersInput
+  or: [PaymentMethodFiltersInput]
+  pageCover: ComponentBlockPageCoverFiltersInput
+  publishedAt: DateTimeFilterInput
+  title: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input PaymentMethodInput {
+  contactLinks: [ComponentElementsLinkInput]
+  content: String
+  heading: String
+  images: [ID]
+  pageCover: ComponentBlockPageCoverInput
+  publishedAt: DateTime
+  title: String
+}
+
+type PaymentMethodRelationResponseCollection {
+  data: [PaymentMethodEntity!]!
+}
+
 type Poster {
   createdAt: DateTime
   ecoCard: ComponentBlockEcoCard
@@ -2819,6 +2877,8 @@ type Query {
   needADesigns(filters: NeedADesignFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): NeedADesignEntityResponseCollection
   needDesign(publicationState: PublicationState = LIVE): NeedDesignEntityResponse
   openHour(publicationState: PublicationState = LIVE): OpenHourEntityResponse
+  paymentMethod(id: ID): PaymentMethodEntityResponse
+  paymentMethods(filters: PaymentMethodFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PaymentMethodEntityResponseCollection
   poster(id: ID): PosterEntityResponse
   posters(filters: PosterFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PosterEntityResponseCollection
   printEnquiry(publicationState: PublicationState = LIVE): PrintEnquiryEntityResponse
