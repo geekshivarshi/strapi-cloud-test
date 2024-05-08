@@ -1615,6 +1615,42 @@ export interface ApiOpenHourOpenHour extends Schema.SingleType {
   };
 }
 
+export interface ApiPaymentMethodPaymentMethod extends Schema.CollectionType {
+  collectionName: 'payment_methods';
+  info: {
+    singularName: 'payment-method';
+    pluralName: 'payment-methods';
+    displayName: 'paymentMethod';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    heading: Attribute.String;
+    content: Attribute.RichText;
+    pageCover: Attribute.Component<'block.page-cover'>;
+    images: Attribute.Media;
+    contactLinks: Attribute.Component<'elements.link', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::payment-method.payment-method',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::payment-method.payment-method',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPosterPoster extends Schema.CollectionType {
   collectionName: 'posters';
   info: {
@@ -1829,6 +1865,7 @@ declare module '@strapi/types' {
       'api::need-a-design.need-a-design': ApiNeedADesignNeedADesign;
       'api::need-design.need-design': ApiNeedDesignNeedDesign;
       'api::open-hour.open-hour': ApiOpenHourOpenHour;
+      'api::payment-method.payment-method': ApiPaymentMethodPaymentMethod;
       'api::poster.poster': ApiPosterPoster;
       'api::print-enquiry.print-enquiry': ApiPrintEnquiryPrintEnquiry;
       'api::quick-print-buy.quick-print-buy': ApiQuickPrintBuyQuickPrintBuy;
