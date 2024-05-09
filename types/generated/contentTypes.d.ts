@@ -1012,6 +1012,37 @@ export interface ApiContactUsContactUs extends Schema.CollectionType {
   };
 }
 
+export interface ApiCookiePolicyCookiePolicy extends Schema.CollectionType {
+  collectionName: 'cookie_policies';
+  info: {
+    singularName: 'cookie-policy';
+    pluralName: 'cookie-policies';
+    displayName: 'CookiePolicy';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    heading: Attribute.String;
+    content: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::cookie-policy.cookie-policy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::cookie-policy.cookie-policy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCustomerReviewCustomerReview extends Schema.SingleType {
   collectionName: 'customer_reviews';
   info: {
@@ -1719,6 +1750,37 @@ export interface ApiPrintEnquiryPrintEnquiry extends Schema.SingleType {
   };
 }
 
+export interface ApiPrivacyPolicyPrivacyPolicy extends Schema.CollectionType {
+  collectionName: 'privacy_policies';
+  info: {
+    singularName: 'privacy-policy';
+    pluralName: 'privacy-policies';
+    displayName: 'PrivacyPolicy';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    heading: Attribute.String;
+    content: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::privacy-policy.privacy-policy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::privacy-policy.privacy-policy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiQuickPrintBuyQuickPrintBuy extends Schema.CollectionType {
   collectionName: 'quick_print_buys';
   info: {
@@ -1822,6 +1884,39 @@ export interface ApiStickerSticker extends Schema.CollectionType {
   };
 }
 
+export interface ApiTermsAndConditionTermsAndCondition
+  extends Schema.CollectionType {
+  collectionName: 'terms_and_conditions';
+  info: {
+    singularName: 'terms-and-condition';
+    pluralName: 'terms-and-conditions';
+    displayName: 'TermAndCondition';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    heading: Attribute.String;
+    content: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::terms-and-condition.terms-and-condition',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::terms-and-condition.terms-and-condition',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1847,6 +1942,7 @@ declare module '@strapi/types' {
       'api::business-card.business-card': ApiBusinessCardBusinessCard;
       'api::chat-to-kaibot.chat-to-kaibot': ApiChatToKaibotChatToKaibot;
       'api::contact-us.contact-us': ApiContactUsContactUs;
+      'api::cookie-policy.cookie-policy': ApiCookiePolicyCookiePolicy;
       'api::customer-review.customer-review': ApiCustomerReviewCustomerReview;
       'api::eco-range.eco-range': ApiEcoRangeEcoRange;
       'api::faq-page.faq-page': ApiFaqPageFaqPage;
@@ -1868,9 +1964,11 @@ declare module '@strapi/types' {
       'api::payment-method.payment-method': ApiPaymentMethodPaymentMethod;
       'api::poster.poster': ApiPosterPoster;
       'api::print-enquiry.print-enquiry': ApiPrintEnquiryPrintEnquiry;
+      'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
       'api::quick-print-buy.quick-print-buy': ApiQuickPrintBuyQuickPrintBuy;
       'api::stationary-and-office.stationary-and-office': ApiStationaryAndOfficeStationaryAndOffice;
       'api::sticker.sticker': ApiStickerSticker;
+      'api::terms-and-condition.terms-and-condition': ApiTermsAndConditionTermsAndCondition;
     }
   }
 }
