@@ -1361,6 +1361,50 @@ type ContentReleasesReleaseRelationResponseCollection {
   data: [ContentReleasesReleaseEntity!]!
 }
 
+type CookiePolicy {
+  content: String
+  createdAt: DateTime
+  heading: String
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type CookiePolicyEntity {
+  attributes: CookiePolicy
+  id: ID
+}
+
+type CookiePolicyEntityResponse {
+  data: CookiePolicyEntity
+}
+
+type CookiePolicyEntityResponseCollection {
+  data: [CookiePolicyEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input CookiePolicyFiltersInput {
+  and: [CookiePolicyFiltersInput]
+  content: StringFilterInput
+  createdAt: DateTimeFilterInput
+  heading: StringFilterInput
+  id: IDFilterInput
+  not: CookiePolicyFiltersInput
+  or: [CookiePolicyFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input CookiePolicyInput {
+  content: String
+  heading: String
+  publishedAt: DateTime
+}
+
+type CookiePolicyRelationResponseCollection {
+  data: [CookiePolicyEntity!]!
+}
+
 type CustomerReview {
   createdAt: DateTime
   customerReview(filters: ComponentBlockCustomerReviewsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockCustomerReviews]
@@ -1726,7 +1770,7 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = Auth | BannerAndSignage | BenefitsOfKaizen | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingPageCover | ComponentBlockOpenHour | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | Home | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | Landing | MarketingAndPromo | NeedADesign | NeedDesign | OpenHour | PaymentMethod | Poster | PrintEnquiry | QuickPrintBuy | StationaryAndOffice | Sticker | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = Auth | BannerAndSignage | BenefitsOfKaizen | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingPageCover | ComponentBlockOpenHour | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CookiePolicy | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | Home | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | Landing | MarketingAndPromo | NeedADesign | NeedDesign | OpenHour | PaymentMethod | Poster | PrintEnquiry | PrivacyPolicy | QuickPrintBuy | StationaryAndOffice | Sticker | TermsAndCondition | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GetAQuote {
   buttonLink: ComponentElementsLink
@@ -2394,6 +2438,7 @@ type Mutation {
   createContactUs(data: ContactUsInput!): ContactUsEntityResponse
   createContentReleasesRelease(data: ContentReleasesReleaseInput!): ContentReleasesReleaseEntityResponse
   createContentReleasesReleaseAction(data: ContentReleasesReleaseActionInput!): ContentReleasesReleaseActionEntityResponse
+  createCookiePolicy(data: CookiePolicyInput!): CookiePolicyEntityResponse
   createFaqPage(data: FaqPageInput!): FaqPageEntityResponse
   createFlyersFoldedLeaflet(data: FlyersFoldedLeafletInput!): FlyersFoldedLeafletEntityResponse
   createHome(data: HomeInput!): HomeEntityResponse
@@ -2405,9 +2450,11 @@ type Mutation {
   createNeedADesign(data: NeedADesignInput!): NeedADesignEntityResponse
   createPaymentMethod(data: PaymentMethodInput!): PaymentMethodEntityResponse
   createPoster(data: PosterInput!): PosterEntityResponse
+  createPrivacyPolicy(data: PrivacyPolicyInput!): PrivacyPolicyEntityResponse
   createQuickPrintBuy(data: QuickPrintBuyInput!): QuickPrintBuyEntityResponse
   createStationaryAndOffice(data: StationaryAndOfficeInput!): StationaryAndOfficeEntityResponse
   createSticker(data: StickerInput!): StickerEntityResponse
+  createTermsAndCondition(data: TermsAndConditionInput!): TermsAndConditionEntityResponse
   createUploadFile(data: UploadFileInput!): UploadFileEntityResponse
   createUploadFolder(data: UploadFolderInput!): UploadFolderEntityResponse
 
@@ -2425,6 +2472,7 @@ type Mutation {
   deleteContactUs(id: ID!): ContactUsEntityResponse
   deleteContentReleasesRelease(id: ID!): ContentReleasesReleaseEntityResponse
   deleteContentReleasesReleaseAction(id: ID!): ContentReleasesReleaseActionEntityResponse
+  deleteCookiePolicy(id: ID!): CookiePolicyEntityResponse
   deleteCustomerReview: CustomerReviewEntityResponse
   deleteEcoRange: EcoRangeEntityResponse
   deleteFaqPage(id: ID!): FaqPageEntityResponse
@@ -2446,9 +2494,11 @@ type Mutation {
   deletePaymentMethod(id: ID!): PaymentMethodEntityResponse
   deletePoster(id: ID!): PosterEntityResponse
   deletePrintEnquiry: PrintEnquiryEntityResponse
+  deletePrivacyPolicy(id: ID!): PrivacyPolicyEntityResponse
   deleteQuickPrintBuy(id: ID!): QuickPrintBuyEntityResponse
   deleteStationaryAndOffice(id: ID!): StationaryAndOfficeEntityResponse
   deleteSticker(id: ID!): StickerEntityResponse
+  deleteTermsAndCondition(id: ID!): TermsAndConditionEntityResponse
   deleteUploadFile(id: ID!): UploadFileEntityResponse
   deleteUploadFolder(id: ID!): UploadFolderEntityResponse
 
@@ -2483,6 +2533,7 @@ type Mutation {
   updateContactUs(data: ContactUsInput!, id: ID!): ContactUsEntityResponse
   updateContentReleasesRelease(data: ContentReleasesReleaseInput!, id: ID!): ContentReleasesReleaseEntityResponse
   updateContentReleasesReleaseAction(data: ContentReleasesReleaseActionInput!, id: ID!): ContentReleasesReleaseActionEntityResponse
+  updateCookiePolicy(data: CookiePolicyInput!, id: ID!): CookiePolicyEntityResponse
   updateCustomerReview(data: CustomerReviewInput!): CustomerReviewEntityResponse
   updateEcoRange(data: EcoRangeInput!): EcoRangeEntityResponse
   updateFaqPage(data: FaqPageInput!, id: ID!): FaqPageEntityResponse
@@ -2505,9 +2556,11 @@ type Mutation {
   updatePaymentMethod(data: PaymentMethodInput!, id: ID!): PaymentMethodEntityResponse
   updatePoster(data: PosterInput!, id: ID!): PosterEntityResponse
   updatePrintEnquiry(data: PrintEnquiryInput!): PrintEnquiryEntityResponse
+  updatePrivacyPolicy(data: PrivacyPolicyInput!, id: ID!): PrivacyPolicyEntityResponse
   updateQuickPrintBuy(data: QuickPrintBuyInput!, id: ID!): QuickPrintBuyEntityResponse
   updateStationaryAndOffice(data: StationaryAndOfficeInput!, id: ID!): StationaryAndOfficeEntityResponse
   updateSticker(data: StickerInput!, id: ID!): StickerEntityResponse
+  updateTermsAndCondition(data: TermsAndConditionInput!, id: ID!): TermsAndConditionEntityResponse
   updateUploadFile(data: UploadFileInput!, id: ID!): UploadFileEntityResponse
   updateUploadFolder(data: UploadFolderInput!, id: ID!): UploadFolderEntityResponse
 
@@ -2825,6 +2878,50 @@ type PrintEnquiryRelationResponseCollection {
   data: [PrintEnquiryEntity!]!
 }
 
+type PrivacyPolicy {
+  content: String
+  createdAt: DateTime
+  heading: String
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type PrivacyPolicyEntity {
+  attributes: PrivacyPolicy
+  id: ID
+}
+
+type PrivacyPolicyEntityResponse {
+  data: PrivacyPolicyEntity
+}
+
+type PrivacyPolicyEntityResponseCollection {
+  data: [PrivacyPolicyEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input PrivacyPolicyFiltersInput {
+  and: [PrivacyPolicyFiltersInput]
+  content: StringFilterInput
+  createdAt: DateTimeFilterInput
+  heading: StringFilterInput
+  id: IDFilterInput
+  not: PrivacyPolicyFiltersInput
+  or: [PrivacyPolicyFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input PrivacyPolicyInput {
+  content: String
+  heading: String
+  publishedAt: DateTime
+}
+
+type PrivacyPolicyRelationResponseCollection {
+  data: [PrivacyPolicyEntity!]!
+}
+
 enum PublicationState {
   LIVE
   PREVIEW
@@ -2847,6 +2944,8 @@ type Query {
   contentReleasesReleaseAction(id: ID): ContentReleasesReleaseActionEntityResponse
   contentReleasesReleaseActions(filters: ContentReleasesReleaseActionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ContentReleasesReleaseActionEntityResponseCollection
   contentReleasesReleases(filters: ContentReleasesReleaseFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ContentReleasesReleaseEntityResponseCollection
+  cookiePolicies(filters: CookiePolicyFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): CookiePolicyEntityResponseCollection
+  cookiePolicy(id: ID): CookiePolicyEntityResponse
   customerReview(publicationState: PublicationState = LIVE): CustomerReviewEntityResponse
   ecoRange(publicationState: PublicationState = LIVE): EcoRangeEntityResponse
   faqPage(id: ID): FaqPageEntityResponse
@@ -2882,12 +2981,16 @@ type Query {
   poster(id: ID): PosterEntityResponse
   posters(filters: PosterFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PosterEntityResponseCollection
   printEnquiry(publicationState: PublicationState = LIVE): PrintEnquiryEntityResponse
+  privacyPolicies(filters: PrivacyPolicyFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PrivacyPolicyEntityResponseCollection
+  privacyPolicy(id: ID): PrivacyPolicyEntityResponse
   quickPrintBuy(id: ID): QuickPrintBuyEntityResponse
   quickPrintBuys(filters: QuickPrintBuyFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): QuickPrintBuyEntityResponseCollection
   stationaryAndOffice(id: ID): StationaryAndOfficeEntityResponse
   stationaryAndOffices(filters: StationaryAndOfficeFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): StationaryAndOfficeEntityResponseCollection
   sticker(id: ID): StickerEntityResponse
   stickers(filters: StickerFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): StickerEntityResponseCollection
+  termsAndCondition(id: ID): TermsAndConditionEntityResponse
+  termsAndConditions(filters: TermsAndConditionFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): TermsAndConditionEntityResponseCollection
   uploadFile(id: ID): UploadFileEntityResponse
   uploadFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileEntityResponseCollection
   uploadFolder(id: ID): UploadFolderEntityResponse
@@ -3078,6 +3181,50 @@ input StringFilterInput {
   null: Boolean
   or: [String]
   startsWith: String
+}
+
+type TermsAndCondition {
+  content: String
+  createdAt: DateTime
+  heading: String
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type TermsAndConditionEntity {
+  attributes: TermsAndCondition
+  id: ID
+}
+
+type TermsAndConditionEntityResponse {
+  data: TermsAndConditionEntity
+}
+
+type TermsAndConditionEntityResponseCollection {
+  data: [TermsAndConditionEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input TermsAndConditionFiltersInput {
+  and: [TermsAndConditionFiltersInput]
+  content: StringFilterInput
+  createdAt: DateTimeFilterInput
+  heading: StringFilterInput
+  id: IDFilterInput
+  not: TermsAndConditionFiltersInput
+  or: [TermsAndConditionFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input TermsAndConditionInput {
+  content: String
+  heading: String
+  publishedAt: DateTime
+}
+
+type TermsAndConditionRelationResponseCollection {
+  data: [TermsAndConditionEntity!]!
 }
 
 """A time string with format HH:mm:ss.SSS"""
