@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_block_how_it_work_components",
+  "info": {
+    "displayName": "howItWorkComponent",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "steps": {
+      "displayName": "listItemWithTwoImages",
+      "type": "component",
+      "repeatable": true,
+      "component": "block.list-item-with-two-images"
+    },
+    "buttonLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.link"
+    }
+  }
+}

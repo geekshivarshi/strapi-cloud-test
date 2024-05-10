@@ -112,6 +112,32 @@ export interface BlockFaq extends Schema.Component {
   };
 }
 
+export interface BlockHowItWorkComponent extends Schema.Component {
+  collectionName: 'components_block_how_it_work_components';
+  info: {
+    displayName: 'howItWorkComponent';
+    description: '';
+  };
+  attributes: {
+    heading: Attribute.String;
+    steps: Attribute.Component<'block.list-item-with-two-images', true>;
+    buttonLink: Attribute.Component<'elements.link'>;
+  };
+}
+
+export interface BlockHowItWorksStep extends Schema.Component {
+  collectionName: 'components_block_how_it_works_steps';
+  info: {
+    displayName: 'howItWorksStep';
+  };
+  attributes: {
+    heading: Attribute.String;
+    content: Attribute.RichText;
+    coverImg: Attribute.Media;
+    coverImgAlignment: Attribute.String;
+  };
+}
+
 export interface BlockInstaPostSection extends Schema.Component {
   collectionName: 'components_block_insta_post_sections';
   info: {
@@ -155,6 +181,33 @@ export interface BlockLandingPageCover extends Schema.Component {
     coverImg: Attribute.Media;
     productLinks: Attribute.Component<'elements.link', true>;
     coverImgMobile: Attribute.Media;
+  };
+}
+
+export interface BlockListItemWithTwoImages extends Schema.Component {
+  collectionName: 'components_block_list_item_with_two_images';
+  info: {
+    displayName: 'listItemWithTwoImages';
+    description: '';
+  };
+  attributes: {
+    heading: Attribute.String;
+    subHeading: Attribute.Text;
+    activeImage: Attribute.Media;
+    inactiveImage: Attribute.Media;
+  };
+}
+
+export interface BlockMyAccountCard extends Schema.Component {
+  collectionName: 'components_block_my_account_cards';
+  info: {
+    displayName: 'MyAccountCard';
+  };
+  attributes: {
+    heading: Attribute.String;
+    headerImage: Attribute.Media;
+    description: Attribute.Text;
+    buttonLinks: Attribute.Component<'elements.link', true>;
   };
 }
 
@@ -294,6 +347,20 @@ export interface BlockProductSpecification extends Schema.Component {
     coverImg: Attribute.Media & Attribute.Required;
     coverImgAlignment: Attribute.String;
     subHeading2: Attribute.Text;
+  };
+}
+
+export interface BlockTrackOrder extends Schema.Component {
+  collectionName: 'components_block_track_orders';
+  info: {
+    displayName: 'TrackOrderCard';
+    description: '';
+  };
+  attributes: {
+    heading: Attribute.String;
+    headerImage: Attribute.Media;
+    points: Attribute.Component<'elements.bullet-points', true>;
+    buttonLink: Attribute.Component<'elements.link'>;
   };
 }
 
@@ -517,9 +584,13 @@ declare module '@strapi/types' {
       'block.explore-categories': BlockExploreCategories;
       'block.explore-range-cards': BlockExploreRangeCards;
       'block.faq': BlockFaq;
+      'block.how-it-work-component': BlockHowItWorkComponent;
+      'block.how-it-works-step': BlockHowItWorksStep;
       'block.insta-post-section': BlockInstaPostSection;
       'block.kaizen-process': BlockKaizenProcess;
       'block.landing-page-cover': BlockLandingPageCover;
+      'block.list-item-with-two-images': BlockListItemWithTwoImages;
+      'block.my-account-card': BlockMyAccountCard;
       'block.open-hour': BlockOpenHour;
       'block.page-cover': BlockPageCover;
       'block.page-heading': BlockPageHeading;
@@ -530,6 +601,7 @@ declare module '@strapi/types' {
       'block.product-card-section': BlockProductCardSection;
       'block.product-specification-with-twosub-headings': BlockProductSpecificationWithTwosubHeadings;
       'block.product-specification': BlockProductSpecification;
+      'block.track-order': BlockTrackOrder;
       'block.video-section': BlockVideoSection;
       'elements.advance-image': ElementsAdvanceImage;
       'elements.badge': ElementsBadge;

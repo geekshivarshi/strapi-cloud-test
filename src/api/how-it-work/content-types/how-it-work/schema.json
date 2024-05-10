@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "how_it_works",
+  "info": {
+    "singularName": "how-it-work",
+    "pluralName": "how-it-works",
+    "displayName": "How it work",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "howItWorksSteps": {
+      "displayName": "howItWorksStep",
+      "type": "component",
+      "repeatable": true,
+      "component": "block.how-it-works-step"
+    },
+    "trackOrder": {
+      "displayName": "TrackOrder",
+      "type": "component",
+      "repeatable": false,
+      "component": "block.track-order"
+    },
+    "myAccountCard": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.my-account-card"
+    }
+  }
+}

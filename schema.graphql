@@ -537,6 +537,54 @@ input ComponentBlockFaqInput {
   subHeading: String
 }
 
+type ComponentBlockHowItWorkComponent {
+  buttonLink: ComponentElementsLink
+  heading: String
+  id: ID!
+  steps(filters: ComponentBlockListItemWithTwoImagesFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockListItemWithTwoImages]
+}
+
+input ComponentBlockHowItWorkComponentFiltersInput {
+  and: [ComponentBlockHowItWorkComponentFiltersInput]
+  buttonLink: ComponentElementsLinkFiltersInput
+  heading: StringFilterInput
+  not: ComponentBlockHowItWorkComponentFiltersInput
+  or: [ComponentBlockHowItWorkComponentFiltersInput]
+  steps: ComponentBlockListItemWithTwoImagesFiltersInput
+}
+
+input ComponentBlockHowItWorkComponentInput {
+  buttonLink: ComponentElementsLinkInput
+  heading: String
+  id: ID
+  steps: [ComponentBlockListItemWithTwoImagesInput]
+}
+
+type ComponentBlockHowItWorksStep {
+  content: String
+  coverImg: UploadFileEntityResponse
+  coverImgAlignment: String
+  heading: String
+  id: ID!
+}
+
+input ComponentBlockHowItWorksStepFiltersInput {
+  and: [ComponentBlockHowItWorksStepFiltersInput]
+  content: StringFilterInput
+  coverImgAlignment: StringFilterInput
+  heading: StringFilterInput
+  not: ComponentBlockHowItWorksStepFiltersInput
+  or: [ComponentBlockHowItWorksStepFiltersInput]
+}
+
+input ComponentBlockHowItWorksStepInput {
+  content: String
+  coverImg: ID
+  coverImgAlignment: String
+  heading: String
+  id: ID
+}
+
 type ComponentBlockInstaPostSection {
   heading: String
   id: ID!
@@ -622,6 +670,55 @@ input ComponentBlockLandingPageCoverInput {
   id: ID
   productLinks: [ComponentElementsLinkInput]
   subHeading: String
+}
+
+type ComponentBlockListItemWithTwoImages {
+  activeImage: UploadFileEntityResponse
+  heading: String
+  id: ID!
+  inactiveImage: UploadFileEntityResponse
+  subHeading: String
+}
+
+input ComponentBlockListItemWithTwoImagesFiltersInput {
+  and: [ComponentBlockListItemWithTwoImagesFiltersInput]
+  heading: StringFilterInput
+  not: ComponentBlockListItemWithTwoImagesFiltersInput
+  or: [ComponentBlockListItemWithTwoImagesFiltersInput]
+  subHeading: StringFilterInput
+}
+
+input ComponentBlockListItemWithTwoImagesInput {
+  activeImage: ID
+  heading: String
+  id: ID
+  inactiveImage: ID
+  subHeading: String
+}
+
+type ComponentBlockMyAccountCard {
+  buttonLinks(filters: ComponentElementsLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsLink]
+  description: String
+  headerImage: UploadFileEntityResponse
+  heading: String
+  id: ID!
+}
+
+input ComponentBlockMyAccountCardFiltersInput {
+  and: [ComponentBlockMyAccountCardFiltersInput]
+  buttonLinks: ComponentElementsLinkFiltersInput
+  description: StringFilterInput
+  heading: StringFilterInput
+  not: ComponentBlockMyAccountCardFiltersInput
+  or: [ComponentBlockMyAccountCardFiltersInput]
+}
+
+input ComponentBlockMyAccountCardInput {
+  buttonLinks: [ComponentElementsLinkInput]
+  description: String
+  headerImage: ID
+  heading: String
+  id: ID
 }
 
 type ComponentBlockOpenHour {
@@ -874,6 +971,31 @@ input ComponentBlockProductSpecificationWithTwosubHeadingsInput {
   id: ID
   subHeading1: String
   subHeading2: String
+}
+
+type ComponentBlockTrackOrder {
+  buttonLink: ComponentElementsLink
+  headerImage: UploadFileEntityResponse
+  heading: String
+  id: ID!
+  points(filters: ComponentElementsBulletPointsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsBulletPoints]
+}
+
+input ComponentBlockTrackOrderFiltersInput {
+  and: [ComponentBlockTrackOrderFiltersInput]
+  buttonLink: ComponentElementsLinkFiltersInput
+  heading: StringFilterInput
+  not: ComponentBlockTrackOrderFiltersInput
+  or: [ComponentBlockTrackOrderFiltersInput]
+  points: ComponentElementsBulletPointsFiltersInput
+}
+
+input ComponentBlockTrackOrderInput {
+  buttonLink: ComponentElementsLinkInput
+  headerImage: ID
+  heading: String
+  id: ID
+  points: [ComponentElementsBulletPointsInput]
 }
 
 type ComponentBlockVideoSection {
@@ -1770,7 +1892,7 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = Auth | BannerAndSignage | BenefitsOfKaizen | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingPageCover | ComponentBlockOpenHour | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CookiePolicy | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | Home | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | Landing | MarketingAndPromo | NeedADesign | NeedDesign | OpenHour | PaymentMethod | Poster | PrintEnquiry | PrivacyPolicy | QuickPrintBuy | StationaryAndOffice | Sticker | TermsAndCondition | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = Auth | BannerAndSignage | BenefitsOfKaizen | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockHowItWorkComponent | ComponentBlockHowItWorksStep | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingPageCover | ComponentBlockListItemWithTwoImages | ComponentBlockMyAccountCard | ComponentBlockOpenHour | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockTrackOrder | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CookiePolicy | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | Home | HowItWork | HowItWorksStep | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | Landing | MarketingAndPromo | NeedADesign | NeedDesign | OpenHour | PaymentMethod | Poster | PrintEnquiry | PrivacyPolicy | QuickPrintBuy | StationaryAndOffice | Sticker | TermsAndCondition | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GetAQuote {
   buttonLink: ComponentElementsLink
@@ -2016,6 +2138,93 @@ input HomeInput {
 
 type HomeRelationResponseCollection {
   data: [HomeEntity!]!
+}
+
+type HowItWork {
+  createdAt: DateTime
+  howItWorksSteps(filters: ComponentBlockHowItWorksStepFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockHowItWorksStep]
+  myAccountCard: ComponentBlockMyAccountCard
+  publishedAt: DateTime
+  trackOrder: ComponentBlockTrackOrder
+  updatedAt: DateTime
+}
+
+type HowItWorkEntity {
+  attributes: HowItWork
+  id: ID
+}
+
+type HowItWorkEntityResponse {
+  data: HowItWorkEntity
+}
+
+type HowItWorkEntityResponseCollection {
+  data: [HowItWorkEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input HowItWorkFiltersInput {
+  and: [HowItWorkFiltersInput]
+  createdAt: DateTimeFilterInput
+  howItWorksSteps: ComponentBlockHowItWorksStepFiltersInput
+  id: IDFilterInput
+  myAccountCard: ComponentBlockMyAccountCardFiltersInput
+  not: HowItWorkFiltersInput
+  or: [HowItWorkFiltersInput]
+  publishedAt: DateTimeFilterInput
+  trackOrder: ComponentBlockTrackOrderFiltersInput
+  updatedAt: DateTimeFilterInput
+}
+
+input HowItWorkInput {
+  howItWorksSteps: [ComponentBlockHowItWorksStepInput]
+  myAccountCard: ComponentBlockMyAccountCardInput
+  publishedAt: DateTime
+  trackOrder: ComponentBlockTrackOrderInput
+}
+
+type HowItWorkRelationResponseCollection {
+  data: [HowItWorkEntity!]!
+}
+
+type HowItWorksStep {
+  createdAt: DateTime
+  howItWorks: ComponentBlockHowItWorkComponent
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type HowItWorksStepEntity {
+  attributes: HowItWorksStep
+  id: ID
+}
+
+type HowItWorksStepEntityResponse {
+  data: HowItWorksStepEntity
+}
+
+type HowItWorksStepEntityResponseCollection {
+  data: [HowItWorksStepEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input HowItWorksStepFiltersInput {
+  and: [HowItWorksStepFiltersInput]
+  createdAt: DateTimeFilterInput
+  howItWorks: ComponentBlockHowItWorkComponentFiltersInput
+  not: HowItWorksStepFiltersInput
+  or: [HowItWorksStepFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input HowItWorksStepInput {
+  howItWorks: ComponentBlockHowItWorkComponentInput
+  publishedAt: DateTime
+}
+
+type HowItWorksStepRelationResponseCollection {
+  data: [HowItWorksStepEntity!]!
 }
 
 type I18NLocale {
@@ -2442,6 +2651,7 @@ type Mutation {
   createFaqPage(data: FaqPageInput!): FaqPageEntityResponse
   createFlyersFoldedLeaflet(data: FlyersFoldedLeafletInput!): FlyersFoldedLeafletEntityResponse
   createHome(data: HomeInput!): HomeEntityResponse
+  createHowItWork(data: HowItWorkInput!): HowItWorkEntityResponse
   createIndustry(data: IndustryInput!): IndustryEntityResponse
   createKaizenEcoRange(data: KaizenEcoRangeInput!): KaizenEcoRangeEntityResponse
   createKaizenPromise(data: KaizenPromiseInput!): KaizenPromiseEntityResponse
@@ -2483,6 +2693,8 @@ type Mutation {
   deleteHeader: HeaderEntityResponse
   deleteHereToHelp: HereToHelpEntityResponse
   deleteHome(id: ID!): HomeEntityResponse
+  deleteHowItWork(id: ID!): HowItWorkEntityResponse
+  deleteHowItWorksStep: HowItWorksStepEntityResponse
   deleteIndustry(id: ID!): IndustryEntityResponse
   deleteKaizenEcoRange(id: ID!): KaizenEcoRangeEntityResponse
   deleteKaizenPromise(id: ID!): KaizenPromiseEntityResponse
@@ -2545,6 +2757,8 @@ type Mutation {
   updateHeader(data: HeaderInput!): HeaderEntityResponse
   updateHereToHelp(data: HereToHelpInput!): HereToHelpEntityResponse
   updateHome(data: HomeInput!, id: ID!): HomeEntityResponse
+  updateHowItWork(data: HowItWorkInput!, id: ID!): HowItWorkEntityResponse
+  updateHowItWorksStep(data: HowItWorksStepInput!): HowItWorksStepEntityResponse
   updateIndustry(data: IndustryInput!, id: ID!): IndustryEntityResponse
   updateKaizenEcoRange(data: KaizenEcoRangeInput!, id: ID!): KaizenEcoRangeEntityResponse
   updateKaizenPromise(data: KaizenPromiseInput!, id: ID!): KaizenPromiseEntityResponse
@@ -2959,6 +3173,9 @@ type Query {
   hereToHelp(publicationState: PublicationState = LIVE): HereToHelpEntityResponse
   home(id: ID): HomeEntityResponse
   homes(filters: HomeFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): HomeEntityResponseCollection
+  howItWork(id: ID): HowItWorkEntityResponse
+  howItWorks(filters: HowItWorkFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): HowItWorkEntityResponseCollection
+  howItWorksStep(publicationState: PublicationState = LIVE): HowItWorksStepEntityResponse
   i18NLocale(id: ID): I18NLocaleEntityResponse
   i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection
   industries(filters: IndustryFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): IndustryEntityResponseCollection
