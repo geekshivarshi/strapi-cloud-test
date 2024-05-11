@@ -1376,6 +1376,69 @@ export interface ApiHomeHome extends Schema.CollectionType {
   };
 }
 
+export interface ApiHowItWorkHowItWork extends Schema.CollectionType {
+  collectionName: 'how_it_works';
+  info: {
+    singularName: 'how-it-work';
+    pluralName: 'how-it-works';
+    displayName: 'How it work';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    howItWorksSteps: Attribute.Component<'block.how-it-works-step', true>;
+    trackOrder: Attribute.Component<'block.track-order'>;
+    myAccountCard: Attribute.Component<'block.my-account-card'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::how-it-work.how-it-work',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::how-it-work.how-it-work',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHowItWorksStepHowItWorksStep extends Schema.SingleType {
+  collectionName: 'how_it_works_steps';
+  info: {
+    singularName: 'how-it-works-step';
+    pluralName: 'how-it-works-steps';
+    displayName: 'How it works step';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    howItWorks: Attribute.Component<'block.how-it-work-component'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::how-it-works-step.how-it-works-step',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::how-it-works-step.how-it-works-step',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiIndustryIndustry extends Schema.CollectionType {
   collectionName: 'industries';
   info: {
@@ -1953,6 +2016,8 @@ declare module '@strapi/types' {
       'api::header.header': ApiHeaderHeader;
       'api::here-to-help.here-to-help': ApiHereToHelpHereToHelp;
       'api::home.home': ApiHomeHome;
+      'api::how-it-work.how-it-work': ApiHowItWorkHowItWork;
+      'api::how-it-works-step.how-it-works-step': ApiHowItWorksStepHowItWorksStep;
       'api::industry.industry': ApiIndustryIndustry;
       'api::kaizen-eco-range.kaizen-eco-range': ApiKaizenEcoRangeKaizenEcoRange;
       'api::kaizen-promise.kaizen-promise': ApiKaizenPromiseKaizenPromise;
