@@ -1539,6 +1539,44 @@ export interface ApiKaizenPromiseKaizenPromise extends Schema.CollectionType {
   };
 }
 
+export interface ApiKaizenPromisecardKaizenPromisecard
+  extends Schema.SingleType {
+  collectionName: 'kaizen_promisecards';
+  info: {
+    singularName: 'kaizen-promisecard';
+    pluralName: 'kaizen-promisecards';
+    displayName: 'KaizenPromiseCard';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    heading: Attribute.String;
+    subHeading: Attribute.String;
+    description: Attribute.Text;
+    backgroundImage: Attribute.Component<'elements.new-image'>;
+    logoBackgroundImage: Attribute.Component<'elements.new-image'>;
+    logoImage: Attribute.Component<'elements.new-image'>;
+    logoText: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::kaizen-promisecard.kaizen-promisecard',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::kaizen-promisecard.kaizen-promisecard',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiLandingLanding extends Schema.CollectionType {
   collectionName: 'landings';
   info: {
@@ -2021,6 +2059,7 @@ declare module '@strapi/types' {
       'api::industry.industry': ApiIndustryIndustry;
       'api::kaizen-eco-range.kaizen-eco-range': ApiKaizenEcoRangeKaizenEcoRange;
       'api::kaizen-promise.kaizen-promise': ApiKaizenPromiseKaizenPromise;
+      'api::kaizen-promisecard.kaizen-promisecard': ApiKaizenPromisecardKaizenPromisecard;
       'api::landing.landing': ApiLandingLanding;
       'api::marketing-and-promo.marketing-and-promo': ApiMarketingAndPromoMarketingAndPromo;
       'api::need-a-design.need-a-design': ApiNeedADesignNeedADesign;

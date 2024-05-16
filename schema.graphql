@@ -1892,7 +1892,7 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = Auth | BannerAndSignage | BenefitsOfKaizen | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockHowItWorkComponent | ComponentBlockHowItWorksStep | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingPageCover | ComponentBlockListItemWithTwoImages | ComponentBlockMyAccountCard | ComponentBlockOpenHour | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockTrackOrder | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CookiePolicy | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | Home | HowItWork | HowItWorksStep | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | Landing | MarketingAndPromo | NeedADesign | NeedDesign | OpenHour | PaymentMethod | Poster | PrintEnquiry | PrivacyPolicy | QuickPrintBuy | StationaryAndOffice | Sticker | TermsAndCondition | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = Auth | BannerAndSignage | BenefitsOfKaizen | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockHowItWorkComponent | ComponentBlockHowItWorksStep | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingPageCover | ComponentBlockListItemWithTwoImages | ComponentBlockMyAccountCard | ComponentBlockOpenHour | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockTrackOrder | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CookiePolicy | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | Home | HowItWork | HowItWorksStep | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | KaizenPromisecard | Landing | MarketingAndPromo | NeedADesign | NeedDesign | OpenHour | PaymentMethod | Poster | PrintEnquiry | PrivacyPolicy | QuickPrintBuy | StationaryAndOffice | Sticker | TermsAndCondition | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GetAQuote {
   buttonLink: ComponentElementsLink
@@ -2498,6 +2498,64 @@ type KaizenPromiseRelationResponseCollection {
   data: [KaizenPromiseEntity!]!
 }
 
+type KaizenPromisecard {
+  backgroundImage: ComponentElementsNewImage
+  createdAt: DateTime
+  description: String
+  heading: String
+  logoBackgroundImage: ComponentElementsNewImage
+  logoImage: ComponentElementsNewImage
+  logoText: String
+  publishedAt: DateTime
+  subHeading: String
+  updatedAt: DateTime
+}
+
+type KaizenPromisecardEntity {
+  attributes: KaizenPromisecard
+  id: ID
+}
+
+type KaizenPromisecardEntityResponse {
+  data: KaizenPromisecardEntity
+}
+
+type KaizenPromisecardEntityResponseCollection {
+  data: [KaizenPromisecardEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input KaizenPromisecardFiltersInput {
+  and: [KaizenPromisecardFiltersInput]
+  backgroundImage: ComponentElementsNewImageFiltersInput
+  createdAt: DateTimeFilterInput
+  description: StringFilterInput
+  heading: StringFilterInput
+  logoBackgroundImage: ComponentElementsNewImageFiltersInput
+  logoImage: ComponentElementsNewImageFiltersInput
+  logoText: StringFilterInput
+  not: KaizenPromisecardFiltersInput
+  or: [KaizenPromisecardFiltersInput]
+  publishedAt: DateTimeFilterInput
+  subHeading: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input KaizenPromisecardInput {
+  backgroundImage: ComponentElementsNewImageInput
+  description: String
+  heading: String
+  logoBackgroundImage: ComponentElementsNewImageInput
+  logoImage: ComponentElementsNewImageInput
+  logoText: String
+  publishedAt: DateTime
+  subHeading: String
+}
+
+type KaizenPromisecardRelationResponseCollection {
+  data: [KaizenPromisecardEntity!]!
+}
+
 type Landing {
   createdAt: DateTime
   ecoCard: ComponentBlockEcoCard
@@ -2698,6 +2756,7 @@ type Mutation {
   deleteIndustry(id: ID!): IndustryEntityResponse
   deleteKaizenEcoRange(id: ID!): KaizenEcoRangeEntityResponse
   deleteKaizenPromise(id: ID!): KaizenPromiseEntityResponse
+  deleteKaizenPromisecard: KaizenPromisecardEntityResponse
   deleteLanding(id: ID!): LandingEntityResponse
   deleteMarketingAndPromo(id: ID!): MarketingAndPromoEntityResponse
   deleteNeedADesign(id: ID!): NeedADesignEntityResponse
@@ -2762,6 +2821,7 @@ type Mutation {
   updateIndustry(data: IndustryInput!, id: ID!): IndustryEntityResponse
   updateKaizenEcoRange(data: KaizenEcoRangeInput!, id: ID!): KaizenEcoRangeEntityResponse
   updateKaizenPromise(data: KaizenPromiseInput!, id: ID!): KaizenPromiseEntityResponse
+  updateKaizenPromisecard(data: KaizenPromisecardInput!): KaizenPromisecardEntityResponse
   updateLanding(data: LandingInput!, id: ID!): LandingEntityResponse
   updateMarketingAndPromo(data: MarketingAndPromoInput!, id: ID!): MarketingAndPromoEntityResponse
   updateNeedADesign(data: NeedADesignInput!, id: ID!): NeedADesignEntityResponse
@@ -3183,6 +3243,7 @@ type Query {
   kaizenEcoRange(id: ID): KaizenEcoRangeEntityResponse
   kaizenEcoRanges(filters: KaizenEcoRangeFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): KaizenEcoRangeEntityResponseCollection
   kaizenPromise(id: ID): KaizenPromiseEntityResponse
+  kaizenPromisecard(publicationState: PublicationState = LIVE): KaizenPromisecardEntityResponse
   kaizenPromises(filters: KaizenPromiseFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): KaizenPromiseEntityResponseCollection
   landing(id: ID): LandingEntityResponse
   landings(filters: LandingFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): LandingEntityResponseCollection
