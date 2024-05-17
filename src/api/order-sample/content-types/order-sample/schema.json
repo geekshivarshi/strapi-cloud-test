@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "order_samples",
+  "info": {
+    "singularName": "order-sample",
+    "pluralName": "order-samples",
+    "displayName": "OrderSample",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pageCover": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.page-cover"
+    },
+    "orderSampleCard": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.order-sample-card"
+    },
+    "footerImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

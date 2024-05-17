@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_block_order_sample_cards",
+  "info": {
+    "displayName": "OrderSampleCard"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "headerImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "points": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.bullet-points"
+    }
+  }
+}
