@@ -224,6 +224,18 @@ export interface BlockOpenHour extends Schema.Component {
   };
 }
 
+export interface BlockOrderSampleCard extends Schema.Component {
+  collectionName: 'components_block_order_sample_cards';
+  info: {
+    displayName: 'OrderSampleCard';
+  };
+  attributes: {
+    heading: Attribute.String;
+    headerImage: Attribute.Media;
+    points: Attribute.Component<'elements.bullet-points', true>;
+  };
+}
+
 export interface BlockPageCover extends Schema.Component {
   collectionName: 'components_block_page_covers';
   info: {
@@ -592,6 +604,7 @@ declare module '@strapi/types' {
       'block.list-item-with-two-images': BlockListItemWithTwoImages;
       'block.my-account-card': BlockMyAccountCard;
       'block.open-hour': BlockOpenHour;
+      'block.order-sample-card': BlockOrderSampleCard;
       'block.page-cover': BlockPageCover;
       'block.page-heading': BlockPageHeading;
       'block.partners': BlockPartners;

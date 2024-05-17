@@ -1747,6 +1747,39 @@ export interface ApiOpenHourOpenHour extends Schema.SingleType {
   };
 }
 
+export interface ApiOrderSampleOrderSample extends Schema.CollectionType {
+  collectionName: 'order_samples';
+  info: {
+    singularName: 'order-sample';
+    pluralName: 'order-samples';
+    displayName: 'OrderSample';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageCover: Attribute.Component<'block.page-cover'>;
+    orderSampleCard: Attribute.Component<'block.order-sample-card'>;
+    footerImage: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::order-sample.order-sample',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::order-sample.order-sample',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPaymentMethodPaymentMethod extends Schema.CollectionType {
   collectionName: 'payment_methods';
   info: {
@@ -2065,6 +2098,7 @@ declare module '@strapi/types' {
       'api::need-a-design.need-a-design': ApiNeedADesignNeedADesign;
       'api::need-design.need-design': ApiNeedDesignNeedDesign;
       'api::open-hour.open-hour': ApiOpenHourOpenHour;
+      'api::order-sample.order-sample': ApiOrderSampleOrderSample;
       'api::payment-method.payment-method': ApiPaymentMethodPaymentMethod;
       'api::poster.poster': ApiPosterPoster;
       'api::print-enquiry.print-enquiry': ApiPrintEnquiryPrintEnquiry;

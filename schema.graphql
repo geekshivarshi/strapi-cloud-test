@@ -746,6 +746,28 @@ input ComponentBlockOpenHourInput {
   qa: [ComponentElementsQaInput]
 }
 
+type ComponentBlockOrderSampleCard {
+  headerImage: UploadFileEntityResponse
+  heading: String
+  id: ID!
+  points(filters: ComponentElementsBulletPointsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsBulletPoints]
+}
+
+input ComponentBlockOrderSampleCardFiltersInput {
+  and: [ComponentBlockOrderSampleCardFiltersInput]
+  heading: StringFilterInput
+  not: ComponentBlockOrderSampleCardFiltersInput
+  or: [ComponentBlockOrderSampleCardFiltersInput]
+  points: ComponentElementsBulletPointsFiltersInput
+}
+
+input ComponentBlockOrderSampleCardInput {
+  headerImage: ID
+  heading: String
+  id: ID
+  points: [ComponentElementsBulletPointsInput]
+}
+
 type ComponentBlockPageCover {
   desktopImage: UploadFileEntityResponse!
   heading: String!
@@ -1892,7 +1914,7 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = Auth | BannerAndSignage | BenefitsOfKaizen | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockHowItWorkComponent | ComponentBlockHowItWorksStep | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingPageCover | ComponentBlockListItemWithTwoImages | ComponentBlockMyAccountCard | ComponentBlockOpenHour | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockTrackOrder | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CookiePolicy | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | Home | HowItWork | HowItWorksStep | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | KaizenPromisecard | Landing | MarketingAndPromo | NeedADesign | NeedDesign | OpenHour | PaymentMethod | Poster | PrintEnquiry | PrivacyPolicy | QuickPrintBuy | StationaryAndOffice | Sticker | TermsAndCondition | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = Auth | BannerAndSignage | BenefitsOfKaizen | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockHowItWorkComponent | ComponentBlockHowItWorksStep | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingPageCover | ComponentBlockListItemWithTwoImages | ComponentBlockMyAccountCard | ComponentBlockOpenHour | ComponentBlockOrderSampleCard | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockTrackOrder | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CookiePolicy | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | Home | HowItWork | HowItWorksStep | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | KaizenPromisecard | Landing | MarketingAndPromo | NeedADesign | NeedDesign | OpenHour | OrderSample | PaymentMethod | Poster | PrintEnquiry | PrivacyPolicy | QuickPrintBuy | StationaryAndOffice | Sticker | TermsAndCondition | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GetAQuote {
   buttonLink: ComponentElementsLink
@@ -2716,6 +2738,7 @@ type Mutation {
   createLanding(data: LandingInput!): LandingEntityResponse
   createMarketingAndPromo(data: MarketingAndPromoInput!): MarketingAndPromoEntityResponse
   createNeedADesign(data: NeedADesignInput!): NeedADesignEntityResponse
+  createOrderSample(data: OrderSampleInput!): OrderSampleEntityResponse
   createPaymentMethod(data: PaymentMethodInput!): PaymentMethodEntityResponse
   createPoster(data: PosterInput!): PosterEntityResponse
   createPrivacyPolicy(data: PrivacyPolicyInput!): PrivacyPolicyEntityResponse
@@ -2762,6 +2785,7 @@ type Mutation {
   deleteNeedADesign(id: ID!): NeedADesignEntityResponse
   deleteNeedDesign: NeedDesignEntityResponse
   deleteOpenHour: OpenHourEntityResponse
+  deleteOrderSample(id: ID!): OrderSampleEntityResponse
   deletePaymentMethod(id: ID!): PaymentMethodEntityResponse
   deletePoster(id: ID!): PosterEntityResponse
   deletePrintEnquiry: PrintEnquiryEntityResponse
@@ -2827,6 +2851,7 @@ type Mutation {
   updateNeedADesign(data: NeedADesignInput!, id: ID!): NeedADesignEntityResponse
   updateNeedDesign(data: NeedDesignInput!): NeedDesignEntityResponse
   updateOpenHour(data: OpenHourInput!): OpenHourEntityResponse
+  updateOrderSample(data: OrderSampleInput!, id: ID!): OrderSampleEntityResponse
   updatePaymentMethod(data: PaymentMethodInput!, id: ID!): PaymentMethodEntityResponse
   updatePoster(data: PosterInput!, id: ID!): PosterEntityResponse
   updatePrintEnquiry(data: PrintEnquiryInput!): PrintEnquiryEntityResponse
@@ -2979,6 +3004,52 @@ input OpenHourInput {
 
 type OpenHourRelationResponseCollection {
   data: [OpenHourEntity!]!
+}
+
+type OrderSample {
+  createdAt: DateTime
+  footerImage: UploadFileEntityResponse
+  orderSampleCard: ComponentBlockOrderSampleCard
+  pageCover: ComponentBlockPageCover
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type OrderSampleEntity {
+  attributes: OrderSample
+  id: ID
+}
+
+type OrderSampleEntityResponse {
+  data: OrderSampleEntity
+}
+
+type OrderSampleEntityResponseCollection {
+  data: [OrderSampleEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input OrderSampleFiltersInput {
+  and: [OrderSampleFiltersInput]
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  not: OrderSampleFiltersInput
+  or: [OrderSampleFiltersInput]
+  orderSampleCard: ComponentBlockOrderSampleCardFiltersInput
+  pageCover: ComponentBlockPageCoverFiltersInput
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input OrderSampleInput {
+  footerImage: ID
+  orderSampleCard: ComponentBlockOrderSampleCardInput
+  pageCover: ComponentBlockPageCoverInput
+  publishedAt: DateTime
+}
+
+type OrderSampleRelationResponseCollection {
+  data: [OrderSampleEntity!]!
 }
 
 type Pagination {
@@ -3254,6 +3325,8 @@ type Query {
   needADesigns(filters: NeedADesignFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): NeedADesignEntityResponseCollection
   needDesign(publicationState: PublicationState = LIVE): NeedDesignEntityResponse
   openHour(publicationState: PublicationState = LIVE): OpenHourEntityResponse
+  orderSample(id: ID): OrderSampleEntityResponse
+  orderSamples(filters: OrderSampleFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): OrderSampleEntityResponseCollection
   paymentMethod(id: ID): PaymentMethodEntityResponse
   paymentMethods(filters: PaymentMethodFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PaymentMethodEntityResponseCollection
   poster(id: ID): PosterEntityResponse
