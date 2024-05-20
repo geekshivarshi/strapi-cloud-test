@@ -823,8 +823,8 @@ export interface ApiBannerAndSignageBannerAndSignage
     printspiration: Attribute.Component<'block.printspiration'>;
     ecoCard: Attribute.Component<'block.eco-card'>;
     printPanic: Attribute.Component<'block.faq'>;
-    bannerUsageGuide: Attribute.Component<'block.product-specification'>;
     videoSection: Attribute.Component<'block.video-section'>;
+    bannerUsageGuide: Attribute.Component<'block.product-specification-with-twosub-headings'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -922,13 +922,15 @@ export interface ApiBusinessCardBusinessCard extends Schema.CollectionType {
     pageCover: Attribute.Component<'block.page-cover'> & Attribute.Required;
     pageHeading: Attribute.Component<'block.page-heading'>;
     exploreOurRange: Attribute.Component<'block.explore-range-cards', true>;
-    ourMaterials: Attribute.Component<'block.product-specification'>;
     printPanic: Attribute.Component<'block.faq'>;
     printSos: Attribute.Component<'block.print-sos'>;
     ecoCard: Attribute.Component<'block.eco-card'>;
-    ultimateTouches: Attribute.Component<'block.product-specification'>;
     exploreOurCategories: Attribute.Component<'block.product-card-section'>;
     printspiration: Attribute.Component<'block.printspiration'>;
+    productSpecifications: Attribute.Component<
+      'block.product-specification',
+      true
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1155,9 +1157,12 @@ export interface ApiFlyersFoldedLeafletFlyersFoldedLeaflet
     pageHeading: Attribute.Component<'block.page-heading'>;
     exploreOurRange: Attribute.Component<'block.product-card-section'>;
     printspiration: Attribute.Component<'block.printspiration'>;
-    ourMaterials: Attribute.Component<'block.product-specification'>;
     ecoCard: Attribute.Component<'block.eco-card'>;
     printPanic: Attribute.Component<'block.faq'>;
+    productSpecifications: Attribute.Component<
+      'block.product-specification',
+      true
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1831,11 +1836,14 @@ export interface ApiPosterPoster extends Schema.CollectionType {
     pageCover: Attribute.Component<'block.page-cover'>;
     pageHeading: Attribute.Component<'block.page-heading'>;
     printspiration: Attribute.Component<'block.printspiration'>;
-    ourMaterials: Attribute.Component<'block.product-specification'>;
     ecoCard: Attribute.Component<'block.eco-card'>;
     exploreOurRange: Attribute.Component<'block.product-card-section'>;
     printPanic: Attribute.Component<'block.faq'>;
-    ourSize: Attribute.Component<'block.product-specification'>;
+    productSpecifications: Attribute.Component<
+      'block.product-specification',
+      true
+    >;
+    ourSize: Attribute.Component<'block.product-specification-with-twosub-headings'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1997,9 +2005,12 @@ export interface ApiStickerSticker extends Schema.CollectionType {
     pageHeading: Attribute.Component<'block.page-heading'>;
     exploreOurRange: Attribute.Component<'block.product-card-section'>;
     printspiration: Attribute.Component<'block.printspiration'>;
-    StickerLabelBenefits: Attribute.Component<'block.product-specification'>;
-    stickersUsage: Attribute.Component<'block.product-specification'>;
     printPanic: Attribute.Component<'block.faq'>;
+    productSpecifications: Attribute.Component<
+      'block.product-specification',
+      true
+    >;
+    stickerLabelBenefits: Attribute.Component<'block.product-specification-with-twosub-headings'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

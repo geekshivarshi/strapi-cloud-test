@@ -28,11 +28,6 @@
       "repeatable": true,
       "component": "block.explore-range-cards"
     },
-    "ourMaterials": {
-      "type": "component",
-      "repeatable": false,
-      "component": "block.product-specification"
-    },
     "printPanic": {
       "type": "component",
       "repeatable": false,
@@ -48,11 +43,6 @@
       "repeatable": false,
       "component": "block.eco-card"
     },
-    "ultimateTouches": {
-      "type": "component",
-      "repeatable": false,
-      "component": "block.product-specification"
-    },
     "exploreOurCategories": {
       "type": "component",
       "repeatable": false,
@@ -62,6 +52,11 @@
       "type": "component",
       "repeatable": false,
       "component": "block.printspiration"
+    },
+    "productSpecifications": {
+      "type": "component",
+      "repeatable": true,
+      "component": "block.product-specification"
     }
   }
 }

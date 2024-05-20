@@ -10,10 +10,6 @@
       "type": "string",
       "required": true
     },
-    "subHeading": {
-      "type": "text",
-      "required": true
-    },
     "description": {
       "type": "component",
       "repeatable": true,
@@ -34,8 +30,8 @@
     "coverImgAlignment": {
       "type": "string"
     },
-    "subHeading2": {
-      "type": "text"
+    "content": {
+      "type": "richtext"
     }
   }
 }

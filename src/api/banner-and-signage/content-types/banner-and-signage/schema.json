@@ -42,15 +42,15 @@
       "repeatable": false,
       "component": "block.faq"
     },
-    "bannerUsageGuide": {
-      "type": "component",
-      "repeatable": false,
-      "component": "block.product-specification"
-    },
     "videoSection": {
       "type": "component",
       "repeatable": false,
       "component": "block.video-section"
+    },
+    "bannerUsageGuide": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.product-specification-with-twosub-headings"
     }
   }
 }

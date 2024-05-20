@@ -120,7 +120,7 @@ export interface BlockHowItWorkComponent extends Schema.Component {
   };
   attributes: {
     heading: Attribute.String;
-    steps: Attribute.Component<'block.list-item-with-two-images', true>;
+    steps: Attribute.Component<'elements.list-item-with-two-images', true>;
     buttonLink: Attribute.Component<'elements.link'>;
   };
 }
@@ -181,20 +181,6 @@ export interface BlockLandingPageCover extends Schema.Component {
     coverImg: Attribute.Media;
     productLinks: Attribute.Component<'elements.link', true>;
     coverImgMobile: Attribute.Media;
-  };
-}
-
-export interface BlockListItemWithTwoImages extends Schema.Component {
-  collectionName: 'components_block_list_item_with_two_images';
-  info: {
-    displayName: 'listItemWithTwoImages';
-    description: '';
-  };
-  attributes: {
-    heading: Attribute.String;
-    subHeading: Attribute.Text;
-    activeImage: Attribute.Media;
-    inactiveImage: Attribute.Media;
   };
 }
 
@@ -316,6 +302,19 @@ export interface BlockPrintspiration extends Schema.Component {
   };
 }
 
+export interface BlockProdSpecsListImageWithCoverImg extends Schema.Component {
+  collectionName: 'components_block_prod_specs_list_image_with_cover_imgs';
+  info: {
+    displayName: 'ProdSpecsListItemWithCoverImg';
+  };
+  attributes: {
+    heading: Attribute.String;
+    subHeading: Attribute.Text;
+    coverImg: Attribute.Media;
+    itemImage: Attribute.Media;
+  };
+}
+
 export interface BlockProductCardSection extends Schema.Component {
   collectionName: 'components_block_product_card_section';
   info: {
@@ -334,15 +333,17 @@ export interface BlockProductSpecificationWithTwosubHeadings
   extends Schema.Component {
   collectionName: 'components_block_product_specs_with_two_sub_headings';
   info: {
-    displayName: 'ProductSpecsWithTwoSubHeadings';
+    displayName: 'ProductSpecsWithCarousel';
+    description: '';
   };
   attributes: {
     heading: Attribute.String;
-    subHeading1: Attribute.Text;
-    subHeading2: Attribute.Text;
-    coverImg: Attribute.Media;
     coverImgAlignment: Attribute.String;
-    description: Attribute.Component<'elements.list-item-with-image', true>;
+    content: Attribute.RichText;
+    description: Attribute.Component<
+      'block.prod-specs-list-image-with-cover-img',
+      true
+    >;
   };
 }
 
@@ -354,11 +355,10 @@ export interface BlockProductSpecification extends Schema.Component {
   };
   attributes: {
     heading: Attribute.String & Attribute.Required;
-    subHeading: Attribute.Text & Attribute.Required;
     description: Attribute.Component<'elements.list-item-with-image', true>;
     coverImg: Attribute.Media & Attribute.Required;
     coverImgAlignment: Attribute.String;
-    subHeading2: Attribute.Text;
+    content: Attribute.RichText;
   };
 }
 
@@ -496,6 +496,20 @@ export interface ElementsListItemWithImage extends Schema.Component {
   };
 }
 
+export interface ElementsListItemWithTwoImages extends Schema.Component {
+  collectionName: 'components_block_list_item_with_two_images';
+  info: {
+    displayName: 'listItemWithTwoImages';
+    description: '';
+  };
+  attributes: {
+    heading: Attribute.String;
+    subHeading: Attribute.Text;
+    activeImage: Attribute.Media;
+    inactiveImage: Attribute.Media;
+  };
+}
+
 export interface ElementsNewImage extends Schema.Component {
   collectionName: 'components_elements_new_images';
   info: {
@@ -601,7 +615,6 @@ declare module '@strapi/types' {
       'block.insta-post-section': BlockInstaPostSection;
       'block.kaizen-process': BlockKaizenProcess;
       'block.landing-page-cover': BlockLandingPageCover;
-      'block.list-item-with-two-images': BlockListItemWithTwoImages;
       'block.my-account-card': BlockMyAccountCard;
       'block.open-hour': BlockOpenHour;
       'block.order-sample-card': BlockOrderSampleCard;
@@ -611,6 +624,7 @@ declare module '@strapi/types' {
       'block.print-sos': BlockPrintSos;
       'block.print-with-kaizen': BlockPrintWithKaizen;
       'block.printspiration': BlockPrintspiration;
+      'block.prod-specs-list-image-with-cover-img': BlockProdSpecsListImageWithCoverImg;
       'block.product-card-section': BlockProductCardSection;
       'block.product-specification-with-twosub-headings': BlockProductSpecificationWithTwosubHeadings;
       'block.product-specification': BlockProductSpecification;
@@ -624,6 +638,7 @@ declare module '@strapi/types' {
       'elements.image': ElementsImage;
       'elements.link': ElementsLink;
       'elements.list-item-with-image': ElementsListItemWithImage;
+      'elements.list-item-with-two-images': ElementsListItemWithTwoImages;
       'elements.new-image': ElementsNewImage;
       'elements.qa': ElementsQa;
       'elements.section': ElementsSection;
