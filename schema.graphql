@@ -54,6 +54,7 @@ type BannerAndSignage {
   printPanic: ComponentBlockFaq
   printspiration: ComponentBlockPrintspiration
   publishedAt: DateTime
+  seo: ComponentSharedSeo
   updatedAt: DateTime
   videoSection: ComponentBlockVideoSection
 }
@@ -86,6 +87,7 @@ input BannerAndSignageFiltersInput {
   printPanic: ComponentBlockFaqFiltersInput
   printspiration: ComponentBlockPrintspirationFiltersInput
   publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
   videoSection: ComponentBlockVideoSectionFiltersInput
 }
@@ -99,6 +101,7 @@ input BannerAndSignageInput {
   printPanic: ComponentBlockFaqInput
   printspiration: ComponentBlockPrintspirationInput
   publishedAt: DateTime
+  seo: ComponentSharedSeoInput
   videoSection: ComponentBlockVideoSectionInput
 }
 
@@ -175,6 +178,7 @@ type BrandedMerch {
   brochure: ComponentElementsSection
   brochureCarousel(filters: ComponentElementsNewImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsNewImage]
   createdAt: DateTime
+  hereToHelp: ComponentBlockHereToHelp
   pageCover: ComponentBlockPageCover
   publishedAt: DateTime
   updatedAt: DateTime
@@ -199,6 +203,7 @@ input BrandedMerchFiltersInput {
   brochure: ComponentElementsSectionFiltersInput
   brochureCarousel: ComponentElementsNewImageFiltersInput
   createdAt: DateTimeFilterInput
+  hereToHelp: ComponentBlockHereToHelpFiltersInput
   id: IDFilterInput
   not: BrandedMerchFiltersInput
   or: [BrandedMerchFiltersInput]
@@ -210,6 +215,7 @@ input BrandedMerchFiltersInput {
 input BrandedMerchInput {
   brochure: ComponentElementsSectionInput
   brochureCarousel: [ComponentElementsNewImageInput]
+  hereToHelp: ComponentBlockHereToHelpInput
   pageCover: ComponentBlockPageCoverInput
   publishedAt: DateTime
 }
@@ -230,6 +236,7 @@ type BusinessCard {
   printspiration: ComponentBlockPrintspiration
   productSpecifications(filters: ComponentBlockProductSpecificationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockProductSpecification]
   publishedAt: DateTime
+  seo: ComponentSharedSeo
   updatedAt: DateTime
 }
 
@@ -263,6 +270,7 @@ input BusinessCardFiltersInput {
   printspiration: ComponentBlockPrintspirationFiltersInput
   productSpecifications: ComponentBlockProductSpecificationFiltersInput
   publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -277,6 +285,7 @@ input BusinessCardInput {
   printspiration: ComponentBlockPrintspirationInput
   productSpecifications: [ComponentBlockProductSpecificationInput]
   publishedAt: DateTime
+  seo: ComponentSharedSeoInput
 }
 
 type BusinessCardRelationResponseCollection {
@@ -531,6 +540,33 @@ input ComponentBlockFaqInput {
   QA: [ComponentElementsQaInput]
   heading: String
   id: ID
+  subHeading: String
+}
+
+type ComponentBlockHereToHelp {
+  description(filters: ComponentElementsBulletPointsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsBulletPoints]
+  heading: String
+  id: ID!
+  leftImage: UploadFileEntityResponse
+  rightImage: UploadFileEntityResponse
+  subHeading: String
+}
+
+input ComponentBlockHereToHelpFiltersInput {
+  and: [ComponentBlockHereToHelpFiltersInput]
+  description: ComponentElementsBulletPointsFiltersInput
+  heading: StringFilterInput
+  not: ComponentBlockHereToHelpFiltersInput
+  or: [ComponentBlockHereToHelpFiltersInput]
+  subHeading: StringFilterInput
+}
+
+input ComponentBlockHereToHelpInput {
+  description: [ComponentElementsBulletPointsInput]
+  heading: String
+  id: ID
+  leftImage: ID
+  rightImage: ID
   subHeading: String
 }
 
@@ -1523,6 +1559,7 @@ type CookiePolicy {
   createdAt: DateTime
   heading: String
   publishedAt: DateTime
+  seo: ComponentSharedSeo
   updatedAt: DateTime
 }
 
@@ -1549,6 +1586,7 @@ input CookiePolicyFiltersInput {
   not: CookiePolicyFiltersInput
   or: [CookiePolicyFiltersInput]
   publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -1556,6 +1594,7 @@ input CookiePolicyInput {
   content: String
   heading: String
   publishedAt: DateTime
+  seo: ComponentSharedSeoInput
 }
 
 type CookiePolicyRelationResponseCollection {
@@ -1736,6 +1775,7 @@ type FaqPage {
   openHour: ComponentBlockOpenHour
   pageCover: ComponentBlockPageCover
   publishedAt: DateTime
+  seo: ComponentSharedSeo
   updatedAt: DateTime
 }
 
@@ -1764,6 +1804,7 @@ input FaqPageFiltersInput {
   or: [FaqPageFiltersInput]
   pageCover: ComponentBlockPageCoverFiltersInput
   publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -1773,6 +1814,7 @@ input FaqPageInput {
   openHour: ComponentBlockOpenHourInput
   pageCover: ComponentBlockPageCoverInput
   publishedAt: DateTime
+  seo: ComponentSharedSeoInput
 }
 
 type FaqPageRelationResponseCollection {
@@ -1820,6 +1862,7 @@ type FlyersFoldedLeaflet {
   printspiration: ComponentBlockPrintspiration
   productSpecifications(filters: ComponentBlockProductSpecificationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockProductSpecification]
   publishedAt: DateTime
+  seo: ComponentSharedSeo
   updatedAt: DateTime
 }
 
@@ -1851,6 +1894,7 @@ input FlyersFoldedLeafletFiltersInput {
   printspiration: ComponentBlockPrintspirationFiltersInput
   productSpecifications: ComponentBlockProductSpecificationFiltersInput
   publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -1863,6 +1907,7 @@ input FlyersFoldedLeafletInput {
   printspiration: ComponentBlockPrintspirationInput
   productSpecifications: [ComponentBlockProductSpecificationInput]
   publishedAt: DateTime
+  seo: ComponentSharedSeoInput
 }
 
 type FlyersFoldedLeafletRelationResponseCollection {
@@ -1927,7 +1972,7 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = Auth | BannerAndSignage | BenefitsOfKaizen | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockHowItWorkComponent | ComponentBlockHowItWorksStep | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingPageCover | ComponentBlockMyAccountCard | ComponentBlockOpenHour | ComponentBlockOrderSampleCard | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProdSpecsListImageWithCoverImg | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockTrackOrder | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsListItemWithTwoImages | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CookiePolicy | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | Home | HowItWork | HowItWorksStep | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | KaizenPromisecard | Landing | MarketingAndPromo | NeedADesign | NeedDesign | OpenHour | OrderSample | PaymentMethod | Poster | PrintEnquiry | PrivacyPolicy | QuickPrintBuy | StationaryAndOffice | Sticker | TermsAndCondition | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = Auth | BannerAndSignage | BenefitsOfKaizen | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockHereToHelp | ComponentBlockHowItWorkComponent | ComponentBlockHowItWorksStep | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingPageCover | ComponentBlockMyAccountCard | ComponentBlockOpenHour | ComponentBlockOrderSampleCard | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProdSpecsListImageWithCoverImg | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockTrackOrder | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsListItemWithTwoImages | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CookiePolicy | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | HowItWork | HowItWorksStep | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | KaizenPromisecard | Landing | MarketingAndPromo | NeedADesign | NeedDesign | OpenHour | OrderSample | PaymentMethod | Poster | PrintEnquiry | PrivacyPolicy | QuickPrintBuy | StationaryAndOffice | Sticker | TermsAndCondition | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GetAQuote {
   buttonLink: ComponentElementsLink
@@ -2131,55 +2176,12 @@ type HereToHelpRelationResponseCollection {
   data: [HereToHelpEntity!]!
 }
 
-type Home {
-  createdAt: DateTime
-  next: Int
-  publishedAt: DateTime
-  test: String
-  updatedAt: DateTime
-}
-
-type HomeEntity {
-  attributes: Home
-  id: ID
-}
-
-type HomeEntityResponse {
-  data: HomeEntity
-}
-
-type HomeEntityResponseCollection {
-  data: [HomeEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input HomeFiltersInput {
-  and: [HomeFiltersInput]
-  createdAt: DateTimeFilterInput
-  id: IDFilterInput
-  next: IntFilterInput
-  not: HomeFiltersInput
-  or: [HomeFiltersInput]
-  publishedAt: DateTimeFilterInput
-  test: StringFilterInput
-  updatedAt: DateTimeFilterInput
-}
-
-input HomeInput {
-  next: Int
-  publishedAt: DateTime
-  test: String
-}
-
-type HomeRelationResponseCollection {
-  data: [HomeEntity!]!
-}
-
 type HowItWork {
   createdAt: DateTime
   howItWorksSteps(filters: ComponentBlockHowItWorksStepFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockHowItWorksStep]
   myAccountCard: ComponentBlockMyAccountCard
   publishedAt: DateTime
+  seo: ComponentSharedSeo
   trackOrder: ComponentBlockTrackOrder
   updatedAt: DateTime
 }
@@ -2207,6 +2209,7 @@ input HowItWorkFiltersInput {
   not: HowItWorkFiltersInput
   or: [HowItWorkFiltersInput]
   publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
   trackOrder: ComponentBlockTrackOrderFiltersInput
   updatedAt: DateTimeFilterInput
 }
@@ -2215,6 +2218,7 @@ input HowItWorkInput {
   howItWorksSteps: [ComponentBlockHowItWorksStepInput]
   myAccountCard: ComponentBlockMyAccountCardInput
   publishedAt: DateTime
+  seo: ComponentSharedSeoInput
   trackOrder: ComponentBlockTrackOrderInput
 }
 
@@ -2334,6 +2338,7 @@ input IDFilterInput {
 type Industry {
   createdAt: DateTime
   exploreCategories: ComponentBlockExploreCategories
+  hereToHelp: ComponentBlockHereToHelp
   pageCover: ComponentBlockPageCover
   partners: ComponentBlockPartners
   publishedAt: DateTime
@@ -2358,6 +2363,7 @@ input IndustryFiltersInput {
   and: [IndustryFiltersInput]
   createdAt: DateTimeFilterInput
   exploreCategories: ComponentBlockExploreCategoriesFiltersInput
+  hereToHelp: ComponentBlockHereToHelpFiltersInput
   id: IDFilterInput
   not: IndustryFiltersInput
   or: [IndustryFiltersInput]
@@ -2369,6 +2375,7 @@ input IndustryFiltersInput {
 
 input IndustryInput {
   exploreCategories: ComponentBlockExploreCategoriesInput
+  hereToHelp: ComponentBlockHereToHelpInput
   pageCover: ComponentBlockPageCoverInput
   partners: ComponentBlockPartnersInput
   publishedAt: DateTime
@@ -2440,6 +2447,7 @@ type KaizenEcoRange {
   pageCover: ComponentBlockPageCover
   pageHeading: ComponentBlockPageHeading
   publishedAt: DateTime
+  seo: ComponentSharedSeo
   updatedAt: DateTime
 }
 
@@ -2468,6 +2476,7 @@ input KaizenEcoRangeFiltersInput {
   pageCover: ComponentBlockPageCoverFiltersInput
   pageHeading: ComponentBlockPageHeadingFiltersInput
   publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -2477,6 +2486,7 @@ input KaizenEcoRangeInput {
   pageCover: ComponentBlockPageCoverInput
   pageHeading: ComponentBlockPageHeadingInput
   publishedAt: DateTime
+  seo: ComponentSharedSeoInput
 }
 
 type KaizenEcoRangeRelationResponseCollection {
@@ -2490,6 +2500,7 @@ type KaizenPromise {
   pageCover: ComponentBlockPageCover
   pageHeading: ComponentBlockPageHeading
   publishedAt: DateTime
+  seo: ComponentSharedSeo
   updatedAt: DateTime
 }
 
@@ -2518,6 +2529,7 @@ input KaizenPromiseFiltersInput {
   pageCover: ComponentBlockPageCoverFiltersInput
   pageHeading: ComponentBlockPageHeadingFiltersInput
   publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -2527,6 +2539,7 @@ input KaizenPromiseInput {
   pageCover: ComponentBlockPageCoverInput
   pageHeading: ComponentBlockPageHeadingInput
   publishedAt: DateTime
+  seo: ComponentSharedSeoInput
 }
 
 type KaizenPromiseRelationResponseCollection {
@@ -2602,6 +2615,7 @@ type Landing {
   printWithKaizen: ComponentBlockPrintWithKaizen
   printingSection: ComponentBlockInstaPostSection
   publishedAt: DateTime
+  seo: ComponentSharedSeo
   updatedAt: DateTime
 }
 
@@ -2634,6 +2648,7 @@ input LandingFiltersInput {
   printWithKaizen: ComponentBlockPrintWithKaizenFiltersInput
   printingSection: ComponentBlockInstaPostSectionFiltersInput
   publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -2647,6 +2662,7 @@ input LandingInput {
   printWithKaizen: ComponentBlockPrintWithKaizenInput
   printingSection: ComponentBlockInstaPostSectionInput
   publishedAt: DateTime
+  seo: ComponentSharedSeoInput
 }
 
 type LandingRelationResponseCollection {
@@ -2689,6 +2705,7 @@ type MarketingAndPromo {
   pageCover: ComponentBlockPageCover
   pageHeading: ComponentBlockPageHeading
   publishedAt: DateTime
+  seo: ComponentSharedSeo
   updatedAt: DateTime
 }
 
@@ -2716,6 +2733,7 @@ input MarketingAndPromoFiltersInput {
   pageCover: ComponentBlockPageCoverFiltersInput
   pageHeading: ComponentBlockPageHeadingFiltersInput
   publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -2724,6 +2742,7 @@ input MarketingAndPromoInput {
   pageCover: ComponentBlockPageCoverInput
   pageHeading: ComponentBlockPageHeadingInput
   publishedAt: DateTime
+  seo: ComponentSharedSeoInput
 }
 
 type MarketingAndPromoRelationResponseCollection {
@@ -2743,7 +2762,6 @@ type Mutation {
   createCookiePolicy(data: CookiePolicyInput!): CookiePolicyEntityResponse
   createFaqPage(data: FaqPageInput!): FaqPageEntityResponse
   createFlyersFoldedLeaflet(data: FlyersFoldedLeafletInput!): FlyersFoldedLeafletEntityResponse
-  createHome(data: HomeInput!): HomeEntityResponse
   createHowItWork(data: HowItWorkInput!): HowItWorkEntityResponse
   createIndustry(data: IndustryInput!): IndustryEntityResponse
   createKaizenEcoRange(data: KaizenEcoRangeInput!): KaizenEcoRangeEntityResponse
@@ -2786,7 +2804,6 @@ type Mutation {
   deleteGoogleReview: GoogleReviewEntityResponse
   deleteHeader: HeaderEntityResponse
   deleteHereToHelp: HereToHelpEntityResponse
-  deleteHome(id: ID!): HomeEntityResponse
   deleteHowItWork(id: ID!): HowItWorkEntityResponse
   deleteHowItWorksStep: HowItWorksStepEntityResponse
   deleteIndustry(id: ID!): IndustryEntityResponse
@@ -2852,7 +2869,6 @@ type Mutation {
   updateGoogleReview(data: GoogleReviewInput!): GoogleReviewEntityResponse
   updateHeader(data: HeaderInput!): HeaderEntityResponse
   updateHereToHelp(data: HereToHelpInput!): HereToHelpEntityResponse
-  updateHome(data: HomeInput!, id: ID!): HomeEntityResponse
   updateHowItWork(data: HowItWorkInput!, id: ID!): HowItWorkEntityResponse
   updateHowItWorksStep(data: HowItWorksStepInput!): HowItWorksStepEntityResponse
   updateIndustry(data: IndustryInput!, id: ID!): IndustryEntityResponse
@@ -3087,6 +3103,7 @@ type PaymentMethod {
   images(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
   pageCover: ComponentBlockPageCover
   publishedAt: DateTime
+  seo: ComponentSharedSeo
   title: String
   updatedAt: DateTime
 }
@@ -3116,6 +3133,7 @@ input PaymentMethodFiltersInput {
   or: [PaymentMethodFiltersInput]
   pageCover: ComponentBlockPageCoverFiltersInput
   publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
 }
@@ -3127,6 +3145,7 @@ input PaymentMethodInput {
   images: [ID]
   pageCover: ComponentBlockPageCoverInput
   publishedAt: DateTime
+  seo: ComponentSharedSeoInput
   title: String
 }
 
@@ -3145,6 +3164,7 @@ type Poster {
   printspiration: ComponentBlockPrintspiration
   productSpecifications(filters: ComponentBlockProductSpecificationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockProductSpecification]
   publishedAt: DateTime
+  seo: ComponentSharedSeo
   updatedAt: DateTime
 }
 
@@ -3177,6 +3197,7 @@ input PosterFiltersInput {
   printspiration: ComponentBlockPrintspirationFiltersInput
   productSpecifications: ComponentBlockProductSpecificationFiltersInput
   publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -3190,6 +3211,7 @@ input PosterInput {
   printspiration: ComponentBlockPrintspirationInput
   productSpecifications: [ComponentBlockProductSpecificationInput]
   publishedAt: DateTime
+  seo: ComponentSharedSeoInput
 }
 
 type PosterRelationResponseCollection {
@@ -3241,6 +3263,7 @@ type PrivacyPolicy {
   createdAt: DateTime
   heading: String
   publishedAt: DateTime
+  seo: ComponentSharedSeo
   updatedAt: DateTime
 }
 
@@ -3267,6 +3290,7 @@ input PrivacyPolicyFiltersInput {
   not: PrivacyPolicyFiltersInput
   or: [PrivacyPolicyFiltersInput]
   publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -3274,6 +3298,7 @@ input PrivacyPolicyInput {
   content: String
   heading: String
   publishedAt: DateTime
+  seo: ComponentSharedSeoInput
 }
 
 type PrivacyPolicyRelationResponseCollection {
@@ -3315,8 +3340,6 @@ type Query {
   googleReview(publicationState: PublicationState = LIVE): GoogleReviewEntityResponse
   header(publicationState: PublicationState = LIVE): HeaderEntityResponse
   hereToHelp(publicationState: PublicationState = LIVE): HereToHelpEntityResponse
-  home(id: ID): HomeEntityResponse
-  homes(filters: HomeFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): HomeEntityResponseCollection
   howItWork(id: ID): HowItWorkEntityResponse
   howItWorks(filters: HowItWorkFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): HowItWorkEntityResponseCollection
   howItWorksStep(publicationState: PublicationState = LIVE): HowItWorksStepEntityResponse
@@ -3371,6 +3394,7 @@ type QuickPrintBuy {
   pageCover: ComponentBlockPageCover
   pageHeading: ComponentBlockPageHeading
   publishedAt: DateTime
+  seo: ComponentSharedSeo
   updatedAt: DateTime
 }
 
@@ -3398,6 +3422,7 @@ input QuickPrintBuyFiltersInput {
   pageCover: ComponentBlockPageCoverFiltersInput
   pageHeading: ComponentBlockPageHeadingFiltersInput
   publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -3406,6 +3431,7 @@ input QuickPrintBuyInput {
   pageCover: ComponentBlockPageCoverInput
   pageHeading: ComponentBlockPageHeadingInput
   publishedAt: DateTime
+  seo: ComponentSharedSeoInput
 }
 
 type QuickPrintBuyRelationResponseCollection {
@@ -3422,6 +3448,7 @@ type StationaryAndOffice {
   pageCover: ComponentBlockPageCover
   pageHeading: ComponentBlockPageHeading
   publishedAt: DateTime
+  seo: ComponentSharedSeo
   updatedAt: DateTime
 }
 
@@ -3449,6 +3476,7 @@ input StationaryAndOfficeFiltersInput {
   pageCover: ComponentBlockPageCoverFiltersInput
   pageHeading: ComponentBlockPageHeadingFiltersInput
   publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -3457,6 +3485,7 @@ input StationaryAndOfficeInput {
   pageCover: ComponentBlockPageCoverInput
   pageHeading: ComponentBlockPageHeadingInput
   publishedAt: DateTime
+  seo: ComponentSharedSeoInput
 }
 
 type StationaryAndOfficeRelationResponseCollection {
@@ -3472,6 +3501,7 @@ type Sticker {
   printspiration: ComponentBlockPrintspiration
   productSpecifications(filters: ComponentBlockProductSpecificationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockProductSpecification]
   publishedAt: DateTime
+  seo: ComponentSharedSeo
   stickerLabelBenefits: ComponentBlockProductSpecificationWithTwosubHeadings
   updatedAt: DateTime
 }
@@ -3503,6 +3533,7 @@ input StickerFiltersInput {
   printspiration: ComponentBlockPrintspirationFiltersInput
   productSpecifications: ComponentBlockProductSpecificationFiltersInput
   publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
   stickerLabelBenefits: ComponentBlockProductSpecificationWithTwosubHeadingsFiltersInput
   updatedAt: DateTimeFilterInput
 }
@@ -3515,6 +3546,7 @@ input StickerInput {
   printspiration: ComponentBlockPrintspirationInput
   productSpecifications: [ComponentBlockProductSpecificationInput]
   publishedAt: DateTime
+  seo: ComponentSharedSeoInput
   stickerLabelBenefits: ComponentBlockProductSpecificationWithTwosubHeadingsInput
 }
 
@@ -3552,6 +3584,7 @@ type TermsAndCondition {
   createdAt: DateTime
   heading: String
   publishedAt: DateTime
+  seo: ComponentSharedSeo
   updatedAt: DateTime
 }
 
@@ -3578,6 +3611,7 @@ input TermsAndConditionFiltersInput {
   not: TermsAndConditionFiltersInput
   or: [TermsAndConditionFiltersInput]
   publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -3585,6 +3619,7 @@ input TermsAndConditionInput {
   content: String
   heading: String
   publishedAt: DateTime
+  seo: ComponentSharedSeoInput
 }
 
 type TermsAndConditionRelationResponseCollection {

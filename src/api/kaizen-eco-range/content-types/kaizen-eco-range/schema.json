@@ -4,7 +4,8 @@
   "info": {
     "singularName": "kaizen-eco-range",
     "pluralName": "kaizen-eco-ranges",
-    "displayName": "kaizenEcoRange"
+    "displayName": "kaizenEcoRange",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -30,6 +31,11 @@
       "type": "component",
       "repeatable": false,
       "component": "block.eco-card"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }

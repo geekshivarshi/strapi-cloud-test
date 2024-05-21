@@ -112,6 +112,20 @@ export interface BlockFaq extends Schema.Component {
   };
 }
 
+export interface BlockHereToHelp extends Schema.Component {
+  collectionName: 'components_block_here_to_helps';
+  info: {
+    displayName: 'hereToHelp';
+  };
+  attributes: {
+    heading: Attribute.String;
+    subHeading: Attribute.Text;
+    leftImage: Attribute.Media;
+    rightImage: Attribute.Media;
+    description: Attribute.Component<'elements.bullet-points', true>;
+  };
+}
+
 export interface BlockHowItWorkComponent extends Schema.Component {
   collectionName: 'components_block_how_it_work_components';
   info: {
@@ -610,6 +624,7 @@ declare module '@strapi/types' {
       'block.explore-categories': BlockExploreCategories;
       'block.explore-range-cards': BlockExploreRangeCards;
       'block.faq': BlockFaq;
+      'block.here-to-help': BlockHereToHelp;
       'block.how-it-work-component': BlockHowItWorkComponent;
       'block.how-it-works-step': BlockHowItWorksStep;
       'block.insta-post-section': BlockInstaPostSection;

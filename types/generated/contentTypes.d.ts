@@ -825,6 +825,7 @@ export interface ApiBannerAndSignageBannerAndSignage
     printPanic: Attribute.Component<'block.faq'>;
     videoSection: Attribute.Component<'block.video-section'>;
     bannerUsageGuide: Attribute.Component<'block.product-specification-with-twosub-headings'>;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -889,6 +890,7 @@ export interface ApiBrandedMerchBrandedMerch extends Schema.CollectionType {
     pageCover: Attribute.Component<'block.page-cover'>;
     brochure: Attribute.Component<'elements.section'>;
     brochureCarousel: Attribute.Component<'elements.new-image', true>;
+    hereToHelp: Attribute.Component<'block.here-to-help'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -931,6 +933,7 @@ export interface ApiBusinessCardBusinessCard extends Schema.CollectionType {
       'block.product-specification',
       true
     >;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1020,6 +1023,7 @@ export interface ApiCookiePolicyCookiePolicy extends Schema.CollectionType {
     singularName: 'cookie-policy';
     pluralName: 'cookie-policies';
     displayName: 'CookiePolicy';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1027,6 +1031,7 @@ export interface ApiCookiePolicyCookiePolicy extends Schema.CollectionType {
   attributes: {
     heading: Attribute.String;
     content: Attribute.RichText;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1122,6 +1127,7 @@ export interface ApiFaqPageFaqPage extends Schema.CollectionType {
     faq: Attribute.Component<'block.faq'>;
     chatToKaibot: Attribute.Component<'block.chat-to-kaibot'>;
     openHour: Attribute.Component<'block.open-hour'>;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1163,6 +1169,7 @@ export interface ApiFlyersFoldedLeafletFlyersFoldedLeaflet
       'block.product-specification',
       true
     >;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1357,30 +1364,6 @@ export interface ApiHereToHelpHereToHelp extends Schema.SingleType {
   };
 }
 
-export interface ApiHomeHome extends Schema.CollectionType {
-  collectionName: 'homes';
-  info: {
-    singularName: 'home';
-    pluralName: 'homes';
-    displayName: 'home';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    test: Attribute.String;
-    next: Attribute.Integer;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 export interface ApiHowItWorkHowItWork extends Schema.CollectionType {
   collectionName: 'how_it_works';
   info: {
@@ -1396,6 +1379,7 @@ export interface ApiHowItWorkHowItWork extends Schema.CollectionType {
     howItWorksSteps: Attribute.Component<'block.how-it-works-step', true>;
     trackOrder: Attribute.Component<'block.track-order'>;
     myAccountCard: Attribute.Component<'block.my-account-card'>;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1459,6 +1443,7 @@ export interface ApiIndustryIndustry extends Schema.CollectionType {
     pageCover: Attribute.Component<'block.page-cover'>;
     exploreCategories: Attribute.Component<'block.explore-categories'>;
     partners: Attribute.Component<'block.partners'>;
+    hereToHelp: Attribute.Component<'block.here-to-help'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1483,6 +1468,7 @@ export interface ApiKaizenEcoRangeKaizenEcoRange extends Schema.CollectionType {
     singularName: 'kaizen-eco-range';
     pluralName: 'kaizen-eco-ranges';
     displayName: 'kaizenEcoRange';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1492,6 +1478,7 @@ export interface ApiKaizenEcoRangeKaizenEcoRange extends Schema.CollectionType {
     pageHeading: Attribute.Component<'block.page-heading'>;
     exploreOurRange: Attribute.Component<'block.product-card-section'>;
     ecoCard: Attribute.Component<'block.eco-card'>;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1526,6 +1513,7 @@ export interface ApiKaizenPromiseKaizenPromise extends Schema.CollectionType {
     pageHeading: Attribute.Component<'block.page-heading'>;
     fastFix: Attribute.Component<'block.product-specification'>;
     kaizenProcess: Attribute.Component<'block.kaizen-process'>;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1602,6 +1590,7 @@ export interface ApiLandingLanding extends Schema.CollectionType {
     enquirySection: Attribute.Component<'block.print-sos'>;
     printWithKaizen: Attribute.Component<'block.print-with-kaizen'>;
     printingSection: Attribute.Component<'block.insta-post-section'>;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1636,6 +1625,7 @@ export interface ApiMarketingAndPromoMarketingAndPromo
     pageCover: Attribute.Component<'block.page-cover'>;
     pageHeading: Attribute.Component<'block.page-heading'>;
     exploreOurRange: Attribute.Component<'block.product-card-section'>;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1803,6 +1793,7 @@ export interface ApiPaymentMethodPaymentMethod extends Schema.CollectionType {
     pageCover: Attribute.Component<'block.page-cover'>;
     images: Attribute.Media;
     contactLinks: Attribute.Component<'elements.link', true>;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1844,6 +1835,7 @@ export interface ApiPosterPoster extends Schema.CollectionType {
       true
     >;
     ourSize: Attribute.Component<'block.product-specification-with-twosub-headings'>;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1898,6 +1890,7 @@ export interface ApiPrivacyPolicyPrivacyPolicy extends Schema.CollectionType {
     singularName: 'privacy-policy';
     pluralName: 'privacy-policies';
     displayName: 'PrivacyPolicy';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1905,6 +1898,7 @@ export interface ApiPrivacyPolicyPrivacyPolicy extends Schema.CollectionType {
   attributes: {
     heading: Attribute.String;
     content: Attribute.RichText;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1929,6 +1923,7 @@ export interface ApiQuickPrintBuyQuickPrintBuy extends Schema.CollectionType {
     singularName: 'quick-print-buy';
     pluralName: 'quick-print-buys';
     displayName: 'quickPrintBuy';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1937,6 +1932,7 @@ export interface ApiQuickPrintBuyQuickPrintBuy extends Schema.CollectionType {
     pageCover: Attribute.Component<'block.page-cover'>;
     pageHeading: Attribute.Component<'block.page-heading'>;
     exploreOurRange: Attribute.Component<'block.product-card-section'>;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1971,6 +1967,7 @@ export interface ApiStationaryAndOfficeStationaryAndOffice
     pageCover: Attribute.Component<'block.page-cover'>;
     pageHeading: Attribute.Component<'block.page-heading'>;
     exploreOurRange: Attribute.Component<'block.product-card-section'>;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -2011,6 +2008,7 @@ export interface ApiStickerSticker extends Schema.CollectionType {
       true
     >;
     stickerLabelBenefits: Attribute.Component<'block.product-specification-with-twosub-headings'>;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -2044,6 +2042,7 @@ export interface ApiTermsAndConditionTermsAndCondition
   attributes: {
     heading: Attribute.String;
     content: Attribute.RichText;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -2097,7 +2096,6 @@ declare module '@strapi/types' {
       'api::google-review.google-review': ApiGoogleReviewGoogleReview;
       'api::header.header': ApiHeaderHeader;
       'api::here-to-help.here-to-help': ApiHereToHelpHereToHelp;
-      'api::home.home': ApiHomeHome;
       'api::how-it-work.how-it-work': ApiHowItWorkHowItWork;
       'api::how-it-works-step.how-it-works-step': ApiHowItWorksStepHowItWorksStep;
       'api::industry.industry': ApiIndustryIndustry;
