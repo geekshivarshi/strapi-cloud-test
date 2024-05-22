@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "request_quotes",
+  "info": {
+    "singularName": "request-quote",
+    "pluralName": "request-quotes",
+    "displayName": "Request Quote",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "hereToHelp": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.here-to-help"
+    }
+  }
+}

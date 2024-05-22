@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_block_here_to_helps",
+  "info": {
+    "displayName": "hereToHelp"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "subHeading": {
+      "type": "text"
+    },
+    "leftImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "rightImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "description": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.bullet-points"
+    }
+  }
+}

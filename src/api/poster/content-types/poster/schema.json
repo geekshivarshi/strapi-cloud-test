@@ -27,11 +27,6 @@
       "repeatable": false,
       "component": "block.printspiration"
     },
-    "ourMaterials": {
-      "type": "component",
-      "repeatable": false,
-      "component": "block.product-specification"
-    },
     "ecoCard": {
       "type": "component",
       "repeatable": false,
@@ -47,10 +42,20 @@
       "repeatable": false,
       "component": "block.faq"
     },
+    "productSpecifications": {
+      "type": "component",
+      "repeatable": true,
+      "component": "block.product-specification"
+    },
     "ourSize": {
       "type": "component",
       "repeatable": false,
-      "component": "block.product-specification"
+      "component": "block.product-specification-with-twosub-headings"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }

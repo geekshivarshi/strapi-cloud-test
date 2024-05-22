@@ -26,6 +26,11 @@
       "type": "component",
       "repeatable": true,
       "component": "elements.new-image"
+    },
+    "hereToHelp": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.here-to-help"
     }
   }
 }

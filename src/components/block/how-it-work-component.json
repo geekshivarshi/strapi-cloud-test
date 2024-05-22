@@ -13,7 +13,7 @@
       "displayName": "listItemWithTwoImages",
       "type": "component",
       "repeatable": true,
-      "component": "block.list-item-with-two-images"
+      "component": "elements.list-item-with-two-images"
     },
     "buttonLink": {
       "type": "component",

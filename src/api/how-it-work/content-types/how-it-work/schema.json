@@ -28,6 +28,11 @@
       "type": "component",
       "repeatable": false,
       "component": "block.my-account-card"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }

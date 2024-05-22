@@ -22,15 +22,20 @@
       "repeatable": false,
       "component": "block.page-heading"
     },
-    "fastFix": {
-      "type": "component",
-      "repeatable": false,
-      "component": "block.product-specification"
-    },
     "kaizenProcess": {
       "type": "component",
       "repeatable": false,
       "component": "block.kaizen-process"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "productSpecifications": {
+      "type": "component",
+      "repeatable": true,
+      "component": "block.product-specification"
     }
   }
 }

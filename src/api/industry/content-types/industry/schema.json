@@ -26,6 +26,11 @@
       "type": "component",
       "repeatable": false,
       "component": "block.partners"
+    },
+    "hereToHelp": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.here-to-help"
     }
   }
 }

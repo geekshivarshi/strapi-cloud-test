@@ -1,36 +1,24 @@
 {
   "collectionName": "components_block_product_specs_with_two_sub_headings",
   "info": {
-    "displayName": "ProductSpecsWithTwoSubHeadings"
+    "displayName": "ProductSpecsWithCarousel",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "heading": {
       "type": "string"
     },
-    "subHeading1": {
-      "type": "text"
-    },
-    "subHeading2": {
-      "type": "text"
-    },
-    "coverImg": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false
-    },
     "coverImgAlignment": {
       "type": "string"
+    },
+    "content": {
+      "type": "richtext"
     },
     "description": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.list-item-with-image"
+      "component": "block.prod-specs-list-image-with-cover-img"
     }
   }
 }

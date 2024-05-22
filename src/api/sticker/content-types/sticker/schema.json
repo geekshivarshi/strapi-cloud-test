@@ -32,20 +32,25 @@
       "repeatable": false,
       "component": "block.printspiration"
     },
-    "StickerLabelBenefits": {
-      "type": "component",
-      "repeatable": false,
-      "component": "block.product-specification"
-    },
-    "stickersUsage": {
-      "type": "component",
-      "repeatable": false,
-      "component": "block.product-specification"
-    },
     "printPanic": {
       "type": "component",
       "repeatable": false,
       "component": "block.faq"
+    },
+    "productSpecifications": {
+      "type": "component",
+      "repeatable": true,
+      "component": "block.product-specification"
+    },
+    "stickerLabelBenefits": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.product-specification-with-twosub-headings"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }
