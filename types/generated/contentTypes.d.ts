@@ -1511,9 +1511,12 @@ export interface ApiKaizenPromiseKaizenPromise extends Schema.CollectionType {
   attributes: {
     pageCover: Attribute.Component<'block.page-cover'>;
     pageHeading: Attribute.Component<'block.page-heading'>;
-    fastFix: Attribute.Component<'block.product-specification'>;
     kaizenProcess: Attribute.Component<'block.kaizen-process'>;
     seo: Attribute.Component<'shared.seo'>;
+    productSpecifications: Attribute.Component<
+      'block.product-specification',
+      true
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1951,6 +1954,37 @@ export interface ApiQuickPrintBuyQuickPrintBuy extends Schema.CollectionType {
   };
 }
 
+export interface ApiRequestQuoteRequestQuote extends Schema.CollectionType {
+  collectionName: 'request_quotes';
+  info: {
+    singularName: 'request-quote';
+    pluralName: 'request-quotes';
+    displayName: 'Request Quote';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    hereToHelp: Attribute.Component<'block.here-to-help'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::request-quote.request-quote',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::request-quote.request-quote',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiStationaryAndOfficeStationaryAndOffice
   extends Schema.CollectionType {
   collectionName: 'stationary_and_offices';
@@ -2113,6 +2147,7 @@ declare module '@strapi/types' {
       'api::print-enquiry.print-enquiry': ApiPrintEnquiryPrintEnquiry;
       'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
       'api::quick-print-buy.quick-print-buy': ApiQuickPrintBuyQuickPrintBuy;
+      'api::request-quote.request-quote': ApiRequestQuoteRequestQuote;
       'api::stationary-and-office.stationary-and-office': ApiStationaryAndOfficeStationaryAndOffice;
       'api::sticker.sticker': ApiStickerSticker;
       'api::terms-and-condition.terms-and-condition': ApiTermsAndConditionTermsAndCondition;

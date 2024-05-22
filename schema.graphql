@@ -1972,7 +1972,7 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = Auth | BannerAndSignage | BenefitsOfKaizen | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockHereToHelp | ComponentBlockHowItWorkComponent | ComponentBlockHowItWorksStep | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingPageCover | ComponentBlockMyAccountCard | ComponentBlockOpenHour | ComponentBlockOrderSampleCard | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProdSpecsListImageWithCoverImg | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockTrackOrder | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsListItemWithTwoImages | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CookiePolicy | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | HowItWork | HowItWorksStep | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | KaizenPromisecard | Landing | MarketingAndPromo | NeedADesign | NeedDesign | OpenHour | OrderSample | PaymentMethod | Poster | PrintEnquiry | PrivacyPolicy | QuickPrintBuy | StationaryAndOffice | Sticker | TermsAndCondition | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = Auth | BannerAndSignage | BenefitsOfKaizen | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockHereToHelp | ComponentBlockHowItWorkComponent | ComponentBlockHowItWorksStep | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingPageCover | ComponentBlockMyAccountCard | ComponentBlockOpenHour | ComponentBlockOrderSampleCard | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProdSpecsListImageWithCoverImg | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockTrackOrder | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsListItemWithTwoImages | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CookiePolicy | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | HowItWork | HowItWorksStep | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | KaizenPromisecard | Landing | MarketingAndPromo | NeedADesign | NeedDesign | OpenHour | OrderSample | PaymentMethod | Poster | PrintEnquiry | PrivacyPolicy | QuickPrintBuy | RequestQuote | StationaryAndOffice | Sticker | TermsAndCondition | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GetAQuote {
   buttonLink: ComponentElementsLink
@@ -2495,10 +2495,10 @@ type KaizenEcoRangeRelationResponseCollection {
 
 type KaizenPromise {
   createdAt: DateTime
-  fastFix: ComponentBlockProductSpecification
   kaizenProcess: ComponentBlockKaizenProcess
   pageCover: ComponentBlockPageCover
   pageHeading: ComponentBlockPageHeading
+  productSpecifications(filters: ComponentBlockProductSpecificationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockProductSpecification]
   publishedAt: DateTime
   seo: ComponentSharedSeo
   updatedAt: DateTime
@@ -2521,23 +2521,23 @@ type KaizenPromiseEntityResponseCollection {
 input KaizenPromiseFiltersInput {
   and: [KaizenPromiseFiltersInput]
   createdAt: DateTimeFilterInput
-  fastFix: ComponentBlockProductSpecificationFiltersInput
   id: IDFilterInput
   kaizenProcess: ComponentBlockKaizenProcessFiltersInput
   not: KaizenPromiseFiltersInput
   or: [KaizenPromiseFiltersInput]
   pageCover: ComponentBlockPageCoverFiltersInput
   pageHeading: ComponentBlockPageHeadingFiltersInput
+  productSpecifications: ComponentBlockProductSpecificationFiltersInput
   publishedAt: DateTimeFilterInput
   seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
 input KaizenPromiseInput {
-  fastFix: ComponentBlockProductSpecificationInput
   kaizenProcess: ComponentBlockKaizenProcessInput
   pageCover: ComponentBlockPageCoverInput
   pageHeading: ComponentBlockPageHeadingInput
+  productSpecifications: [ComponentBlockProductSpecificationInput]
   publishedAt: DateTime
   seo: ComponentSharedSeoInput
 }
@@ -2774,6 +2774,7 @@ type Mutation {
   createPoster(data: PosterInput!): PosterEntityResponse
   createPrivacyPolicy(data: PrivacyPolicyInput!): PrivacyPolicyEntityResponse
   createQuickPrintBuy(data: QuickPrintBuyInput!): QuickPrintBuyEntityResponse
+  createRequestQuote(data: RequestQuoteInput!): RequestQuoteEntityResponse
   createStationaryAndOffice(data: StationaryAndOfficeInput!): StationaryAndOfficeEntityResponse
   createSticker(data: StickerInput!): StickerEntityResponse
   createTermsAndCondition(data: TermsAndConditionInput!): TermsAndConditionEntityResponse
@@ -2821,6 +2822,7 @@ type Mutation {
   deletePrintEnquiry: PrintEnquiryEntityResponse
   deletePrivacyPolicy(id: ID!): PrivacyPolicyEntityResponse
   deleteQuickPrintBuy(id: ID!): QuickPrintBuyEntityResponse
+  deleteRequestQuote(id: ID!): RequestQuoteEntityResponse
   deleteStationaryAndOffice(id: ID!): StationaryAndOfficeEntityResponse
   deleteSticker(id: ID!): StickerEntityResponse
   deleteTermsAndCondition(id: ID!): TermsAndConditionEntityResponse
@@ -2886,6 +2888,7 @@ type Mutation {
   updatePrintEnquiry(data: PrintEnquiryInput!): PrintEnquiryEntityResponse
   updatePrivacyPolicy(data: PrivacyPolicyInput!, id: ID!): PrivacyPolicyEntityResponse
   updateQuickPrintBuy(data: QuickPrintBuyInput!, id: ID!): QuickPrintBuyEntityResponse
+  updateRequestQuote(data: RequestQuoteInput!, id: ID!): RequestQuoteEntityResponse
   updateStationaryAndOffice(data: StationaryAndOfficeInput!, id: ID!): StationaryAndOfficeEntityResponse
   updateSticker(data: StickerInput!, id: ID!): StickerEntityResponse
   updateTermsAndCondition(data: TermsAndConditionInput!, id: ID!): TermsAndConditionEntityResponse
@@ -3372,6 +3375,8 @@ type Query {
   privacyPolicy(id: ID): PrivacyPolicyEntityResponse
   quickPrintBuy(id: ID): QuickPrintBuyEntityResponse
   quickPrintBuys(filters: QuickPrintBuyFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): QuickPrintBuyEntityResponseCollection
+  requestQuote(id: ID): RequestQuoteEntityResponse
+  requestQuotes(filters: RequestQuoteFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): RequestQuoteEntityResponseCollection
   stationaryAndOffice(id: ID): StationaryAndOfficeEntityResponse
   stationaryAndOffices(filters: StationaryAndOfficeFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): StationaryAndOfficeEntityResponseCollection
   sticker(id: ID): StickerEntityResponse
@@ -3436,6 +3441,47 @@ input QuickPrintBuyInput {
 
 type QuickPrintBuyRelationResponseCollection {
   data: [QuickPrintBuyEntity!]!
+}
+
+type RequestQuote {
+  createdAt: DateTime
+  hereToHelp: ComponentBlockHereToHelp
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type RequestQuoteEntity {
+  attributes: RequestQuote
+  id: ID
+}
+
+type RequestQuoteEntityResponse {
+  data: RequestQuoteEntity
+}
+
+type RequestQuoteEntityResponseCollection {
+  data: [RequestQuoteEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input RequestQuoteFiltersInput {
+  and: [RequestQuoteFiltersInput]
+  createdAt: DateTimeFilterInput
+  hereToHelp: ComponentBlockHereToHelpFiltersInput
+  id: IDFilterInput
+  not: RequestQuoteFiltersInput
+  or: [RequestQuoteFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input RequestQuoteInput {
+  hereToHelp: ComponentBlockHereToHelpInput
+  publishedAt: DateTime
+}
+
+type RequestQuoteRelationResponseCollection {
+  data: [RequestQuoteEntity!]!
 }
 
 type ResponseCollectionMeta {
