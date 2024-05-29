@@ -894,14 +894,13 @@ input ComponentBlockPrintWithKaizenInput {
 type ComponentBlockPrintspiration {
   heading: String
   id: ID!
-  images(filters: ComponentElementsImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsImage]
+  images(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
   title: String
 }
 
 input ComponentBlockPrintspirationFiltersInput {
   and: [ComponentBlockPrintspirationFiltersInput]
   heading: StringFilterInput
-  images: ComponentElementsImageFiltersInput
   not: ComponentBlockPrintspirationFiltersInput
   or: [ComponentBlockPrintspirationFiltersInput]
   title: StringFilterInput
@@ -910,7 +909,7 @@ input ComponentBlockPrintspirationFiltersInput {
 input ComponentBlockPrintspirationInput {
   heading: String
   id: ID
-  images: [ComponentElementsImageInput]
+  images: [ID]
   title: String
 }
 

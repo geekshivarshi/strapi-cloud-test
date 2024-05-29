@@ -312,7 +312,7 @@ export interface BlockPrintspiration extends Schema.Component {
   attributes: {
     title: Attribute.String;
     heading: Attribute.String;
-    images: Attribute.Component<'elements.image', true>;
+    images: Attribute.Media;
   };
 }
 

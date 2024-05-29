@@ -13,9 +13,14 @@
       "type": "string"
     },
     "images": {
-      "type": "component",
-      "repeatable": true,
-      "component": "elements.image"
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }
