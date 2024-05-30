@@ -23,11 +23,6 @@
       "repeatable": false,
       "component": "block.page-heading"
     },
-    "exploreOurRange": {
-      "type": "component",
-      "repeatable": true,
-      "component": "block.explore-range-cards"
-    },
     "printPanic": {
       "type": "component",
       "repeatable": false,

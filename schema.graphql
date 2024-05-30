@@ -228,7 +228,6 @@ type BusinessCard {
   createdAt: DateTime
   ecoCard: ComponentBlockEcoCard
   exploreOurCategories: ComponentBlockProductCardSection
-  exploreOurRange(filters: ComponentBlockExploreRangeCardsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockExploreRangeCards]
   pageCover: ComponentBlockPageCover!
   pageHeading: ComponentBlockPageHeading
   printPanic: ComponentBlockFaq
@@ -259,7 +258,6 @@ input BusinessCardFiltersInput {
   createdAt: DateTimeFilterInput
   ecoCard: ComponentBlockEcoCardFiltersInput
   exploreOurCategories: ComponentBlockProductCardSectionFiltersInput
-  exploreOurRange: ComponentBlockExploreRangeCardsFiltersInput
   id: IDFilterInput
   not: BusinessCardFiltersInput
   or: [BusinessCardFiltersInput]
@@ -277,7 +275,6 @@ input BusinessCardFiltersInput {
 input BusinessCardInput {
   ecoCard: ComponentBlockEcoCardInput
   exploreOurCategories: ComponentBlockProductCardSectionInput
-  exploreOurRange: [ComponentBlockExploreRangeCardsInput]
   pageCover: ComponentBlockPageCoverInput
   pageHeading: ComponentBlockPageHeadingInput
   printPanic: ComponentBlockFaqInput
