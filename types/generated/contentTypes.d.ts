@@ -957,15 +957,13 @@ export interface ApiChatToKaibotChatToKaibot extends Schema.SingleType {
     singularName: 'chat-to-kaibot';
     pluralName: 'chat-to-kaibots';
     displayName: 'Chat To Kaibot';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    heading: Attribute.String;
-    subHeading: Attribute.String;
-    headerImage: Attribute.Media;
-    footerText: Attribute.String;
+    chatToKaibot: Attribute.Component<'block.chat-to-kaibot'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

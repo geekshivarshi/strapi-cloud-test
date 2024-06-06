@@ -290,12 +290,9 @@ type BusinessCardRelationResponseCollection {
 }
 
 type ChatToKaibot {
+  chatToKaibot: ComponentBlockChatToKaibot
   createdAt: DateTime
-  footerText: String
-  headerImage: UploadFileEntityResponse
-  heading: String
   publishedAt: DateTime
-  subHeading: String
   updatedAt: DateTime
 }
 
@@ -315,22 +312,17 @@ type ChatToKaibotEntityResponseCollection {
 
 input ChatToKaibotFiltersInput {
   and: [ChatToKaibotFiltersInput]
+  chatToKaibot: ComponentBlockChatToKaibotFiltersInput
   createdAt: DateTimeFilterInput
-  footerText: StringFilterInput
-  heading: StringFilterInput
   not: ChatToKaibotFiltersInput
   or: [ChatToKaibotFiltersInput]
   publishedAt: DateTimeFilterInput
-  subHeading: StringFilterInput
   updatedAt: DateTimeFilterInput
 }
 
 input ChatToKaibotInput {
-  footerText: String
-  headerImage: ID
-  heading: String
+  chatToKaibot: ComponentBlockChatToKaibotInput
   publishedAt: DateTime
-  subHeading: String
 }
 
 type ChatToKaibotRelationResponseCollection {
@@ -362,7 +354,7 @@ type ComponentBlockChatToKaibot {
   headerImage: UploadFileEntityResponse
   heading: String
   id: ID!
-  subHeading: String
+  points(filters: ComponentElementsBulletPointsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsBulletPoints]
 }
 
 input ComponentBlockChatToKaibotFiltersInput {
@@ -371,7 +363,7 @@ input ComponentBlockChatToKaibotFiltersInput {
   heading: StringFilterInput
   not: ComponentBlockChatToKaibotFiltersInput
   or: [ComponentBlockChatToKaibotFiltersInput]
-  subHeading: StringFilterInput
+  points: ComponentElementsBulletPointsFiltersInput
 }
 
 input ComponentBlockChatToKaibotInput {
@@ -379,7 +371,7 @@ input ComponentBlockChatToKaibotInput {
   headerImage: ID
   heading: String
   id: ID
-  subHeading: String
+  points: [ComponentElementsBulletPointsInput]
 }
 
 type ComponentBlockCta {
