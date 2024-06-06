@@ -16,12 +16,13 @@ export interface BlockChatToKaibot extends Schema.Component {
   collectionName: 'components_block_chat_to_kaibots';
   info: {
     displayName: 'chatToKaibot';
+    description: '';
   };
   attributes: {
     heading: Attribute.String;
-    subHeading: Attribute.String;
     headerImage: Attribute.Media;
     footerText: Attribute.String;
+    points: Attribute.Component<'elements.bullet-points', true>;
   };
 }
 
