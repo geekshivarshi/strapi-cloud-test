@@ -10,7 +10,7 @@
       "type": "string"
     },
     "subHeading": {
-      "type": "string",
+      "type": "text",
       "required": true
     },
     "image": {
