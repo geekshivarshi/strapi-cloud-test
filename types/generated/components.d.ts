@@ -506,7 +506,7 @@ export interface ElementsListItemWithImage extends Schema.Component {
   };
   attributes: {
     heading: Attribute.String;
-    subHeading: Attribute.String & Attribute.Required;
+    subHeading: Attribute.Text & Attribute.Required;
     image: Attribute.Media;
   };
 }
