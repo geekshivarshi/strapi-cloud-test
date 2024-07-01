@@ -28,11 +28,6 @@
       "repeatable": false,
       "component": "block.faq"
     },
-    "printSos": {
-      "type": "component",
-      "repeatable": false,
-      "component": "block.print-sos"
-    },
     "ecoCard": {
       "type": "component",
       "repeatable": false,

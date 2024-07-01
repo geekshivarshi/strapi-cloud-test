@@ -49,4 +49,22 @@ module.exports = ({ env }) => ({
   seo: {
     enabled: true,
   },
+  "preview-button": {
+    config: {
+      contentTypes: [
+        {
+          uid: "api::landing.landing",
+          draft: {
+            url: "http://localhost:3000/api/preview",
+            query: {
+              type: "page",
+            },
+          },
+          published: {
+            url: "http://localhost:3000",
+          },
+        },
+      ],
+    },
+  },
 });

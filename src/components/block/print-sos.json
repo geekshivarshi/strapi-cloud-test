@@ -6,10 +6,6 @@
   },
   "options": {},
   "attributes": {
-    "description": {
-      "type": "text",
-      "required": true
-    },
     "contactLink": {
       "type": "component",
       "repeatable": true,
@@ -25,14 +21,18 @@
       "required": true
     },
     "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "description": {
+      "type": "richtext"
     }
   }
 }

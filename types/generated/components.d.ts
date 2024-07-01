@@ -284,12 +284,12 @@ export interface BlockPrintSos extends Schema.Component {
     description: '';
   };
   attributes: {
-    description: Attribute.Text & Attribute.Required;
     contactLink: Attribute.Component<'elements.link', true> &
       Attribute.Required;
     heading: Attribute.String & Attribute.Required;
     subHeading: Attribute.String & Attribute.Required;
     coverImage: Attribute.Media;
+    description: Attribute.RichText;
   };
 }
 

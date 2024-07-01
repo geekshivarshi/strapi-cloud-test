@@ -924,7 +924,6 @@ export interface ApiBusinessCardBusinessCard extends Schema.CollectionType {
     pageCover: Attribute.Component<'block.page-cover'> & Attribute.Required;
     pageHeading: Attribute.Component<'block.page-heading'>;
     printPanic: Attribute.Component<'block.faq'>;
-    printSos: Attribute.Component<'block.print-sos'>;
     ecoCard: Attribute.Component<'block.eco-card'>;
     exploreOurCategories: Attribute.Component<'block.product-card-section'>;
     printspiration: Attribute.Component<'block.printspiration'>;

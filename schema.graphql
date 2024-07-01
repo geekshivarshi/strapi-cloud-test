@@ -231,7 +231,6 @@ type BusinessCard {
   pageCover: ComponentBlockPageCover!
   pageHeading: ComponentBlockPageHeading
   printPanic: ComponentBlockFaq
-  printSos: ComponentBlockPrintSos
   printspiration: ComponentBlockPrintspiration
   productSpecifications(filters: ComponentBlockProductSpecificationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockProductSpecification]
   publishedAt: DateTime
@@ -264,7 +263,6 @@ input BusinessCardFiltersInput {
   pageCover: ComponentBlockPageCoverFiltersInput
   pageHeading: ComponentBlockPageHeadingFiltersInput
   printPanic: ComponentBlockFaqFiltersInput
-  printSos: ComponentBlockPrintSosFiltersInput
   printspiration: ComponentBlockPrintspirationFiltersInput
   productSpecifications: ComponentBlockProductSpecificationFiltersInput
   publishedAt: DateTimeFilterInput
@@ -278,7 +276,6 @@ input BusinessCardInput {
   pageCover: ComponentBlockPageCoverInput
   pageHeading: ComponentBlockPageHeadingInput
   printPanic: ComponentBlockFaqInput
-  printSos: ComponentBlockPrintSosInput
   printspiration: ComponentBlockPrintspirationInput
   productSpecifications: [ComponentBlockProductSpecificationInput]
   publishedAt: DateTime
@@ -835,7 +832,7 @@ input ComponentBlockPartnersInput {
 type ComponentBlockPrintSos {
   contactLink(filters: ComponentElementsLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsLink]!
   coverImage: UploadFileEntityResponse
-  description: String!
+  description: String
   heading: String!
   id: ID!
   subHeading: String!
