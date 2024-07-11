@@ -4,7 +4,8 @@
   "info": {
     "singularName": "auth",
     "pluralName": "auths",
-    "displayName": "auth"
+    "displayName": "auth",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,24 +13,46 @@
   "pluginOptions": {},
   "attributes": {
     "bottomLeftImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "bottomRightImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "login": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.heading-section"
+    },
+    "signup": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.heading-section"
+    },
+    "forgotPassword": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.heading-section"
+    },
+    "resetPassword": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.heading-section"
     }
   }
 }
