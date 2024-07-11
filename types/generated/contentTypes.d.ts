@@ -787,6 +787,7 @@ export interface ApiAuthAuth extends Schema.CollectionType {
     singularName: 'auth';
     pluralName: 'auths';
     displayName: 'auth';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -794,6 +795,10 @@ export interface ApiAuthAuth extends Schema.CollectionType {
   attributes: {
     bottomLeftImage: Attribute.Media;
     bottomRightImage: Attribute.Media;
+    login: Attribute.Component<'elements.heading-section'>;
+    signup: Attribute.Component<'elements.heading-section'>;
+    forgotPassword: Attribute.Component<'elements.heading-section'>;
+    resetPassword: Attribute.Component<'elements.heading-section'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

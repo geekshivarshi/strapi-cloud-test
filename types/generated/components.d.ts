@@ -469,6 +469,17 @@ export interface ElementsCard extends Schema.Component {
   };
 }
 
+export interface ElementsHeadingSection extends Schema.Component {
+  collectionName: 'components_elements_heading_sections';
+  info: {
+    displayName: 'headingSection';
+  };
+  attributes: {
+    heading: Attribute.String;
+    subHeading: Attribute.Text;
+  };
+}
+
 export interface ElementsImage extends Schema.Component {
   collectionName: 'components_elements_images';
   info: {
@@ -651,6 +662,7 @@ declare module '@strapi/types' {
       'elements.bullet-points': ElementsBulletPoints;
       'elements.card-with-image-item': ElementsCardWithImageItem;
       'elements.card': ElementsCard;
+      'elements.heading-section': ElementsHeadingSection;
       'elements.image': ElementsImage;
       'elements.link': ElementsLink;
       'elements.list-item-with-image': ElementsListItemWithImage;
