@@ -842,7 +842,7 @@ input ComponentBlockPartnersInput {
 }
 
 type ComponentBlockPrintSos {
-  contactLink(filters: ComponentElementsLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsLink]!
+  contactLink(filters: ComponentElementsLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsLink]
   coverImage: UploadFileEntityResponse
   description: String
   heading: String!
