@@ -800,7 +800,7 @@ type ComponentBlockPageHeading {
   heading: String!
   id: ID!
   image: UploadFileEntityResponse
-  subHeading: String!
+  subHeading: String
 }
 
 input ComponentBlockPageHeadingFiltersInput {

@@ -258,8 +258,8 @@ export interface BlockPageHeading extends Schema.Component {
   };
   attributes: {
     heading: Attribute.String & Attribute.Required;
-    subHeading: Attribute.Text & Attribute.Required;
     image: Attribute.Media;
+    subHeading: Attribute.RichText;
   };
 }
 
