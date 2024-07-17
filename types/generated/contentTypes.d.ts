@@ -1030,9 +1030,9 @@ export interface ApiCookiePolicyCookiePolicy extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    heading: Attribute.String;
     content: Attribute.RichText;
     seo: Attribute.Component<'shared.seo'>;
+    pageCover: Attribute.Component<'block.page-cover'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1900,9 +1900,9 @@ export interface ApiPrivacyPolicyPrivacyPolicy extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    heading: Attribute.String;
     content: Attribute.RichText;
     seo: Attribute.Component<'shared.seo'>;
+    pageCover: Attribute.Component<'block.page-cover'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -2075,9 +2075,9 @@ export interface ApiTermsAndConditionTermsAndCondition
     draftAndPublish: true;
   };
   attributes: {
-    heading: Attribute.String;
     content: Attribute.RichText;
     seo: Attribute.Component<'shared.seo'>;
+    pageCover: Attribute.Component<'block.page-cover'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

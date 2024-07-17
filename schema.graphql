@@ -491,7 +491,6 @@ type ComponentBlockExploreRangeCards {
   badge: ComponentElementsBadge!
   buttonLink: ComponentElementsLink!
   cardImg: UploadFileEntityResponse
-  cardUrl: ComponentElementsLink
   features(filters: ComponentElementsListItemWithImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsListItemWithImage]
   id: ID!
   title: String!
@@ -501,7 +500,6 @@ input ComponentBlockExploreRangeCardsFiltersInput {
   and: [ComponentBlockExploreRangeCardsFiltersInput]
   badge: ComponentElementsBadgeFiltersInput
   buttonLink: ComponentElementsLinkFiltersInput
-  cardUrl: ComponentElementsLinkFiltersInput
   features: ComponentElementsListItemWithImageFiltersInput
   not: ComponentBlockExploreRangeCardsFiltersInput
   or: [ComponentBlockExploreRangeCardsFiltersInput]
@@ -512,7 +510,6 @@ input ComponentBlockExploreRangeCardsInput {
   badge: ComponentElementsBadgeInput
   buttonLink: ComponentElementsLinkInput
   cardImg: ID
-  cardUrl: ComponentElementsLinkInput
   features: [ComponentElementsListItemWithImageInput]
   id: ID
   title: String
@@ -1574,7 +1571,7 @@ type ContentReleasesReleaseRelationResponseCollection {
 type CookiePolicy {
   content: String
   createdAt: DateTime
-  heading: String
+  pageCover: ComponentBlockPageCover
   publishedAt: DateTime
   seo: ComponentSharedSeo
   updatedAt: DateTime
@@ -1598,10 +1595,10 @@ input CookiePolicyFiltersInput {
   and: [CookiePolicyFiltersInput]
   content: StringFilterInput
   createdAt: DateTimeFilterInput
-  heading: StringFilterInput
   id: IDFilterInput
   not: CookiePolicyFiltersInput
   or: [CookiePolicyFiltersInput]
+  pageCover: ComponentBlockPageCoverFiltersInput
   publishedAt: DateTimeFilterInput
   seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
@@ -1609,7 +1606,7 @@ input CookiePolicyFiltersInput {
 
 input CookiePolicyInput {
   content: String
-  heading: String
+  pageCover: ComponentBlockPageCoverInput
   publishedAt: DateTime
   seo: ComponentSharedSeoInput
 }
@@ -3281,7 +3278,7 @@ type PrintEnquiryRelationResponseCollection {
 type PrivacyPolicy {
   content: String
   createdAt: DateTime
-  heading: String
+  pageCover: ComponentBlockPageCover
   publishedAt: DateTime
   seo: ComponentSharedSeo
   updatedAt: DateTime
@@ -3305,10 +3302,10 @@ input PrivacyPolicyFiltersInput {
   and: [PrivacyPolicyFiltersInput]
   content: StringFilterInput
   createdAt: DateTimeFilterInput
-  heading: StringFilterInput
   id: IDFilterInput
   not: PrivacyPolicyFiltersInput
   or: [PrivacyPolicyFiltersInput]
+  pageCover: ComponentBlockPageCoverFiltersInput
   publishedAt: DateTimeFilterInput
   seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
@@ -3316,7 +3313,7 @@ input PrivacyPolicyFiltersInput {
 
 input PrivacyPolicyInput {
   content: String
-  heading: String
+  pageCover: ComponentBlockPageCoverInput
   publishedAt: DateTime
   seo: ComponentSharedSeoInput
 }
@@ -3645,7 +3642,7 @@ input StringFilterInput {
 type TermsAndCondition {
   content: String
   createdAt: DateTime
-  heading: String
+  pageCover: ComponentBlockPageCover
   publishedAt: DateTime
   seo: ComponentSharedSeo
   updatedAt: DateTime
@@ -3669,10 +3666,10 @@ input TermsAndConditionFiltersInput {
   and: [TermsAndConditionFiltersInput]
   content: StringFilterInput
   createdAt: DateTimeFilterInput
-  heading: StringFilterInput
   id: IDFilterInput
   not: TermsAndConditionFiltersInput
   or: [TermsAndConditionFiltersInput]
+  pageCover: ComponentBlockPageCoverFiltersInput
   publishedAt: DateTimeFilterInput
   seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
@@ -3680,7 +3677,7 @@ input TermsAndConditionFiltersInput {
 
 input TermsAndConditionInput {
   content: String
-  heading: String
+  pageCover: ComponentBlockPageCoverInput
   publishedAt: DateTime
   seo: ComponentSharedSeoInput
 }
