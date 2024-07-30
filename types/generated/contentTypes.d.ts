@@ -1400,6 +1400,7 @@ export interface ApiHowItWorksStepHowItWorksStep extends Schema.SingleType {
     singularName: 'how-it-works-step';
     pluralName: 'how-it-works-steps';
     displayName: 'How it works step';
+    description: '';
   };
   options: {
     draftAndPublish: true;
