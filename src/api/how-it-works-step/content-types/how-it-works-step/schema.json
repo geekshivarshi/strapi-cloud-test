@@ -4,7 +4,8 @@
   "info": {
     "singularName": "how-it-works-step",
     "pluralName": "how-it-works-steps",
-    "displayName": "How it works step"
+    "displayName": "How it works step",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true

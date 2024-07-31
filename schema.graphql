@@ -1279,7 +1279,6 @@ type ComponentElementsListItemWithTwoImages {
   activeImage: UploadFileEntityResponse
   heading: String
   id: ID!
-  inactiveImage: UploadFileEntityResponse
   subHeading: String
 }
 
@@ -1295,7 +1294,6 @@ input ComponentElementsListItemWithTwoImagesInput {
   activeImage: ID
   heading: String
   id: ID
-  inactiveImage: ID
   subHeading: String
 }
 

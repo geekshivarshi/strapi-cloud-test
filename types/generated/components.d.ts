@@ -530,7 +530,6 @@ export interface ElementsListItemWithTwoImages extends Schema.Component {
     heading: Attribute.String;
     subHeading: Attribute.Text;
     activeImage: Attribute.Media;
-    inactiveImage: Attribute.Media;
   };
 }
 
