@@ -880,6 +880,46 @@ export interface ApiBenefitsOfKaizenBenefitsOfKaizen extends Schema.SingleType {
   };
 }
 
+export interface ApiBookletBooklet extends Schema.CollectionType {
+  collectionName: 'booklets';
+  info: {
+    singularName: 'booklet';
+    pluralName: 'booklets';
+    displayName: 'Booklet';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageCover: Attribute.Component<'block.page-cover'>;
+    pageHeading: Attribute.Component<'block.page-heading'>;
+    exploreOurCategories: Attribute.Component<'block.product-card-section'>;
+    printspiration: Attribute.Component<'block.printspiration'>;
+    productSpecifications: Attribute.Component<
+      'block.product-specification',
+      true
+    >;
+    ecoCard: Attribute.Component<'block.eco-card'>;
+    printPanic: Attribute.Component<'block.faq'>;
+    seo: Attribute.Component<'shared.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::booklet.booklet',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::booklet.booklet',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiBrandedMerchBrandedMerch extends Schema.CollectionType {
   collectionName: 'branded_merches';
   info: {
@@ -1209,6 +1249,7 @@ export interface ApiFooterFooter extends Schema.SingleType {
     chatBotImg: Attribute.Media;
     chatBotText: Attribute.String;
     topLeftImage: Attribute.Media;
+    contactLinks: Attribute.Component<'elements.link', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1713,6 +1754,47 @@ export interface ApiNeedDesignNeedDesign extends Schema.SingleType {
   };
 }
 
+export interface ApiNotepadNotepad extends Schema.CollectionType {
+  collectionName: 'notepads';
+  info: {
+    singularName: 'notepad';
+    pluralName: 'notepads';
+    displayName: 'Notepad';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageCover: Attribute.Component<'block.page-cover'>;
+    pageHeading: Attribute.Component<'block.page-heading'>;
+    exploreOurCategories: Attribute.Component<'block.product-card-section'>;
+    printspiration: Attribute.Component<'block.printspiration'>;
+    productSpecifications: Attribute.Component<
+      'block.product-specification',
+      true
+    >;
+    ecoCard: Attribute.Component<'block.eco-card'>;
+    printPanic: Attribute.Component<'block.faq'>;
+    seo: Attribute.Component<'shared.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::notepad.notepad',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::notepad.notepad',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiOpenHourOpenHour extends Schema.SingleType {
   collectionName: 'open_hours';
   info: {
@@ -2118,6 +2200,7 @@ declare module '@strapi/types' {
       'api::auth.auth': ApiAuthAuth;
       'api::banner-and-signage.banner-and-signage': ApiBannerAndSignageBannerAndSignage;
       'api::benefits-of-kaizen.benefits-of-kaizen': ApiBenefitsOfKaizenBenefitsOfKaizen;
+      'api::booklet.booklet': ApiBookletBooklet;
       'api::branded-merch.branded-merch': ApiBrandedMerchBrandedMerch;
       'api::business-card.business-card': ApiBusinessCardBusinessCard;
       'api::chat-to-kaibot.chat-to-kaibot': ApiChatToKaibotChatToKaibot;
@@ -2142,6 +2225,7 @@ declare module '@strapi/types' {
       'api::marketing-and-promo.marketing-and-promo': ApiMarketingAndPromoMarketingAndPromo;
       'api::need-a-design.need-a-design': ApiNeedADesignNeedADesign;
       'api::need-design.need-design': ApiNeedDesignNeedDesign;
+      'api::notepad.notepad': ApiNotepadNotepad;
       'api::open-hour.open-hour': ApiOpenHourOpenHour;
       'api::order-sample.order-sample': ApiOrderSampleOrderSample;
       'api::payment-method.payment-method': ApiPaymentMethodPaymentMethod;

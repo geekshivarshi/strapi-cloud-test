@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "notepads",
+  "info": {
+    "singularName": "notepad",
+    "pluralName": "notepads",
+    "displayName": "Notepad",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pageCover": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.page-cover"
+    },
+    "pageHeading": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.page-heading"
+    },
+    "exploreOurCategories": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.product-card-section"
+    },
+    "printspiration": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.printspiration"
+    },
+    "productSpecifications": {
+      "type": "component",
+      "repeatable": true,
+      "component": "block.product-specification"
+    },
+    "ecoCard": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.eco-card"
+    },
+    "printPanic": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.faq"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}
