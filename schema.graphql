@@ -161,6 +161,68 @@ type BenefitsOfKaizenRelationResponseCollection {
   data: [BenefitsOfKaizenEntity!]!
 }
 
+type Booklet {
+  createdAt: DateTime
+  ecoCard: ComponentBlockEcoCard
+  exploreOurCategories: ComponentBlockProductCardSection
+  pageCover: ComponentBlockPageCover
+  pageHeading: ComponentBlockPageHeading
+  printPanic: ComponentBlockFaq
+  printspiration: ComponentBlockPrintspiration
+  productSpecifications(filters: ComponentBlockProductSpecificationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockProductSpecification]
+  publishedAt: DateTime
+  seo: ComponentSharedSeo
+  updatedAt: DateTime
+}
+
+type BookletEntity {
+  attributes: Booklet
+  id: ID
+}
+
+type BookletEntityResponse {
+  data: BookletEntity
+}
+
+type BookletEntityResponseCollection {
+  data: [BookletEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input BookletFiltersInput {
+  and: [BookletFiltersInput]
+  createdAt: DateTimeFilterInput
+  ecoCard: ComponentBlockEcoCardFiltersInput
+  exploreOurCategories: ComponentBlockProductCardSectionFiltersInput
+  id: IDFilterInput
+  not: BookletFiltersInput
+  or: [BookletFiltersInput]
+  pageCover: ComponentBlockPageCoverFiltersInput
+  pageHeading: ComponentBlockPageHeadingFiltersInput
+  printPanic: ComponentBlockFaqFiltersInput
+  printspiration: ComponentBlockPrintspirationFiltersInput
+  productSpecifications: ComponentBlockProductSpecificationFiltersInput
+  publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
+  updatedAt: DateTimeFilterInput
+}
+
+input BookletInput {
+  ecoCard: ComponentBlockEcoCardInput
+  exploreOurCategories: ComponentBlockProductCardSectionInput
+  pageCover: ComponentBlockPageCoverInput
+  pageHeading: ComponentBlockPageHeadingInput
+  printPanic: ComponentBlockFaqInput
+  printspiration: ComponentBlockPrintspirationInput
+  productSpecifications: [ComponentBlockProductSpecificationInput]
+  publishedAt: DateTime
+  seo: ComponentSharedSeoInput
+}
+
+type BookletRelationResponseCollection {
+  data: [BookletEntity!]!
+}
+
 input BooleanFilterInput {
   and: [Boolean]
   between: [Boolean]
@@ -1930,6 +1992,7 @@ type Footer {
   category(filters: ComponentBlockCatergoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockCatergory]
   chatBotImg: UploadFileEntityResponse
   chatBotText: String
+  contactLinks(filters: ComponentElementsLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsLink]
   copyRight: String
   createdAt: DateTime
   cta: ComponentBlockCta
@@ -1958,6 +2021,7 @@ input FooterFiltersInput {
   and: [FooterFiltersInput]
   category: ComponentBlockCatergoryFiltersInput
   chatBotText: StringFilterInput
+  contactLinks: ComponentElementsLinkFiltersInput
   copyRight: StringFilterInput
   createdAt: DateTimeFilterInput
   cta: ComponentBlockCtaFiltersInput
@@ -1972,6 +2036,7 @@ input FooterInput {
   category: [ComponentBlockCatergoryInput]
   chatBotImg: ID
   chatBotText: String
+  contactLinks: [ComponentElementsLinkInput]
   copyRight: String
   cta: ComponentBlockCtaInput
   footerDrawingImage: ID
@@ -1984,7 +2049,7 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = Auth | BannerAndSignage | BenefitsOfKaizen | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockHereToHelp | ComponentBlockHowItWorkComponent | ComponentBlockHowItWorksStep | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingPageCover | ComponentBlockMyAccountCard | ComponentBlockOpenHour | ComponentBlockOrderSampleCard | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProdSpecsListImageWithCoverImg | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockTrackOrder | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsHeadingSection | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsListItemWithTwoImages | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CookiePolicy | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | HowItWork | HowItWorksStep | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | KaizenPromisecard | Landing | MarketingAndPromo | NeedADesign | NeedDesign | OpenHour | OrderSample | PaymentMethod | Poster | PrintEnquiry | PrivacyPolicy | QuickPrintBuy | RequestQuote | StationaryAndOffice | Sticker | TermsAndCondition | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = Auth | BannerAndSignage | BenefitsOfKaizen | Booklet | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockHereToHelp | ComponentBlockHowItWorkComponent | ComponentBlockHowItWorksStep | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingPageCover | ComponentBlockMyAccountCard | ComponentBlockOpenHour | ComponentBlockOrderSampleCard | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProdSpecsListImageWithCoverImg | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockTrackOrder | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsHeadingSection | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsListItemWithTwoImages | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CookiePolicy | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | HowItWork | HowItWorksStep | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | KaizenPromisecard | Landing | MarketingAndPromo | NeedADesign | NeedDesign | Notepad | OpenHour | OrderSample | PaymentMethod | Poster | PrintEnquiry | PrivacyPolicy | QuickPrintBuy | RequestQuote | StationaryAndOffice | Sticker | TermsAndCondition | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GetAQuote {
   buttonLink: ComponentElementsLink
@@ -2766,6 +2831,7 @@ type Mutation {
   changePassword(currentPassword: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
   createAuth(data: AuthInput!): AuthEntityResponse
   createBannerAndSignage(data: BannerAndSignageInput!): BannerAndSignageEntityResponse
+  createBooklet(data: BookletInput!): BookletEntityResponse
   createBrandedMerch(data: BrandedMerchInput!): BrandedMerchEntityResponse
   createBusinessCard(data: BusinessCardInput!): BusinessCardEntityResponse
   createContactUs(data: ContactUsInput!): ContactUsEntityResponse
@@ -2781,6 +2847,7 @@ type Mutation {
   createLanding(data: LandingInput!): LandingEntityResponse
   createMarketingAndPromo(data: MarketingAndPromoInput!): MarketingAndPromoEntityResponse
   createNeedADesign(data: NeedADesignInput!): NeedADesignEntityResponse
+  createNotepad(data: NotepadInput!): NotepadEntityResponse
   createOrderSample(data: OrderSampleInput!): OrderSampleEntityResponse
   createPaymentMethod(data: PaymentMethodInput!): PaymentMethodEntityResponse
   createPoster(data: PosterInput!): PosterEntityResponse
@@ -2801,6 +2868,7 @@ type Mutation {
   deleteAuth(id: ID!): AuthEntityResponse
   deleteBannerAndSignage(id: ID!): BannerAndSignageEntityResponse
   deleteBenefitsOfKaizen: BenefitsOfKaizenEntityResponse
+  deleteBooklet(id: ID!): BookletEntityResponse
   deleteBrandedMerch(id: ID!): BrandedMerchEntityResponse
   deleteBusinessCard(id: ID!): BusinessCardEntityResponse
   deleteChatToKaibot: ChatToKaibotEntityResponse
@@ -2827,6 +2895,7 @@ type Mutation {
   deleteMarketingAndPromo(id: ID!): MarketingAndPromoEntityResponse
   deleteNeedADesign(id: ID!): NeedADesignEntityResponse
   deleteNeedDesign: NeedDesignEntityResponse
+  deleteNotepad(id: ID!): NotepadEntityResponse
   deleteOpenHour: OpenHourEntityResponse
   deleteOrderSample(id: ID!): OrderSampleEntityResponse
   deletePaymentMethod(id: ID!): PaymentMethodEntityResponse
@@ -2866,6 +2935,7 @@ type Mutation {
   updateAuth(data: AuthInput!, id: ID!): AuthEntityResponse
   updateBannerAndSignage(data: BannerAndSignageInput!, id: ID!): BannerAndSignageEntityResponse
   updateBenefitsOfKaizen(data: BenefitsOfKaizenInput!): BenefitsOfKaizenEntityResponse
+  updateBooklet(data: BookletInput!, id: ID!): BookletEntityResponse
   updateBrandedMerch(data: BrandedMerchInput!, id: ID!): BrandedMerchEntityResponse
   updateBusinessCard(data: BusinessCardInput!, id: ID!): BusinessCardEntityResponse
   updateChatToKaibot(data: ChatToKaibotInput!): ChatToKaibotEntityResponse
@@ -2893,6 +2963,7 @@ type Mutation {
   updateMarketingAndPromo(data: MarketingAndPromoInput!, id: ID!): MarketingAndPromoEntityResponse
   updateNeedADesign(data: NeedADesignInput!, id: ID!): NeedADesignEntityResponse
   updateNeedDesign(data: NeedDesignInput!): NeedDesignEntityResponse
+  updateNotepad(data: NotepadInput!, id: ID!): NotepadEntityResponse
   updateOpenHour(data: OpenHourInput!): OpenHourEntityResponse
   updateOrderSample(data: OrderSampleInput!, id: ID!): OrderSampleEntityResponse
   updatePaymentMethod(data: PaymentMethodInput!, id: ID!): PaymentMethodEntityResponse
@@ -3000,6 +3071,68 @@ input NeedDesignInput {
 
 type NeedDesignRelationResponseCollection {
   data: [NeedDesignEntity!]!
+}
+
+type Notepad {
+  createdAt: DateTime
+  ecoCard: ComponentBlockEcoCard
+  exploreOurCategories: ComponentBlockProductCardSection
+  pageCover: ComponentBlockPageCover
+  pageHeading: ComponentBlockPageHeading
+  printPanic: ComponentBlockFaq
+  printspiration: ComponentBlockPrintspiration
+  productSpecifications(filters: ComponentBlockProductSpecificationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockProductSpecification]
+  publishedAt: DateTime
+  seo: ComponentSharedSeo
+  updatedAt: DateTime
+}
+
+type NotepadEntity {
+  attributes: Notepad
+  id: ID
+}
+
+type NotepadEntityResponse {
+  data: NotepadEntity
+}
+
+type NotepadEntityResponseCollection {
+  data: [NotepadEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input NotepadFiltersInput {
+  and: [NotepadFiltersInput]
+  createdAt: DateTimeFilterInput
+  ecoCard: ComponentBlockEcoCardFiltersInput
+  exploreOurCategories: ComponentBlockProductCardSectionFiltersInput
+  id: IDFilterInput
+  not: NotepadFiltersInput
+  or: [NotepadFiltersInput]
+  pageCover: ComponentBlockPageCoverFiltersInput
+  pageHeading: ComponentBlockPageHeadingFiltersInput
+  printPanic: ComponentBlockFaqFiltersInput
+  printspiration: ComponentBlockPrintspirationFiltersInput
+  productSpecifications: ComponentBlockProductSpecificationFiltersInput
+  publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
+  updatedAt: DateTimeFilterInput
+}
+
+input NotepadInput {
+  ecoCard: ComponentBlockEcoCardInput
+  exploreOurCategories: ComponentBlockProductCardSectionInput
+  pageCover: ComponentBlockPageCoverInput
+  pageHeading: ComponentBlockPageHeadingInput
+  printPanic: ComponentBlockFaqInput
+  printspiration: ComponentBlockPrintspirationInput
+  productSpecifications: [ComponentBlockProductSpecificationInput]
+  publishedAt: DateTime
+  seo: ComponentSharedSeoInput
+}
+
+type NotepadRelationResponseCollection {
+  data: [NotepadEntity!]!
 }
 
 type OpenHour {
@@ -3331,6 +3464,8 @@ type Query {
   bannerAndSignage(id: ID): BannerAndSignageEntityResponse
   bannerAndSignages(filters: BannerAndSignageFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BannerAndSignageEntityResponseCollection
   benefitsOfKaizen(publicationState: PublicationState = LIVE): BenefitsOfKaizenEntityResponse
+  booklet(id: ID): BookletEntityResponse
+  booklets(filters: BookletFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BookletEntityResponseCollection
   brandedMerch(id: ID): BrandedMerchEntityResponse
   brandedMerches(filters: BrandedMerchFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BrandedMerchEntityResponseCollection
   businessCard(id: ID): BusinessCardEntityResponse
@@ -3375,6 +3510,8 @@ type Query {
   needADesign(id: ID): NeedADesignEntityResponse
   needADesigns(filters: NeedADesignFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): NeedADesignEntityResponseCollection
   needDesign(publicationState: PublicationState = LIVE): NeedDesignEntityResponse
+  notepad(id: ID): NotepadEntityResponse
+  notepads(filters: NotepadFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): NotepadEntityResponseCollection
   openHour(publicationState: PublicationState = LIVE): OpenHourEntityResponse
   orderSample(id: ID): OrderSampleEntityResponse
   orderSamples(filters: OrderSampleFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): OrderSampleEntityResponseCollection

@@ -65,6 +65,11 @@
         "videos",
         "audios"
       ]
+    },
+    "contactLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.link"
     }
   }
 }
