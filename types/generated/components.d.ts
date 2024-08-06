@@ -96,6 +96,7 @@ export interface BlockExploreRangeCards extends Schema.Component {
     badge: Attribute.Component<'elements.badge'> & Attribute.Required;
     cardImg: Attribute.Media;
     features: Attribute.Component<'elements.list-item-with-image', true>;
+    product_id: Attribute.BigInteger;
   };
 }
 
