@@ -555,6 +555,7 @@ type ComponentBlockExploreRangeCards {
   cardImg: UploadFileEntityResponse
   features(filters: ComponentElementsListItemWithImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsListItemWithImage]
   id: ID!
+  product_id: Long
   title: String!
 }
 
@@ -565,6 +566,7 @@ input ComponentBlockExploreRangeCardsFiltersInput {
   features: ComponentElementsListItemWithImageFiltersInput
   not: ComponentBlockExploreRangeCardsFiltersInput
   or: [ComponentBlockExploreRangeCardsFiltersInput]
+  product_id: LongFilterInput
   title: StringFilterInput
 }
 
@@ -574,6 +576,7 @@ input ComponentBlockExploreRangeCardsInput {
   cardImg: ID
   features: [ComponentElementsListItemWithImageInput]
   id: ID
+  product_id: Long
   title: String
 }
 
