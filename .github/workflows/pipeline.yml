@@ -1,173 +1,117 @@
-name: Strapi-CMS Pipeline
+name: Strapi-CMS Code Deploy
 
 on:
   push:
     branches:
       - staging
-      - master
-
 
 jobs:
 
-  slack-notification-on-code-push:
+  Strapi-CMS_Code_Deploy:
 
     permissions:
       contents: read
       actions: read
+
     runs-on: ubuntu-latest
-    env:
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-    steps:
-    - uses: act10ns/slack@v2
-      with:
-        status: starting
-        channel: 'kaizen-dev'
-        message: Pipeline Triggered on Strapi-Cms
-      if: always()
-  
 
-  envgen:
-    name: envgen
-    runs-on: ubuntu-latest 
     steps:
-      - name: Extract json envfile
-        run: |
-          echo "$ALLMYSECRETS" >> env.json
-        env:
-          ALLMYSECRETS: ${{ toJSON(secrets) }}
-          ALLMYVARS: ${{ toJSON(vars) }}
-          
-      - name: Upload .envtest as an artifact
-        uses: actions/upload-artifact@v2
+      - name: Slack Notification on Pipeline Start
+        uses: act10ns/slack@v2
         with:
-          name: env_json
-          path: env.json
+          status: starting
+          message: Pipeline Triggered on Strapi-CMS
+        if: always()
 
-  extract: 
-    name: extract env from json file
-    runs-on: ubuntu-latest 
-    needs: envgen
-    steps:
 
       - name: Checkout repository
         uses: actions/checkout@v2
-        
-      - name: Download artifacts envfile and Extract env from json
-        uses: actions/download-artifact@v3
+
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      
+      - name: Install doctl
+        run: |
+          curl -OL https://github.com/digitalocean/doctl/releases/download/v1.94.0/doctl-1.94.0-linux-amd64.tar.gz
+          tar xf doctl-1.94.0-linux-amd64.tar.gz
+          sudo mv doctl /usr/local/bin
+      
+      - name: Login to DO Container Registry
+        run: doctl registry login --access-token ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+
+      - name: Get the latest commit ID
+        id: get_commit_id
+        run: echo "GIT_COMMIT_ID=$(git rev-parse --short HEAD)" >> $GITHUB_ENV   
+           
+
+      - name: Build Docker image
+        id: Docker-Build
+        run: |
+          docker build -f Dockerfile -t strapi-cms:latest .
+
+      - name: Tag Docker image
+        run: | 
+          docker tag strapi-cms:latest registry.digitalocean.com/kaizen-staging/strapi-cms:latest
+          docker tag strapi-cms:latest registry.digitalocean.com/kaizen-staging/strapi-cms:${{ env.GIT_COMMIT_ID }}
+
+      - name: Push Docker image to DO Container Registry
+        id: Docker-Push
+        run: |
+          docker push registry.digitalocean.com/kaizen-staging/strapi-cms:latest
+          docker push registry.digitalocean.com/kaizen-staging/strapi-cms:${{ env.GIT_COMMIT_ID }}
+
+
+      - name: Set up bash
+        uses: actions/setup-python@v2
         with:
-          name: env_json
-      - run: |
+          python-version: '3.x'
 
-          sh generate_env.sh env.json ${{ github.ref }} >> .env.temp
+      - name: Run Jenkins script
+        id: Trigger-Jenkins
+        run: |
+        
+          #!/bin/bash
 
-          branch_name=${{ github.ref }}
-          echo "BRANCH_NAME=$branch_name"
+          check_pipeline_status() {
+              local pipeline_status=$(curl -u jenkins-staging:${{ secrets.JENKINS_STAGING_API_TOKEN }} -s "https://jenkins-staging.kaizenprint.com/job/Strapi-Staging-Deploy/$1/api/json" | jq -r '.inProgress' 2>/dev/null)
+              echo "$pipeline_status"
+          }
 
-          if [ $branch_name = "refs/heads/dev" ]; then
-            cat .env.temp | grep DEV | sed 's/_DEV//g'   >> .env
-          elif [ $branch_name = "refs/heads/staging" ]; then  
-            cat .env.temp | grep STAG | sed 's/_STAG//g' >> .env
-          elif [ $branch_name = "refs/heads/master" ]; then
-            cat .env.temp | grep PROD | sed 's/_PROD//g' >> .env
+          
+          lastBuild_no=$(curl -u jenkins-staging:${{ secrets.JENKINS_STAGING_API_TOKEN }} -s https://jenkins-staging.kaizenprint.com/job/Strapi-Staging-Deploy/lastBuild/api/json | jq -r '.number')
+          echo "Last Build Number: $lastBuild_no"
+
+          currentBuild_no=$((lastBuild_no + 1))
+          echo "Current Build Number: $currentBuild_no"
+
+          curl -X POST -u jenkins-staging:${{ secrets.JENKINS_STAGING_API_TOKEN }} https://jenkins-staging.kaizenprint.com/job/Strapi-Staging-Deploy/build
+
+          while true; do
+              pipeline_status=$(check_pipeline_status "$currentBuild_no")
+              if [ "$pipeline_status" == "false" ]; then
+                  break
+              fi
+              echo "Pipeline Running"
+              sleep 10 
+          done
+
+          build_status=$(curl -u jenkins-staging:${{ secrets.JENKINS_STAGING_API_TOKEN }} -s https://jenkins-staging.kaizenprint.com/job/Strapi-Staging-Deploy/$currentBuild_no/api/json | jq -r '.result')
+          echo "$build_status"
+
+          if [ "$build_status" == "FAILURE" ]; then
+              echo "Build failed"
+              exit 1
           fi
 
-      
-      - name: Upload .env as an artifact
-        uses: actions/upload-artifact@v2
+      - name: Slack Result Notification
+        id: result
+        uses: act10ns/slack@v2
         with:
-          name: env
-          path: .env
-   
-
-  Build-And-Push-To-DO-Container-Registry:
-  
-     runs-on: ubuntu-latest
-     needs: extract
-
-     steps:
-
-       - name: Checkout repository
-         uses: actions/checkout@v2
-
-       - name: Download .env artifact
-         uses: actions/download-artifact@v2
-         with:
-          name: env
-          path: .
-
-       - name: Display .env
-         run: | 
-           cat .env
-
-       - name: Set up Docker Buildx
-         uses: docker/setup-buildx-action@v1
-   
-       - name: Install doctl
-         run: |
-           curl -OL https://github.com/digitalocean/doctl/releases/download/v1.94.0/doctl-1.94.0-linux-amd64.tar.gz
-           tar xf doctl-1.94.0-linux-amd64.tar.gz
-           sudo mv doctl /usr/local/bin
-          
-      
-       - name: Login to DO Container Registry
-         run: doctl registry login --access-token ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-             
-   
-       - name: Build Docker image
-         run: |
-           docker build -f Dockerfile -t strapi-cms:latest .
-   
-       - name: Tag Docker image
-         run: |
-           docker tag strapi-cms:latest registry.digitalocean.com/kaizen-staging/strapi-cms:latest
-   
-       - name: Push Docker image to DO Container Registry
-         run: |
-           docker push registry.digitalocean.com/kaizen-staging/strapi-cms:latest
-   
-
-       - name: Install doctl
-         uses: digitalocean/action-doctl@v2.5.1
-         with:
-            token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-  
-       - name: Remove old images from Container Registry
-         uses: ripplr-io/docr-image-remove@v1
-         with:
-            image_repository: cms
-            buffer_size: 1
-   
-
-
-  ssh-into-management-node:
-
-     runs-on: ubuntu-latest
-     needs: Build-And-Push-To-DO-Container-Registry
-     steps:
-      - name: Executing remote ssh commands using ssh key
-        uses: appleboy/ssh-action@master
-        with:
-          host: 159.223.246.41
-          username: kaizen-backend-staging
-          key: ${{ secrets.MGMT_NODE_SSH_PRIVATE_KEY }}
-          port: 22
-          script: |
-             ./update-3.sh
-
-
-  slack-result-notificaton:
-
-    permissions:
-        contents: read
-        actions: read
-    runs-on: ubuntu-latest
-    env:
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-    needs: ssh-into-management-node
-    steps:
-      - uses: act10ns/slack@v2
-        with:
-          channel: 'kaizen-dev'
           status: ${{ job.status }}
           steps: ${{ toJson(steps) }}
         if: always()
+
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.KAIZEN_SLACK_STAGING_WEBHOOK_URL }}
