@@ -93,10 +93,11 @@ export interface BlockExploreRangeCards extends Schema.Component {
   attributes: {
     title: Attribute.String & Attribute.Required;
     buttonLink: Attribute.Component<'elements.link'> & Attribute.Required;
-    badge: Attribute.Component<'elements.badge'> & Attribute.Required;
+    banner: Attribute.Component<'elements.badge'>;
     cardImg: Attribute.Media;
     features: Attribute.Component<'elements.list-item-with-image', true>;
     product_id: Attribute.BigInteger;
+    badge: Attribute.Media;
   };
 }
 
@@ -418,13 +419,12 @@ export interface ElementsAdvanceImage extends Schema.Component {
 export interface ElementsBadge extends Schema.Component {
   collectionName: 'components_elements_badges';
   info: {
-    displayName: 'Badge';
+    displayName: 'Banner';
     description: '';
   };
   attributes: {
-    text: Attribute.String;
-    image: Attribute.Media;
-    type: Attribute.Enumeration<['banner', 'icon', 'none']>;
+    text: Attribute.String & Attribute.Required;
+    image: Attribute.Media & Attribute.Required;
   };
 }
 
