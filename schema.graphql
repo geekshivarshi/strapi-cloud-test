@@ -550,30 +550,35 @@ input ComponentBlockExploreCategoriesInput {
 }
 
 type ComponentBlockExploreRangeCards {
-  badge: ComponentElementsBadge!
+  badge: UploadFileEntityResponse
+  banner: ComponentElementsBadge
   buttonLink: ComponentElementsLink!
   cardImg: UploadFileEntityResponse
   features(filters: ComponentElementsListItemWithImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsListItemWithImage]
   id: ID!
+  product_id: Long
   title: String!
 }
 
 input ComponentBlockExploreRangeCardsFiltersInput {
   and: [ComponentBlockExploreRangeCardsFiltersInput]
-  badge: ComponentElementsBadgeFiltersInput
+  banner: ComponentElementsBadgeFiltersInput
   buttonLink: ComponentElementsLinkFiltersInput
   features: ComponentElementsListItemWithImageFiltersInput
   not: ComponentBlockExploreRangeCardsFiltersInput
   or: [ComponentBlockExploreRangeCardsFiltersInput]
+  product_id: LongFilterInput
   title: StringFilterInput
 }
 
 input ComponentBlockExploreRangeCardsInput {
-  badge: ComponentElementsBadgeInput
+  badge: ID
+  banner: ComponentElementsBadgeInput
   buttonLink: ComponentElementsLinkInput
   cardImg: ID
   features: [ComponentElementsListItemWithImageInput]
   id: ID
+  product_id: Long
   title: String
 }
 
@@ -1147,9 +1152,8 @@ input ComponentElementsAdvanceImageInput {
 
 type ComponentElementsBadge {
   id: ID!
-  image: UploadFileEntityResponse
-  text: String
-  type: ENUM_COMPONENTELEMENTSBADGE_TYPE
+  image: UploadFileEntityResponse!
+  text: String!
 }
 
 input ComponentElementsBadgeFiltersInput {
@@ -1157,14 +1161,12 @@ input ComponentElementsBadgeFiltersInput {
   not: ComponentElementsBadgeFiltersInput
   or: [ComponentElementsBadgeFiltersInput]
   text: StringFilterInput
-  type: StringFilterInput
 }
 
 input ComponentElementsBadgeInput {
   id: ID
   image: ID
   text: String
-  type: ENUM_COMPONENTELEMENTSBADGE_TYPE
 }
 
 type ComponentElementsBulletPoints {
@@ -1779,12 +1781,6 @@ enum ENUM_COMPONENTELEMENTSADVANCEIMAGE_TYPE {
   image
   multiple_images
   reel
-}
-
-enum ENUM_COMPONENTELEMENTSBADGE_TYPE {
-  banner
-  icon
-  none
 }
 
 enum ENUM_COMPONENTSHAREDMETASOCIAL_SOCIALNETWORK {
