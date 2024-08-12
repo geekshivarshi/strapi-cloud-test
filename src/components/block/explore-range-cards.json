@@ -16,11 +16,11 @@
       "component": "elements.link",
       "required": true
     },
-    "badge": {
+    "banner": {
       "type": "component",
       "repeatable": false,
       "component": "elements.badge",
-      "required": true
+      "required": false
     },
     "cardImg": {
       "type": "media",
@@ -41,6 +41,17 @@
     "product_id": {
       "type": "biginteger",
       "required": false
+    },
+    "badge": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }
