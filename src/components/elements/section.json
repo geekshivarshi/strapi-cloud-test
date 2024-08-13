@@ -1,7 +1,8 @@
 {
   "collectionName": "components_elements_sections",
   "info": {
-    "displayName": "Section"
+    "displayName": "Section",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -15,6 +16,21 @@
       "type": "component",
       "repeatable": true,
       "component": "elements.bullet-points"
+    },
+    "merchandiseCollection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.file"
+    },
+    "ecoCollection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.file"
+    },
+    "premiumCollection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.file"
     }
   }
 }

@@ -33,26 +33,6 @@
         "videos",
         "audios"
       ]
-    },
-    "login": {
-      "type": "component",
-      "repeatable": false,
-      "component": "elements.heading-section"
-    },
-    "signup": {
-      "type": "component",
-      "repeatable": false,
-      "component": "elements.heading-section"
-    },
-    "forgotPassword": {
-      "type": "component",
-      "repeatable": false,
-      "component": "elements.heading-section"
-    },
-    "resetPassword": {
-      "type": "component",
-      "repeatable": false,
-      "component": "elements.heading-section"
     }
   }
 }

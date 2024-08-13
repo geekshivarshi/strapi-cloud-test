@@ -795,10 +795,6 @@ export interface ApiAuthAuth extends Schema.CollectionType {
   attributes: {
     bottomLeftImage: Attribute.Media;
     bottomRightImage: Attribute.Media;
-    login: Attribute.Component<'elements.heading-section'>;
-    signup: Attribute.Component<'elements.heading-section'>;
-    forgotPassword: Attribute.Component<'elements.heading-section'>;
-    resetPassword: Attribute.Component<'elements.heading-section'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1268,6 +1264,37 @@ export interface ApiFooterFooter extends Schema.SingleType {
   };
 }
 
+export interface ApiForgotPasswordForgotPassword extends Schema.CollectionType {
+  collectionName: 'forgot_passwords';
+  info: {
+    singularName: 'forgot-password';
+    pluralName: 'forgot-passwords';
+    displayName: 'ForgotPassword';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    heading: Attribute.String;
+    subHeading: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::forgot-password.forgot-password',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::forgot-password.forgot-password',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiGetAQuoteGetAQuote extends Schema.SingleType {
   collectionName: 'get_a_quotes';
   info: {
@@ -1648,6 +1675,37 @@ export interface ApiLandingLanding extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::landing.landing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLoginLogin extends Schema.CollectionType {
+  collectionName: 'logins';
+  info: {
+    singularName: 'login';
+    pluralName: 'logins';
+    displayName: 'Login';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    heading: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::login.login',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::login.login',
       'oneToOne',
       'admin::user'
     > &
@@ -2069,6 +2127,68 @@ export interface ApiRequestQuoteRequestQuote extends Schema.CollectionType {
   };
 }
 
+export interface ApiResetPasswordResetPassword extends Schema.CollectionType {
+  collectionName: 'reset_passwords';
+  info: {
+    singularName: 'reset-password';
+    pluralName: 'reset-passwords';
+    displayName: 'ResetPassword';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    heading: Attribute.String;
+    subHeading: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::reset-password.reset-password',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::reset-password.reset-password',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSignupSignup extends Schema.CollectionType {
+  collectionName: 'signups';
+  info: {
+    singularName: 'signup';
+    pluralName: 'signups';
+    displayName: 'Signup';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    heading: Attribute.String;
+    subHeading: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::signup.signup',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::signup.signup',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiStationaryAndOfficeStationaryAndOffice
   extends Schema.CollectionType {
   collectionName: 'stationary_and_offices';
@@ -2211,6 +2331,7 @@ declare module '@strapi/types' {
       'api::faq-page.faq-page': ApiFaqPageFaqPage;
       'api::flyers-folded-leaflet.flyers-folded-leaflet': ApiFlyersFoldedLeafletFlyersFoldedLeaflet;
       'api::footer.footer': ApiFooterFooter;
+      'api::forgot-password.forgot-password': ApiForgotPasswordForgotPassword;
       'api::get-a-quote.get-a-quote': ApiGetAQuoteGetAQuote;
       'api::google-review.google-review': ApiGoogleReviewGoogleReview;
       'api::header.header': ApiHeaderHeader;
@@ -2222,6 +2343,7 @@ declare module '@strapi/types' {
       'api::kaizen-promise.kaizen-promise': ApiKaizenPromiseKaizenPromise;
       'api::kaizen-promisecard.kaizen-promisecard': ApiKaizenPromisecardKaizenPromisecard;
       'api::landing.landing': ApiLandingLanding;
+      'api::login.login': ApiLoginLogin;
       'api::marketing-and-promo.marketing-and-promo': ApiMarketingAndPromoMarketingAndPromo;
       'api::need-a-design.need-a-design': ApiNeedADesignNeedADesign;
       'api::need-design.need-design': ApiNeedDesignNeedDesign;
@@ -2234,6 +2356,8 @@ declare module '@strapi/types' {
       'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
       'api::quick-print-buy.quick-print-buy': ApiQuickPrintBuyQuickPrintBuy;
       'api::request-quote.request-quote': ApiRequestQuoteRequestQuote;
+      'api::reset-password.reset-password': ApiResetPasswordResetPassword;
+      'api::signup.signup': ApiSignupSignup;
       'api::stationary-and-office.stationary-and-office': ApiStationaryAndOfficeStationaryAndOffice;
       'api::sticker.sticker': ApiStickerSticker;
       'api::terms-and-condition.terms-and-condition': ApiTermsAndConditionTermsAndCondition;

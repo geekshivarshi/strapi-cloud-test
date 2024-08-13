@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "forgot_passwords",
+  "info": {
+    "singularName": "forgot-password",
+    "pluralName": "forgot-passwords",
+    "displayName": "ForgotPassword"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "subHeading": {
+      "type": "text"
+    }
+  }
+}

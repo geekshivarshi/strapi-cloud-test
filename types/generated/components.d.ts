@@ -468,6 +468,17 @@ export interface ElementsCard extends Schema.Component {
   };
 }
 
+export interface ElementsFile extends Schema.Component {
+  collectionName: 'components_elements_files';
+  info: {
+    displayName: 'file';
+  };
+  attributes: {
+    name: Attribute.String;
+    file: Attribute.Media;
+  };
+}
+
 export interface ElementsHeadingSection extends Schema.Component {
   collectionName: 'components_elements_heading_sections';
   info: {
@@ -564,11 +575,15 @@ export interface ElementsSection extends Schema.Component {
   collectionName: 'components_elements_sections';
   info: {
     displayName: 'Section';
+    description: '';
   };
   attributes: {
     heading: Attribute.String;
     subheading: Attribute.String;
     points: Attribute.Component<'elements.bullet-points', true>;
+    merchandiseCollection: Attribute.Component<'elements.file'>;
+    ecoCollection: Attribute.Component<'elements.file'>;
+    premiumCollection: Attribute.Component<'elements.file'>;
   };
 }
 
@@ -660,6 +675,7 @@ declare module '@strapi/types' {
       'elements.bullet-points': ElementsBulletPoints;
       'elements.card-with-image-item': ElementsCardWithImageItem;
       'elements.card': ElementsCard;
+      'elements.file': ElementsFile;
       'elements.heading-section': ElementsHeadingSection;
       'elements.image': ElementsImage;
       'elements.link': ElementsLink;
