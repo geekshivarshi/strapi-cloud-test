@@ -6,11 +6,7 @@ type Auth {
   bottomLeftImage: UploadFileEntityResponse
   bottomRightImage: UploadFileEntityResponse
   createdAt: DateTime
-  forgotPassword: ComponentElementsHeadingSection
-  login: ComponentElementsHeadingSection
   publishedAt: DateTime
-  resetPassword: ComponentElementsHeadingSection
-  signup: ComponentElementsHeadingSection
   updatedAt: DateTime
 }
 
@@ -31,25 +27,17 @@ type AuthEntityResponseCollection {
 input AuthFiltersInput {
   and: [AuthFiltersInput]
   createdAt: DateTimeFilterInput
-  forgotPassword: ComponentElementsHeadingSectionFiltersInput
   id: IDFilterInput
-  login: ComponentElementsHeadingSectionFiltersInput
   not: AuthFiltersInput
   or: [AuthFiltersInput]
   publishedAt: DateTimeFilterInput
-  resetPassword: ComponentElementsHeadingSectionFiltersInput
-  signup: ComponentElementsHeadingSectionFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
 input AuthInput {
   bottomLeftImage: ID
   bottomRightImage: ID
-  forgotPassword: ComponentElementsHeadingSectionInput
-  login: ComponentElementsHeadingSectionInput
   publishedAt: DateTime
-  resetPassword: ComponentElementsHeadingSectionInput
-  signup: ComponentElementsHeadingSectionInput
 }
 
 type AuthRelationResponseCollection {
@@ -1240,6 +1228,25 @@ input ComponentElementsCardWithImageItemInput {
   subHeading: String
 }
 
+type ComponentElementsFile {
+  file: UploadFileEntityResponse
+  id: ID!
+  name: String
+}
+
+input ComponentElementsFileFiltersInput {
+  and: [ComponentElementsFileFiltersInput]
+  name: StringFilterInput
+  not: ComponentElementsFileFiltersInput
+  or: [ComponentElementsFileFiltersInput]
+}
+
+input ComponentElementsFileInput {
+  file: ID
+  id: ID
+  name: String
+}
+
 type ComponentElementsHeadingSection {
   heading: String
   id: ID!
@@ -1407,25 +1414,34 @@ input ComponentElementsQaInput {
 }
 
 type ComponentElementsSection {
+  ecoCollection: ComponentElementsFile
   heading: String
   id: ID!
+  merchandiseCollection: ComponentElementsFile
   points(filters: ComponentElementsBulletPointsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsBulletPoints]
+  premiumCollection: ComponentElementsFile
   subheading: String
 }
 
 input ComponentElementsSectionFiltersInput {
   and: [ComponentElementsSectionFiltersInput]
+  ecoCollection: ComponentElementsFileFiltersInput
   heading: StringFilterInput
+  merchandiseCollection: ComponentElementsFileFiltersInput
   not: ComponentElementsSectionFiltersInput
   or: [ComponentElementsSectionFiltersInput]
   points: ComponentElementsBulletPointsFiltersInput
+  premiumCollection: ComponentElementsFileFiltersInput
   subheading: StringFilterInput
 }
 
 input ComponentElementsSectionInput {
+  ecoCollection: ComponentElementsFileInput
   heading: String
   id: ID
+  merchandiseCollection: ComponentElementsFileInput
   points: [ComponentElementsBulletPointsInput]
+  premiumCollection: ComponentElementsFileInput
   subheading: String
 }
 
@@ -2045,7 +2061,51 @@ type FooterRelationResponseCollection {
   data: [FooterEntity!]!
 }
 
-union GenericMorph = Auth | BannerAndSignage | BenefitsOfKaizen | Booklet | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockHereToHelp | ComponentBlockHowItWorkComponent | ComponentBlockHowItWorksStep | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingPageCover | ComponentBlockMyAccountCard | ComponentBlockOpenHour | ComponentBlockOrderSampleCard | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProdSpecsListImageWithCoverImg | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockTrackOrder | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsHeadingSection | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsListItemWithTwoImages | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CookiePolicy | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | GetAQuote | GoogleReview | Header | HereToHelp | HowItWork | HowItWorksStep | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | KaizenPromisecard | Landing | MarketingAndPromo | NeedADesign | NeedDesign | Notepad | OpenHour | OrderSample | PaymentMethod | Poster | PrintEnquiry | PrivacyPolicy | QuickPrintBuy | RequestQuote | StationaryAndOffice | Sticker | TermsAndCondition | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+type ForgotPassword {
+  createdAt: DateTime
+  heading: String
+  publishedAt: DateTime
+  subHeading: String
+  updatedAt: DateTime
+}
+
+type ForgotPasswordEntity {
+  attributes: ForgotPassword
+  id: ID
+}
+
+type ForgotPasswordEntityResponse {
+  data: ForgotPasswordEntity
+}
+
+type ForgotPasswordEntityResponseCollection {
+  data: [ForgotPasswordEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input ForgotPasswordFiltersInput {
+  and: [ForgotPasswordFiltersInput]
+  createdAt: DateTimeFilterInput
+  heading: StringFilterInput
+  id: IDFilterInput
+  not: ForgotPasswordFiltersInput
+  or: [ForgotPasswordFiltersInput]
+  publishedAt: DateTimeFilterInput
+  subHeading: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input ForgotPasswordInput {
+  heading: String
+  publishedAt: DateTime
+  subHeading: String
+}
+
+type ForgotPasswordRelationResponseCollection {
+  data: [ForgotPasswordEntity!]!
+}
+
+union GenericMorph = Auth | BannerAndSignage | BenefitsOfKaizen | Booklet | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockHereToHelp | ComponentBlockHowItWorkComponent | ComponentBlockHowItWorksStep | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingPageCover | ComponentBlockMyAccountCard | ComponentBlockOpenHour | ComponentBlockOrderSampleCard | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProdSpecsListImageWithCoverImg | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockTrackOrder | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsFile | ComponentElementsHeadingSection | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsListItemWithTwoImages | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CookiePolicy | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | ForgotPassword | GetAQuote | GoogleReview | Header | HereToHelp | HowItWork | HowItWorksStep | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | KaizenPromisecard | Landing | Login | MarketingAndPromo | NeedADesign | NeedDesign | Notepad | OpenHour | OrderSample | PaymentMethod | Poster | PrintEnquiry | PrivacyPolicy | QuickPrintBuy | RequestQuote | ResetPassword | Signup | StationaryAndOffice | Sticker | TermsAndCondition | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GetAQuote {
   buttonLink: ComponentElementsLink
@@ -2742,6 +2802,47 @@ type LandingRelationResponseCollection {
   data: [LandingEntity!]!
 }
 
+type Login {
+  createdAt: DateTime
+  heading: String
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type LoginEntity {
+  attributes: Login
+  id: ID
+}
+
+type LoginEntityResponse {
+  data: LoginEntity
+}
+
+type LoginEntityResponseCollection {
+  data: [LoginEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input LoginFiltersInput {
+  and: [LoginFiltersInput]
+  createdAt: DateTimeFilterInput
+  heading: StringFilterInput
+  id: IDFilterInput
+  not: LoginFiltersInput
+  or: [LoginFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input LoginInput {
+  heading: String
+  publishedAt: DateTime
+}
+
+type LoginRelationResponseCollection {
+  data: [LoginEntity!]!
+}
+
 """
 The `BigInt` scalar type represents non-fractional signed whole numeric values.
 """
@@ -2836,11 +2937,13 @@ type Mutation {
   createCookiePolicy(data: CookiePolicyInput!): CookiePolicyEntityResponse
   createFaqPage(data: FaqPageInput!): FaqPageEntityResponse
   createFlyersFoldedLeaflet(data: FlyersFoldedLeafletInput!): FlyersFoldedLeafletEntityResponse
+  createForgotPassword(data: ForgotPasswordInput!): ForgotPasswordEntityResponse
   createHowItWork(data: HowItWorkInput!): HowItWorkEntityResponse
   createIndustry(data: IndustryInput!): IndustryEntityResponse
   createKaizenEcoRange(data: KaizenEcoRangeInput!): KaizenEcoRangeEntityResponse
   createKaizenPromise(data: KaizenPromiseInput!): KaizenPromiseEntityResponse
   createLanding(data: LandingInput!): LandingEntityResponse
+  createLogin(data: LoginInput!): LoginEntityResponse
   createMarketingAndPromo(data: MarketingAndPromoInput!): MarketingAndPromoEntityResponse
   createNeedADesign(data: NeedADesignInput!): NeedADesignEntityResponse
   createNotepad(data: NotepadInput!): NotepadEntityResponse
@@ -2850,6 +2953,8 @@ type Mutation {
   createPrivacyPolicy(data: PrivacyPolicyInput!): PrivacyPolicyEntityResponse
   createQuickPrintBuy(data: QuickPrintBuyInput!): QuickPrintBuyEntityResponse
   createRequestQuote(data: RequestQuoteInput!): RequestQuoteEntityResponse
+  createResetPassword(data: ResetPasswordInput!): ResetPasswordEntityResponse
+  createSignup(data: SignupInput!): SignupEntityResponse
   createStationaryAndOffice(data: StationaryAndOfficeInput!): StationaryAndOfficeEntityResponse
   createSticker(data: StickerInput!): StickerEntityResponse
   createTermsAndCondition(data: TermsAndConditionInput!): TermsAndConditionEntityResponse
@@ -2877,6 +2982,7 @@ type Mutation {
   deleteFaqPage(id: ID!): FaqPageEntityResponse
   deleteFlyersFoldedLeaflet(id: ID!): FlyersFoldedLeafletEntityResponse
   deleteFooter: FooterEntityResponse
+  deleteForgotPassword(id: ID!): ForgotPasswordEntityResponse
   deleteGetAQuote: GetAQuoteEntityResponse
   deleteGoogleReview: GoogleReviewEntityResponse
   deleteHeader: HeaderEntityResponse
@@ -2888,6 +2994,7 @@ type Mutation {
   deleteKaizenPromise(id: ID!): KaizenPromiseEntityResponse
   deleteKaizenPromisecard: KaizenPromisecardEntityResponse
   deleteLanding(id: ID!): LandingEntityResponse
+  deleteLogin(id: ID!): LoginEntityResponse
   deleteMarketingAndPromo(id: ID!): MarketingAndPromoEntityResponse
   deleteNeedADesign(id: ID!): NeedADesignEntityResponse
   deleteNeedDesign: NeedDesignEntityResponse
@@ -2900,6 +3007,8 @@ type Mutation {
   deletePrivacyPolicy(id: ID!): PrivacyPolicyEntityResponse
   deleteQuickPrintBuy(id: ID!): QuickPrintBuyEntityResponse
   deleteRequestQuote(id: ID!): RequestQuoteEntityResponse
+  deleteResetPassword(id: ID!): ResetPasswordEntityResponse
+  deleteSignup(id: ID!): SignupEntityResponse
   deleteStationaryAndOffice(id: ID!): StationaryAndOfficeEntityResponse
   deleteSticker(id: ID!): StickerEntityResponse
   deleteTermsAndCondition(id: ID!): TermsAndConditionEntityResponse
@@ -2945,6 +3054,7 @@ type Mutation {
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
   updateFlyersFoldedLeaflet(data: FlyersFoldedLeafletInput!, id: ID!): FlyersFoldedLeafletEntityResponse
   updateFooter(data: FooterInput!): FooterEntityResponse
+  updateForgotPassword(data: ForgotPasswordInput!, id: ID!): ForgotPasswordEntityResponse
   updateGetAQuote(data: GetAQuoteInput!): GetAQuoteEntityResponse
   updateGoogleReview(data: GoogleReviewInput!): GoogleReviewEntityResponse
   updateHeader(data: HeaderInput!): HeaderEntityResponse
@@ -2956,6 +3066,7 @@ type Mutation {
   updateKaizenPromise(data: KaizenPromiseInput!, id: ID!): KaizenPromiseEntityResponse
   updateKaizenPromisecard(data: KaizenPromisecardInput!): KaizenPromisecardEntityResponse
   updateLanding(data: LandingInput!, id: ID!): LandingEntityResponse
+  updateLogin(data: LoginInput!, id: ID!): LoginEntityResponse
   updateMarketingAndPromo(data: MarketingAndPromoInput!, id: ID!): MarketingAndPromoEntityResponse
   updateNeedADesign(data: NeedADesignInput!, id: ID!): NeedADesignEntityResponse
   updateNeedDesign(data: NeedDesignInput!): NeedDesignEntityResponse
@@ -2968,6 +3079,8 @@ type Mutation {
   updatePrivacyPolicy(data: PrivacyPolicyInput!, id: ID!): PrivacyPolicyEntityResponse
   updateQuickPrintBuy(data: QuickPrintBuyInput!, id: ID!): QuickPrintBuyEntityResponse
   updateRequestQuote(data: RequestQuoteInput!, id: ID!): RequestQuoteEntityResponse
+  updateResetPassword(data: ResetPasswordInput!, id: ID!): ResetPasswordEntityResponse
+  updateSignup(data: SignupInput!, id: ID!): SignupEntityResponse
   updateStationaryAndOffice(data: StationaryAndOfficeInput!, id: ID!): StationaryAndOfficeEntityResponse
   updateSticker(data: StickerInput!, id: ID!): StickerEntityResponse
   updateTermsAndCondition(data: TermsAndConditionInput!, id: ID!): TermsAndConditionEntityResponse
@@ -3482,6 +3595,8 @@ type Query {
   flyersFoldedLeaflet(id: ID): FlyersFoldedLeafletEntityResponse
   flyersFoldedLeaflets(filters: FlyersFoldedLeafletFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): FlyersFoldedLeafletEntityResponseCollection
   footer(publicationState: PublicationState = LIVE): FooterEntityResponse
+  forgotPassword(id: ID): ForgotPasswordEntityResponse
+  forgotPasswords(filters: ForgotPasswordFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ForgotPasswordEntityResponseCollection
   getAQuote(publicationState: PublicationState = LIVE): GetAQuoteEntityResponse
   googleReview(publicationState: PublicationState = LIVE): GoogleReviewEntityResponse
   header(publicationState: PublicationState = LIVE): HeaderEntityResponse
@@ -3500,6 +3615,8 @@ type Query {
   kaizenPromises(filters: KaizenPromiseFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): KaizenPromiseEntityResponseCollection
   landing(id: ID): LandingEntityResponse
   landings(filters: LandingFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): LandingEntityResponseCollection
+  login(id: ID): LoginEntityResponse
+  logins(filters: LoginFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): LoginEntityResponseCollection
   marketingAndPromo(id: ID): MarketingAndPromoEntityResponse
   marketingAndPromos(filters: MarketingAndPromoFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): MarketingAndPromoEntityResponseCollection
   me: UsersPermissionsMe
@@ -3522,6 +3639,10 @@ type Query {
   quickPrintBuys(filters: QuickPrintBuyFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): QuickPrintBuyEntityResponseCollection
   requestQuote(id: ID): RequestQuoteEntityResponse
   requestQuotes(filters: RequestQuoteFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): RequestQuoteEntityResponseCollection
+  resetPassword(id: ID): ResetPasswordEntityResponse
+  resetPasswords(filters: ResetPasswordFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ResetPasswordEntityResponseCollection
+  signup(id: ID): SignupEntityResponse
+  signups(filters: SignupFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): SignupEntityResponseCollection
   stationaryAndOffice(id: ID): StationaryAndOfficeEntityResponse
   stationaryAndOffices(filters: StationaryAndOfficeFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): StationaryAndOfficeEntityResponseCollection
   sticker(id: ID): StickerEntityResponse
@@ -3629,8 +3750,96 @@ type RequestQuoteRelationResponseCollection {
   data: [RequestQuoteEntity!]!
 }
 
+type ResetPassword {
+  createdAt: DateTime
+  heading: String
+  publishedAt: DateTime
+  subHeading: String
+  updatedAt: DateTime
+}
+
+type ResetPasswordEntity {
+  attributes: ResetPassword
+  id: ID
+}
+
+type ResetPasswordEntityResponse {
+  data: ResetPasswordEntity
+}
+
+type ResetPasswordEntityResponseCollection {
+  data: [ResetPasswordEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input ResetPasswordFiltersInput {
+  and: [ResetPasswordFiltersInput]
+  createdAt: DateTimeFilterInput
+  heading: StringFilterInput
+  id: IDFilterInput
+  not: ResetPasswordFiltersInput
+  or: [ResetPasswordFiltersInput]
+  publishedAt: DateTimeFilterInput
+  subHeading: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input ResetPasswordInput {
+  heading: String
+  publishedAt: DateTime
+  subHeading: String
+}
+
+type ResetPasswordRelationResponseCollection {
+  data: [ResetPasswordEntity!]!
+}
+
 type ResponseCollectionMeta {
   pagination: Pagination!
+}
+
+type Signup {
+  createdAt: DateTime
+  heading: String
+  publishedAt: DateTime
+  subHeading: String
+  updatedAt: DateTime
+}
+
+type SignupEntity {
+  attributes: Signup
+  id: ID
+}
+
+type SignupEntityResponse {
+  data: SignupEntity
+}
+
+type SignupEntityResponseCollection {
+  data: [SignupEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input SignupFiltersInput {
+  and: [SignupFiltersInput]
+  createdAt: DateTimeFilterInput
+  heading: StringFilterInput
+  id: IDFilterInput
+  not: SignupFiltersInput
+  or: [SignupFiltersInput]
+  publishedAt: DateTimeFilterInput
+  subHeading: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input SignupInput {
+  heading: String
+  publishedAt: DateTime
+  subHeading: String
+}
+
+type SignupRelationResponseCollection {
+  data: [SignupEntity!]!
 }
 
 type StationaryAndOffice {
