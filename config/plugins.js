@@ -82,7 +82,7 @@ module.exports = ({ env }) => ({
             alwaysVisible: true,
           },
           published: {
-            url: env("KAIZENPRINT_PROD_URL") + "/{slug}",
+            url: env("KAIZENPRINT_PROD_URL") + "/business-cards",
             openTarget: "_blank",
           },
         },
@@ -99,7 +99,7 @@ module.exports = ({ env }) => ({
             alwaysVisible: true,
           },
           published: {
-            url: env("KAIZENPRINT_PROD_URL") + "/{slug}",
+            url: env("KAIZENPRINT_PROD_URL") + "/banner-and-signage",
             openTarget: "_blank",
           },
         },
@@ -116,7 +116,7 @@ module.exports = ({ env }) => ({
             alwaysVisible: true,
           },
           published: {
-            url: env("KAIZENPRINT_PROD_URL") + "/{slug}",
+            url: env("KAIZENPRINT_PROD_URL") + "/cookie-policy",
             openTarget: "_blank",
           },
         },
@@ -133,7 +133,7 @@ module.exports = ({ env }) => ({
             alwaysVisible: true,
           },
           published: {
-            url: env("KAIZENPRINT_PROD_URL") + "/{slug}",
+            url: env("KAIZENPRINT_PROD_URL") + "/faq",
             openTarget: "_blank",
           },
         },
@@ -150,7 +150,7 @@ module.exports = ({ env }) => ({
             alwaysVisible: true,
           },
           published: {
-            url: env("KAIZENPRINT_PROD_URL") + "/{slug}",
+            url: env("KAIZENPRINT_PROD_URL") + "/flyers-and-leaflets",
             openTarget: "_blank",
           },
         },
@@ -167,7 +167,7 @@ module.exports = ({ env }) => ({
             alwaysVisible: true,
           },
           published: {
-            url: env("KAIZENPRINT_PROD_URL") + "/{slug}",
+            url: env("KAIZENPRINT_PROD_URL") + "/how-it-works",
             openTarget: "_blank",
           },
         },
@@ -184,7 +184,7 @@ module.exports = ({ env }) => ({
             alwaysVisible: true,
           },
           published: {
-            url: env("KAIZENPRINT_PROD_URL") + "/{slug}",
+            url: env("KAIZENPRINT_PROD_URL") + "/eco-range",
             openTarget: "_blank",
           },
         },
@@ -201,7 +201,7 @@ module.exports = ({ env }) => ({
             alwaysVisible: true,
           },
           published: {
-            url: env("KAIZENPRINT_PROD_URL") + "/{slug}",
+            url: env("KAIZENPRINT_PROD_URL") + "/kaizen-promise",
             openTarget: "_blank",
           },
         },
@@ -218,7 +218,7 @@ module.exports = ({ env }) => ({
             alwaysVisible: true,
           },
           published: {
-            url: env("KAIZENPRINT_PROD_URL") + "/{slug}",
+            url: env("KAIZENPRINT_PROD_URL") + "/marketing-and-promo",
             openTarget: "_blank",
           },
         },
@@ -235,7 +235,7 @@ module.exports = ({ env }) => ({
             alwaysVisible: true,
           },
           published: {
-            url: env("KAIZENPRINT_PROD_URL") + "/{slug}",
+            url: env("KAIZENPRINT_PROD_URL") + "/payment-methods",
             openTarget: "_blank",
           },
         },
@@ -252,7 +252,7 @@ module.exports = ({ env }) => ({
             alwaysVisible: true,
           },
           published: {
-            url: env("KAIZENPRINT_PROD_URL") + "/{slug}",
+            url: env("KAIZENPRINT_PROD_URL") + "/poster",
             openTarget: "_blank",
           },
         },
@@ -269,7 +269,7 @@ module.exports = ({ env }) => ({
             alwaysVisible: true,
           },
           published: {
-            url: env("KAIZENPRINT_PROD_URL") + "/{slug}",
+            url: env("KAIZENPRINT_PROD_URL") + "/privacy-policy",
             openTarget: "_blank",
           },
         },
@@ -286,7 +286,7 @@ module.exports = ({ env }) => ({
             alwaysVisible: true,
           },
           published: {
-            url: env("KAIZENPRINT_PROD_URL") + "/{slug}",
+            url: env("KAIZENPRINT_PROD_URL") + "/quickbuy",
             openTarget: "_blank",
           },
         },
@@ -303,7 +303,7 @@ module.exports = ({ env }) => ({
             alwaysVisible: true,
           },
           published: {
-            url: env("KAIZENPRINT_PROD_URL") + "/{slug}",
+            url: env("KAIZENPRINT_PROD_URL") + "/stationery-and-office",
             openTarget: "_blank",
           },
         },
@@ -320,7 +320,7 @@ module.exports = ({ env }) => ({
             alwaysVisible: true,
           },
           published: {
-            url: env("KAIZENPRINT_PROD_URL") + "/{slug}",
+            url: env("KAIZENPRINT_PROD_URL") + "/stickers",
             openTarget: "_blank",
           },
         },
@@ -337,7 +337,41 @@ module.exports = ({ env }) => ({
             alwaysVisible: true,
           },
           published: {
-            url: env("KAIZENPRINT_PROD_URL") + "/{slug}",
+            url: env("KAIZENPRINT_PROD_URL") + "/terms-and-conditions",
+            openTarget: "_blank",
+          },
+        },
+        {
+          uid: "api::notepad.notepad",
+          draft: {
+            url: env("KAIZENPRINT_STAGING_URL") + "/api/preview",
+            query: {
+              type: "page",
+              slug: "notepads",
+              secret: env("STRAPI_PREVIEW_SECRET"),
+            },
+            openTarget: "_blank",
+            alwaysVisible: true,
+          },
+          published: {
+            url: env("KAIZENPRINT_PROD_URL") + "/notepads",
+            openTarget: "_blank",
+          },
+        },
+        {
+          uid: "api::booklet.booklet",
+          draft: {
+            url: env("KAIZENPRINT_STAGING_URL") + "/api/preview",
+            query: {
+              type: "page",
+              slug: "booklets",
+              secret: env("STRAPI_PREVIEW_SECRET"),
+            },
+            openTarget: "_blank",
+            alwaysVisible: true,
+          },
+          published: {
+            url: env("KAIZENPRINT_PROD_URL") + "/booklets",
             openTarget: "_blank",
           },
         },
