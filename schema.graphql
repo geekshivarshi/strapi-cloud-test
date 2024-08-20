@@ -2004,6 +2004,7 @@ type Footer {
   category(filters: ComponentBlockCatergoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockCatergory]
   chatBotImg: UploadFileEntityResponse
   chatBotText: String
+  contactLinkIcon: UploadFileEntityResponse
   contactLinks(filters: ComponentElementsLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsLink]
   copyRight: String
   createdAt: DateTime
@@ -2048,6 +2049,7 @@ input FooterInput {
   category: [ComponentBlockCatergoryInput]
   chatBotImg: ID
   chatBotText: String
+  contactLinkIcon: ID
   contactLinks: [ComponentElementsLinkInput]
   copyRight: String
   cta: ComponentBlockCtaInput

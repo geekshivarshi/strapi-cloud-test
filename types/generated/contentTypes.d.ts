@@ -1246,6 +1246,7 @@ export interface ApiFooterFooter extends Schema.SingleType {
     chatBotText: Attribute.String;
     topLeftImage: Attribute.Media;
     contactLinks: Attribute.Component<'elements.link', true>;
+    contactLinkIcon: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
