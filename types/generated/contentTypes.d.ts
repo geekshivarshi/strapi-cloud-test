@@ -1373,11 +1373,9 @@ export interface ApiHeaderHeader extends Schema.SingleType {
   };
   attributes: {
     appBarCategory: Attribute.JSON;
-    bestSellers: Attribute.JSON;
+    brandedMerch: Attribute.JSON;
     specialOffers: Attribute.JSON;
     quickBuys: Attribute.JSON;
-    popoverImage: Attribute.Media;
-    imageLink: Attribute.Component<'elements.link'>;
     topHeaderText: Attribute.String;
     topHeaderCouponCode: Attribute.String;
     isTopHeaderVisible: Attribute.Boolean;
