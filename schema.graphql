@@ -2200,11 +2200,9 @@ type GoogleReviewRelationResponseCollection {
 
 type Header {
   appBarCategory: JSON
-  bestSellers: JSON
+  brandedMerch: JSON
   createdAt: DateTime
-  imageLink: ComponentElementsLink
   isTopHeaderVisible: Boolean
-  popoverImage: UploadFileEntityResponse
   publishedAt: DateTime
   quickBuys: JSON
   specialOffers: JSON
@@ -2230,9 +2228,8 @@ type HeaderEntityResponseCollection {
 input HeaderFiltersInput {
   and: [HeaderFiltersInput]
   appBarCategory: JSONFilterInput
-  bestSellers: JSONFilterInput
+  brandedMerch: JSONFilterInput
   createdAt: DateTimeFilterInput
-  imageLink: ComponentElementsLinkFiltersInput
   isTopHeaderVisible: BooleanFilterInput
   not: HeaderFiltersInput
   or: [HeaderFiltersInput]
@@ -2246,10 +2243,8 @@ input HeaderFiltersInput {
 
 input HeaderInput {
   appBarCategory: JSON
-  bestSellers: JSON
-  imageLink: ComponentElementsLinkInput
+  brandedMerch: JSON
   isTopHeaderVisible: Boolean
-  popoverImage: ID
   publishedAt: DateTime
   quickBuys: JSON
   specialOffers: JSON

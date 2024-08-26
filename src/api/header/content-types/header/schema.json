@@ -15,7 +15,7 @@
     "appBarCategory": {
       "type": "json"
     },
-    "bestSellers": {
+    "brandedMerch": {
       "type": "json"
     },
     "specialOffers": {
@@ -23,22 +23,6 @@
     },
     "quickBuys": {
       "type": "json"
-    },
-    "popoverImage": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "imageLink": {
-      "type": "component",
-      "repeatable": false,
-      "component": "elements.link"
     },
     "topHeaderText": {
       "type": "string"
