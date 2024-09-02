@@ -571,6 +571,17 @@ export interface ElementsQa extends Schema.Component {
   };
 }
 
+export interface ElementsResponsiveImage extends Schema.Component {
+  collectionName: 'components_elements_responsive_images';
+  info: {
+    displayName: 'ResponsiveImage';
+  };
+  attributes: {
+    desktopImage: Attribute.Media;
+    mobileImage: Attribute.Media;
+  };
+}
+
 export interface ElementsSection extends Schema.Component {
   collectionName: 'components_elements_sections';
   info: {
@@ -683,6 +694,7 @@ declare module '@strapi/types' {
       'elements.list-item-with-two-images': ElementsListItemWithTwoImages;
       'elements.new-image': ElementsNewImage;
       'elements.qa': ElementsQa;
+      'elements.responsive-image': ElementsResponsiveImage;
       'elements.section': ElementsSection;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;

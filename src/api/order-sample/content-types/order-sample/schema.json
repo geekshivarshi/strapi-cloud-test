@@ -23,15 +23,9 @@
       "component": "block.order-sample-card"
     },
     "footerImage": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.responsive-image"
     }
   }
 }
