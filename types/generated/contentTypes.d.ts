@@ -1900,7 +1900,7 @@ export interface ApiOrderSampleOrderSample extends Schema.CollectionType {
   attributes: {
     pageCover: Attribute.Component<'block.page-cover'>;
     orderSampleCard: Attribute.Component<'block.order-sample-card'>;
-    footerImage: Attribute.Media;
+    footerImage: Attribute.Component<'elements.responsive-image'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
