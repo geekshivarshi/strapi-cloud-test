@@ -243,6 +243,7 @@ type BrandedMerch {
   hereToHelp: ComponentBlockHereToHelp
   pageCover: ComponentBlockPageCover
   publishedAt: DateTime
+  seo: ComponentSharedSeo
   updatedAt: DateTime
 }
 
@@ -271,6 +272,7 @@ input BrandedMerchFiltersInput {
   or: [BrandedMerchFiltersInput]
   pageCover: ComponentBlockPageCoverFiltersInput
   publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -280,6 +282,7 @@ input BrandedMerchInput {
   hereToHelp: ComponentBlockHereToHelpInput
   pageCover: ComponentBlockPageCoverInput
   publishedAt: DateTime
+  seo: ComponentSharedSeoInput
 }
 
 type BrandedMerchRelationResponseCollection {
