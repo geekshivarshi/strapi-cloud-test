@@ -932,6 +932,7 @@ export interface ApiBrandedMerchBrandedMerch extends Schema.CollectionType {
     brochure: Attribute.Component<'elements.section'>;
     brochureCarousel: Attribute.Component<'elements.new-image', true>;
     hereToHelp: Attribute.Component<'block.here-to-help'>;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
