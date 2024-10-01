@@ -1037,6 +1037,7 @@ export interface ApiContactUsContactUs extends Schema.CollectionType {
   attributes: {
     pageCover: Attribute.Component<'block.page-cover'>;
     pageHeader: Attribute.Component<'elements.card-with-image-item'>;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1514,6 +1515,7 @@ export interface ApiIndustryIndustry extends Schema.CollectionType {
     exploreCategories: Attribute.Component<'block.explore-categories'>;
     partners: Attribute.Component<'block.partners'>;
     hereToHelp: Attribute.Component<'block.here-to-help'>;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1763,6 +1765,7 @@ export interface ApiNeedADesignNeedADesign extends Schema.CollectionType {
     pageCover: Attribute.Component<'block.page-cover'>;
     formStyleImages: Attribute.Component<'elements.list-item-with-image', true>;
     header: Attribute.Component<'elements.card-with-image-item'>;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1902,6 +1905,7 @@ export interface ApiOrderSampleOrderSample extends Schema.CollectionType {
     pageCover: Attribute.Component<'block.page-cover'>;
     orderSampleCard: Attribute.Component<'block.order-sample-card'>;
     footerImage: Attribute.Component<'elements.responsive-image'>;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -2109,6 +2113,7 @@ export interface ApiRequestQuoteRequestQuote extends Schema.CollectionType {
   };
   attributes: {
     hereToHelp: Attribute.Component<'block.here-to-help'>;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

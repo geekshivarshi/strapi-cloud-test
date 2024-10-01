@@ -26,6 +26,11 @@
       "type": "component",
       "repeatable": false,
       "component": "elements.responsive-image"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }
