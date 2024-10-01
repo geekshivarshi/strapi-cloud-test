@@ -1536,6 +1536,7 @@ type ContactUs {
   pageCover: ComponentBlockPageCover
   pageHeader: ComponentElementsCardWithImageItem
   publishedAt: DateTime
+  seo: ComponentSharedSeo
   updatedAt: DateTime
 }
 
@@ -1562,6 +1563,7 @@ input ContactUsFiltersInput {
   pageCover: ComponentBlockPageCoverFiltersInput
   pageHeader: ComponentElementsCardWithImageItemFiltersInput
   publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -1569,6 +1571,7 @@ input ContactUsInput {
   pageCover: ComponentBlockPageCoverInput
   pageHeader: ComponentElementsCardWithImageItemInput
   publishedAt: DateTime
+  seo: ComponentSharedSeoInput
 }
 
 type ContactUsRelationResponseCollection {
@@ -2493,6 +2496,7 @@ type Industry {
   pageCover: ComponentBlockPageCover
   partners: ComponentBlockPartners
   publishedAt: DateTime
+  seo: ComponentSharedSeo
   updatedAt: DateTime
 }
 
@@ -2521,6 +2525,7 @@ input IndustryFiltersInput {
   pageCover: ComponentBlockPageCoverFiltersInput
   partners: ComponentBlockPartnersFiltersInput
   publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -2530,6 +2535,7 @@ input IndustryInput {
   pageCover: ComponentBlockPageCoverInput
   partners: ComponentBlockPartnersInput
   publishedAt: DateTime
+  seo: ComponentSharedSeoInput
 }
 
 type IndustryRelationResponseCollection {
@@ -3119,6 +3125,7 @@ type NeedADesign {
   header: ComponentElementsCardWithImageItem
   pageCover: ComponentBlockPageCover
   publishedAt: DateTime
+  seo: ComponentSharedSeo
   updatedAt: DateTime
 }
 
@@ -3146,6 +3153,7 @@ input NeedADesignFiltersInput {
   or: [NeedADesignFiltersInput]
   pageCover: ComponentBlockPageCoverFiltersInput
   publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -3154,6 +3162,7 @@ input NeedADesignInput {
   header: ComponentElementsCardWithImageItemInput
   pageCover: ComponentBlockPageCoverInput
   publishedAt: DateTime
+  seo: ComponentSharedSeoInput
 }
 
 type NeedADesignRelationResponseCollection {
@@ -3316,6 +3325,7 @@ type OrderSample {
   orderSampleCard: ComponentBlockOrderSampleCard
   pageCover: ComponentBlockPageCover
   publishedAt: DateTime
+  seo: ComponentSharedSeo
   updatedAt: DateTime
 }
 
@@ -3343,6 +3353,7 @@ input OrderSampleFiltersInput {
   orderSampleCard: ComponentBlockOrderSampleCardFiltersInput
   pageCover: ComponentBlockPageCoverFiltersInput
   publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -3351,6 +3362,7 @@ input OrderSampleInput {
   orderSampleCard: ComponentBlockOrderSampleCardInput
   pageCover: ComponentBlockPageCoverInput
   publishedAt: DateTime
+  seo: ComponentSharedSeoInput
 }
 
 type OrderSampleRelationResponseCollection {
@@ -3732,6 +3744,7 @@ type RequestQuote {
   createdAt: DateTime
   hereToHelp: ComponentBlockHereToHelp
   publishedAt: DateTime
+  seo: ComponentSharedSeo
   updatedAt: DateTime
 }
 
@@ -3757,12 +3770,14 @@ input RequestQuoteFiltersInput {
   not: RequestQuoteFiltersInput
   or: [RequestQuoteFiltersInput]
   publishedAt: DateTimeFilterInput
+  seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
 }
 
 input RequestQuoteInput {
   hereToHelp: ComponentBlockHereToHelpInput
   publishedAt: DateTime
+  seo: ComponentSharedSeoInput
 }
 
 type RequestQuoteRelationResponseCollection {
