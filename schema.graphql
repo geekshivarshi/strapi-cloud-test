@@ -2335,6 +2335,7 @@ type HowItWork {
   howItWorksSteps(filters: ComponentBlockHowItWorksStepFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockHowItWorksStep]
   myAccountCard: ComponentBlockMyAccountCard
   pageCover: ComponentBlockPageCover
+  pageHeading: ComponentBlockPageHeading
   publishedAt: DateTime
   seo: ComponentSharedSeo
   trackOrder: ComponentBlockTrackOrder
@@ -2364,6 +2365,7 @@ input HowItWorkFiltersInput {
   not: HowItWorkFiltersInput
   or: [HowItWorkFiltersInput]
   pageCover: ComponentBlockPageCoverFiltersInput
+  pageHeading: ComponentBlockPageHeadingFiltersInput
   publishedAt: DateTimeFilterInput
   seo: ComponentSharedSeoFiltersInput
   trackOrder: ComponentBlockTrackOrderFiltersInput
@@ -2374,6 +2376,7 @@ input HowItWorkInput {
   howItWorksSteps: [ComponentBlockHowItWorksStepInput]
   myAccountCard: ComponentBlockMyAccountCardInput
   pageCover: ComponentBlockPageCoverInput
+  pageHeading: ComponentBlockPageHeadingInput
   publishedAt: DateTime
   seo: ComponentSharedSeoInput
   trackOrder: ComponentBlockTrackOrderInput
