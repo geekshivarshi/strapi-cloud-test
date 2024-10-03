@@ -38,6 +38,11 @@
       "type": "component",
       "repeatable": false,
       "component": "block.page-cover"
+    },
+    "pageHeading": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.page-heading"
     }
   }
 }
