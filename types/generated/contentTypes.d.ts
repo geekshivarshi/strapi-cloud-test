@@ -1451,6 +1451,7 @@ export interface ApiHowItWorkHowItWork extends Schema.CollectionType {
     myAccountCard: Attribute.Component<'block.my-account-card'>;
     seo: Attribute.Component<'shared.seo'>;
     pageCover: Attribute.Component<'block.page-cover'>;
+    pageHeading: Attribute.Component<'block.page-heading'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
