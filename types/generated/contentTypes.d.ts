@@ -992,6 +992,37 @@ export interface ApiBusinessCardBusinessCard extends Schema.CollectionType {
   };
 }
 
+export interface ApiCanvaPrintEnquiryCanvaPrintEnquiry
+  extends Schema.SingleType {
+  collectionName: 'canva_print_enquiries';
+  info: {
+    singularName: 'canva-print-enquiry';
+    pluralName: 'canva-print-enquiries';
+    displayName: 'CanvaPrintEnquiry';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    canvaPrintEnquiry: Attribute.Component<'block.canva-print-sos'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::canva-print-enquiry.canva-print-enquiry',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::canva-print-enquiry.canva-print-enquiry',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiChatToKaibotChatToKaibot extends Schema.SingleType {
   collectionName: 'chat_to_kaibots';
   info: {
@@ -2330,6 +2361,7 @@ declare module '@strapi/types' {
       'api::booklet.booklet': ApiBookletBooklet;
       'api::branded-merch.branded-merch': ApiBrandedMerchBrandedMerch;
       'api::business-card.business-card': ApiBusinessCardBusinessCard;
+      'api::canva-print-enquiry.canva-print-enquiry': ApiCanvaPrintEnquiryCanvaPrintEnquiry;
       'api::chat-to-kaibot.chat-to-kaibot': ApiChatToKaibotChatToKaibot;
       'api::contact-us.contact-us': ApiContactUsContactUs;
       'api::cookie-policy.cookie-policy': ApiCookiePolicyCookiePolicy;

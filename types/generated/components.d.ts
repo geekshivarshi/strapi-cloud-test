@@ -1,5 +1,19 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface BlockCanvaPrintSos extends Schema.Component {
+  collectionName: 'components_block_canva_print_sos';
+  info: {
+    displayName: 'CanvaPrintSos';
+  };
+  attributes: {
+    Heading: Attribute.Text;
+    subheading: Attribute.Text;
+    buttonText: Attribute.String;
+    url: Attribute.String;
+    coverImage: Attribute.Media;
+  };
+}
+
 export interface BlockCatergory extends Schema.Component {
   collectionName: 'components_block_catergories';
   info: {
@@ -652,6 +666,7 @@ export interface SharedSeo extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'block.canva-print-sos': BlockCanvaPrintSos;
       'block.catergory': BlockCatergory;
       'block.chat-to-kaibot': BlockChatToKaibot;
       'block.cta': BlockCta;
