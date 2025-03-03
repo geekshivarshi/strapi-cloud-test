@@ -4,6 +4,7 @@ export interface BlockCanvaPrintSos extends Schema.Component {
   collectionName: 'components_block_canva_print_sos';
   info: {
     displayName: 'CanvaPrintSos';
+    description: '';
   };
   attributes: {
     Heading: Attribute.Text;

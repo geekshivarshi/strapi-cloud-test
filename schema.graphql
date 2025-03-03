@@ -434,7 +434,7 @@ type ChatToKaibotRelationResponseCollection {
 type ComponentBlockCanvaPrintSos {
   Heading: String
   buttonText: String
-  coverImage(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
+  coverImage: UploadFileEntityResponse
   id: ID!
   subheading: String
   url: String
@@ -453,7 +453,7 @@ input ComponentBlockCanvaPrintSosFiltersInput {
 input ComponentBlockCanvaPrintSosInput {
   Heading: String
   buttonText: String
-  coverImage: [ID]
+  coverImage: ID
   id: ID
   subheading: String
   url: String
