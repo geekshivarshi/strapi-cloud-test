@@ -1,5 +1,16 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface BlockCanvaArtworkStep extends Schema.Component {
+  collectionName: 'components_block_canva_artwork_steps';
+  info: {
+    displayName: 'CanvaArtworkStep';
+  };
+  attributes: {
+    heading: Attribute.String;
+    Image: Attribute.Media;
+  };
+}
+
 export interface BlockCanvaPrintSos extends Schema.Component {
   collectionName: 'components_block_canva_print_sos';
   info: {
@@ -667,6 +678,7 @@ export interface SharedSeo extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'block.canva-artwork-step': BlockCanvaArtworkStep;
       'block.canva-print-sos': BlockCanvaPrintSos;
       'block.catergory': BlockCatergory;
       'block.chat-to-kaibot': BlockChatToKaibot;

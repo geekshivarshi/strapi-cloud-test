@@ -781,6 +781,37 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiArtworkStepArtworkStep extends Schema.SingleType {
+  collectionName: 'artwork_steps';
+  info: {
+    singularName: 'artwork-step';
+    pluralName: 'artwork-steps';
+    displayName: 'ArtworkStep';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    ArtworkStep: Attribute.Component<'block.canva-artwork-step', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::artwork-step.artwork-step',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::artwork-step.artwork-step',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiAuthAuth extends Schema.CollectionType {
   collectionName: 'auths';
   info: {
@@ -2355,6 +2386,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::artwork-step.artwork-step': ApiArtworkStepArtworkStep;
       'api::auth.auth': ApiAuthAuth;
       'api::banner-and-signage.banner-and-signage': ApiBannerAndSignageBannerAndSignage;
       'api::benefits-of-kaizen.benefits-of-kaizen': ApiBenefitsOfKaizenBenefitsOfKaizen;
