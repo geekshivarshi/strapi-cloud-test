@@ -781,6 +781,37 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiArtworkStepArtworkStep extends Schema.SingleType {
+  collectionName: 'artwork_steps';
+  info: {
+    singularName: 'artwork-step';
+    pluralName: 'artwork-steps';
+    displayName: 'ArtworkStep';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    ArtworkStep: Attribute.Component<'block.canva-artwork-step', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::artwork-step.artwork-step',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::artwork-step.artwork-step',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiAuthAuth extends Schema.CollectionType {
   collectionName: 'auths';
   info: {
@@ -985,6 +1016,37 @@ export interface ApiBusinessCardBusinessCard extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::business-card.business-card',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCanvaPrintEnquiryCanvaPrintEnquiry
+  extends Schema.SingleType {
+  collectionName: 'canva_print_enquiries';
+  info: {
+    singularName: 'canva-print-enquiry';
+    pluralName: 'canva-print-enquiries';
+    displayName: 'CanvaPrintEnquiry';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    canvaPrintEnquiry: Attribute.Component<'block.canva-print-sos'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::canva-print-enquiry.canva-print-enquiry',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::canva-print-enquiry.canva-print-enquiry',
       'oneToOne',
       'admin::user'
     > &
@@ -2324,12 +2386,14 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::artwork-step.artwork-step': ApiArtworkStepArtworkStep;
       'api::auth.auth': ApiAuthAuth;
       'api::banner-and-signage.banner-and-signage': ApiBannerAndSignageBannerAndSignage;
       'api::benefits-of-kaizen.benefits-of-kaizen': ApiBenefitsOfKaizenBenefitsOfKaizen;
       'api::booklet.booklet': ApiBookletBooklet;
       'api::branded-merch.branded-merch': ApiBrandedMerchBrandedMerch;
       'api::business-card.business-card': ApiBusinessCardBusinessCard;
+      'api::canva-print-enquiry.canva-print-enquiry': ApiCanvaPrintEnquiryCanvaPrintEnquiry;
       'api::chat-to-kaibot.chat-to-kaibot': ApiChatToKaibotChatToKaibot;
       'api::contact-us.contact-us': ApiContactUsContactUs;
       'api::cookie-policy.cookie-policy': ApiCookiePolicyCookiePolicy;

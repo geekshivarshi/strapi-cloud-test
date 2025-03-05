@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "artwork_steps",
+  "info": {
+    "singularName": "artwork-step",
+    "pluralName": "artwork-steps",
+    "displayName": "ArtworkStep",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ArtworkStep": {
+      "type": "component",
+      "repeatable": true,
+      "component": "block.canva-artwork-step"
+    }
+  }
+}

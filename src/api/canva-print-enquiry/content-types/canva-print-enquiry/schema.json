@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "canva_print_enquiries",
+  "info": {
+    "singularName": "canva-print-enquiry",
+    "pluralName": "canva-print-enquiries",
+    "displayName": "CanvaPrintEnquiry"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "canvaPrintEnquiry": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.canva-print-sos"
+    }
+  }
+}

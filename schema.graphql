@@ -2,6 +2,46 @@
 ### Do not make changes to this file directly
 
 
+type ArtworkStep {
+  ArtworkStep(filters: ComponentBlockCanvaArtworkStepFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockCanvaArtworkStep]
+  createdAt: DateTime
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type ArtworkStepEntity {
+  attributes: ArtworkStep
+  id: ID
+}
+
+type ArtworkStepEntityResponse {
+  data: ArtworkStepEntity
+}
+
+type ArtworkStepEntityResponseCollection {
+  data: [ArtworkStepEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input ArtworkStepFiltersInput {
+  ArtworkStep: ComponentBlockCanvaArtworkStepFiltersInput
+  and: [ArtworkStepFiltersInput]
+  createdAt: DateTimeFilterInput
+  not: ArtworkStepFiltersInput
+  or: [ArtworkStepFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input ArtworkStepInput {
+  ArtworkStep: [ComponentBlockCanvaArtworkStepInput]
+  publishedAt: DateTime
+}
+
+type ArtworkStepRelationResponseCollection {
+  data: [ArtworkStepEntity!]!
+}
+
 type Auth {
   bottomLeftImage: UploadFileEntityResponse
   bottomRightImage: UploadFileEntityResponse
@@ -351,6 +391,46 @@ type BusinessCardRelationResponseCollection {
   data: [BusinessCardEntity!]!
 }
 
+type CanvaPrintEnquiry {
+  canvaPrintEnquiry: ComponentBlockCanvaPrintSos
+  createdAt: DateTime
+  publishedAt: DateTime
+  updatedAt: DateTime
+}
+
+type CanvaPrintEnquiryEntity {
+  attributes: CanvaPrintEnquiry
+  id: ID
+}
+
+type CanvaPrintEnquiryEntityResponse {
+  data: CanvaPrintEnquiryEntity
+}
+
+type CanvaPrintEnquiryEntityResponseCollection {
+  data: [CanvaPrintEnquiryEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input CanvaPrintEnquiryFiltersInput {
+  and: [CanvaPrintEnquiryFiltersInput]
+  canvaPrintEnquiry: ComponentBlockCanvaPrintSosFiltersInput
+  createdAt: DateTimeFilterInput
+  not: CanvaPrintEnquiryFiltersInput
+  or: [CanvaPrintEnquiryFiltersInput]
+  publishedAt: DateTimeFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input CanvaPrintEnquiryInput {
+  canvaPrintEnquiry: ComponentBlockCanvaPrintSosInput
+  publishedAt: DateTime
+}
+
+type CanvaPrintEnquiryRelationResponseCollection {
+  data: [CanvaPrintEnquiryEntity!]!
+}
+
 type ChatToKaibot {
   chatToKaibot: ComponentBlockChatToKaibot
   createdAt: DateTime
@@ -389,6 +469,53 @@ input ChatToKaibotInput {
 
 type ChatToKaibotRelationResponseCollection {
   data: [ChatToKaibotEntity!]!
+}
+
+type ComponentBlockCanvaArtworkStep {
+  Image: UploadFileEntityResponse
+  heading: String
+  id: ID!
+}
+
+input ComponentBlockCanvaArtworkStepFiltersInput {
+  and: [ComponentBlockCanvaArtworkStepFiltersInput]
+  heading: StringFilterInput
+  not: ComponentBlockCanvaArtworkStepFiltersInput
+  or: [ComponentBlockCanvaArtworkStepFiltersInput]
+}
+
+input ComponentBlockCanvaArtworkStepInput {
+  Image: ID
+  heading: String
+  id: ID
+}
+
+type ComponentBlockCanvaPrintSos {
+  Heading: String
+  buttonText: String
+  coverImage: UploadFileEntityResponse
+  id: ID!
+  subheading: String
+  url: String
+}
+
+input ComponentBlockCanvaPrintSosFiltersInput {
+  Heading: StringFilterInput
+  and: [ComponentBlockCanvaPrintSosFiltersInput]
+  buttonText: StringFilterInput
+  not: ComponentBlockCanvaPrintSosFiltersInput
+  or: [ComponentBlockCanvaPrintSosFiltersInput]
+  subheading: StringFilterInput
+  url: StringFilterInput
+}
+
+input ComponentBlockCanvaPrintSosInput {
+  Heading: String
+  buttonText: String
+  coverImage: ID
+  id: ID
+  subheading: String
+  url: String
 }
 
 type ComponentBlockCatergory {
@@ -2131,7 +2258,7 @@ type ForgotPasswordRelationResponseCollection {
   data: [ForgotPasswordEntity!]!
 }
 
-union GenericMorph = Auth | BannerAndSignage | BenefitsOfKaizen | Booklet | BrandedMerch | BusinessCard | ChatToKaibot | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockHereToHelp | ComponentBlockHowItWorkComponent | ComponentBlockHowItWorksStep | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingPageCover | ComponentBlockMyAccountCard | ComponentBlockOpenHour | ComponentBlockOrderSampleCard | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProdSpecsListImageWithCoverImg | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockTrackOrder | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsFile | ComponentElementsHeadingSection | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsListItemWithTwoImages | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsResponsiveImage | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CookiePolicy | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | ForgotPassword | GetAQuote | GoogleReview | Header | HereToHelp | HowItWork | HowItWorksStep | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | KaizenPromisecard | Landing | Login | MarketingAndPromo | NeedADesign | NeedDesign | Notepad | OpenHour | OrderSample | PaymentMethod | Poster | PrintEnquiry | PrivacyPolicy | QuickPrintBuy | RequestQuote | ResetPassword | Signup | StationaryAndOffice | Sticker | TermsAndCondition | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = ArtworkStep | Auth | BannerAndSignage | BenefitsOfKaizen | Booklet | BrandedMerch | BusinessCard | CanvaPrintEnquiry | ChatToKaibot | ComponentBlockCanvaArtworkStep | ComponentBlockCanvaPrintSos | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockHereToHelp | ComponentBlockHowItWorkComponent | ComponentBlockHowItWorksStep | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingPageCover | ComponentBlockMyAccountCard | ComponentBlockOpenHour | ComponentBlockOrderSampleCard | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProdSpecsListImageWithCoverImg | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockTrackOrder | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsFile | ComponentElementsHeadingSection | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsListItemWithTwoImages | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsResponsiveImage | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CookiePolicy | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | ForgotPassword | GetAQuote | GoogleReview | Header | HereToHelp | HowItWork | HowItWorksStep | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | KaizenPromisecard | Landing | Login | MarketingAndPromo | NeedADesign | NeedDesign | Notepad | OpenHour | OrderSample | PaymentMethod | Poster | PrintEnquiry | PrivacyPolicy | QuickPrintBuy | RequestQuote | ResetPassword | Signup | StationaryAndOffice | Sticker | TermsAndCondition | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GetAQuote {
   buttonLink: ComponentElementsLink
@@ -2996,12 +3123,14 @@ type Mutation {
 
   """Create a new user"""
   createUsersPermissionsUser(data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
+  deleteArtworkStep: ArtworkStepEntityResponse
   deleteAuth(id: ID!): AuthEntityResponse
   deleteBannerAndSignage(id: ID!): BannerAndSignageEntityResponse
   deleteBenefitsOfKaizen: BenefitsOfKaizenEntityResponse
   deleteBooklet(id: ID!): BookletEntityResponse
   deleteBrandedMerch(id: ID!): BrandedMerchEntityResponse
   deleteBusinessCard(id: ID!): BusinessCardEntityResponse
+  deleteCanvaPrintEnquiry: CanvaPrintEnquiryEntityResponse
   deleteChatToKaibot: ChatToKaibotEntityResponse
   deleteContactUs(id: ID!): ContactUsEntityResponse
   deleteContentReleasesRelease(id: ID!): ContentReleasesReleaseEntityResponse
@@ -3067,12 +3196,14 @@ type Mutation {
   Reset user password. Confirm with a code (resetToken from forgotPassword)
   """
   resetPassword(code: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
+  updateArtworkStep(data: ArtworkStepInput!): ArtworkStepEntityResponse
   updateAuth(data: AuthInput!, id: ID!): AuthEntityResponse
   updateBannerAndSignage(data: BannerAndSignageInput!, id: ID!): BannerAndSignageEntityResponse
   updateBenefitsOfKaizen(data: BenefitsOfKaizenInput!): BenefitsOfKaizenEntityResponse
   updateBooklet(data: BookletInput!, id: ID!): BookletEntityResponse
   updateBrandedMerch(data: BrandedMerchInput!, id: ID!): BrandedMerchEntityResponse
   updateBusinessCard(data: BusinessCardInput!, id: ID!): BusinessCardEntityResponse
+  updateCanvaPrintEnquiry(data: CanvaPrintEnquiryInput!): CanvaPrintEnquiryEntityResponse
   updateChatToKaibot(data: ChatToKaibotInput!): ChatToKaibotEntityResponse
   updateContactUs(data: ContactUsInput!, id: ID!): ContactUsEntityResponse
   updateContentReleasesRelease(data: ContentReleasesReleaseInput!, id: ID!): ContentReleasesReleaseEntityResponse
@@ -3605,6 +3736,7 @@ enum PublicationState {
 }
 
 type Query {
+  artworkStep(publicationState: PublicationState = LIVE): ArtworkStepEntityResponse
   auth(id: ID): AuthEntityResponse
   auths(filters: AuthFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): AuthEntityResponseCollection
   bannerAndSignage(id: ID): BannerAndSignageEntityResponse
@@ -3616,6 +3748,7 @@ type Query {
   brandedMerches(filters: BrandedMerchFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BrandedMerchEntityResponseCollection
   businessCard(id: ID): BusinessCardEntityResponse
   businessCards(filters: BusinessCardFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BusinessCardEntityResponseCollection
+  canvaPrintEnquiry(publicationState: PublicationState = LIVE): CanvaPrintEnquiryEntityResponse
   chatToKaibot(publicationState: PublicationState = LIVE): ChatToKaibotEntityResponse
   contactUs(id: ID): ContactUsEntityResponse
   contactUses(filters: ContactUsFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ContactUsEntityResponseCollection
