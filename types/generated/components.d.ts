@@ -4,10 +4,12 @@ export interface BlockCanvaArtworkStep extends Schema.Component {
   collectionName: 'components_block_canva_artwork_steps';
   info: {
     displayName: 'CanvaArtworkStep';
+    description: '';
   };
   attributes: {
     heading: Attribute.String;
     Image: Attribute.Media;
+    subHeading: Attribute.String;
   };
 }
 

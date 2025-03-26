@@ -1,7 +1,8 @@
 {
   "collectionName": "components_block_canva_artwork_steps",
   "info": {
-    "displayName": "CanvaArtworkStep"
+    "displayName": "CanvaArtworkStep",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -9,14 +10,18 @@
       "type": "string"
     },
     "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "subHeading": {
+      "type": "string"
     }
   }
 }
