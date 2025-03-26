@@ -475,6 +475,7 @@ type ComponentBlockCanvaArtworkStep {
   Image: UploadFileEntityResponse
   heading: String
   id: ID!
+  subHeading: String
 }
 
 input ComponentBlockCanvaArtworkStepFiltersInput {
@@ -482,12 +483,14 @@ input ComponentBlockCanvaArtworkStepFiltersInput {
   heading: StringFilterInput
   not: ComponentBlockCanvaArtworkStepFiltersInput
   or: [ComponentBlockCanvaArtworkStepFiltersInput]
+  subHeading: StringFilterInput
 }
 
 input ComponentBlockCanvaArtworkStepInput {
   Image: ID
   heading: String
   id: ID
+  subHeading: String
 }
 
 type ComponentBlockCanvaPrintSos {
