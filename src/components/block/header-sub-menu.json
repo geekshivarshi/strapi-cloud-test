@@ -1,0 +1,55 @@
+{
+  "collectionName": "components_block_header_sub_menus",
+  "info": {
+    "displayName": "Header - subMenu",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "isVisible": {
+      "type": "boolean",
+      "default": true
+    },
+    "sectionIds": {
+      "type": "json"
+    },
+    "highlightProductImg": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "highlightProductName": {
+      "type": "string"
+    },
+    "highlightProductBannerImg": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": false
+    },
+    "highlightProductBannerText": {
+      "type": "string"
+    },
+    "highlightProductCTAText": {
+      "type": "string"
+    },
+    "highlightProductCTAName": {
+      "type": "string"
+    }
+  }
+}

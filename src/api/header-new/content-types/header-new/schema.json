@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "header_news",
+  "info": {
+    "singularName": "header-new",
+    "pluralName": "header-news",
+    "displayName": "HeaderNew",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "topHeader": {
+      "displayName": "header - top header",
+      "type": "component",
+      "repeatable": false,
+      "component": "block.header-top-header"
+    },
+    "animatedSearchText": {
+      "type": "json"
+    },
+    "Navigation": {
+      "displayName": "Header - Navigation",
+      "type": "component",
+      "repeatable": true,
+      "component": "block.header-navigation"
+    },
+    "subMenuSections": {
+      "type": "component",
+      "repeatable": true,
+      "component": "block.header-sub-menu-sections"
+    }
+  }
+}

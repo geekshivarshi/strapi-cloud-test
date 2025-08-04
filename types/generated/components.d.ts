@@ -142,6 +142,81 @@ export interface BlockFaq extends Schema.Component {
   };
 }
 
+export interface BlockHeaderNavigationLinks extends Schema.Component {
+  collectionName: 'components_block_header_navigation_links';
+  info: {
+    displayName: 'Header - navigationLinks';
+  };
+  attributes: {
+    name: Attribute.String;
+    url: Attribute.String;
+    bannerText: Attribute.String;
+    bannerImage: Attribute.Media;
+  };
+}
+
+export interface BlockHeaderNavigation extends Schema.Component {
+  collectionName: 'components_block_header_navigations';
+  info: {
+    displayName: 'Header - Navigation';
+    description: '';
+  };
+  attributes: {
+    name: Attribute.String;
+    url: Attribute.String;
+    withSubMenu: Attribute.Boolean & Attribute.DefaultTo<false>;
+    subMenu: Attribute.Component<'block.header-sub-menu', true>;
+  };
+}
+
+export interface BlockHeaderSubMenuSections extends Schema.Component {
+  collectionName: 'components_block_header_sub_menu_sections';
+  info: {
+    displayName: 'Header - subMenuSections';
+    description: '';
+  };
+  attributes: {
+    image: Attribute.Media;
+    name: Attribute.String;
+    banner: Attribute.Component<'elements.badge', true>;
+    links: Attribute.Component<'block.header-navigation-links', true>;
+  };
+}
+
+export interface BlockHeaderSubMenu extends Schema.Component {
+  collectionName: 'components_block_header_sub_menus';
+  info: {
+    displayName: 'Header - subMenu';
+    description: '';
+  };
+  attributes: {
+    name: Attribute.String;
+    icon: Attribute.Media;
+    isVisible: Attribute.Boolean & Attribute.DefaultTo<true>;
+    sectionIds: Attribute.JSON;
+    highlightProductImg: Attribute.Media;
+    highlightProductName: Attribute.String;
+    highlightProductBannerImg: Attribute.Media;
+    highlightProductBannerText: Attribute.String;
+    highlightProductCTAText: Attribute.String;
+    highlightProductCTAName: Attribute.String;
+  };
+}
+
+export interface BlockHeaderTopHeader extends Schema.Component {
+  collectionName: 'components_block_header_top_headers';
+  info: {
+    displayName: 'Header - topHeader';
+    description: '';
+  };
+  attributes: {
+    offerText: Attribute.String;
+    offerCode: Attribute.String;
+    showGoogleReviews: Attribute.Boolean & Attribute.DefaultTo<true>;
+    showTopHeader: Attribute.Boolean;
+  };
+}
+
 export interface BlockHereToHelp extends Schema.Component {
   collectionName: 'components_block_here_to_helps';
   info: {
@@ -690,6 +765,11 @@ declare module '@strapi/types' {
       'block.explore-categories': BlockExploreCategories;
       'block.explore-range-cards': BlockExploreRangeCards;
       'block.faq': BlockFaq;
+      'block.header-navigation-links': BlockHeaderNavigationLinks;
+      'block.header-navigation': BlockHeaderNavigation;
+      'block.header-sub-menu-sections': BlockHeaderSubMenuSections;
+      'block.header-sub-menu': BlockHeaderSubMenu;
+      'block.header-top-header': BlockHeaderTopHeader;
       'block.here-to-help': BlockHereToHelp;
       'block.how-it-work-component': BlockHowItWorkComponent;
       'block.how-it-works-step': BlockHowItWorksStep;
