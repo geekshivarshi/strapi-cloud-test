@@ -178,8 +178,9 @@ export interface BlockHeaderSubMenuSections extends Schema.Component {
   attributes: {
     image: Attribute.Media;
     name: Attribute.String;
-    banner: Attribute.Component<'elements.badge', true>;
+    banner: Attribute.Component<'elements.badge'>;
     links: Attribute.Component<'block.header-navigation-links', true>;
+    subMenuSectionId: Attribute.String & Attribute.Required;
   };
 }
 
@@ -199,7 +200,7 @@ export interface BlockHeaderSubMenu extends Schema.Component {
     highlightProductBannerImg: Attribute.Media;
     highlightProductBannerText: Attribute.String;
     highlightProductCTAText: Attribute.String;
-    highlightProductCTAName: Attribute.String;
+    highlightProductCTAUrl: Attribute.String;
   };
 }
 
@@ -213,7 +214,7 @@ export interface BlockHeaderTopHeader extends Schema.Component {
     offerText: Attribute.String;
     offerCode: Attribute.String;
     showGoogleReviews: Attribute.Boolean & Attribute.DefaultTo<true>;
-    showTopHeader: Attribute.Boolean;
+    showTopHeader: Attribute.Boolean & Attribute.DefaultTo<true>;
   };
 }
 

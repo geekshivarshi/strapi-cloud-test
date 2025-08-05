@@ -19,13 +19,18 @@
     },
     "banner": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "elements.badge"
     },
     "links": {
       "type": "component",
       "repeatable": true,
       "component": "block.header-navigation-links"
+    },
+    "subMenuSectionId": {
+      "type": "string",
+      "unique": false,
+      "required": true
     }
   }
 }

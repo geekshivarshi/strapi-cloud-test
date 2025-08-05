@@ -780,8 +780,8 @@ input ComponentBlockHeaderNavigationLinksInput {
 type ComponentBlockHeaderSubMenu {
   highlightProductBannerImg: UploadFileEntityResponse
   highlightProductBannerText: String
-  highlightProductCTAName: String
   highlightProductCTAText: String
+  highlightProductCTAUrl: String
   highlightProductImg: UploadFileEntityResponse
   highlightProductName: String
   icon: UploadFileEntityResponse
@@ -794,8 +794,8 @@ type ComponentBlockHeaderSubMenu {
 input ComponentBlockHeaderSubMenuFiltersInput {
   and: [ComponentBlockHeaderSubMenuFiltersInput]
   highlightProductBannerText: StringFilterInput
-  highlightProductCTAName: StringFilterInput
   highlightProductCTAText: StringFilterInput
+  highlightProductCTAUrl: StringFilterInput
   highlightProductName: StringFilterInput
   isVisible: BooleanFilterInput
   name: StringFilterInput
@@ -807,8 +807,8 @@ input ComponentBlockHeaderSubMenuFiltersInput {
 input ComponentBlockHeaderSubMenuInput {
   highlightProductBannerImg: ID
   highlightProductBannerText: String
-  highlightProductCTAName: String
   highlightProductCTAText: String
+  highlightProductCTAUrl: String
   highlightProductImg: ID
   highlightProductName: String
   icon: ID
@@ -819,11 +819,12 @@ input ComponentBlockHeaderSubMenuInput {
 }
 
 type ComponentBlockHeaderSubMenuSections {
-  banner(filters: ComponentElementsBadgeFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsBadge]
+  banner: ComponentElementsBadge
   id: ID!
   image: UploadFileEntityResponse
   links(filters: ComponentBlockHeaderNavigationLinksFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockHeaderNavigationLinks]
   name: String
+  subMenuSectionId: String!
 }
 
 input ComponentBlockHeaderSubMenuSectionsFiltersInput {
@@ -833,14 +834,16 @@ input ComponentBlockHeaderSubMenuSectionsFiltersInput {
   name: StringFilterInput
   not: ComponentBlockHeaderSubMenuSectionsFiltersInput
   or: [ComponentBlockHeaderSubMenuSectionsFiltersInput]
+  subMenuSectionId: StringFilterInput
 }
 
 input ComponentBlockHeaderSubMenuSectionsInput {
-  banner: [ComponentElementsBadgeInput]
+  banner: ComponentElementsBadgeInput
   id: ID
   image: ID
   links: [ComponentBlockHeaderNavigationLinksInput]
   name: String
+  subMenuSectionId: String
 }
 
 type ComponentBlockHeaderTopHeader {
