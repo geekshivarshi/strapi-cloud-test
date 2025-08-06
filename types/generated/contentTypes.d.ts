@@ -1767,6 +1767,7 @@ export interface ApiLandingLanding extends Schema.CollectionType {
     printWithKaizen: Attribute.Component<'block.print-with-kaizen'>;
     printingSection: Attribute.Component<'block.insta-post-section'>;
     seo: Attribute.Component<'shared.seo'>;
+    hero: Attribute.Component<'block.landing-hero'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

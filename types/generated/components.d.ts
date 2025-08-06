@@ -289,6 +289,31 @@ export interface BlockKaizenProcess extends Schema.Component {
   };
 }
 
+export interface BlockLandingHeroCard extends Schema.Component {
+  collectionName: 'components_block_landing_hero_cards';
+  info: {
+    displayName: 'Landing - heroCard';
+  };
+  attributes: {
+    metaTitle: Attribute.String;
+    title: Attribute.String;
+    subTitle: Attribute.Text;
+    bgColor: Attribute.String;
+    image: Attribute.Media;
+  };
+}
+
+export interface BlockLandingHero extends Schema.Component {
+  collectionName: 'components_block_landing_hero_s';
+  info: {
+    displayName: 'Landing - Hero ';
+  };
+  attributes: {
+    cards: Attribute.Component<'block.landing-hero-card', true>;
+    properties: Attribute.Component<'elements.text-and-image', true>;
+  };
+}
+
 export interface BlockLandingPageCover extends Schema.Component {
   collectionName: 'components_block_landing_page_covers';
   info: {
@@ -401,10 +426,14 @@ export interface BlockPrintWithKaizen extends Schema.Component {
   collectionName: 'components_block_print_with_kaizens';
   info: {
     displayName: 'printWithKaizen';
+    description: '';
   };
   attributes: {
     heading: Attribute.String;
     specifications: Attribute.Component<'elements.list-item-with-image', true>;
+    metaTitle: Attribute.String;
+    title: Attribute.String;
+    description: Attribute.RichText;
   };
 }
 
@@ -702,6 +731,17 @@ export interface ElementsSection extends Schema.Component {
   };
 }
 
+export interface ElementsTextAndImage extends Schema.Component {
+  collectionName: 'components_elements_text_and_images';
+  info: {
+    displayName: 'textAndImage';
+  };
+  attributes: {
+    text: Attribute.Text;
+    image: Attribute.Media;
+  };
+}
+
 export interface SharedMetaSocial extends Schema.Component {
   collectionName: 'components_shared_meta_socials';
   info: {
@@ -776,6 +816,8 @@ declare module '@strapi/types' {
       'block.how-it-works-step': BlockHowItWorksStep;
       'block.insta-post-section': BlockInstaPostSection;
       'block.kaizen-process': BlockKaizenProcess;
+      'block.landing-hero-card': BlockLandingHeroCard;
+      'block.landing-hero': BlockLandingHero;
       'block.landing-page-cover': BlockLandingPageCover;
       'block.my-account-card': BlockMyAccountCard;
       'block.open-hour': BlockOpenHour;
@@ -807,6 +849,7 @@ declare module '@strapi/types' {
       'elements.qa': ElementsQa;
       'elements.responsive-image': ElementsResponsiveImage;
       'elements.section': ElementsSection;
+      'elements.text-and-image': ElementsTextAndImage;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
     }

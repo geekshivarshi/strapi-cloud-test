@@ -1,7 +1,8 @@
 {
   "collectionName": "components_block_print_with_kaizens",
   "info": {
-    "displayName": "printWithKaizen"
+    "displayName": "printWithKaizen",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -12,6 +13,15 @@
       "type": "component",
       "repeatable": true,
       "component": "elements.list-item-with-image"
+    },
+    "metaTitle": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
     }
   }
 }

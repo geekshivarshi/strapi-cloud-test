@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_block_landing_hero_cards",
+  "info": {
+    "displayName": "Landing - heroCard"
+  },
+  "options": {},
+  "attributes": {
+    "metaTitle": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "subTitle": {
+      "type": "text"
+    },
+    "bgColor": {
+      "type": "string",
+      "regex": "^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})$"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

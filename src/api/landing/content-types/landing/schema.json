@@ -56,6 +56,12 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.seo"
+    },
+    "hero": {
+      "displayName": "Landing - Hero ",
+      "type": "component",
+      "repeatable": false,
+      "component": "block.landing-hero"
     }
   }
 }
