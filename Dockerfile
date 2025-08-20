@@ -1,4 +1,4 @@
-FROM node:18
+FROM node:20.18.1
 
 # Installing libvips-dev for sharp Compatibility
 
