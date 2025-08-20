@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_block_header_sub_menu_buttons",
+  "info": {
+    "displayName": "Header - subMenuButtons"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "url": {
+      "type": "text"
+    },
+    "isExternal": {
+      "type": "boolean",
+      "default": false
+    },
+    "icon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "buttonType": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "outline"
+      ]
+    }
+  }
+}

@@ -166,6 +166,21 @@ export interface BlockHeaderNavigation extends Schema.Component {
     url: Attribute.String;
     withSubMenu: Attribute.Boolean & Attribute.DefaultTo<false>;
     subMenu: Attribute.Component<'block.header-sub-menu', true>;
+    subMenuButtons: Attribute.Component<'block.header-sub-menu-buttons', true>;
+  };
+}
+
+export interface BlockHeaderSubMenuButtons extends Schema.Component {
+  collectionName: 'components_block_header_sub_menu_buttons';
+  info: {
+    displayName: 'Header - subMenuButtons';
+  };
+  attributes: {
+    text: Attribute.String;
+    url: Attribute.Text;
+    isExternal: Attribute.Boolean & Attribute.DefaultTo<false>;
+    icon: Attribute.Media;
+    buttonType: Attribute.Enumeration<['primary', 'secondary', 'outline']>;
   };
 }
 
@@ -808,6 +823,7 @@ declare module '@strapi/types' {
       'block.faq': BlockFaq;
       'block.header-navigation-links': BlockHeaderNavigationLinks;
       'block.header-navigation': BlockHeaderNavigation;
+      'block.header-sub-menu-buttons': BlockHeaderSubMenuButtons;
       'block.header-sub-menu-sections': BlockHeaderSubMenuSections;
       'block.header-sub-menu': BlockHeaderSubMenu;
       'block.header-top-header': BlockHeaderTopHeader;

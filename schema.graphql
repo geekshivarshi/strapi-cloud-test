@@ -730,6 +730,7 @@ type ComponentBlockHeaderNavigation {
   id: ID!
   name: String
   subMenu(filters: ComponentBlockHeaderSubMenuFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockHeaderSubMenu]
+  subMenuButtons(filters: ComponentBlockHeaderSubMenuButtonsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockHeaderSubMenuButtons]
   url: String
   withSubMenu: Boolean
 }
@@ -740,6 +741,7 @@ input ComponentBlockHeaderNavigationFiltersInput {
   not: ComponentBlockHeaderNavigationFiltersInput
   or: [ComponentBlockHeaderNavigationFiltersInput]
   subMenu: ComponentBlockHeaderSubMenuFiltersInput
+  subMenuButtons: ComponentBlockHeaderSubMenuButtonsFiltersInput
   url: StringFilterInput
   withSubMenu: BooleanFilterInput
 }
@@ -748,6 +750,7 @@ input ComponentBlockHeaderNavigationInput {
   id: ID
   name: String
   subMenu: [ComponentBlockHeaderSubMenuInput]
+  subMenuButtons: [ComponentBlockHeaderSubMenuButtonsInput]
   url: String
   withSubMenu: Boolean
 }
@@ -789,6 +792,34 @@ type ComponentBlockHeaderSubMenu {
   isVisible: Boolean
   name: String
   sectionIds: JSON
+}
+
+type ComponentBlockHeaderSubMenuButtons {
+  buttonType: ENUM_COMPONENTBLOCKHEADERSUBMENUBUTTONS_BUTTONTYPE
+  icon: UploadFileEntityResponse
+  id: ID!
+  isExternal: Boolean
+  text: String
+  url: String
+}
+
+input ComponentBlockHeaderSubMenuButtonsFiltersInput {
+  and: [ComponentBlockHeaderSubMenuButtonsFiltersInput]
+  buttonType: StringFilterInput
+  isExternal: BooleanFilterInput
+  not: ComponentBlockHeaderSubMenuButtonsFiltersInput
+  or: [ComponentBlockHeaderSubMenuButtonsFiltersInput]
+  text: StringFilterInput
+  url: StringFilterInput
+}
+
+input ComponentBlockHeaderSubMenuButtonsInput {
+  buttonType: ENUM_COMPONENTBLOCKHEADERSUBMENUBUTTONS_BUTTONTYPE
+  icon: ID
+  id: ID
+  isExternal: Boolean
+  text: String
+  url: String
 }
 
 input ComponentBlockHeaderSubMenuFiltersInput {
@@ -2169,6 +2200,12 @@ input DateTimeFilterInput {
   startsWith: DateTime
 }
 
+enum ENUM_COMPONENTBLOCKHEADERSUBMENUBUTTONS_BUTTONTYPE {
+  outline
+  primary
+  secondary
+}
+
 enum ENUM_COMPONENTELEMENTSADVANCEIMAGE_TYPE {
   image
   multiple_images
@@ -2483,7 +2520,7 @@ type ForgotPasswordRelationResponseCollection {
   data: [ForgotPasswordEntity!]!
 }
 
-union GenericMorph = ArtworkStep | Auth | BannerAndSignage | BenefitsOfKaizen | Booklet | BrandedMerch | BusinessCard | CanvaPrintEnquiry | ChatToKaibot | ComponentBlockCanvaArtworkStep | ComponentBlockCanvaPrintSos | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockHeaderNavigation | ComponentBlockHeaderNavigationLinks | ComponentBlockHeaderSubMenu | ComponentBlockHeaderSubMenuSections | ComponentBlockHeaderTopHeader | ComponentBlockHereToHelp | ComponentBlockHowItWorkComponent | ComponentBlockHowItWorksStep | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingHero | ComponentBlockLandingHeroCard | ComponentBlockLandingPageCover | ComponentBlockMyAccountCard | ComponentBlockOpenHour | ComponentBlockOrderSampleCard | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProdSpecsListImageWithCoverImg | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockTrackOrder | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsFile | ComponentElementsHeadingSection | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsListItemWithTwoImages | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsResponsiveImage | ComponentElementsSection | ComponentElementsTextAndImage | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CookiePolicy | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | ForgotPassword | GetAQuote | GoogleReview | Header | HeaderNew | HereToHelp | HowItWork | HowItWorksStep | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | KaizenPromisecard | Landing | Login | MarketingAndPromo | NeedADesign | NeedDesign | Notepad | OpenHour | OrderSample | PaymentMethod | Poster | PrintEnquiry | PrivacyPolicy | QuickPrintBuy | RequestQuote | ResetPassword | Signup | StationaryAndOffice | Sticker | TermsAndCondition | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = ArtworkStep | Auth | BannerAndSignage | BenefitsOfKaizen | Booklet | BrandedMerch | BusinessCard | CanvaPrintEnquiry | ChatToKaibot | ComponentBlockCanvaArtworkStep | ComponentBlockCanvaPrintSos | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockHeaderNavigation | ComponentBlockHeaderNavigationLinks | ComponentBlockHeaderSubMenu | ComponentBlockHeaderSubMenuButtons | ComponentBlockHeaderSubMenuSections | ComponentBlockHeaderTopHeader | ComponentBlockHereToHelp | ComponentBlockHowItWorkComponent | ComponentBlockHowItWorksStep | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingHero | ComponentBlockLandingHeroCard | ComponentBlockLandingPageCover | ComponentBlockMyAccountCard | ComponentBlockOpenHour | ComponentBlockOrderSampleCard | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProdSpecsListImageWithCoverImg | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockTrackOrder | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsFile | ComponentElementsHeadingSection | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsListItemWithTwoImages | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsResponsiveImage | ComponentElementsSection | ComponentElementsTextAndImage | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CookiePolicy | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | ForgotPassword | GetAQuote | GoogleReview | Header | HeaderNew | HereToHelp | HowItWork | HowItWorksStep | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | KaizenPromisecard | Landing | Login | MarketingAndPromo | NeedADesign | NeedDesign | Notepad | OpenHour | OrderSample | PaymentMethod | Poster | PrintEnquiry | PrivacyPolicy | QuickPrintBuy | RequestQuote | ResetPassword | Signup | StationaryAndOffice | Sticker | TermsAndCondition | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GetAQuote {
   buttonLink: ComponentElementsLink
