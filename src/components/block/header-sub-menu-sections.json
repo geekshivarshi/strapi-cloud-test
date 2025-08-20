@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_block_header_sub_menu_sections",
+  "info": {
+    "displayName": "Header - subMenuSections",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.badge"
+    },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "block.header-navigation-links"
+    },
+    "subMenuSectionId": {
+      "type": "string",
+      "unique": false,
+      "required": true
+    }
+  }
+}

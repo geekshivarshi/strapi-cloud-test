@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_block_header_navigation_links",
+  "info": {
+    "displayName": "Header - navigationLinks"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "bannerText": {
+      "type": "string"
+    },
+    "bannerImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

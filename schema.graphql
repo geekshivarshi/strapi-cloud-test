@@ -726,6 +726,183 @@ input ComponentBlockFaqInput {
   subHeading: String
 }
 
+type ComponentBlockHeaderNavigation {
+  id: ID!
+  name: String
+  subMenu(filters: ComponentBlockHeaderSubMenuFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockHeaderSubMenu]
+  subMenuButtons(filters: ComponentBlockHeaderSubMenuButtonsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockHeaderSubMenuButtons]
+  url: String
+  withSubMenu: Boolean
+}
+
+input ComponentBlockHeaderNavigationFiltersInput {
+  and: [ComponentBlockHeaderNavigationFiltersInput]
+  name: StringFilterInput
+  not: ComponentBlockHeaderNavigationFiltersInput
+  or: [ComponentBlockHeaderNavigationFiltersInput]
+  subMenu: ComponentBlockHeaderSubMenuFiltersInput
+  subMenuButtons: ComponentBlockHeaderSubMenuButtonsFiltersInput
+  url: StringFilterInput
+  withSubMenu: BooleanFilterInput
+}
+
+input ComponentBlockHeaderNavigationInput {
+  id: ID
+  name: String
+  subMenu: [ComponentBlockHeaderSubMenuInput]
+  subMenuButtons: [ComponentBlockHeaderSubMenuButtonsInput]
+  url: String
+  withSubMenu: Boolean
+}
+
+type ComponentBlockHeaderNavigationLinks {
+  bannerImage: UploadFileEntityResponse
+  bannerText: String
+  id: ID!
+  name: String
+  url: String
+}
+
+input ComponentBlockHeaderNavigationLinksFiltersInput {
+  and: [ComponentBlockHeaderNavigationLinksFiltersInput]
+  bannerText: StringFilterInput
+  name: StringFilterInput
+  not: ComponentBlockHeaderNavigationLinksFiltersInput
+  or: [ComponentBlockHeaderNavigationLinksFiltersInput]
+  url: StringFilterInput
+}
+
+input ComponentBlockHeaderNavigationLinksInput {
+  bannerImage: ID
+  bannerText: String
+  id: ID
+  name: String
+  url: String
+}
+
+type ComponentBlockHeaderSubMenu {
+  highlightProductBannerImg: UploadFileEntityResponse
+  highlightProductBannerText: String
+  highlightProductCTAText: String
+  highlightProductCTAUrl: String
+  highlightProductImg: UploadFileEntityResponse
+  highlightProductName: String
+  icon: UploadFileEntityResponse
+  id: ID!
+  isVisible: Boolean
+  name: String
+  sectionIds: JSON
+}
+
+type ComponentBlockHeaderSubMenuButtons {
+  buttonType: ENUM_COMPONENTBLOCKHEADERSUBMENUBUTTONS_BUTTONTYPE
+  icon: UploadFileEntityResponse
+  id: ID!
+  isExternal: Boolean
+  text: String
+  url: String
+}
+
+input ComponentBlockHeaderSubMenuButtonsFiltersInput {
+  and: [ComponentBlockHeaderSubMenuButtonsFiltersInput]
+  buttonType: StringFilterInput
+  isExternal: BooleanFilterInput
+  not: ComponentBlockHeaderSubMenuButtonsFiltersInput
+  or: [ComponentBlockHeaderSubMenuButtonsFiltersInput]
+  text: StringFilterInput
+  url: StringFilterInput
+}
+
+input ComponentBlockHeaderSubMenuButtonsInput {
+  buttonType: ENUM_COMPONENTBLOCKHEADERSUBMENUBUTTONS_BUTTONTYPE
+  icon: ID
+  id: ID
+  isExternal: Boolean
+  text: String
+  url: String
+}
+
+input ComponentBlockHeaderSubMenuFiltersInput {
+  and: [ComponentBlockHeaderSubMenuFiltersInput]
+  highlightProductBannerText: StringFilterInput
+  highlightProductCTAText: StringFilterInput
+  highlightProductCTAUrl: StringFilterInput
+  highlightProductName: StringFilterInput
+  isVisible: BooleanFilterInput
+  name: StringFilterInput
+  not: ComponentBlockHeaderSubMenuFiltersInput
+  or: [ComponentBlockHeaderSubMenuFiltersInput]
+  sectionIds: JSONFilterInput
+}
+
+input ComponentBlockHeaderSubMenuInput {
+  highlightProductBannerImg: ID
+  highlightProductBannerText: String
+  highlightProductCTAText: String
+  highlightProductCTAUrl: String
+  highlightProductImg: ID
+  highlightProductName: String
+  icon: ID
+  id: ID
+  isVisible: Boolean
+  name: String
+  sectionIds: JSON
+}
+
+type ComponentBlockHeaderSubMenuSections {
+  banner: ComponentElementsBadge
+  id: ID!
+  image: UploadFileEntityResponse
+  links(filters: ComponentBlockHeaderNavigationLinksFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockHeaderNavigationLinks]
+  name: String
+  subMenuSectionId: String!
+}
+
+input ComponentBlockHeaderSubMenuSectionsFiltersInput {
+  and: [ComponentBlockHeaderSubMenuSectionsFiltersInput]
+  banner: ComponentElementsBadgeFiltersInput
+  links: ComponentBlockHeaderNavigationLinksFiltersInput
+  name: StringFilterInput
+  not: ComponentBlockHeaderSubMenuSectionsFiltersInput
+  or: [ComponentBlockHeaderSubMenuSectionsFiltersInput]
+  subMenuSectionId: StringFilterInput
+}
+
+input ComponentBlockHeaderSubMenuSectionsInput {
+  banner: ComponentElementsBadgeInput
+  id: ID
+  image: ID
+  links: [ComponentBlockHeaderNavigationLinksInput]
+  name: String
+  subMenuSectionId: String
+}
+
+type ComponentBlockHeaderTopHeader {
+  id: ID!
+  offerCode: String
+  offerText: String
+  showGoogleReviews: Boolean
+  showTopHeader: Boolean
+}
+
+input ComponentBlockHeaderTopHeaderFiltersInput {
+  and: [ComponentBlockHeaderTopHeaderFiltersInput]
+  not: ComponentBlockHeaderTopHeaderFiltersInput
+  offerCode: StringFilterInput
+  offerText: StringFilterInput
+  or: [ComponentBlockHeaderTopHeaderFiltersInput]
+  showGoogleReviews: BooleanFilterInput
+  showTopHeader: BooleanFilterInput
+}
+
+input ComponentBlockHeaderTopHeaderInput {
+  id: ID
+  offerCode: String
+  offerText: String
+  showGoogleReviews: Boolean
+  showTopHeader: Boolean
+}
+
 type ComponentBlockHereToHelp {
   description(filters: ComponentElementsBulletPointsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsBulletPoints]
   heading: String
@@ -859,6 +1036,54 @@ input ComponentBlockKaizenProcessInput {
   note2: String
   point1: String
   point2: String
+}
+
+type ComponentBlockLandingHero {
+  cards(filters: ComponentBlockLandingHeroCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockLandingHeroCard]
+  id: ID!
+  properties(filters: ComponentElementsTextAndImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsTextAndImage]
+}
+
+type ComponentBlockLandingHeroCard {
+  bgColor: String
+  id: ID!
+  image: UploadFileEntityResponse
+  metaTitle: String
+  subTitle: String
+  title: String
+}
+
+input ComponentBlockLandingHeroCardFiltersInput {
+  and: [ComponentBlockLandingHeroCardFiltersInput]
+  bgColor: StringFilterInput
+  metaTitle: StringFilterInput
+  not: ComponentBlockLandingHeroCardFiltersInput
+  or: [ComponentBlockLandingHeroCardFiltersInput]
+  subTitle: StringFilterInput
+  title: StringFilterInput
+}
+
+input ComponentBlockLandingHeroCardInput {
+  bgColor: String
+  id: ID
+  image: ID
+  metaTitle: String
+  subTitle: String
+  title: String
+}
+
+input ComponentBlockLandingHeroFiltersInput {
+  and: [ComponentBlockLandingHeroFiltersInput]
+  cards: ComponentBlockLandingHeroCardFiltersInput
+  not: ComponentBlockLandingHeroFiltersInput
+  or: [ComponentBlockLandingHeroFiltersInput]
+  properties: ComponentElementsTextAndImageFiltersInput
+}
+
+input ComponentBlockLandingHeroInput {
+  cards: [ComponentBlockLandingHeroCardInput]
+  id: ID
+  properties: [ComponentElementsTextAndImageInput]
 }
 
 type ComponentBlockLandingPageCover {
@@ -1055,23 +1280,32 @@ input ComponentBlockPrintSosInput {
 }
 
 type ComponentBlockPrintWithKaizen {
+  description: String
   heading: String
   id: ID!
+  metaTitle: String
   specifications(filters: ComponentElementsListItemWithImageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsListItemWithImage]
+  title: String
 }
 
 input ComponentBlockPrintWithKaizenFiltersInput {
   and: [ComponentBlockPrintWithKaizenFiltersInput]
+  description: StringFilterInput
   heading: StringFilterInput
+  metaTitle: StringFilterInput
   not: ComponentBlockPrintWithKaizenFiltersInput
   or: [ComponentBlockPrintWithKaizenFiltersInput]
   specifications: ComponentElementsListItemWithImageFiltersInput
+  title: StringFilterInput
 }
 
 input ComponentBlockPrintWithKaizenInput {
+  description: String
   heading: String
   id: ID
+  metaTitle: String
   specifications: [ComponentElementsListItemWithImageInput]
+  title: String
 }
 
 type ComponentBlockPrintspiration {
@@ -1596,6 +1830,25 @@ input ComponentElementsSectionInput {
   subheading: String
 }
 
+type ComponentElementsTextAndImage {
+  id: ID!
+  image: UploadFileEntityResponse
+  text: String
+}
+
+input ComponentElementsTextAndImageFiltersInput {
+  and: [ComponentElementsTextAndImageFiltersInput]
+  not: ComponentElementsTextAndImageFiltersInput
+  or: [ComponentElementsTextAndImageFiltersInput]
+  text: StringFilterInput
+}
+
+input ComponentElementsTextAndImageInput {
+  id: ID
+  image: ID
+  text: String
+}
+
 type ComponentSharedMetaSocial {
   description: String!
   id: ID!
@@ -1947,6 +2200,12 @@ input DateTimeFilterInput {
   startsWith: DateTime
 }
 
+enum ENUM_COMPONENTBLOCKHEADERSUBMENUBUTTONS_BUTTONTYPE {
+  outline
+  primary
+  secondary
+}
+
 enum ENUM_COMPONENTELEMENTSADVANCEIMAGE_TYPE {
   image
   multiple_images
@@ -2261,7 +2520,7 @@ type ForgotPasswordRelationResponseCollection {
   data: [ForgotPasswordEntity!]!
 }
 
-union GenericMorph = ArtworkStep | Auth | BannerAndSignage | BenefitsOfKaizen | Booklet | BrandedMerch | BusinessCard | CanvaPrintEnquiry | ChatToKaibot | ComponentBlockCanvaArtworkStep | ComponentBlockCanvaPrintSos | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockHereToHelp | ComponentBlockHowItWorkComponent | ComponentBlockHowItWorksStep | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingPageCover | ComponentBlockMyAccountCard | ComponentBlockOpenHour | ComponentBlockOrderSampleCard | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProdSpecsListImageWithCoverImg | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockTrackOrder | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsFile | ComponentElementsHeadingSection | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsListItemWithTwoImages | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsResponsiveImage | ComponentElementsSection | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CookiePolicy | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | ForgotPassword | GetAQuote | GoogleReview | Header | HereToHelp | HowItWork | HowItWorksStep | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | KaizenPromisecard | Landing | Login | MarketingAndPromo | NeedADesign | NeedDesign | Notepad | OpenHour | OrderSample | PaymentMethod | Poster | PrintEnquiry | PrivacyPolicy | QuickPrintBuy | RequestQuote | ResetPassword | Signup | StationaryAndOffice | Sticker | TermsAndCondition | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = ArtworkStep | Auth | BannerAndSignage | BenefitsOfKaizen | Booklet | BrandedMerch | BusinessCard | CanvaPrintEnquiry | ChatToKaibot | ComponentBlockCanvaArtworkStep | ComponentBlockCanvaPrintSos | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockHeaderNavigation | ComponentBlockHeaderNavigationLinks | ComponentBlockHeaderSubMenu | ComponentBlockHeaderSubMenuButtons | ComponentBlockHeaderSubMenuSections | ComponentBlockHeaderTopHeader | ComponentBlockHereToHelp | ComponentBlockHowItWorkComponent | ComponentBlockHowItWorksStep | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingHero | ComponentBlockLandingHeroCard | ComponentBlockLandingPageCover | ComponentBlockMyAccountCard | ComponentBlockOpenHour | ComponentBlockOrderSampleCard | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProdSpecsListImageWithCoverImg | ComponentBlockProductCardSection | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockTrackOrder | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsFile | ComponentElementsHeadingSection | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsListItemWithTwoImages | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsResponsiveImage | ComponentElementsSection | ComponentElementsTextAndImage | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CookiePolicy | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | ForgotPassword | GetAQuote | GoogleReview | Header | HeaderNew | HereToHelp | HowItWork | HowItWorksStep | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | KaizenPromisecard | Landing | Login | MarketingAndPromo | NeedADesign | NeedDesign | Notepad | OpenHour | OrderSample | PaymentMethod | Poster | PrintEnquiry | PrivacyPolicy | QuickPrintBuy | RequestQuote | ResetPassword | Signup | StationaryAndOffice | Sticker | TermsAndCondition | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GetAQuote {
   buttonLink: ComponentElementsLink
@@ -2404,6 +2663,55 @@ input HeaderInput {
   specialOffers: JSON
   topHeaderCouponCode: String
   topHeaderText: String
+}
+
+type HeaderNew {
+  Navigation(filters: ComponentBlockHeaderNavigationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockHeaderNavigation]
+  animatedSearchText: JSON
+  createdAt: DateTime
+  publishedAt: DateTime
+  subMenuSections(filters: ComponentBlockHeaderSubMenuSectionsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockHeaderSubMenuSections]
+  topHeader: ComponentBlockHeaderTopHeader
+  updatedAt: DateTime
+}
+
+type HeaderNewEntity {
+  attributes: HeaderNew
+  id: ID
+}
+
+type HeaderNewEntityResponse {
+  data: HeaderNewEntity
+}
+
+type HeaderNewEntityResponseCollection {
+  data: [HeaderNewEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input HeaderNewFiltersInput {
+  Navigation: ComponentBlockHeaderNavigationFiltersInput
+  and: [HeaderNewFiltersInput]
+  animatedSearchText: JSONFilterInput
+  createdAt: DateTimeFilterInput
+  not: HeaderNewFiltersInput
+  or: [HeaderNewFiltersInput]
+  publishedAt: DateTimeFilterInput
+  subMenuSections: ComponentBlockHeaderSubMenuSectionsFiltersInput
+  topHeader: ComponentBlockHeaderTopHeaderFiltersInput
+  updatedAt: DateTimeFilterInput
+}
+
+input HeaderNewInput {
+  Navigation: [ComponentBlockHeaderNavigationInput]
+  animatedSearchText: JSON
+  publishedAt: DateTime
+  subMenuSections: [ComponentBlockHeaderSubMenuSectionsInput]
+  topHeader: ComponentBlockHeaderTopHeaderInput
+}
+
+type HeaderNewRelationResponseCollection {
+  data: [HeaderNewEntity!]!
 }
 
 type HeaderRelationResponseCollection {
@@ -2903,6 +3211,7 @@ type Landing {
   enquirySection: ComponentBlockPrintSos
   exploreEcoRange: ComponentBlockProductCardSection
   exploreOurCategories: ComponentBlockProductCardSection
+  hero: ComponentBlockLandingHero
   pageCover: ComponentBlockLandingPageCover
   printAndProsper: ComponentBlockProductCardSection
   printWithKaizen: ComponentBlockPrintWithKaizen
@@ -2933,6 +3242,7 @@ input LandingFiltersInput {
   enquirySection: ComponentBlockPrintSosFiltersInput
   exploreEcoRange: ComponentBlockProductCardSectionFiltersInput
   exploreOurCategories: ComponentBlockProductCardSectionFiltersInput
+  hero: ComponentBlockLandingHeroFiltersInput
   id: IDFilterInput
   not: LandingFiltersInput
   or: [LandingFiltersInput]
@@ -2950,6 +3260,7 @@ input LandingInput {
   enquirySection: ComponentBlockPrintSosInput
   exploreEcoRange: ComponentBlockProductCardSectionInput
   exploreOurCategories: ComponentBlockProductCardSectionInput
+  hero: ComponentBlockLandingHeroInput
   pageCover: ComponentBlockLandingPageCoverInput
   printAndProsper: ComponentBlockProductCardSectionInput
   printWithKaizen: ComponentBlockPrintWithKaizenInput
@@ -3148,6 +3459,7 @@ type Mutation {
   deleteGetAQuote: GetAQuoteEntityResponse
   deleteGoogleReview: GoogleReviewEntityResponse
   deleteHeader: HeaderEntityResponse
+  deleteHeaderNew: HeaderNewEntityResponse
   deleteHereToHelp: HereToHelpEntityResponse
   deleteHowItWork(id: ID!): HowItWorkEntityResponse
   deleteHowItWorksStep: HowItWorksStepEntityResponse
@@ -3222,6 +3534,7 @@ type Mutation {
   updateGetAQuote(data: GetAQuoteInput!): GetAQuoteEntityResponse
   updateGoogleReview(data: GoogleReviewInput!): GoogleReviewEntityResponse
   updateHeader(data: HeaderInput!): HeaderEntityResponse
+  updateHeaderNew(data: HeaderNewInput!): HeaderNewEntityResponse
   updateHereToHelp(data: HereToHelpInput!): HereToHelpEntityResponse
   updateHowItWork(data: HowItWorkInput!, id: ID!): HowItWorkEntityResponse
   updateHowItWorksStep(data: HowItWorksStepInput!): HowItWorksStepEntityResponse
@@ -3773,6 +4086,7 @@ type Query {
   getAQuote(publicationState: PublicationState = LIVE): GetAQuoteEntityResponse
   googleReview(publicationState: PublicationState = LIVE): GoogleReviewEntityResponse
   header(publicationState: PublicationState = LIVE): HeaderEntityResponse
+  headerNew(publicationState: PublicationState = LIVE): HeaderNewEntityResponse
   hereToHelp(publicationState: PublicationState = LIVE): HereToHelpEntityResponse
   howItWork(id: ID): HowItWorkEntityResponse
   howItWorks(filters: HowItWorkFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): HowItWorkEntityResponseCollection
