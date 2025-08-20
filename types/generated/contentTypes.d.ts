@@ -1461,6 +1461,43 @@ export interface ApiHeaderHeader extends Schema.SingleType {
   };
 }
 
+export interface ApiHeaderNewHeaderNew extends Schema.SingleType {
+  collectionName: 'header_news';
+  info: {
+    singularName: 'header-new';
+    pluralName: 'header-news';
+    displayName: 'HeaderNew';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    topHeader: Attribute.Component<'block.header-top-header'>;
+    animatedSearchText: Attribute.JSON;
+    Navigation: Attribute.Component<'block.header-navigation', true>;
+    subMenuSections: Attribute.Component<
+      'block.header-sub-menu-sections',
+      true
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::header-new.header-new',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::header-new.header-new',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiHereToHelpHereToHelp extends Schema.SingleType {
   collectionName: 'here_to_helps';
   info: {
@@ -1730,6 +1767,7 @@ export interface ApiLandingLanding extends Schema.CollectionType {
     printWithKaizen: Attribute.Component<'block.print-with-kaizen'>;
     printingSection: Attribute.Component<'block.insta-post-section'>;
     seo: Attribute.Component<'shared.seo'>;
+    hero: Attribute.Component<'block.landing-hero'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -2406,6 +2444,7 @@ declare module '@strapi/types' {
       'api::get-a-quote.get-a-quote': ApiGetAQuoteGetAQuote;
       'api::google-review.google-review': ApiGoogleReviewGoogleReview;
       'api::header.header': ApiHeaderHeader;
+      'api::header-new.header-new': ApiHeaderNewHeaderNew;
       'api::here-to-help.here-to-help': ApiHereToHelpHereToHelp;
       'api::how-it-work.how-it-work': ApiHowItWorkHowItWork;
       'api::how-it-works-step.how-it-works-step': ApiHowItWorksStepHowItWorksStep;

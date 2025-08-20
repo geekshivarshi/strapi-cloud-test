@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_block_header_navigations",
+  "info": {
+    "displayName": "Header - Navigation",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "withSubMenu": {
+      "type": "boolean",
+      "default": false
+    },
+    "subMenu": {
+      "type": "component",
+      "repeatable": true,
+      "component": "block.header-sub-menu"
+    },
+    "subMenuButtons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "block.header-sub-menu-buttons"
+    }
+  }
+}

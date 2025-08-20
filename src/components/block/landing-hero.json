@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_block_landing_hero_s",
+  "info": {
+    "displayName": "Landing - Hero "
+  },
+  "options": {},
+  "attributes": {
+    "cards": {
+      "displayName": "Landing - heroCard",
+      "type": "component",
+      "repeatable": true,
+      "component": "block.landing-hero-card"
+    },
+    "properties": {
+      "displayName": "textAndImage",
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.text-and-image"
+    }
+  }
+}

@@ -142,6 +142,97 @@ export interface BlockFaq extends Schema.Component {
   };
 }
 
+export interface BlockHeaderNavigationLinks extends Schema.Component {
+  collectionName: 'components_block_header_navigation_links';
+  info: {
+    displayName: 'Header - navigationLinks';
+  };
+  attributes: {
+    name: Attribute.String;
+    url: Attribute.String;
+    bannerText: Attribute.String;
+    bannerImage: Attribute.Media;
+  };
+}
+
+export interface BlockHeaderNavigation extends Schema.Component {
+  collectionName: 'components_block_header_navigations';
+  info: {
+    displayName: 'Header - Navigation';
+    description: '';
+  };
+  attributes: {
+    name: Attribute.String;
+    url: Attribute.String;
+    withSubMenu: Attribute.Boolean & Attribute.DefaultTo<false>;
+    subMenu: Attribute.Component<'block.header-sub-menu', true>;
+    subMenuButtons: Attribute.Component<'block.header-sub-menu-buttons', true>;
+  };
+}
+
+export interface BlockHeaderSubMenuButtons extends Schema.Component {
+  collectionName: 'components_block_header_sub_menu_buttons';
+  info: {
+    displayName: 'Header - subMenuButtons';
+  };
+  attributes: {
+    text: Attribute.String;
+    url: Attribute.Text;
+    isExternal: Attribute.Boolean & Attribute.DefaultTo<false>;
+    icon: Attribute.Media;
+    buttonType: Attribute.Enumeration<['primary', 'secondary', 'outline']>;
+  };
+}
+
+export interface BlockHeaderSubMenuSections extends Schema.Component {
+  collectionName: 'components_block_header_sub_menu_sections';
+  info: {
+    displayName: 'Header - subMenuSections';
+    description: '';
+  };
+  attributes: {
+    image: Attribute.Media;
+    name: Attribute.String;
+    banner: Attribute.Component<'elements.badge'>;
+    links: Attribute.Component<'block.header-navigation-links', true>;
+    subMenuSectionId: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface BlockHeaderSubMenu extends Schema.Component {
+  collectionName: 'components_block_header_sub_menus';
+  info: {
+    displayName: 'Header - subMenu';
+    description: '';
+  };
+  attributes: {
+    name: Attribute.String;
+    icon: Attribute.Media;
+    isVisible: Attribute.Boolean & Attribute.DefaultTo<true>;
+    sectionIds: Attribute.JSON;
+    highlightProductImg: Attribute.Media;
+    highlightProductName: Attribute.String;
+    highlightProductBannerImg: Attribute.Media;
+    highlightProductBannerText: Attribute.String;
+    highlightProductCTAText: Attribute.String;
+    highlightProductCTAUrl: Attribute.String;
+  };
+}
+
+export interface BlockHeaderTopHeader extends Schema.Component {
+  collectionName: 'components_block_header_top_headers';
+  info: {
+    displayName: 'Header - topHeader';
+    description: '';
+  };
+  attributes: {
+    offerText: Attribute.String;
+    offerCode: Attribute.String;
+    showGoogleReviews: Attribute.Boolean & Attribute.DefaultTo<true>;
+    showTopHeader: Attribute.Boolean & Attribute.DefaultTo<true>;
+  };
+}
+
 export interface BlockHereToHelp extends Schema.Component {
   collectionName: 'components_block_here_to_helps';
   info: {
@@ -210,6 +301,31 @@ export interface BlockKaizenProcess extends Schema.Component {
     note2: Attribute.Text;
     coverImgAlignment: Attribute.String;
     coverImage: Attribute.Media;
+  };
+}
+
+export interface BlockLandingHeroCard extends Schema.Component {
+  collectionName: 'components_block_landing_hero_cards';
+  info: {
+    displayName: 'Landing - heroCard';
+  };
+  attributes: {
+    metaTitle: Attribute.String;
+    title: Attribute.String;
+    subTitle: Attribute.Text;
+    bgColor: Attribute.String;
+    image: Attribute.Media;
+  };
+}
+
+export interface BlockLandingHero extends Schema.Component {
+  collectionName: 'components_block_landing_hero_s';
+  info: {
+    displayName: 'Landing - Hero ';
+  };
+  attributes: {
+    cards: Attribute.Component<'block.landing-hero-card', true>;
+    properties: Attribute.Component<'elements.text-and-image', true>;
   };
 }
 
@@ -325,10 +441,14 @@ export interface BlockPrintWithKaizen extends Schema.Component {
   collectionName: 'components_block_print_with_kaizens';
   info: {
     displayName: 'printWithKaizen';
+    description: '';
   };
   attributes: {
     heading: Attribute.String;
     specifications: Attribute.Component<'elements.list-item-with-image', true>;
+    metaTitle: Attribute.String;
+    title: Attribute.String;
+    description: Attribute.RichText;
   };
 }
 
@@ -626,6 +746,17 @@ export interface ElementsSection extends Schema.Component {
   };
 }
 
+export interface ElementsTextAndImage extends Schema.Component {
+  collectionName: 'components_elements_text_and_images';
+  info: {
+    displayName: 'textAndImage';
+  };
+  attributes: {
+    text: Attribute.Text;
+    image: Attribute.Media;
+  };
+}
+
 export interface SharedMetaSocial extends Schema.Component {
   collectionName: 'components_shared_meta_socials';
   info: {
@@ -690,11 +821,19 @@ declare module '@strapi/types' {
       'block.explore-categories': BlockExploreCategories;
       'block.explore-range-cards': BlockExploreRangeCards;
       'block.faq': BlockFaq;
+      'block.header-navigation-links': BlockHeaderNavigationLinks;
+      'block.header-navigation': BlockHeaderNavigation;
+      'block.header-sub-menu-buttons': BlockHeaderSubMenuButtons;
+      'block.header-sub-menu-sections': BlockHeaderSubMenuSections;
+      'block.header-sub-menu': BlockHeaderSubMenu;
+      'block.header-top-header': BlockHeaderTopHeader;
       'block.here-to-help': BlockHereToHelp;
       'block.how-it-work-component': BlockHowItWorkComponent;
       'block.how-it-works-step': BlockHowItWorksStep;
       'block.insta-post-section': BlockInstaPostSection;
       'block.kaizen-process': BlockKaizenProcess;
+      'block.landing-hero-card': BlockLandingHeroCard;
+      'block.landing-hero': BlockLandingHero;
       'block.landing-page-cover': BlockLandingPageCover;
       'block.my-account-card': BlockMyAccountCard;
       'block.open-hour': BlockOpenHour;
@@ -726,6 +865,7 @@ declare module '@strapi/types' {
       'elements.qa': ElementsQa;
       'elements.responsive-image': ElementsResponsiveImage;
       'elements.section': ElementsSection;
+      'elements.text-and-image': ElementsTextAndImage;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
     }

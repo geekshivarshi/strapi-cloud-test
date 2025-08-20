@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_elements_text_and_images",
+  "info": {
+    "displayName": "textAndImage"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

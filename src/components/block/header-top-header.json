@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_block_header_top_headers",
+  "info": {
+    "displayName": "Header - topHeader",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "offerText": {
+      "type": "string"
+    },
+    "offerCode": {
+      "type": "string"
+    },
+    "showGoogleReviews": {
+      "type": "boolean",
+      "default": true
+    },
+    "showTopHeader": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}
