@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 FROM node:20
+=======
+FROM node:20.18.1
+>>>>>>> 7758929347caae3fa0f4fa1efdda310be0785170
 
 # Installing libvips-dev for sharp Compatibility
 
