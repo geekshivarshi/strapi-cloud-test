@@ -196,6 +196,7 @@ export interface BlockHeaderSubMenuSections extends Schema.Component {
     banner: Attribute.Component<'elements.badge'>;
     links: Attribute.Component<'block.header-navigation-links', true>;
     subMenuSectionId: Attribute.String & Attribute.Required;
+    showImage: Attribute.Boolean & Attribute.DefaultTo<true>;
   };
 }
 
@@ -216,6 +217,7 @@ export interface BlockHeaderSubMenu extends Schema.Component {
     highlightProductBannerText: Attribute.String;
     highlightProductCTAText: Attribute.String;
     highlightProductCTAUrl: Attribute.String;
+    showSubMenuSectionImages: Attribute.Boolean & Attribute.DefaultTo<true>;
   };
 }
 

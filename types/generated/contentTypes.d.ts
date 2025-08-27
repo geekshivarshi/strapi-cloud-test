@@ -1917,6 +1917,46 @@ export interface ApiNeedDesignNeedDesign extends Schema.SingleType {
   };
 }
 
+export interface ApiNewCollectionPageNewCollectionPage
+  extends Schema.CollectionType {
+  collectionName: 'new_collection_pages';
+  info: {
+    singularName: 'new-collection-page';
+    pluralName: 'new-collection-pages';
+    displayName: 'New Collection Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Name: Attribute.String;
+    urlSlug: Attribute.String & Attribute.Unique;
+    pageCover: Attribute.Component<'block.page-cover'>;
+    pageHeading: Attribute.Component<'block.page-heading'>;
+    exploreOurRange: Attribute.Component<'block.product-card-section'>;
+    seo: Attribute.Component<'shared.seo'>;
+    withGetAQuoteBanner: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::new-collection-page.new-collection-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::new-collection-page.new-collection-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiNotepadNotepad extends Schema.CollectionType {
   collectionName: 'notepads';
   info: {
@@ -2457,6 +2497,7 @@ declare module '@strapi/types' {
       'api::marketing-and-promo.marketing-and-promo': ApiMarketingAndPromoMarketingAndPromo;
       'api::need-a-design.need-a-design': ApiNeedADesignNeedADesign;
       'api::need-design.need-design': ApiNeedDesignNeedDesign;
+      'api::new-collection-page.new-collection-page': ApiNewCollectionPageNewCollectionPage;
       'api::notepad.notepad': ApiNotepadNotepad;
       'api::open-hour.open-hour': ApiOpenHourOpenHour;
       'api::order-sample.order-sample': ApiOrderSampleOrderSample;
