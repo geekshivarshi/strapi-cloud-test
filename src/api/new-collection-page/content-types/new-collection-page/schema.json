@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "new_collection_pages",
+  "info": {
+    "singularName": "new-collection-page",
+    "pluralName": "new-collection-pages",
+    "displayName": "New Collection Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "urlSlug": {
+      "type": "string",
+      "required": false,
+      "unique": true
+    },
+    "pageCover": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.page-cover"
+    },
+    "pageHeading": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.page-heading"
+    },
+    "exploreOurRange": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.product-card-section"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "withGetAQuoteBanner": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    }
+  }
+}
