@@ -51,6 +51,10 @@
     },
     "highlightProductCTAUrl": {
       "type": "string"
+    },
+    "showSubMenuSectionImages": {
+      "type": "boolean",
+      "default": true
     }
   }
 }
