@@ -789,7 +789,9 @@ type ComponentBlockHeaderSubMenu {
   highlightProductName: String
   icon: UploadFileEntityResponse
   id: ID!
+  isLinkUrlExternal: Boolean
   isVisible: Boolean
+  linkToUrl: String
   name: String
   sectionIds: JSON
   showSubMenuSectionImages: Boolean
@@ -829,7 +831,9 @@ input ComponentBlockHeaderSubMenuFiltersInput {
   highlightProductCTAText: StringFilterInput
   highlightProductCTAUrl: StringFilterInput
   highlightProductName: StringFilterInput
+  isLinkUrlExternal: BooleanFilterInput
   isVisible: BooleanFilterInput
+  linkToUrl: StringFilterInput
   name: StringFilterInput
   not: ComponentBlockHeaderSubMenuFiltersInput
   or: [ComponentBlockHeaderSubMenuFiltersInput]
@@ -846,7 +850,9 @@ input ComponentBlockHeaderSubMenuInput {
   highlightProductName: String
   icon: ID
   id: ID
+  isLinkUrlExternal: Boolean
   isVisible: Boolean
+  linkToUrl: String
   name: String
   sectionIds: JSON
   showSubMenuSectionImages: Boolean
