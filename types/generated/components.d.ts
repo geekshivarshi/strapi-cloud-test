@@ -218,6 +218,8 @@ export interface BlockHeaderSubMenu extends Schema.Component {
     highlightProductCTAText: Attribute.String;
     highlightProductCTAUrl: Attribute.String;
     showSubMenuSectionImages: Attribute.Boolean & Attribute.DefaultTo<true>;
+    linkToUrl: Attribute.String;
+    isLinkUrlExternal: Attribute.Boolean & Attribute.DefaultTo<false>;
   };
 }
 

@@ -55,6 +55,13 @@
     "showSubMenuSectionImages": {
       "type": "boolean",
       "default": true
+    },
+    "linkToUrl": {
+      "type": "string"
+    },
+    "isLinkUrlExternal": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
