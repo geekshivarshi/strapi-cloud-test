@@ -197,6 +197,7 @@ export interface BlockHeaderSubMenuSections extends Schema.Component {
     links: Attribute.Component<'block.header-navigation-links', true>;
     subMenuSectionId: Attribute.String & Attribute.Required;
     showImage: Attribute.Boolean & Attribute.DefaultTo<true>;
+    headerLink: Attribute.Component<'elements.url'>;
   };
 }
 
@@ -761,6 +762,17 @@ export interface ElementsTextAndImage extends Schema.Component {
   };
 }
 
+export interface ElementsUrl extends Schema.Component {
+  collectionName: 'components_elements_urls';
+  info: {
+    displayName: 'url';
+  };
+  attributes: {
+    url: Attribute.String;
+    isExternal: Attribute.Boolean & Attribute.DefaultTo<false>;
+  };
+}
+
 export interface SharedMetaSocial extends Schema.Component {
   collectionName: 'components_shared_meta_socials';
   info: {
@@ -870,6 +882,7 @@ declare module '@strapi/types' {
       'elements.responsive-image': ElementsResponsiveImage;
       'elements.section': ElementsSection;
       'elements.text-and-image': ElementsTextAndImage;
+      'elements.url': ElementsUrl;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
     }
