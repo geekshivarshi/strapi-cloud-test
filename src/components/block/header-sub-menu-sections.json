@@ -35,6 +35,12 @@
     "showImage": {
       "type": "boolean",
       "default": true
+    },
+    "headerLink": {
+      "displayName": "url",
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.url"
     }
   }
 }
