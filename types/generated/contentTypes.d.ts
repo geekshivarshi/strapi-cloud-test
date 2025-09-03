@@ -1768,6 +1768,7 @@ export interface ApiLandingLanding extends Schema.CollectionType {
     printingSection: Attribute.Component<'block.insta-post-section'>;
     seo: Attribute.Component<'shared.seo'>;
     hero: Attribute.Component<'block.landing-hero'>;
+    exploreIndustries: Attribute.Component<'block.product-card-section'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

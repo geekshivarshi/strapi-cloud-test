@@ -751,6 +751,18 @@ export interface ElementsSection extends Schema.Component {
   };
 }
 
+export interface ElementsSimpleButton extends Schema.Component {
+  collectionName: 'components_elements_simple_buttons';
+  info: {
+    displayName: 'simple button';
+  };
+  attributes: {
+    text: Attribute.String;
+    url: Attribute.String;
+    isExternal: Attribute.Boolean;
+  };
+}
+
 export interface ElementsTextAndImage extends Schema.Component {
   collectionName: 'components_elements_text_and_images';
   info: {
@@ -881,6 +893,7 @@ declare module '@strapi/types' {
       'elements.qa': ElementsQa;
       'elements.responsive-image': ElementsResponsiveImage;
       'elements.section': ElementsSection;
+      'elements.simple-button': ElementsSimpleButton;
       'elements.text-and-image': ElementsTextAndImage;
       'elements.url': ElementsUrl;
       'shared.meta-social': SharedMetaSocial;
