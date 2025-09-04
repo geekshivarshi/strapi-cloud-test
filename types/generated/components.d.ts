@@ -321,7 +321,7 @@ export interface BlockLandingHeroCard extends Schema.Component {
     subTitle: Attribute.Text;
     bgColor: Attribute.String;
     image: Attribute.Media;
-    link: Attribute.Component<'elements.url', true>;
+    link: Attribute.Component<'elements.url'>;
     metaTitleSizeInPx: Attribute.Component<'elements.responsive-size-input'>;
     titleSizePx: Attribute.Component<'elements.responsive-size-input'>;
     subTitleSizePx: Attribute.Component<'elements.responsive-size-input'>;
