@@ -313,6 +313,7 @@ export interface BlockLandingHeroCard extends Schema.Component {
   collectionName: 'components_block_landing_hero_cards';
   info: {
     displayName: 'Landing - heroCard';
+    description: '';
   };
   attributes: {
     metaTitle: Attribute.String;
@@ -320,6 +321,13 @@ export interface BlockLandingHeroCard extends Schema.Component {
     subTitle: Attribute.Text;
     bgColor: Attribute.String;
     image: Attribute.Media;
+    link: Attribute.Component<'elements.url', true>;
+    metaTitleSizeInPx: Attribute.Component<'elements.responsive-size-input'>;
+    titleSizePx: Attribute.Component<'elements.responsive-size-input'>;
+    subTitleSizePx: Attribute.Component<'elements.responsive-size-input'>;
+    metaTitleColor: Attribute.Component<'elements.color'>;
+    titleColor: Attribute.Component<'elements.color'>;
+    subTitleColor: Attribute.Component<'elements.color'>;
   };
 }
 
@@ -621,6 +629,16 @@ export interface ElementsCard extends Schema.Component {
   };
 }
 
+export interface ElementsColor extends Schema.Component {
+  collectionName: 'components_elements_colors';
+  info: {
+    displayName: 'color';
+  };
+  attributes: {
+    color: Attribute.String;
+  };
+}
+
 export interface ElementsFile extends Schema.Component {
   collectionName: 'components_elements_files';
   info: {
@@ -732,6 +750,19 @@ export interface ElementsResponsiveImage extends Schema.Component {
   attributes: {
     desktopImage: Attribute.Media;
     mobileImage: Attribute.Media;
+  };
+}
+
+export interface ElementsResponsiveSizeInput extends Schema.Component {
+  collectionName: 'components_elements_responsive_size_inputs';
+  info: {
+    displayName: 'responsive size input';
+  };
+  attributes: {
+    baseSize: Attribute.Decimal;
+    mobile: Attribute.Decimal;
+    tablet: Attribute.Decimal;
+    desktop: Attribute.Decimal;
   };
 }
 
@@ -883,6 +914,7 @@ declare module '@strapi/types' {
       'elements.bullet-points': ElementsBulletPoints;
       'elements.card-with-image-item': ElementsCardWithImageItem;
       'elements.card': ElementsCard;
+      'elements.color': ElementsColor;
       'elements.file': ElementsFile;
       'elements.heading-section': ElementsHeadingSection;
       'elements.image': ElementsImage;
@@ -892,6 +924,7 @@ declare module '@strapi/types' {
       'elements.new-image': ElementsNewImage;
       'elements.qa': ElementsQa;
       'elements.responsive-image': ElementsResponsiveImage;
+      'elements.responsive-size-input': ElementsResponsiveSizeInput;
       'elements.section': ElementsSection;
       'elements.simple-button': ElementsSimpleButton;
       'elements.text-and-image': ElementsTextAndImage;

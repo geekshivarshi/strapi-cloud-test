@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_elements_responsive_size_inputs",
+  "info": {
+    "displayName": "responsive size input"
+  },
+  "options": {},
+  "attributes": {
+    "baseSize": {
+      "type": "decimal"
+    },
+    "mobile": {
+      "type": "decimal"
+    },
+    "tablet": {
+      "type": "decimal"
+    },
+    "desktop": {
+      "type": "decimal"
+    }
+  }
+}

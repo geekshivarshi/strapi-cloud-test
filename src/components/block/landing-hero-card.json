@@ -1,7 +1,8 @@
 {
   "collectionName": "components_block_landing_hero_cards",
   "info": {
-    "displayName": "Landing - heroCard"
+    "displayName": "Landing - heroCard",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -19,11 +20,49 @@
       "regex": "^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})$"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "link": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.url"
+    },
+    "metaTitleSizeInPx": {
+      "displayName": "responsive size input",
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.responsive-size-input"
+    },
+    "titleSizePx": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.responsive-size-input"
+    },
+    "subTitleSizePx": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.responsive-size-input"
+    },
+    "metaTitleColor": {
+      "displayName": "color",
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.color"
+    },
+    "titleColor": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.color"
+    },
+    "subTitleColor": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.color"
     }
   }
 }
