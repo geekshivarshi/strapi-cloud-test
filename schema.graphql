@@ -1063,7 +1063,7 @@ type ComponentBlockLandingHeroCard {
   bgColor: String
   id: ID!
   image: UploadFileEntityResponse
-  link(filters: ComponentElementsUrlFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentElementsUrl]
+  link: ComponentElementsUrl
   metaTitle: String
   metaTitleColor: ComponentElementsColor
   metaTitleSizeInPx: ComponentElementsResponsiveSizeInput
@@ -1096,7 +1096,7 @@ input ComponentBlockLandingHeroCardInput {
   bgColor: String
   id: ID
   image: ID
-  link: [ComponentElementsUrlInput]
+  link: ComponentElementsUrlInput
   metaTitle: String
   metaTitleColor: ComponentElementsColorInput
   metaTitleSizeInPx: ComponentElementsResponsiveSizeInputInput
