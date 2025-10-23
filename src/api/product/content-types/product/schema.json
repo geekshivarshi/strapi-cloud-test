@@ -1,0 +1,88 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "unique": true
+    },
+    "customerUrl": {
+      "type": "string"
+    },
+    "isActive": {
+      "type": "boolean"
+    },
+    "productImages": {
+      "displayName": "product - Images",
+      "type": "component",
+      "repeatable": false,
+      "component": "block.product-images"
+    },
+    "info": {
+      "displayName": "product - info",
+      "type": "component",
+      "repeatable": false,
+      "component": "block.product-info"
+    },
+    "specifications": {
+      "displayName": "product-infoSpecifications",
+      "type": "component",
+      "repeatable": false,
+      "component": "block.product-info-specifications"
+    },
+    "designTemplates": {
+      "displayName": "product - designTemplates",
+      "type": "component",
+      "repeatable": false,
+      "component": "block.product-design-templates"
+    },
+    "faqs": {
+      "displayName": "product - faq",
+      "type": "component",
+      "repeatable": true,
+      "component": "block.product-faq"
+    },
+    "minPrice": {
+      "type": "decimal"
+    },
+    "defaultPrice": {
+      "type": "decimal"
+    },
+    "minQuantity": {
+      "type": "integer"
+    },
+    "defaultQuantity": {
+      "type": "integer"
+    },
+    "linkText": {
+      "type": "string"
+    },
+    "collectionPagePointers": {
+      "displayName": "product - collectionPagePointers",
+      "type": "component",
+      "repeatable": true,
+      "component": "block.product-collection-page-pointers"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "mappedBy": "products"
+    }
+  }
+}

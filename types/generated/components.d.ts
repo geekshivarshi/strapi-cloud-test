@@ -28,6 +28,29 @@ export interface BlockCanvaPrintSos extends Schema.Component {
   };
 }
 
+export interface BlockCategoryProductOverrides extends Schema.Component {
+  collectionName: 'components_block_category_product_overrides';
+  info: {
+    displayName: 'category - productOverrides';
+  };
+  attributes: {
+    product: Attribute.Relation<
+      'block.category-product-overrides',
+      'oneToOne',
+      'api::product.product'
+    >;
+    coverImage: Attribute.Media;
+    rightIcon: Attribute.Media;
+    leftBannerImage: Attribute.Media;
+    leftBannerText: Attribute.String;
+    linkText: Attribute.String;
+    pointers: Attribute.Component<
+      'block.product-collection-page-pointers',
+      true
+    >;
+  };
+}
+
 export interface BlockCatergory extends Schema.Component {
   collectionName: 'components_block_catergories';
   info: {
@@ -505,6 +528,155 @@ export interface BlockProductCardSection extends Schema.Component {
   };
 }
 
+export interface BlockProductCollectionPagePointers extends Schema.Component {
+  collectionName: 'components_block_product_collection_page_pointers';
+  info: {
+    displayName: 'product - collectionPagePointers';
+  };
+  attributes: {
+    img: Attribute.Media;
+    point: Attribute.String;
+  };
+}
+
+export interface BlockProductDesignTemplatePointers extends Schema.Component {
+  collectionName: 'components_block_product_design_template_pointers';
+  info: {
+    displayName: 'product - designTemplatePointers';
+    description: '';
+  };
+  attributes: {
+    explanation: Attribute.String;
+    pdf: Attribute.Media;
+    indesign: Attribute.Media;
+  };
+}
+
+export interface BlockProductDesignTemplates extends Schema.Component {
+  collectionName: 'components_block_product_design_templates';
+  info: {
+    displayName: 'product - designTemplates';
+  };
+  attributes: {
+    headingParagraph: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'default';
+        }
+      >;
+    templates: Attribute.Component<
+      'block.product-design-template-pointers',
+      true
+    >;
+  };
+}
+
+export interface BlockProductFaq extends Schema.Component {
+  collectionName: 'components_block_product_faqs';
+  info: {
+    displayName: 'product - faq';
+  };
+  attributes: {
+    question: Attribute.String;
+    mdQuestion: Attribute.RichText;
+    answer: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'default';
+        }
+      >;
+  };
+}
+
+export interface BlockProductImages extends Schema.Component {
+  collectionName: 'components_block_product_images';
+  info: {
+    displayName: 'product - Images';
+  };
+  attributes: {
+    images: Attribute.Media;
+    rightIcon: Attribute.Media;
+    leftBannerText: Attribute.String;
+    leftBannerImage: Attribute.Media;
+  };
+}
+
+export interface BlockProductInfoPointers extends Schema.Component {
+  collectionName: 'components_block_product_info_pointers';
+  info: {
+    displayName: 'product - info pointers';
+  };
+  attributes: {
+    iconImg: Attribute.Media;
+    textInBold: Attribute.String;
+    explanation: Attribute.String;
+    mdText: Attribute.RichText;
+  };
+}
+
+export interface BlockProductInfoSpecifications extends Schema.Component {
+  collectionName: 'components_block_product_info_specifications';
+  info: {
+    displayName: 'product-infoSpecifications';
+  };
+  attributes: {
+    productSpecification: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'default';
+        }
+      >;
+    needHelpText: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'default';
+        }
+      >;
+    pointers: Attribute.Component<'block.product-specification-pointers', true>;
+  };
+}
+
+export interface BlockProductInfo extends Schema.Component {
+  collectionName: 'components_block_product_infos';
+  info: {
+    displayName: 'product - info';
+    description: '';
+  };
+  attributes: {
+    description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'default';
+        }
+      >;
+    needHelpText: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'default';
+        }
+      >;
+    pointerHeading: Attribute.String &
+      Attribute.DefaultTo<'Benefits at a glance'>;
+    pointers: Attribute.Component<'block.product-info-pointers', true>;
+  };
+}
+
+export interface BlockProductSpecificationPointers extends Schema.Component {
+  collectionName: 'components_block_product_specification_pointers';
+  info: {
+    displayName: 'product - specificationPointers';
+  };
+  attributes: {
+    pointer: Attribute.String;
+  };
+}
+
 export interface BlockProductSpecificationWithTwosubHeadings
   extends Schema.Component {
   collectionName: 'components_block_product_specs_with_two_sub_headings';
@@ -872,6 +1044,7 @@ declare module '@strapi/types' {
     export interface Components {
       'block.canva-artwork-step': BlockCanvaArtworkStep;
       'block.canva-print-sos': BlockCanvaPrintSos;
+      'block.category-product-overrides': BlockCategoryProductOverrides;
       'block.catergory': BlockCatergory;
       'block.chat-to-kaibot': BlockChatToKaibot;
       'block.cta': BlockCta;
@@ -905,6 +1078,15 @@ declare module '@strapi/types' {
       'block.printspiration': BlockPrintspiration;
       'block.prod-specs-list-image-with-cover-img': BlockProdSpecsListImageWithCoverImg;
       'block.product-card-section': BlockProductCardSection;
+      'block.product-collection-page-pointers': BlockProductCollectionPagePointers;
+      'block.product-design-template-pointers': BlockProductDesignTemplatePointers;
+      'block.product-design-templates': BlockProductDesignTemplates;
+      'block.product-faq': BlockProductFaq;
+      'block.product-images': BlockProductImages;
+      'block.product-info-pointers': BlockProductInfoPointers;
+      'block.product-info-specifications': BlockProductInfoSpecifications;
+      'block.product-info': BlockProductInfo;
+      'block.product-specification-pointers': BlockProductSpecificationPointers;
       'block.product-specification-with-twosub-headings': BlockProductSpecificationWithTwosubHeadings;
       'block.product-specification': BlockProductSpecification;
       'block.track-order': BlockTrackOrder;

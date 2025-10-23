@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_block_product_specification_pointers",
+  "info": {
+    "displayName": "product - specificationPointers"
+  },
+  "options": {},
+  "attributes": {
+    "pointer": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_block_product_collection_page_pointers",
+  "info": {
+    "displayName": "product - collectionPagePointers"
+  },
+  "options": {},
+  "attributes": {
+    "img": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "point": {
+      "type": "string"
+    }
+  }
+}

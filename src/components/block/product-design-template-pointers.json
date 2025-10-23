@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_block_product_design_template_pointers",
+  "info": {
+    "displayName": "product - designTemplatePointers",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "explanation": {
+      "type": "string"
+    },
+    "pdf": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "indesign": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

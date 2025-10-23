@@ -1054,6 +1054,58 @@ export interface ApiCanvaPrintEnquiryCanvaPrintEnquiry
   };
 }
 
+export interface ApiCategoryCategory extends Schema.CollectionType {
+  collectionName: 'categories';
+  info: {
+    singularName: 'category';
+    pluralName: 'categories';
+    displayName: 'Category';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    url: Attribute.String & Attribute.Unique;
+    pageCover: Attribute.Component<'block.page-cover'>;
+    pageHeading: Attribute.Component<'block.page-heading'>;
+    products: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::product.product'
+    >;
+    productOverrides: Attribute.Component<
+      'block.category-product-overrides',
+      true
+    >;
+    bottomBlocks: Attribute.DynamicZone<
+      [
+        'block.printspiration',
+        'block.faq',
+        'block.eco-card',
+        'block.product-specification'
+      ]
+    >;
+    seo: Attribute.Component<'shared.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiChatToKaibotChatToKaibot extends Schema.SingleType {
   collectionName: 'chat_to_kaibots';
   info: {
@@ -2209,6 +2261,59 @@ export interface ApiPrivacyPolicyPrivacyPolicy extends Schema.CollectionType {
   };
 }
 
+export interface ApiProductProduct extends Schema.CollectionType {
+  collectionName: 'products';
+  info: {
+    singularName: 'product';
+    pluralName: 'products';
+    displayName: 'product';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Unique;
+    customerUrl: Attribute.String;
+    isActive: Attribute.Boolean;
+    productImages: Attribute.Component<'block.product-images'>;
+    info: Attribute.Component<'block.product-info'>;
+    specifications: Attribute.Component<'block.product-info-specifications'>;
+    designTemplates: Attribute.Component<'block.product-design-templates'>;
+    faqs: Attribute.Component<'block.product-faq', true>;
+    minPrice: Attribute.Decimal;
+    defaultPrice: Attribute.Decimal;
+    minQuantity: Attribute.Integer;
+    defaultQuantity: Attribute.Integer;
+    linkText: Attribute.String;
+    collectionPagePointers: Attribute.Component<
+      'block.product-collection-page-pointers',
+      true
+    >;
+    seo: Attribute.Component<'shared.seo'>;
+    categories: Attribute.Relation<
+      'api::product.product',
+      'manyToMany',
+      'api::category.category'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiQuickPrintBuyQuickPrintBuy extends Schema.CollectionType {
   collectionName: 'quick_print_buys';
   info: {
@@ -2473,6 +2578,7 @@ declare module '@strapi/types' {
       'api::branded-merch.branded-merch': ApiBrandedMerchBrandedMerch;
       'api::business-card.business-card': ApiBusinessCardBusinessCard;
       'api::canva-print-enquiry.canva-print-enquiry': ApiCanvaPrintEnquiryCanvaPrintEnquiry;
+      'api::category.category': ApiCategoryCategory;
       'api::chat-to-kaibot.chat-to-kaibot': ApiChatToKaibotChatToKaibot;
       'api::contact-us.contact-us': ApiContactUsContactUs;
       'api::cookie-policy.cookie-policy': ApiCookiePolicyCookiePolicy;
@@ -2506,6 +2612,7 @@ declare module '@strapi/types' {
       'api::poster.poster': ApiPosterPoster;
       'api::print-enquiry.print-enquiry': ApiPrintEnquiryPrintEnquiry;
       'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
+      'api::product.product': ApiProductProduct;
       'api::quick-print-buy.quick-print-buy': ApiQuickPrintBuyQuickPrintBuy;
       'api::request-quote.request-quote': ApiRequestQuoteRequestQuote;
       'api::reset-password.reset-password': ApiResetPasswordResetPassword;

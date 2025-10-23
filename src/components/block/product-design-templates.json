@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_block_product_design_templates",
+  "info": {
+    "displayName": "product - designTemplates"
+  },
+  "options": {},
+  "attributes": {
+    "headingParagraph": {
+      "type": "customField",
+      "options": {
+        "preset": "default"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "templates": {
+      "displayName": "product - designTemplatePointers",
+      "type": "component",
+      "repeatable": true,
+      "component": "block.product-design-template-pointers"
+    }
+  }
+}

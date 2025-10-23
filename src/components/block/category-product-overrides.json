@@ -1,0 +1,46 @@
+{
+  "collectionName": "components_block_category_product_overrides",
+  "info": {
+    "displayName": "category - productOverrides"
+  },
+  "options": {},
+  "attributes": {
+    "product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product"
+    },
+    "coverImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "rightIcon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "leftBannerImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "leftBannerText": {
+      "type": "string"
+    },
+    "linkText": {
+      "type": "string"
+    },
+    "pointers": {
+      "type": "component",
+      "repeatable": true,
+      "component": "block.product-collection-page-pointers"
+    }
+  }
+}

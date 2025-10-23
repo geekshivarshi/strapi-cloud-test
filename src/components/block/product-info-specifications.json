@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_block_product_info_specifications",
+  "info": {
+    "displayName": "product-infoSpecifications"
+  },
+  "options": {},
+  "attributes": {
+    "productSpecification": {
+      "type": "customField",
+      "options": {
+        "preset": "default"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "needHelpText": {
+      "type": "customField",
+      "options": {
+        "preset": "default"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "pointers": {
+      "displayName": "product - specificationPointers",
+      "type": "component",
+      "repeatable": true,
+      "component": "block.product-specification-pointers"
+    }
+  }
+}

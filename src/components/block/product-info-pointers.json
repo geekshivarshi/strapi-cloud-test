@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_block_product_info_pointers",
+  "info": {
+    "displayName": "product - info pointers"
+  },
+  "options": {},
+  "attributes": {
+    "iconImg": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "textInBold": {
+      "type": "string"
+    },
+    "explanation": {
+      "type": "string"
+    },
+    "mdText": {
+      "type": "richtext"
+    }
+  }
+}

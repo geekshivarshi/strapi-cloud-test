@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_block_product_images",
+  "info": {
+    "displayName": "product - Images"
+  },
+  "options": {},
+  "attributes": {
+    "images": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "rightIcon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "leftBannerText": {
+      "type": "string"
+    },
+    "leftBannerImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

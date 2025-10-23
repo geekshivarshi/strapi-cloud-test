@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_block_product_infos",
+  "info": {
+    "displayName": "product - info",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "customField",
+      "options": {
+        "preset": "default"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "needHelpText": {
+      "type": "customField",
+      "options": {
+        "preset": "default"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "pointerHeading": {
+      "type": "string",
+      "default": "Benefits at a glance"
+    },
+    "pointers": {
+      "displayName": "product - info pointers",
+      "type": "component",
+      "repeatable": true,
+      "component": "block.product-info-pointers"
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categories",
+  "info": {
+    "singularName": "category",
+    "pluralName": "categories",
+    "displayName": "Category",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string",
+      "unique": true
+    },
+    "pageCover": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.page-cover"
+    },
+    "pageHeading": {
+      "type": "component",
+      "repeatable": false,
+      "component": "block.page-heading"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "inversedBy": "categories"
+    },
+    "productOverrides": {
+      "displayName": "category - productOverrides",
+      "type": "component",
+      "repeatable": true,
+      "component": "block.category-product-overrides"
+    },
+    "bottomBlocks": {
+      "type": "dynamiczone",
+      "components": [
+        "block.printspiration",
+        "block.faq",
+        "block.eco-card",
+        "block.product-specification"
+      ]
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}
