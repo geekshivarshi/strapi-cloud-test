@@ -595,6 +595,7 @@ type ComponentBlockCategoryProductOverrides {
   pointers(filters: ComponentBlockProductCollectionPagePointersFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockProductCollectionPagePointers]
   product: ProductEntityResponse
   rightIcon: UploadFileEntityResponse
+  url: String
 }
 
 input ComponentBlockCategoryProductOverridesFiltersInput {
@@ -605,6 +606,7 @@ input ComponentBlockCategoryProductOverridesFiltersInput {
   or: [ComponentBlockCategoryProductOverridesFiltersInput]
   pointers: ComponentBlockProductCollectionPagePointersFiltersInput
   product: ProductFiltersInput
+  url: StringFilterInput
 }
 
 input ComponentBlockCategoryProductOverridesInput {
@@ -616,6 +618,7 @@ input ComponentBlockCategoryProductOverridesInput {
   pointers: [ComponentBlockProductCollectionPagePointersInput]
   product: ID
   rightIcon: ID
+  url: String
 }
 
 type ComponentBlockCatergory {

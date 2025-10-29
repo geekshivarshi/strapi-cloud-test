@@ -32,6 +32,7 @@ export interface BlockCategoryProductOverrides extends Schema.Component {
   collectionName: 'components_block_category_product_overrides';
   info: {
     displayName: 'category - productOverrides';
+    description: '';
   };
   attributes: {
     product: Attribute.Relation<
@@ -48,6 +49,7 @@ export interface BlockCategoryProductOverrides extends Schema.Component {
       'block.product-collection-page-pointers',
       true
     >;
+    url: Attribute.String;
   };
 }
 
