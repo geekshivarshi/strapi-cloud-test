@@ -592,6 +592,7 @@ type ComponentBlockCategoryProductOverrides {
   leftBannerImage: UploadFileEntityResponse
   leftBannerText: String
   linkText: String
+  name: String
   pointers(filters: ComponentBlockProductCollectionPagePointersFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlockProductCollectionPagePointers]
   product: ProductEntityResponse
   rightIcon: UploadFileEntityResponse
@@ -602,6 +603,7 @@ input ComponentBlockCategoryProductOverridesFiltersInput {
   and: [ComponentBlockCategoryProductOverridesFiltersInput]
   leftBannerText: StringFilterInput
   linkText: StringFilterInput
+  name: StringFilterInput
   not: ComponentBlockCategoryProductOverridesFiltersInput
   or: [ComponentBlockCategoryProductOverridesFiltersInput]
   pointers: ComponentBlockProductCollectionPagePointersFiltersInput
@@ -615,6 +617,7 @@ input ComponentBlockCategoryProductOverridesInput {
   leftBannerImage: ID
   leftBannerText: String
   linkText: String
+  name: String
   pointers: [ComponentBlockProductCollectionPagePointersInput]
   product: ID
   rightIcon: ID
