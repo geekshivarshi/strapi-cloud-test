@@ -47,13 +47,18 @@
         "block.printspiration",
         "block.faq",
         "block.eco-card",
-        "block.product-specification"
+        "block.product-specification",
+        "block.product-specification-with-twosub-headings"
       ]
     },
     "seo": {
       "type": "component",
       "repeatable": false,
       "component": "shared.seo"
+    },
+    "withGetAQuoteBanner": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

@@ -1084,10 +1084,12 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
         'block.printspiration',
         'block.faq',
         'block.eco-card',
-        'block.product-specification'
+        'block.product-specification',
+        'block.product-specification-with-twosub-headings'
       ]
     >;
     seo: Attribute.Component<'shared.seo'>;
+    withGetAQuoteBanner: Attribute.Boolean & Attribute.DefaultTo<true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -443,9 +443,10 @@ type Category {
   seo: ComponentSharedSeo
   updatedAt: DateTime
   url: String
+  withGetAQuoteBanner: Boolean
 }
 
-union CategoryBottomBlocksDynamicZone = ComponentBlockEcoCard | ComponentBlockFaq | ComponentBlockPrintspiration | ComponentBlockProductSpecification | Error
+union CategoryBottomBlocksDynamicZone = ComponentBlockEcoCard | ComponentBlockFaq | ComponentBlockPrintspiration | ComponentBlockProductSpecification | ComponentBlockProductSpecificationWithTwosubHeadings | Error
 
 scalar CategoryBottomBlocksDynamicZoneInput
 
@@ -478,6 +479,7 @@ input CategoryFiltersInput {
   seo: ComponentSharedSeoFiltersInput
   updatedAt: DateTimeFilterInput
   url: StringFilterInput
+  withGetAQuoteBanner: BooleanFilterInput
 }
 
 input CategoryInput {
@@ -490,6 +492,7 @@ input CategoryInput {
   publishedAt: DateTime
   seo: ComponentSharedSeoInput
   url: String
+  withGetAQuoteBanner: Boolean
 }
 
 type CategoryRelationResponseCollection {
