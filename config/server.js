@@ -11,6 +11,7 @@ module.exports = ({ env }) => ({
     serverOptions: {
       timeout: 600000, // Set timeout to 10 minutes (600,000ms)
       headersTimeout: 600000, // Optional: also set headers timeout
+      requestTimeout: 600000, // Optional: also set request timeout
     },
   }
 });
