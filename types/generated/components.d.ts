@@ -1,14 +1,14 @@
-import type { Schema, Attribute } from '@strapi/strapi';
+import type { Attribute, Schema } from '@strapi/strapi';
 
 export interface BlockCanvaArtworkStep extends Schema.Component {
   collectionName: 'components_block_canva_artwork_steps';
   info: {
-    displayName: 'CanvaArtworkStep';
     description: '';
+    displayName: 'CanvaArtworkStep';
   };
   attributes: {
     heading: Attribute.String;
-    Image: Attribute.Media;
+    Image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     subHeading: Attribute.String;
   };
 }
@@ -16,49 +16,49 @@ export interface BlockCanvaArtworkStep extends Schema.Component {
 export interface BlockCanvaPrintSos extends Schema.Component {
   collectionName: 'components_block_canva_print_sos';
   info: {
-    displayName: 'CanvaPrintSos';
     description: '';
+    displayName: 'CanvaPrintSos';
   };
   attributes: {
+    buttonText: Attribute.String;
+    coverImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     Heading: Attribute.Text;
     subheading: Attribute.Text;
-    buttonText: Attribute.String;
     url: Attribute.String;
-    coverImage: Attribute.Media;
   };
 }
 
 export interface BlockCategoryProductOverrides extends Schema.Component {
   collectionName: 'components_block_category_product_overrides';
   info: {
-    displayName: 'category - productOverrides';
     description: '';
+    displayName: 'category - productOverrides';
   };
   attributes: {
+    coverImage: Attribute.Media<'images'>;
+    leftBannerImage: Attribute.Media<'images'>;
+    leftBannerText: Attribute.String;
+    linkText: Attribute.String;
+    name: Attribute.String;
+    pointers: Attribute.Component<
+      'block.product-collection-page-pointers',
+      true
+    >;
     product: Attribute.Relation<
       'block.category-product-overrides',
       'oneToOne',
       'api::product.product'
     >;
-    coverImage: Attribute.Media;
-    rightIcon: Attribute.Media;
-    leftBannerImage: Attribute.Media;
-    leftBannerText: Attribute.String;
-    linkText: Attribute.String;
-    pointers: Attribute.Component<
-      'block.product-collection-page-pointers',
-      true
-    >;
+    rightIcon: Attribute.Media<'images'>;
     url: Attribute.String;
-    name: Attribute.String;
   };
 }
 
 export interface BlockCatergory extends Schema.Component {
   collectionName: 'components_block_catergories';
   info: {
-    displayName: 'category';
     description: '';
+    displayName: 'category';
   };
   attributes: {
     heading: Attribute.String;
@@ -69,13 +69,13 @@ export interface BlockCatergory extends Schema.Component {
 export interface BlockChatToKaibot extends Schema.Component {
   collectionName: 'components_block_chat_to_kaibots';
   info: {
-    displayName: 'chatToKaibot';
     description: '';
+    displayName: 'chatToKaibot';
   };
   attributes: {
-    heading: Attribute.String;
-    headerImage: Attribute.Media;
     footerText: Attribute.String;
+    headerImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    heading: Attribute.String;
     points: Attribute.Component<'elements.bullet-points', true>;
   };
 }
@@ -83,44 +83,44 @@ export interface BlockChatToKaibot extends Schema.Component {
 export interface BlockCta extends Schema.Component {
   collectionName: 'components_block_ctas';
   info: {
-    displayName: 'CTA';
     description: '';
+    displayName: 'CTA';
   };
   attributes: {
     heading: Attribute.String;
-    image: Attribute.Media;
-    subHeading: Attribute.String;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     inputs: Attribute.JSON;
+    subHeading: Attribute.String;
   };
 }
 
 export interface BlockCustomerReviews extends Schema.Component {
   collectionName: 'components_block_customer_reviews';
   info: {
-    displayName: 'customerReviews';
     description: '';
+    displayName: 'customerReviews';
   };
   attributes: {
+    customerName: Attribute.Component<'elements.list-item-with-image'>;
     heading: Attribute.String;
     subHeading: Attribute.Text;
-    customerName: Attribute.Component<'elements.list-item-with-image'>;
   };
 }
 
 export interface BlockEcoCard extends Schema.Component {
   collectionName: 'components_block_eco_cards';
   info: {
-    displayName: 'EcoCard';
     description: '';
+    displayName: 'EcoCard';
   };
   attributes: {
-    title: Attribute.String;
-    heading: Attribute.String;
-    content: Attribute.Component<'elements.list-item-with-image', true>;
-    coverImage: Attribute.Media;
     buttonLink: Attribute.Component<'elements.link'>;
-    mobileCoverImage: Attribute.Media;
-    logoImage: Attribute.Media;
+    content: Attribute.Component<'elements.list-item-with-image', true>;
+    coverImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    heading: Attribute.String;
+    logoImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    mobileCoverImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    title: Attribute.String;
   };
 }
 
@@ -131,40 +131,55 @@ export interface BlockExploreCategories extends Schema.Component {
     icon: 'cube';
   };
   attributes: {
-    heading: Attribute.String;
-    headingImage: Attribute.Media;
-    topImage: Attribute.Media;
     card: Attribute.Component<'elements.card', true>;
+    heading: Attribute.String;
+    headingImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    topImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 
 export interface BlockExploreRangeCards extends Schema.Component {
   collectionName: 'components_block_explore_range_cards';
   info: {
-    displayName: 'ExploreRangeCard';
     description: '';
+    displayName: 'ExploreRangeCard';
   };
   attributes: {
-    title: Attribute.String & Attribute.Required;
-    buttonLink: Attribute.Component<'elements.link'> & Attribute.Required;
+    badge: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     banner: Attribute.Component<'elements.badge'>;
-    cardImg: Attribute.Media;
+    buttonLink: Attribute.Component<'elements.link'> & Attribute.Required;
+    cardImg: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     features: Attribute.Component<'elements.list-item-with-image', true>;
     product_id: Attribute.BigInteger;
-    badge: Attribute.Media;
+    title: Attribute.String & Attribute.Required;
   };
 }
 
 export interface BlockFaq extends Schema.Component {
   collectionName: 'components_block_faqs';
   info: {
-    displayName: 'FAQ';
     description: '';
+    displayName: 'FAQ';
   };
   attributes: {
     heading: Attribute.String & Attribute.Required;
-    subHeading: Attribute.String;
     QA: Attribute.Component<'elements.qa', true>;
+    subHeading: Attribute.String;
+  };
+}
+
+export interface BlockHeaderNavigation extends Schema.Component {
+  collectionName: 'components_block_header_navigations';
+  info: {
+    description: '';
+    displayName: 'Header - Navigation';
+  };
+  attributes: {
+    name: Attribute.String;
+    subMenu: Attribute.Component<'block.header-sub-menu', true>;
+    subMenuButtons: Attribute.Component<'block.header-sub-menu-buttons', true>;
+    url: Attribute.String;
+    withSubMenu: Attribute.Boolean & Attribute.DefaultTo<false>;
   };
 }
 
@@ -174,25 +189,33 @@ export interface BlockHeaderNavigationLinks extends Schema.Component {
     displayName: 'Header - navigationLinks';
   };
   attributes: {
+    bannerImage: Attribute.Media<'images'>;
+    bannerText: Attribute.String;
     name: Attribute.String;
     url: Attribute.String;
-    bannerText: Attribute.String;
-    bannerImage: Attribute.Media;
   };
 }
 
-export interface BlockHeaderNavigation extends Schema.Component {
-  collectionName: 'components_block_header_navigations';
+export interface BlockHeaderSubMenu extends Schema.Component {
+  collectionName: 'components_block_header_sub_menus';
   info: {
-    displayName: 'Header - Navigation';
     description: '';
+    displayName: 'Header - subMenu';
   };
   attributes: {
+    highlightProductBannerImg: Attribute.Media<'images'>;
+    highlightProductBannerText: Attribute.String;
+    highlightProductCTAText: Attribute.String;
+    highlightProductCTAUrl: Attribute.String;
+    highlightProductImg: Attribute.Media<'images'>;
+    highlightProductName: Attribute.String;
+    icon: Attribute.Media<'images'>;
+    isLinkUrlExternal: Attribute.Boolean & Attribute.DefaultTo<false>;
+    isVisible: Attribute.Boolean & Attribute.DefaultTo<true>;
+    linkToUrl: Attribute.String;
     name: Attribute.String;
-    url: Attribute.String;
-    withSubMenu: Attribute.Boolean & Attribute.DefaultTo<false>;
-    subMenu: Attribute.Component<'block.header-sub-menu', true>;
-    subMenuButtons: Attribute.Component<'block.header-sub-menu-buttons', true>;
+    sectionIds: Attribute.JSON;
+    showSubMenuSectionImages: Attribute.Boolean & Attribute.DefaultTo<true>;
   };
 }
 
@@ -202,63 +225,40 @@ export interface BlockHeaderSubMenuButtons extends Schema.Component {
     displayName: 'Header - subMenuButtons';
   };
   attributes: {
+    buttonType: Attribute.Enumeration<['primary', 'secondary', 'outline']>;
+    icon: Attribute.Media<'images'>;
+    isExternal: Attribute.Boolean & Attribute.DefaultTo<false>;
     text: Attribute.String;
     url: Attribute.Text;
-    isExternal: Attribute.Boolean & Attribute.DefaultTo<false>;
-    icon: Attribute.Media;
-    buttonType: Attribute.Enumeration<['primary', 'secondary', 'outline']>;
   };
 }
 
 export interface BlockHeaderSubMenuSections extends Schema.Component {
   collectionName: 'components_block_header_sub_menu_sections';
   info: {
+    description: '';
     displayName: 'Header - subMenuSections';
-    description: '';
   };
   attributes: {
-    image: Attribute.Media;
-    name: Attribute.String;
     banner: Attribute.Component<'elements.badge'>;
-    links: Attribute.Component<'block.header-navigation-links', true>;
-    subMenuSectionId: Attribute.String & Attribute.Required;
-    showImage: Attribute.Boolean & Attribute.DefaultTo<true>;
     headerLink: Attribute.Component<'elements.url'>;
-  };
-}
-
-export interface BlockHeaderSubMenu extends Schema.Component {
-  collectionName: 'components_block_header_sub_menus';
-  info: {
-    displayName: 'Header - subMenu';
-    description: '';
-  };
-  attributes: {
+    image: Attribute.Media<'images'>;
+    links: Attribute.Component<'block.header-navigation-links', true>;
     name: Attribute.String;
-    icon: Attribute.Media;
-    isVisible: Attribute.Boolean & Attribute.DefaultTo<true>;
-    sectionIds: Attribute.JSON;
-    highlightProductImg: Attribute.Media;
-    highlightProductName: Attribute.String;
-    highlightProductBannerImg: Attribute.Media;
-    highlightProductBannerText: Attribute.String;
-    highlightProductCTAText: Attribute.String;
-    highlightProductCTAUrl: Attribute.String;
-    showSubMenuSectionImages: Attribute.Boolean & Attribute.DefaultTo<true>;
-    linkToUrl: Attribute.String;
-    isLinkUrlExternal: Attribute.Boolean & Attribute.DefaultTo<false>;
+    showImage: Attribute.Boolean & Attribute.DefaultTo<true>;
+    subMenuSectionId: Attribute.String & Attribute.Required;
   };
 }
 
 export interface BlockHeaderTopHeader extends Schema.Component {
   collectionName: 'components_block_header_top_headers';
   info: {
-    displayName: 'Header - topHeader';
     description: '';
+    displayName: 'Header - topHeader';
   };
   attributes: {
-    offerText: Attribute.String;
     offerCode: Attribute.String;
+    offerText: Attribute.String;
     showGoogleReviews: Attribute.Boolean & Attribute.DefaultTo<true>;
     showTopHeader: Attribute.Boolean & Attribute.DefaultTo<true>;
   };
@@ -270,24 +270,24 @@ export interface BlockHereToHelp extends Schema.Component {
     displayName: 'hereToHelp';
   };
   attributes: {
-    heading: Attribute.String;
-    subHeading: Attribute.Text;
-    leftImage: Attribute.Media;
-    rightImage: Attribute.Media;
     description: Attribute.Component<'elements.bullet-points', true>;
+    heading: Attribute.String;
+    leftImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    rightImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    subHeading: Attribute.Text;
   };
 }
 
 export interface BlockHowItWorkComponent extends Schema.Component {
   collectionName: 'components_block_how_it_work_components';
   info: {
-    displayName: 'howItWorkComponent';
     description: '';
+    displayName: 'howItWorkComponent';
   };
   attributes: {
+    buttonLink: Attribute.Component<'elements.link'>;
     heading: Attribute.String;
     steps: Attribute.Component<'elements.list-item-with-two-images', true>;
-    buttonLink: Attribute.Component<'elements.link'>;
   };
 }
 
@@ -297,63 +297,41 @@ export interface BlockHowItWorksStep extends Schema.Component {
     displayName: 'howItWorksStep';
   };
   attributes: {
-    heading: Attribute.String;
     content: Attribute.RichText;
-    coverImg: Attribute.Media;
+    coverImg: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     coverImgAlignment: Attribute.String;
+    heading: Attribute.String;
   };
 }
 
 export interface BlockInstaPostSection extends Schema.Component {
   collectionName: 'components_block_insta_post_sections';
   info: {
-    displayName: 'instaPostSection';
     description: '';
+    displayName: 'instaPostSection';
   };
   attributes: {
     heading: Attribute.String;
-    instagramLink: Attribute.Component<'elements.link'>;
     images: Attribute.Component<'elements.advance-image', true>;
+    instagramLink: Attribute.Component<'elements.link'>;
   };
 }
 
 export interface BlockKaizenProcess extends Schema.Component {
   collectionName: 'components_block_kaizen_processes';
   info: {
-    displayName: 'kaizenProcess';
     description: '';
+    displayName: 'kaizenProcess';
   };
   attributes: {
-    heading: Attribute.String;
-    point1: Attribute.Text;
-    point2: Attribute.Text;
     buttonLink: Attribute.Component<'elements.link'>;
+    coverImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    coverImgAlignment: Attribute.String;
+    heading: Attribute.String;
     note1: Attribute.Text;
     note2: Attribute.Text;
-    coverImgAlignment: Attribute.String;
-    coverImage: Attribute.Media;
-  };
-}
-
-export interface BlockLandingHeroCard extends Schema.Component {
-  collectionName: 'components_block_landing_hero_cards';
-  info: {
-    displayName: 'Landing - heroCard';
-    description: '';
-  };
-  attributes: {
-    metaTitle: Attribute.String;
-    title: Attribute.String;
-    subTitle: Attribute.Text;
-    bgColor: Attribute.String;
-    image: Attribute.Media;
-    link: Attribute.Component<'elements.url'>;
-    metaTitleSizeInPx: Attribute.Component<'elements.responsive-size-input'>;
-    titleSizePx: Attribute.Component<'elements.responsive-size-input'>;
-    subTitleSizePx: Attribute.Component<'elements.responsive-size-input'>;
-    metaTitleColor: Attribute.Component<'elements.color'>;
-    titleColor: Attribute.Component<'elements.color'>;
-    subTitleColor: Attribute.Component<'elements.color'>;
+    point1: Attribute.Text;
+    point2: Attribute.Text;
   };
 }
 
@@ -368,18 +346,40 @@ export interface BlockLandingHero extends Schema.Component {
   };
 }
 
+export interface BlockLandingHeroCard extends Schema.Component {
+  collectionName: 'components_block_landing_hero_cards';
+  info: {
+    description: '';
+    displayName: 'Landing - heroCard';
+  };
+  attributes: {
+    bgColor: Attribute.String;
+    image: Attribute.Media<'images'>;
+    link: Attribute.Component<'elements.url'>;
+    metaTitle: Attribute.String;
+    metaTitleColor: Attribute.Component<'elements.color'>;
+    metaTitleSizeInPx: Attribute.Component<'elements.responsive-size-input'>;
+    subTitle: Attribute.Text;
+    subTitleColor: Attribute.Component<'elements.color'>;
+    subTitleSizePx: Attribute.Component<'elements.responsive-size-input'>;
+    title: Attribute.String;
+    titleColor: Attribute.Component<'elements.color'>;
+    titleSizePx: Attribute.Component<'elements.responsive-size-input'>;
+  };
+}
+
 export interface BlockLandingPageCover extends Schema.Component {
   collectionName: 'components_block_landing_page_covers';
   info: {
-    displayName: 'LandingPageCover';
     description: '';
+    displayName: 'LandingPageCover';
   };
   attributes: {
+    coverImg: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    coverImgMobile: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     heading: Attribute.String;
-    subHeading: Attribute.String;
-    coverImg: Attribute.Media;
     productLinks: Attribute.Component<'elements.link', true>;
-    coverImgMobile: Attribute.Media;
+    subHeading: Attribute.String;
   };
 }
 
@@ -389,10 +389,10 @@ export interface BlockMyAccountCard extends Schema.Component {
     displayName: 'MyAccountCard';
   };
   attributes: {
-    heading: Attribute.String;
-    headerImage: Attribute.Media;
-    description: Attribute.Text;
     buttonLinks: Attribute.Component<'elements.link', true>;
+    description: Attribute.Text;
+    headerImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    heading: Attribute.String;
   };
 }
 
@@ -402,10 +402,10 @@ export interface BlockOpenHour extends Schema.Component {
     displayName: 'openHour';
   };
   attributes: {
+    headerImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     heading: Attribute.String;
     points: Attribute.Component<'elements.bullet-points', true>;
     qa: Attribute.Component<'elements.qa', true>;
-    headerImage: Attribute.Media;
   };
 }
 
@@ -415,8 +415,8 @@ export interface BlockOrderSampleCard extends Schema.Component {
     displayName: 'OrderSampleCard';
   };
   attributes: {
+    headerImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     heading: Attribute.String;
-    headerImage: Attribute.Media;
     points: Attribute.Component<'elements.bullet-points', true>;
   };
 }
@@ -424,25 +424,27 @@ export interface BlockOrderSampleCard extends Schema.Component {
 export interface BlockPageCover extends Schema.Component {
   collectionName: 'components_block_page_covers';
   info: {
-    displayName: 'PageCover';
     description: '';
+    displayName: 'PageCover';
   };
   attributes: {
+    desktopImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Attribute.Required;
     heading: Attribute.String & Attribute.Required;
-    desktopImage: Attribute.Media & Attribute.Required;
-    mobileImage: Attribute.Media & Attribute.Required;
+    mobileImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Attribute.Required;
   };
 }
 
 export interface BlockPageHeading extends Schema.Component {
   collectionName: 'components_block_page_headings';
   info: {
-    displayName: 'PageHeading';
     description: '';
+    displayName: 'PageHeading';
   };
   attributes: {
     heading: Attribute.String & Attribute.Required;
-    image: Attribute.Media;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     subHeading: Attribute.RichText;
   };
 }
@@ -450,57 +452,57 @@ export interface BlockPageHeading extends Schema.Component {
 export interface BlockPartners extends Schema.Component {
   collectionName: 'components_block_partners';
   info: {
+    description: '';
     displayName: 'Partners';
     icon: 'briefcase';
-    description: '';
   };
   attributes: {
     heading: Attribute.String;
-    subHeading: Attribute.String;
     logos: Attribute.Component<'elements.new-image', true>;
+    subHeading: Attribute.String;
   };
 }
 
 export interface BlockPrintSos extends Schema.Component {
   collectionName: 'components_block_print_sos';
   info: {
-    displayName: 'PrintSos';
     description: '';
+    displayName: 'PrintSos';
   };
   attributes: {
     contactLink: Attribute.Component<'elements.link', true>;
+    coverImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    description: Attribute.RichText;
     heading: Attribute.String & Attribute.Required;
     subHeading: Attribute.String & Attribute.Required;
-    coverImage: Attribute.Media;
-    description: Attribute.RichText;
   };
 }
 
 export interface BlockPrintWithKaizen extends Schema.Component {
   collectionName: 'components_block_print_with_kaizens';
   info: {
-    displayName: 'printWithKaizen';
     description: '';
+    displayName: 'printWithKaizen';
   };
   attributes: {
-    heading: Attribute.String;
-    specifications: Attribute.Component<'elements.list-item-with-image', true>;
-    metaTitle: Attribute.String;
-    title: Attribute.String;
     description: Attribute.RichText;
+    heading: Attribute.String;
+    metaTitle: Attribute.String;
+    specifications: Attribute.Component<'elements.list-item-with-image', true>;
+    title: Attribute.String;
   };
 }
 
 export interface BlockPrintspiration extends Schema.Component {
   collectionName: 'components_block_printspirations';
   info: {
-    displayName: 'printspiration';
     description: '';
+    displayName: 'printspiration';
   };
   attributes: {
-    title: Attribute.String;
     heading: Attribute.String;
-    images: Attribute.Media;
+    images: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    title: Attribute.String;
   };
 }
 
@@ -510,10 +512,10 @@ export interface BlockProdSpecsListImageWithCoverImg extends Schema.Component {
     displayName: 'ProdSpecsListItemWithCoverImg';
   };
   attributes: {
+    coverImg: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     heading: Attribute.String;
+    itemImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     subHeading: Attribute.Text;
-    coverImg: Attribute.Media;
-    itemImage: Attribute.Media;
   };
 }
 
@@ -523,11 +525,11 @@ export interface BlockProductCardSection extends Schema.Component {
     displayName: 'productCardSection';
   };
   attributes: {
-    heading: Attribute.String;
-    subHeading: Attribute.String;
     description: Attribute.String;
     exploreRangeCards: Attribute.Component<'block.explore-range-cards', true>;
-    headerImage: Attribute.Media;
+    headerImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    heading: Attribute.String;
+    subHeading: Attribute.String;
   };
 }
 
@@ -537,7 +539,7 @@ export interface BlockProductCollectionPagePointers extends Schema.Component {
     displayName: 'product - collectionPagePointers';
   };
   attributes: {
-    img: Attribute.Media;
+    img: Attribute.Media<'images'>;
     point: Attribute.String;
   };
 }
@@ -545,13 +547,13 @@ export interface BlockProductCollectionPagePointers extends Schema.Component {
 export interface BlockProductDesignTemplatePointers extends Schema.Component {
   collectionName: 'components_block_product_design_template_pointers';
   info: {
-    displayName: 'product - designTemplatePointers';
     description: '';
+    displayName: 'product - designTemplatePointers';
   };
   attributes: {
     explanation: Attribute.String;
-    pdf: Attribute.Media;
-    indesign: Attribute.Media;
+    indesign: Attribute.Media<'files'>;
+    pdf: Attribute.Media<'files'>;
   };
 }
 
@@ -581,8 +583,6 @@ export interface BlockProductFaq extends Schema.Component {
     displayName: 'product - faq';
   };
   attributes: {
-    question: Attribute.String;
-    mdQuestion: Attribute.RichText;
     answer: Attribute.RichText &
       Attribute.CustomField<
         'plugin::ckeditor5.CKEditor',
@@ -590,6 +590,8 @@ export interface BlockProductFaq extends Schema.Component {
           preset: 'default';
         }
       >;
+    mdQuestion: Attribute.RichText;
+    question: Attribute.String;
   };
 }
 
@@ -599,55 +601,18 @@ export interface BlockProductImages extends Schema.Component {
     displayName: 'product - Images';
   };
   attributes: {
-    images: Attribute.Media;
-    rightIcon: Attribute.Media;
+    images: Attribute.Media<'images', true>;
+    leftBannerImage: Attribute.Media<'images'>;
     leftBannerText: Attribute.String;
-    leftBannerImage: Attribute.Media;
-  };
-}
-
-export interface BlockProductInfoPointers extends Schema.Component {
-  collectionName: 'components_block_product_info_pointers';
-  info: {
-    displayName: 'product - info pointers';
-  };
-  attributes: {
-    iconImg: Attribute.Media;
-    textInBold: Attribute.String;
-    explanation: Attribute.String;
-    mdText: Attribute.RichText;
-  };
-}
-
-export interface BlockProductInfoSpecifications extends Schema.Component {
-  collectionName: 'components_block_product_info_specifications';
-  info: {
-    displayName: 'product-infoSpecifications';
-  };
-  attributes: {
-    productSpecification: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          preset: 'default';
-        }
-      >;
-    needHelpText: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          preset: 'default';
-        }
-      >;
-    pointers: Attribute.Component<'block.product-specification-pointers', true>;
+    rightIcon: Attribute.Media<'images'>;
   };
 }
 
 export interface BlockProductInfo extends Schema.Component {
   collectionName: 'components_block_product_infos';
   info: {
-    displayName: 'product - info';
     description: '';
+    displayName: 'product - info';
   };
   attributes: {
     description: Attribute.RichText &
@@ -670,6 +635,59 @@ export interface BlockProductInfo extends Schema.Component {
   };
 }
 
+export interface BlockProductInfoPointers extends Schema.Component {
+  collectionName: 'components_block_product_info_pointers';
+  info: {
+    displayName: 'product - info pointers';
+  };
+  attributes: {
+    explanation: Attribute.String;
+    iconImg: Attribute.Media<'images'>;
+    mdText: Attribute.RichText;
+    textInBold: Attribute.String;
+  };
+}
+
+export interface BlockProductInfoSpecifications extends Schema.Component {
+  collectionName: 'components_block_product_info_specifications';
+  info: {
+    displayName: 'product-infoSpecifications';
+  };
+  attributes: {
+    needHelpText: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'default';
+        }
+      >;
+    pointers: Attribute.Component<'block.product-specification-pointers', true>;
+    productSpecification: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'default';
+        }
+      >;
+  };
+}
+
+export interface BlockProductSpecification extends Schema.Component {
+  collectionName: 'components_block_product_specifications';
+  info: {
+    description: '';
+    displayName: 'ProductSpecification';
+  };
+  attributes: {
+    content: Attribute.RichText;
+    coverImg: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Attribute.Required;
+    coverImgAlignment: Attribute.String;
+    description: Attribute.Component<'elements.list-item-with-image', true>;
+    heading: Attribute.String & Attribute.Required;
+  };
+}
+
 export interface BlockProductSpecificationPointers extends Schema.Component {
   collectionName: 'components_block_product_specification_pointers';
   info: {
@@ -684,59 +702,44 @@ export interface BlockProductSpecificationWithTwosubHeadings
   extends Schema.Component {
   collectionName: 'components_block_product_specs_with_two_sub_headings';
   info: {
-    displayName: 'ProductSpecsWithCarousel';
     description: '';
+    displayName: 'ProductSpecsWithCarousel';
   };
   attributes: {
-    heading: Attribute.String;
-    coverImgAlignment: Attribute.String;
     content: Attribute.RichText;
+    coverImgAlignment: Attribute.String;
     description: Attribute.Component<
       'block.prod-specs-list-image-with-cover-img',
       true
     >;
-  };
-}
-
-export interface BlockProductSpecification extends Schema.Component {
-  collectionName: 'components_block_product_specifications';
-  info: {
-    displayName: 'ProductSpecification';
-    description: '';
-  };
-  attributes: {
-    heading: Attribute.String & Attribute.Required;
-    description: Attribute.Component<'elements.list-item-with-image', true>;
-    coverImg: Attribute.Media & Attribute.Required;
-    coverImgAlignment: Attribute.String;
-    content: Attribute.RichText;
+    heading: Attribute.String;
   };
 }
 
 export interface BlockTrackOrder extends Schema.Component {
   collectionName: 'components_block_track_orders';
   info: {
-    displayName: 'TrackOrderCard';
     description: '';
+    displayName: 'TrackOrderCard';
   };
   attributes: {
-    heading: Attribute.String;
-    headerImage: Attribute.Media;
-    points: Attribute.Component<'elements.bullet-points', true>;
     buttonLink: Attribute.Component<'elements.link'>;
+    headerImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    heading: Attribute.String;
+    points: Attribute.Component<'elements.bullet-points', true>;
   };
 }
 
 export interface BlockVideoSection extends Schema.Component {
   collectionName: 'components_block_video_sections';
   info: {
-    displayName: 'videoSection';
     description: '';
+    displayName: 'videoSection';
   };
   attributes: {
     heading: Attribute.String;
     subHeading: Attribute.Text;
-    video: Attribute.Media;
+    video: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 
@@ -746,21 +749,22 @@ export interface ElementsAdvanceImage extends Schema.Component {
     displayName: 'advanceImage';
   };
   attributes: {
-    image: Attribute.Media;
-    type: Attribute.Enumeration<['reel', 'multiple-images', 'image']>;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     imageUrl: Attribute.Component<'elements.link'>;
+    type: Attribute.Enumeration<['reel', 'multiple-images', 'image']>;
   };
 }
 
 export interface ElementsBadge extends Schema.Component {
   collectionName: 'components_elements_badges';
   info: {
-    displayName: 'Banner';
     description: '';
+    displayName: 'Banner';
   };
   attributes: {
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Attribute.Required;
     text: Attribute.String & Attribute.Required;
-    image: Attribute.Media & Attribute.Required;
   };
 }
 
@@ -775,6 +779,21 @@ export interface ElementsBulletPoints extends Schema.Component {
   };
 }
 
+export interface ElementsCard extends Schema.Component {
+  collectionName: 'components_elements_cards';
+  info: {
+    description: '';
+    displayName: 'Card';
+  };
+  attributes: {
+    backgroundImage: Attribute.Component<'elements.new-image'>;
+    content: Attribute.Text;
+    headerImage: Attribute.Component<'elements.new-image'>;
+    heading: Attribute.String;
+    subheading: Attribute.String;
+  };
+}
+
 export interface ElementsCardWithImageItem extends Schema.Component {
   collectionName: 'components_elements_card_with_image_items';
   info: {
@@ -782,25 +801,10 @@ export interface ElementsCardWithImageItem extends Schema.Component {
     icon: 'picture';
   };
   attributes: {
+    headerImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     heading: Attribute.String;
-    subHeading: Attribute.String;
     listItem: Attribute.Component<'elements.list-item-with-image', true>;
-    headerImage: Attribute.Media;
-  };
-}
-
-export interface ElementsCard extends Schema.Component {
-  collectionName: 'components_elements_cards';
-  info: {
-    displayName: 'Card';
-    description: '';
-  };
-  attributes: {
-    heading: Attribute.String;
-    subheading: Attribute.String;
-    content: Attribute.Text;
-    headerImage: Attribute.Component<'elements.new-image'>;
-    backgroundImage: Attribute.Component<'elements.new-image'>;
+    subHeading: Attribute.String;
   };
 }
 
@@ -820,8 +824,8 @@ export interface ElementsFile extends Schema.Component {
     displayName: 'file';
   };
   attributes: {
+    file: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     name: Attribute.String;
-    file: Attribute.Media;
   };
 }
 
@@ -842,78 +846,79 @@ export interface ElementsImage extends Schema.Component {
     displayName: 'image';
   };
   attributes: {
-    src: Attribute.String & Attribute.Required;
     alt: Attribute.String & Attribute.Required;
-    isLink: Attribute.Boolean & Attribute.DefaultTo<false>;
-    url: Attribute.String;
     isExternal: Attribute.Boolean & Attribute.DefaultTo<false>;
+    isLink: Attribute.Boolean & Attribute.DefaultTo<false>;
+    src: Attribute.String & Attribute.Required;
+    url: Attribute.String;
   };
 }
 
 export interface ElementsLink extends Schema.Component {
   collectionName: 'components_elements_links';
   info: {
-    displayName: 'link';
     description: '';
+    displayName: 'link';
   };
   attributes: {
-    name: Attribute.String;
-    isUrl: Attribute.Boolean & Attribute.DefaultTo<true>;
-    url: Attribute.String;
+    icon: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     isExternal: Attribute.Boolean & Attribute.DefaultTo<false>;
-    icon: Attribute.Media;
+    isUrl: Attribute.Boolean & Attribute.DefaultTo<true>;
+    name: Attribute.String;
+    url: Attribute.String;
   };
 }
 
 export interface ElementsListItemWithImage extends Schema.Component {
   collectionName: 'components_elements_list_item_with_images';
   info: {
-    displayName: 'listItemWithImage';
     description: '';
+    displayName: 'listItemWithImage';
   };
   attributes: {
     heading: Attribute.String;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     subHeading: Attribute.Text & Attribute.Required;
-    image: Attribute.Media;
   };
 }
 
 export interface ElementsListItemWithTwoImages extends Schema.Component {
   collectionName: 'components_block_list_item_with_two_images';
   info: {
-    displayName: 'listItemWithTwoImages';
     description: '';
+    displayName: 'listItemWithTwoImages';
   };
   attributes: {
+    activeImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     heading: Attribute.String;
     subHeading: Attribute.Text;
-    activeImage: Attribute.Media;
   };
 }
 
 export interface ElementsNewImage extends Schema.Component {
   collectionName: 'components_elements_new_images';
   info: {
-    displayName: 'NewImage';
     description: '';
+    displayName: 'NewImage';
   };
   attributes: {
-    image: Attribute.Media & Attribute.Required;
-    url: Attribute.String;
-    isUrlExternal: Attribute.Boolean;
     alt: Attribute.String & Attribute.Required;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Attribute.Required;
+    isUrlExternal: Attribute.Boolean;
+    url: Attribute.String;
   };
 }
 
 export interface ElementsQa extends Schema.Component {
   collectionName: 'components_elements_qas';
   info: {
-    displayName: 'QA';
     description: '';
+    displayName: 'QA';
   };
   attributes: {
-    question: Attribute.String & Attribute.Required;
     answer: Attribute.RichText;
+    question: Attribute.String & Attribute.Required;
   };
 }
 
@@ -923,8 +928,8 @@ export interface ElementsResponsiveImage extends Schema.Component {
     displayName: 'ResponsiveImage';
   };
   attributes: {
-    desktopImage: Attribute.Media;
-    mobileImage: Attribute.Media;
+    desktopImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    mobileImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 
@@ -935,25 +940,25 @@ export interface ElementsResponsiveSizeInput extends Schema.Component {
   };
   attributes: {
     baseSize: Attribute.Decimal;
+    desktop: Attribute.Decimal;
     mobile: Attribute.Decimal;
     tablet: Attribute.Decimal;
-    desktop: Attribute.Decimal;
   };
 }
 
 export interface ElementsSection extends Schema.Component {
   collectionName: 'components_elements_sections';
   info: {
-    displayName: 'Section';
     description: '';
+    displayName: 'Section';
   };
   attributes: {
-    heading: Attribute.String;
-    subheading: Attribute.String;
-    points: Attribute.Component<'elements.bullet-points', true>;
-    merchandiseCollection: Attribute.Component<'elements.file'>;
     ecoCollection: Attribute.Component<'elements.file'>;
+    heading: Attribute.String;
+    merchandiseCollection: Attribute.Component<'elements.file'>;
+    points: Attribute.Component<'elements.bullet-points', true>;
     premiumCollection: Attribute.Component<'elements.file'>;
+    subheading: Attribute.String;
   };
 }
 
@@ -963,9 +968,9 @@ export interface ElementsSimpleButton extends Schema.Component {
     displayName: 'simple button';
   };
   attributes: {
+    isExternal: Attribute.Boolean;
     text: Attribute.String;
     url: Attribute.String;
-    isExternal: Attribute.Boolean;
   };
 }
 
@@ -975,8 +980,8 @@ export interface ElementsTextAndImage extends Schema.Component {
     displayName: 'textAndImage';
   };
   attributes: {
+    image: Attribute.Media<'images'>;
     text: Attribute.Text;
-    image: Attribute.Media;
   };
 }
 
@@ -986,8 +991,8 @@ export interface ElementsUrl extends Schema.Component {
     displayName: 'url';
   };
   attributes: {
-    url: Attribute.String;
     isExternal: Attribute.Boolean & Attribute.DefaultTo<false>;
+    url: Attribute.String;
   };
 }
 
@@ -998,6 +1003,12 @@ export interface SharedMetaSocial extends Schema.Component {
     icon: 'project-diagram';
   };
   attributes: {
+    description: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 65;
+      }>;
+    image: Attribute.Media<'images' | 'files' | 'videos'>;
     socialNetwork: Attribute.Enumeration<['Facebook', 'Twitter']> &
       Attribute.Required;
     title: Attribute.String &
@@ -1005,32 +1016,26 @@ export interface SharedMetaSocial extends Schema.Component {
       Attribute.SetMinMaxLength<{
         maxLength: 60;
       }>;
-    description: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 65;
-      }>;
-    image: Attribute.Media;
   };
 }
 
 export interface SharedSeo extends Schema.Component {
   collectionName: 'components_shared_seos';
   info: {
+    description: '';
     displayName: 'seo';
     icon: 'search';
-    description: '';
   };
   attributes: {
-    metaTitle: Attribute.String & Attribute.Required;
-    metaDescription: Attribute.String & Attribute.Required;
-    metaImage: Attribute.Media;
-    metaSocial: Attribute.Component<'shared.meta-social', true>;
-    keywords: Attribute.Text;
-    metaRobots: Attribute.String;
-    structuredData: Attribute.JSON;
-    metaViewport: Attribute.String;
     canonicalURL: Attribute.String;
+    keywords: Attribute.Text;
+    metaDescription: Attribute.String & Attribute.Required;
+    metaImage: Attribute.Media<'images' | 'files' | 'videos'>;
+    metaRobots: Attribute.String;
+    metaSocial: Attribute.Component<'shared.meta-social', true>;
+    metaTitle: Attribute.String & Attribute.Required;
+    metaViewport: Attribute.String;
+    structuredData: Attribute.JSON;
   };
 }
 
@@ -1048,19 +1053,19 @@ declare module '@strapi/types' {
       'block.explore-categories': BlockExploreCategories;
       'block.explore-range-cards': BlockExploreRangeCards;
       'block.faq': BlockFaq;
-      'block.header-navigation-links': BlockHeaderNavigationLinks;
       'block.header-navigation': BlockHeaderNavigation;
+      'block.header-navigation-links': BlockHeaderNavigationLinks;
+      'block.header-sub-menu': BlockHeaderSubMenu;
       'block.header-sub-menu-buttons': BlockHeaderSubMenuButtons;
       'block.header-sub-menu-sections': BlockHeaderSubMenuSections;
-      'block.header-sub-menu': BlockHeaderSubMenu;
       'block.header-top-header': BlockHeaderTopHeader;
       'block.here-to-help': BlockHereToHelp;
       'block.how-it-work-component': BlockHowItWorkComponent;
       'block.how-it-works-step': BlockHowItWorksStep;
       'block.insta-post-section': BlockInstaPostSection;
       'block.kaizen-process': BlockKaizenProcess;
-      'block.landing-hero-card': BlockLandingHeroCard;
       'block.landing-hero': BlockLandingHero;
+      'block.landing-hero-card': BlockLandingHeroCard;
       'block.landing-page-cover': BlockLandingPageCover;
       'block.my-account-card': BlockMyAccountCard;
       'block.open-hour': BlockOpenHour;
@@ -1078,19 +1083,19 @@ declare module '@strapi/types' {
       'block.product-design-templates': BlockProductDesignTemplates;
       'block.product-faq': BlockProductFaq;
       'block.product-images': BlockProductImages;
+      'block.product-info': BlockProductInfo;
       'block.product-info-pointers': BlockProductInfoPointers;
       'block.product-info-specifications': BlockProductInfoSpecifications;
-      'block.product-info': BlockProductInfo;
+      'block.product-specification': BlockProductSpecification;
       'block.product-specification-pointers': BlockProductSpecificationPointers;
       'block.product-specification-with-twosub-headings': BlockProductSpecificationWithTwosubHeadings;
-      'block.product-specification': BlockProductSpecification;
       'block.track-order': BlockTrackOrder;
       'block.video-section': BlockVideoSection;
       'elements.advance-image': ElementsAdvanceImage;
       'elements.badge': ElementsBadge;
       'elements.bullet-points': ElementsBulletPoints;
-      'elements.card-with-image-item': ElementsCardWithImageItem;
       'elements.card': ElementsCard;
+      'elements.card-with-image-item': ElementsCardWithImageItem;
       'elements.color': ElementsColor;
       'elements.file': ElementsFile;
       'elements.heading-section': ElementsHeadingSection;

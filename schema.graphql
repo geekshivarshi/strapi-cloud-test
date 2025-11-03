@@ -2386,98 +2386,6 @@ type ContactUsRelationResponseCollection {
   data: [ContactUsEntity!]!
 }
 
-type ContentReleasesRelease {
-  actions(filters: ContentReleasesReleaseActionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ContentReleasesReleaseActionRelationResponseCollection
-  createdAt: DateTime
-  name: String!
-  releasedAt: DateTime
-  updatedAt: DateTime
-}
-
-type ContentReleasesReleaseAction {
-  contentType: String!
-  createdAt: DateTime
-  entry: GenericMorph
-  locale: String
-  release: ContentReleasesReleaseEntityResponse
-  type: ENUM_CONTENTRELEASESRELEASEACTION_TYPE!
-  updatedAt: DateTime
-}
-
-type ContentReleasesReleaseActionEntity {
-  attributes: ContentReleasesReleaseAction
-  id: ID
-}
-
-type ContentReleasesReleaseActionEntityResponse {
-  data: ContentReleasesReleaseActionEntity
-}
-
-type ContentReleasesReleaseActionEntityResponseCollection {
-  data: [ContentReleasesReleaseActionEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input ContentReleasesReleaseActionFiltersInput {
-  and: [ContentReleasesReleaseActionFiltersInput]
-  contentType: StringFilterInput
-  createdAt: DateTimeFilterInput
-  id: IDFilterInput
-  locale: StringFilterInput
-  not: ContentReleasesReleaseActionFiltersInput
-  or: [ContentReleasesReleaseActionFiltersInput]
-  release: ContentReleasesReleaseFiltersInput
-  type: StringFilterInput
-  updatedAt: DateTimeFilterInput
-}
-
-input ContentReleasesReleaseActionInput {
-  contentType: String
-  locale: String
-  release: ID
-  type: ENUM_CONTENTRELEASESRELEASEACTION_TYPE
-}
-
-type ContentReleasesReleaseActionRelationResponseCollection {
-  data: [ContentReleasesReleaseActionEntity!]!
-}
-
-type ContentReleasesReleaseEntity {
-  attributes: ContentReleasesRelease
-  id: ID
-}
-
-type ContentReleasesReleaseEntityResponse {
-  data: ContentReleasesReleaseEntity
-}
-
-type ContentReleasesReleaseEntityResponseCollection {
-  data: [ContentReleasesReleaseEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input ContentReleasesReleaseFiltersInput {
-  actions: ContentReleasesReleaseActionFiltersInput
-  and: [ContentReleasesReleaseFiltersInput]
-  createdAt: DateTimeFilterInput
-  id: IDFilterInput
-  name: StringFilterInput
-  not: ContentReleasesReleaseFiltersInput
-  or: [ContentReleasesReleaseFiltersInput]
-  releasedAt: DateTimeFilterInput
-  updatedAt: DateTimeFilterInput
-}
-
-input ContentReleasesReleaseInput {
-  actions: [ID]
-  name: String
-  releasedAt: DateTime
-}
-
-type ContentReleasesReleaseRelationResponseCollection {
-  data: [ContentReleasesReleaseEntity!]!
-}
-
 type CookiePolicy {
   content: String
   createdAt: DateTime
@@ -2640,11 +2548,6 @@ enum ENUM_COMPONENTELEMENTSADVANCEIMAGE_TYPE {
 enum ENUM_COMPONENTSHAREDMETASOCIAL_SOCIALNETWORK {
   Facebook
   Twitter
-}
-
-enum ENUM_CONTENTRELEASESRELEASEACTION_TYPE {
-  publish
-  unpublish
 }
 
 type EcoRange {
@@ -2945,7 +2848,7 @@ type ForgotPasswordRelationResponseCollection {
   data: [ForgotPasswordEntity!]!
 }
 
-union GenericMorph = ArtworkStep | Auth | BannerAndSignage | BenefitsOfKaizen | Booklet | BrandedMerch | BusinessCard | CanvaPrintEnquiry | Category | ChatToKaibot | ComponentBlockCanvaArtworkStep | ComponentBlockCanvaPrintSos | ComponentBlockCategoryProductOverrides | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockHeaderNavigation | ComponentBlockHeaderNavigationLinks | ComponentBlockHeaderSubMenu | ComponentBlockHeaderSubMenuButtons | ComponentBlockHeaderSubMenuSections | ComponentBlockHeaderTopHeader | ComponentBlockHereToHelp | ComponentBlockHowItWorkComponent | ComponentBlockHowItWorksStep | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingHero | ComponentBlockLandingHeroCard | ComponentBlockLandingPageCover | ComponentBlockMyAccountCard | ComponentBlockOpenHour | ComponentBlockOrderSampleCard | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProdSpecsListImageWithCoverImg | ComponentBlockProductCardSection | ComponentBlockProductCollectionPagePointers | ComponentBlockProductDesignTemplatePointers | ComponentBlockProductDesignTemplates | ComponentBlockProductFaq | ComponentBlockProductImages | ComponentBlockProductInfo | ComponentBlockProductInfoPointers | ComponentBlockProductInfoSpecifications | ComponentBlockProductSpecification | ComponentBlockProductSpecificationPointers | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockTrackOrder | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsColor | ComponentElementsFile | ComponentElementsHeadingSection | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsListItemWithTwoImages | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsResponsiveImage | ComponentElementsResponsiveSizeInput | ComponentElementsSection | ComponentElementsSimpleButton | ComponentElementsTextAndImage | ComponentElementsUrl | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | ContentReleasesRelease | ContentReleasesReleaseAction | CookiePolicy | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | ForgotPassword | GetAQuote | GoogleReview | Header | HeaderNew | HereToHelp | HowItWork | HowItWorksStep | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | KaizenPromisecard | Landing | Login | MarketingAndPromo | NeedADesign | NeedDesign | NewCollectionPage | Notepad | OpenHour | OrderSample | PaymentMethod | Poster | PrintEnquiry | PrivacyPolicy | Product | QuickPrintBuy | RequestQuote | ResetPassword | Signup | StationaryAndOffice | Sticker | TermsAndCondition | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = ArtworkStep | Auth | BannerAndSignage | BenefitsOfKaizen | Booklet | BrandedMerch | BusinessCard | CanvaPrintEnquiry | Category | ChatToKaibot | ComponentBlockCanvaArtworkStep | ComponentBlockCanvaPrintSos | ComponentBlockCategoryProductOverrides | ComponentBlockCatergory | ComponentBlockChatToKaibot | ComponentBlockCta | ComponentBlockCustomerReviews | ComponentBlockEcoCard | ComponentBlockExploreCategories | ComponentBlockExploreRangeCards | ComponentBlockFaq | ComponentBlockHeaderNavigation | ComponentBlockHeaderNavigationLinks | ComponentBlockHeaderSubMenu | ComponentBlockHeaderSubMenuButtons | ComponentBlockHeaderSubMenuSections | ComponentBlockHeaderTopHeader | ComponentBlockHereToHelp | ComponentBlockHowItWorkComponent | ComponentBlockHowItWorksStep | ComponentBlockInstaPostSection | ComponentBlockKaizenProcess | ComponentBlockLandingHero | ComponentBlockLandingHeroCard | ComponentBlockLandingPageCover | ComponentBlockMyAccountCard | ComponentBlockOpenHour | ComponentBlockOrderSampleCard | ComponentBlockPageCover | ComponentBlockPageHeading | ComponentBlockPartners | ComponentBlockPrintSos | ComponentBlockPrintWithKaizen | ComponentBlockPrintspiration | ComponentBlockProdSpecsListImageWithCoverImg | ComponentBlockProductCardSection | ComponentBlockProductCollectionPagePointers | ComponentBlockProductDesignTemplatePointers | ComponentBlockProductDesignTemplates | ComponentBlockProductFaq | ComponentBlockProductImages | ComponentBlockProductInfo | ComponentBlockProductInfoPointers | ComponentBlockProductInfoSpecifications | ComponentBlockProductSpecification | ComponentBlockProductSpecificationPointers | ComponentBlockProductSpecificationWithTwosubHeadings | ComponentBlockTrackOrder | ComponentBlockVideoSection | ComponentElementsAdvanceImage | ComponentElementsBadge | ComponentElementsBulletPoints | ComponentElementsCard | ComponentElementsCardWithImageItem | ComponentElementsColor | ComponentElementsFile | ComponentElementsHeadingSection | ComponentElementsImage | ComponentElementsLink | ComponentElementsListItemWithImage | ComponentElementsListItemWithTwoImages | ComponentElementsNewImage | ComponentElementsQa | ComponentElementsResponsiveImage | ComponentElementsResponsiveSizeInput | ComponentElementsSection | ComponentElementsSimpleButton | ComponentElementsTextAndImage | ComponentElementsUrl | ComponentSharedMetaSocial | ComponentSharedSeo | ContactUs | CookiePolicy | CustomerReview | EcoRange | FaqPage | FlyersFoldedLeaflet | Footer | ForgotPassword | GetAQuote | GoogleReview | Header | HeaderNew | HereToHelp | HowItWork | HowItWorksStep | I18NLocale | Industry | KaizenEcoRange | KaizenPromise | KaizenPromisecard | Landing | Login | MarketingAndPromo | NeedADesign | NeedDesign | NewCollectionPage | Notepad | OpenHour | OrderSample | PaymentMethod | Poster | PrintEnquiry | PrivacyPolicy | Product | QuickPrintBuy | RequestQuote | ResetPassword | Signup | StationaryAndOffice | Sticker | TermsAndCondition | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type GetAQuote {
   buttonLink: ComponentElementsLink
@@ -3832,8 +3735,6 @@ type Mutation {
   createBusinessCard(data: BusinessCardInput!): BusinessCardEntityResponse
   createCategory(data: CategoryInput!): CategoryEntityResponse
   createContactUs(data: ContactUsInput!): ContactUsEntityResponse
-  createContentReleasesRelease(data: ContentReleasesReleaseInput!): ContentReleasesReleaseEntityResponse
-  createContentReleasesReleaseAction(data: ContentReleasesReleaseActionInput!): ContentReleasesReleaseActionEntityResponse
   createCookiePolicy(data: CookiePolicyInput!): CookiePolicyEntityResponse
   createFaqPage(data: FaqPageInput!): FaqPageEntityResponse
   createFlyersFoldedLeaflet(data: FlyersFoldedLeafletInput!): FlyersFoldedLeafletEntityResponse
@@ -3879,8 +3780,6 @@ type Mutation {
   deleteCategory(id: ID!): CategoryEntityResponse
   deleteChatToKaibot: ChatToKaibotEntityResponse
   deleteContactUs(id: ID!): ContactUsEntityResponse
-  deleteContentReleasesRelease(id: ID!): ContentReleasesReleaseEntityResponse
-  deleteContentReleasesReleaseAction(id: ID!): ContentReleasesReleaseActionEntityResponse
   deleteCookiePolicy(id: ID!): CookiePolicyEntityResponse
   deleteCustomerReview: CustomerReviewEntityResponse
   deleteEcoRange: EcoRangeEntityResponse
@@ -3956,8 +3855,6 @@ type Mutation {
   updateCategory(data: CategoryInput!, id: ID!): CategoryEntityResponse
   updateChatToKaibot(data: ChatToKaibotInput!): ChatToKaibotEntityResponse
   updateContactUs(data: ContactUsInput!, id: ID!): ContactUsEntityResponse
-  updateContentReleasesRelease(data: ContentReleasesReleaseInput!, id: ID!): ContentReleasesReleaseEntityResponse
-  updateContentReleasesReleaseAction(data: ContentReleasesReleaseActionInput!, id: ID!): ContentReleasesReleaseActionEntityResponse
   updateCookiePolicy(data: CookiePolicyInput!, id: ID!): CookiePolicyEntityResponse
   updateCustomerReview(data: CustomerReviewInput!): CustomerReviewEntityResponse
   updateEcoRange(data: EcoRangeInput!): EcoRangeEntityResponse
@@ -4652,10 +4549,6 @@ type Query {
   chatToKaibot(publicationState: PublicationState = LIVE): ChatToKaibotEntityResponse
   contactUs(id: ID): ContactUsEntityResponse
   contactUses(filters: ContactUsFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ContactUsEntityResponseCollection
-  contentReleasesRelease(id: ID): ContentReleasesReleaseEntityResponse
-  contentReleasesReleaseAction(id: ID): ContentReleasesReleaseActionEntityResponse
-  contentReleasesReleaseActions(filters: ContentReleasesReleaseActionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ContentReleasesReleaseActionEntityResponseCollection
-  contentReleasesReleases(filters: ContentReleasesReleaseFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ContentReleasesReleaseEntityResponseCollection
   cookiePolicies(filters: CookiePolicyFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): CookiePolicyEntityResponseCollection
   cookiePolicy(id: ID): CookiePolicyEntityResponse
   customerReview(publicationState: PublicationState = LIVE): CustomerReviewEntityResponse
