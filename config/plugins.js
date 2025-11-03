@@ -62,6 +62,7 @@ module.exports = ({ env }) => ({
     config: {
       playgroundAlways: false,
       defaultLimit: 20,
+      landingPage: true,
       showCrud: true,
       maxLimit: 200,
       generateArtifacts: true,
