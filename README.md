@@ -105,6 +105,19 @@ strapi-network:
 ```bash
 docker-compose up
 ```
+- update env to connect to local db
+```
+# for local
+DATABASE_CLIENT=postgres
+DATABASE_HOST=localhost
+DATABASE_PORT=5433
+DATABASE_NAME=kaizen
+DATABASE_USERNAME=kaizen
+DATABASE_PASSWORD=kaizen
+DATABASE_SSL=false
+DATABASE_URL=postgres://kaizen:kaizen@localhost:5433/kaizen
+```
+
 3. Populate the local database with the production dump. We have a script for that. Run:
 ```bash
    bash scripts/import_dump.sh
