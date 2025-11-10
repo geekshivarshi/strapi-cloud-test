@@ -197,9 +197,13 @@ async function createProductInStrapi(productData) {
 
     const productIcon = await uploadFileToStrapi(productData.product_icon ? productData.product_icon.file_metadata : null, `products/${name}`);
 
+    // since category page urls already are prefixed with a slash, 
+    // doing this here for consistency and easier comparison
+    const productHandleWithLeadingSlash = productData.handle.startsWith('/') ? productData.handle : `/${productData.handle}`;
+
     const productStrapiData = {
       name: productData.name,
-      customerUrl: productData.handle,
+      customerUrl: productHandleWithLeadingSlash,
       isActive: !productData.is_archived,
       minPrice: productData.min_price,
       defaultPrice: parseFloat(productData.product_configurations?.[0]?.product_pricings?.[0]?.price) || 0,

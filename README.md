@@ -138,6 +138,9 @@ DATABASE_URL=postgres://kaizen:kaizen@localhost:5433/kaizen
 - The script will loop over each product one by one, upload its media to Strapi (skips if media is already present), and then create an entry for the product in Strapi's products table.
 - If some of the products failed for some reason, you can re-run the script to try adding the failed products. (It will skip over already added products.)
 - If the problem still persists, update the values of `offset` and `limit` in the API call to the backend and migrate the products in sets of 5 or 10 at a time.
+
+> Can make the customerUrl and isActive status view only in strapi, if to be managed by our cms
+
 8. Now we can import the categories (and build the relation with our Strapi products):
 > **NOTE:** The category relations are based on the category pages that we have on the website, and have nothing to do with the categories in our backend.
 
@@ -159,15 +162,16 @@ node scripts/import-new-collection-to-category.js
 ```bash
 node scripts/import-old-collection-to-category.js
 ```
+11. Update the permissions of the product and category tables, to allow public user to read the products and category
 
 > Now we should have a local Strapi instance with all the production data (which we got from the dump) and all the category and products data (which we added via API calls from the scripts). Now we will migrate the entire thing to Strapi Cloud.
 >
 > You can take a dump of the local database at this point as a backup with all the new data.
 
-11. Go to Strapi Cloud and create a new project with the same repository.
-12. Once the project is up and running, log in to Strapi Cloud.
-13. In Strapi Cloud, go to Settings > Transfer Token and generate a new *push type* transfer token. (Copy the token and keep it safe.)
-14. Now we will transfer the data from our local instance to the Strapi Cloud instance. In your local terminal, run:
+12. Go to Strapi Cloud and create a new project with the same repository.
+13. Once the project is up and running, log in to Strapi Cloud.
+14. In Strapi Cloud, go to Settings > Transfer Token and generate a new *push type* transfer token. (Copy the token and keep it safe.)
+15. Now we will transfer the data from our local instance to the Strapi Cloud instance. In your local terminal, run:
 ```bash
    yarn strapi transfer --to <strapi-cloud-url> --exclude files
 ```
