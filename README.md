@@ -78,28 +78,28 @@ Before you begin, ensure you have the following installed on your system:
 version: '3.8'
 
 services:
-postgres:
-   image: postgres:15
-   container_name: strapi-postgres
-   restart: unless-stopped
-   environment:
-      POSTGRES_DB: kaizen
-      POSTGRES_USER: kaizen
-      POSTGRES_PASSWORD: kaizen
-   ports:
-      - "5433:5432"
-   volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./database/dumps:/docker-entrypoint-initdb.d
-   networks:
-      - strapi-network
+   postgres:
+      image: postgres:15
+      container_name: strapi-postgres
+      restart: unless-stopped
+      environment:
+         POSTGRES_DB: kaizen
+         POSTGRES_USER: kaizen
+         POSTGRES_PASSWORD: kaizen
+      ports:
+         - "5433:5432"
+      volumes:
+         - postgres_data:/var/lib/postgresql/data
+         - ./database/dumps:/docker-entrypoint-initdb.d
+      networks:
+         - strapi-network
 
 volumes:
-postgres_data:
+   postgres_data:
 
 networks:
-strapi-network:
-   driver: bridge 
+   strapi-network:
+      driver: bridge 
 ```
    Then run:
 ```bash
