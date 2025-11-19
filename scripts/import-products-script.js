@@ -544,12 +544,10 @@ async function main() {
     let skipCount = 0;
     let errorCount = 0;
     
-    // Limit to first 5 products for testing
-    const productsToProcess = backendProducts.slice(0, 10);
     
-    for (const [index, productData] of productsToProcess.entries()) {
+    for (const [index, productData] of backendProducts.entries()) {
       try {
-        console.log(`\n🔄 Processing product ${index + 1}/${productsToProcess.length}: ${productData.name}`);
+        console.log(`\n🔄 Processing product ${index + 1}/${backendProducts.length}: ${productData.name}`);
         
         // Check if product already exists
         const exists = await checkExistingProduct(productData.name);

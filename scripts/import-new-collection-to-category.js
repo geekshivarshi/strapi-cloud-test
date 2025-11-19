@@ -174,7 +174,7 @@ function normalizePath(url) {
 
 async function findProductByCustomerUrl(url) {
   if (!url) return null;
-  const normalized = normalizePath(url);
+  const normalized = `/${normalizePath(url)}`;
   const QUERY = `
     query ($filters: ProductFiltersInput, $pageSize: Int) {
       products(filters: $filters, pagination: { page: 1, pageSize: $pageSize }) {

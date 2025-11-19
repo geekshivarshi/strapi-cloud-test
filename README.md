@@ -133,7 +133,7 @@ DATABASE_URL=postgres://kaizen:kaizen@localhost:5433/kaizen
 - Then upload the icon images for the product info icon pointer (from the CMS) in Strapi and copy their asset IDs. Update those IDs in the mapping object at the top of the script.
 - Then run the script:
 ``` bash
-   node scripts/import-product-script.js
+   node scripts/import-products-script.js
 ```
 - The script will loop over each product one by one, upload its media to Strapi (skips if media is already present), and then create an entry for the product in Strapi's products table.
 - If some of the products failed for some reason, you can re-run the script to try adding the failed products. (It will skip over already added products.)
