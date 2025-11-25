@@ -60,7 +60,7 @@ module.exports = ({ env }) => ({
   graphql: {
     enabled: true,
     config: {
-      playgroundAlways: false,
+      playgroundAlways: true,
       defaultLimit: 20,
       landingPage: true,
       showCrud: true,
